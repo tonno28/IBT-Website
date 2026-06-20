@@ -1,0 +1,377 @@
+
+<style>
+  :root { --gap: 14px; }
+  .page { max-width: 680px; padding: 1.5rem 0; font-size: 15px; }
+  .section-title { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 2rem 0 .75rem; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.2rem; margin-bottom: 10px; }
+  .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .badge-green { background: #EAF3DE; color: #3B6D11; }
+  .badge-blue { background: #E6F1FB; color: #185FA5; }
+  .badge-amber { background: #FAEEDA; color: #854F0B; }
+  .badge-teal { background: #E1F5EE; color: #0F6E56; }
+  .badge-purple { background: #EEEDFE; color: #534AB7; }
+  .badge-red { background: #FCEBEB; color: #A32D2D; }
+  .card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .card-sub { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 4px; }
+  .check-list { list-style: none; padding: 0; margin: 0; }
+  .check-list li { font-size: 13px; color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before { content: ''; display: block; width: 6px; height: 6px; min-width: 6px; border-radius: 50%; background: var(--color-border-secondary); margin-top: 6px; }
+  .check-list li.highlight::before { background: #1D9E75; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tab-bar { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .tab { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; transition: all .15s; }
+  .tab.active { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); }
+  .section { display: none; }
+  .section.active { display: block; }
+  .star-row { display: flex; gap: 3px; }
+  .star { font-size: 13px; color: #EF9F27; }
+  .star.empty { color: var(--color-border-secondary); }
+  .highlight-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: .9rem 1rem; margin: 10px 0; }
+  .highlight-box .label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+  .num-badge { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: var(--color-background-secondary); font-size: 11px; font-weight: 500; color: var(--color-text-secondary); }
+  .target-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; }
+  .target-row:last-child { border-bottom: none; }
+  .target-icon { font-size: 16px; min-width: 22px; }
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.5rem 0; }
+  .big-stat { font-size: 28px; font-weight: 500; color: var(--color-text-primary); }
+  .stats-row { display: flex; gap: 10px; }
+  .stat-box { flex: 1; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: .75rem; text-align: center; }
+  .stat-label { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+  .priority-bar { height: 4px; border-radius: 2px; background: var(--color-border-tertiary); margin-top: 6px; overflow: hidden; }
+  .priority-fill { height: 100%; border-radius: 2px; }
+  .cta-btn { display: inline-block; font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-primary); cursor: pointer; margin-top: 8px; }
+  .cta-btn:hover { background: var(--color-background-secondary); }
+</style>
+<div class="page">
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.1rem 1.2rem;margin-bottom:1.5rem;">
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-tertiary);margin-bottom:4px;">Dein Website-Guide</div>
+    <div style="font-size:17px;font-weight:500;color:var(--color-text-primary);">Energieberater & Fachplaner</div>
+    <div style="font-size:13px;color:var(--color-text-secondary);margin-top:4px;">Analyse + vollständige Checkliste für deinen professionellen Webauftritt</div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab active" onclick="showTab('markt')">Markt & Mitbewerber</div>
+    <div class="tab" onclick="showTab('design')">Design-Prinzipien</div>
+    <div class="tab" onclick="showTab('struktur')">Website-Struktur</div>
+    <div class="tab" onclick="showTab('zielgruppen')">Zielgruppen</div>
+    <div class="tab" onclick="showTab('differenz')">Dein Alleinstellungsmerkmal</div>
+  </div>
+
+  <!-- TAB 1: Markt -->
+  <div id="tab-markt" class="section active">
+    <div class="section-title">Marktüberblick Deutschland</div>
+    <div class="stats-row" style="margin-bottom:1rem;">
+      <div class="stat-box"><div class="big-stat">4.000+</div><div class="stat-label">Energieberater in DE</div></div>
+      <div class="stat-box"><div class="big-stat">22.800</div><div class="stat-label">EEE-Experten registriert</div></div>
+      <div class="stat-box"><div class="big-stat">70%</div><div class="stat-label">Max. BEG-Förderung</div></div>
+    </div>
+
+    <div class="section-title">Was Mitbewerber-Websites auszeichnet</div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="badge badge-blue">Verbraucherzentrale</span>
+        <div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+      </div>
+      <div class="card-title">Größtes unabhängiges Beratungsnetz</div>
+      <div class="card-sub">Klare Positionierung als neutrale Institution seit 1978. Fast 1.000 Berater, ~900 Standorte. Stärke: extremes Vertrauen durch Marke und Unabhängigkeit. Schwäche: generisch, kaum Spezialisierung auf technische Detailleistungen.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="badge badge-teal">HEK Energie (Wiesbaden)</span>
+        <div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      </div>
+      <div class="card-title">Modernes Rebranding mit klarer Designsprache</div>
+      <div class="card-sub">Maßgeschneidertes UI/UX-Design, das Nachhaltigkeit + Innovation + Klarheit verkörpert. Modern und einladend, gleichzeitig strukturiert und vertrauenserweckend. Bestes Beispiel für professionelles Auftreten eines regionalen Beraters.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="badge badge-green">Energieberatung Eichler</span>
+        <div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+      </div>
+      <div class="card-title">Persönlich + professionell in Balance</div>
+      <div class="card-sub">Farbpalette aus kühlen Grün- und Blaugrau-Tönen. Dezente Hintergrundmuster aus dem Logo abgeleitet. Professionelle Fotos vermitteln Vertrauen. Kein Öko-Klischee, sondern seriöse Fachkompetenz. Stärke: Wiedererkennungswert.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="badge badge-amber">Energieberatung Klonk (Redesign)</span>
+        <div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+      </div>
+      <div class="card-title">Modernisierung ohne Markenverlust</div>
+      <div class="card-sub">Gelungenes Redesign das moderne Gestaltungselemente integriert, ohne die Markenidentität zu opfern. Fokus auf Energieeffizienzreise des Kunden als emotionalen Einstieg. Zeigt: Eine Website kann sich entwickeln.</div>
+    </div>
+
+    <div class="section-title">Was fast ALLE Mitbewerber falsch machen</div>
+    <div class="highlight-box">
+      <ul class="check-list">
+        <li>Generische Haus-mit-Sonne-Symbole – kein Wiedererkennungswert</li>
+        <li>Keine klare Trennung der Zielgruppen (Privatperson vs. Handwerker vs. Architekt)</li>
+        <li>Technische Spezialleistungen (Heizlast, hydraul. Abgleich) kaum sichtbar</li>
+        <li>Kein erklärender Nutzen hinter den Leistungen – nur Begriffe aufgelistet</li>
+        <li>Fehlende Testimonials oder Referenzprojekte aus dem B2B-Bereich</li>
+        <li>Kein klarer Call-to-Action – Besucher verlassen die Seite ohne Handlung</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 2: Design -->
+  <div id="tab-design" class="section">
+    <div class="section-title">Design-Prinzipien für deinen Auftritt</div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-teal">Farben</span></div>
+      <div class="card-title">Seriös-technisch statt Öko-Klischee</div>
+      <div class="card-sub">Primärfarbe: Tiefes Petrol/Blaugrün (steht für Präzision + Nachhaltigkeit). Akzentfarbe: Warmes Amber oder Orange (Energie, Wärme). Neutral: Anthrazit oder Dunkelgrau (nicht schwarz). Weiß für maximale Lesbarkeit. Kein knalliges Grün, kein Solarmodul-Orange.</div>
+      <div class="priority-bar"><div class="priority-fill" style="width:95%;background:#1D9E75;"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-blue">Typografie</span></div>
+      <div class="card-title">Klare, technische Schriftsprache</div>
+      <div class="card-sub">Headline-Font: Geometrisch-sans (z.B. Neue Haas Grotesk, DM Sans, Inter). Body: leicht, gut lesbar. Keine verspielten Schriften. Maximal 2 Schriftarten. Hierarchie durch Größe und Gewicht, nicht durch Dekoration.</div>
+      <div class="priority-bar"><div class="priority-fill" style="width:85%;background:#185FA5;"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-amber">Bilder & Fotos</span></div>
+      <div class="card-title">Echte Fotos – kein Stock-Material</div>
+      <div class="card-sub">Professionelle Fotos von dir bei der Arbeit (Vor-Ort, am Rechner mit Berechnungssoftware, im Gespräch). Keine generischen Stockbilder von glücklichen Familien vor Häusern. Ggf. Fotos deiner Berechnungsberichte / Ausgaben als Vertrauensbeweis. Zeig dein Werkzeug.</div>
+      <div class="priority-bar"><div class="priority-fill" style="width:90%;background:#BA7517;"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-purple">Gestaltung</span></div>
+      <div class="card-title">Weniger ist mehr – aber nicht langweilig</div>
+      <div class="card-sub">Viel Weißraum. Klare visuelle Hierarchie. Keine überladenen Seiten. Ikonografie statt langen Texten auf der Startseite. Kurze, prägnante Aussagen (max. 2 Sätze pro Leistung im Hero-Bereich). Moderne Linienführung statt Kästen.</div>
+      <div class="priority-bar"><div class="priority-fill" style="width:80%;background:#534AB7;"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-green">Mobile First</span></div>
+      <div class="card-title">Optimiert für alle Geräte</div>
+      <div class="card-sub">Über 60% der Websitebesuche kommen vom Smartphone. Deine Seite muss auf Mobilgeräten einwandfrei funktionieren – besonders das Kontaktformular und die Telefonnummer. Click-to-Call-Button immer sichtbar.</div>
+      <div class="priority-bar"><div class="priority-fill" style="width:100%;background:#3B6D11;"></div></div>
+    </div>
+  </div>
+
+  <!-- TAB 3: Struktur -->
+  <div id="tab-struktur" class="section">
+    <div class="section-title">Pflichtbestandteile deiner Website</div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-red">1. Hero-Bereich (Startseite)</span></div>
+      <div class="card-title">Erste 3 Sekunden entscheiden</div>
+      <ul class="check-list">
+        <li class="highlight">Klare Aussage: Wer du bist + was du tust + für wen</li>
+        <li class="highlight">Dein Foto (kein Avatar) – Vertrauen beginnt mit Gesicht</li>
+        <li>Primärer CTA: "Beratung anfragen" oder "Angebot einholen"</li>
+        <li>Sekundärer CTA: "Leistungen entdecken" oder "Referenzen ansehen"</li>
+        <li>Qualifikations-Badge: z.B. "BAFA-zugelassener Energieberater", "EEE-Experte"</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-blue">2. Leistungsübersicht</span></div>
+      <div class="card-title">Klar strukturiert nach Zielgruppe</div>
+      <ul class="check-list">
+        <li class="highlight">Energieberatung (iSFP, Wohngebäude, Nichtwohngebäude)</li>
+        <li class="highlight">Heizlast-Berechnung nach DIN 12831</li>
+        <li class="highlight">Hydraulischer Abgleich (Verfahren A + B)</li>
+        <li class="highlight">Bauteilberechnungen / Bauphysik</li>
+        <li class="highlight">Wärmeschutznachweis (GEG, EnEV-Nachweis)</li>
+        <li class="highlight">Wärmebrücken-Berechnung</li>
+        <li>Energieausweis (Bedarfs- & Verbrauchsausweis)</li>
+        <li>Fördermittelberatung (BEG, KfW, BAFA)</li>
+        <li>Blower-Door-Test / Luftdichtheitsmessung</li>
+        <li>Individueller Sanierungsfahrplan (iSFP)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-teal">3. Zielgruppen-Navigation</span></div>
+      <div class="card-title">Verschiedene Einstiegspunkte je Besucher</div>
+      <ul class="check-list">
+        <li class="highlight">Eigentümer / Bauherren: Förderung, Sanierung, Energieausweis</li>
+        <li class="highlight">Heizungsbauer / SHK: Heizlast, hydraul. Abgleich, Nachweise</li>
+        <li class="highlight">Architekten / Planer: GEG-Nachweise, Wärmeschutz, Bauphysik</li>
+        <li>Kommunen / Gewerbe: Energieaudit, Konzepte</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-amber">4. Vertrauen & Referenzen</span></div>
+      <div class="card-title">Social Proof ist Pflicht</div>
+      <ul class="check-list">
+        <li class="highlight">3–5 Referenzprojekte (kurze Beschreibung + Ergebnis)</li>
+        <li class="highlight">Kundenstimmen / Testimonials (Name, Funktion/Branche)</li>
+        <li>Logos von Handwerkspartnern oder Architekturbüros</li>
+        <li>Anzahl durchgeführter Berechnungen / Beratungen</li>
+        <li class="highlight">Zertifikate und Qualifikationen sichtbar</li>
+        <li>EEE-Eintrag-Badge, BAFA-Zulassung, Kammermitgliedschaft</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-green">5. Über mich / Team</span></div>
+      <div class="card-title">Persönlichkeit schafft Verbindung</div>
+      <ul class="check-list">
+        <li class="highlight">Dein Werdegang – kurz und klar</li>
+        <li>Warum du das machst (1–2 Sätze Motivation)</li>
+        <li>Qualifikationen und Weiterbildungen</li>
+        <li class="highlight">Professionelles Foto (kein Smartphone-Selfie)</li>
+        <li>Deine Arbeitsweise / Philosophie</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-purple">6. Kontakt & Anfrage</span></div>
+      <div class="card-title">Der wichtigste Bereich</div>
+      <ul class="check-list">
+        <li class="highlight">Kurzes Kontaktformular (max. 5 Felder: Name, E-Mail, Tel., Art der Anfrage, Nachricht)</li>
+        <li class="highlight">Telefonnummer als Click-to-Call prominent sichtbar</li>
+        <li>Klar kommunizierte Antwortzeit ("Ich melde mich binnen 24h")</li>
+        <li>Optionales Rückruf-Formular oder Terminbuchung (z.B. Calendly)</li>
+        <li>Google Maps Einbindung wenn Vor-Ort-Beratung möglich</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-blue">7. Blog / Wissen / FAQ</span></div>
+      <div class="card-title">SEO + Expertenstatus aufbauen</div>
+      <ul class="check-list">
+        <li>FAQ-Seite: häufigste Fragen zu Heizlast, Hydraul. Abgleich, GEG</li>
+        <li>Blog-Artikel zu aktuellen Themen (BEG 2025/2026, GEG-Änderungen)</li>
+        <li>Erklärartikel: "Was ist ein hydraulischer Abgleich und warum ist er wichtig?"</li>
+        <li>Download-Materialien (z.B. Checkliste zur Sanierungsvorbereitung)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-red">8. Technische & rechtliche Basis</span></div>
+      <div class="card-title">Nicht vergessen</div>
+      <ul class="check-list">
+        <li>SSL-Zertifikat (https:// – absolutes Muss)</li>
+        <li>DSGVO-konforme Datenschutzerklärung</li>
+        <li>Cookie-Banner</li>
+        <li>Impressum vollständig ausgefüllt</li>
+        <li class="highlight">Ladezeiten unter 3 Sekunden (Google-Faktor für Ranking)</li>
+        <li class="highlight">Strukturierte Daten (Schema.org für lokale Dienstleister)</li>
+        <li>Google Business Profil verknüpft</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 4: Zielgruppen -->
+  <div id="tab-zielgruppen" class="section">
+    <div class="section-title">Deine drei Zielgruppen mit eigenen Seiten</div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-blue">Zielgruppe 1: Heizungsbauer & SHK</span></div>
+      <div class="card-title">Deine stärkste Differenzierung im Markt</div>
+      <ul class="check-list">
+        <li class="highlight">Heizlastberechnung nach DIN EN 12831 als eigenständige Seite</li>
+        <li class="highlight">Hydraulischer Abgleich: Verfahren A und B klar erläutert</li>
+        <li>Lieferzeiten und Abwicklung klar kommuniziert ("Ergebnis in 48h")</li>
+        <li>Direkter Auftragskanal für Handwerksbetriebe (eigenes Formular)</li>
+        <li>Kompatibilität mit gängiger Planerungssoftware erwähnen</li>
+        <li class="highlight">Preistransparenz oder zumindest Preisrahmen nennen</li>
+        <li>Referenzen aus dem Handwerk (z.B. "200+ Heizlastberechnungen für Partner")</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-teal">Zielgruppe 2: Architekten & Planer</span></div>
+      <div class="card-title">Technische Kompetenz auf Augenhöhe</div>
+      <ul class="check-list">
+        <li class="highlight">GEG-Nachweis / EnEV als eigene Leistungsseite</li>
+        <li class="highlight">Wärmeschutznachweis (§ 14 GEG, Sommerlicher Wärmeschutz)</li>
+        <li class="highlight">Bauteilberechnungen (U-Werte, Aufbauten, Wärmebrücken)</li>
+        <li>Klare Aussage zur Software (z.B. UBAKUS, IDA ICE, DesignBuilder)</li>
+        <li>Angabe bei welchen Planungsphasen du eingebunden werden kannst (HOAI LP 1–5)</li>
+        <li>Schnittstelle zu BIM / IFC erwähnen falls vorhanden</li>
+        <li>Turnaround-Zeiten für Nachweisführung</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="badge badge-amber">Zielgruppe 3: Eigentümer & Bauherren</span></div>
+      <div class="card-title">Einfache Sprache, klarer Mehrwert</div>
+      <ul class="check-list">
+        <li class="highlight">Einstieg über Fördermittel: "Bis zu 70% Förderung sichern"</li>
+        <li>Individueller Sanierungsfahrplan (iSFP) als Einstiegsprodukt</li>
+        <li>Erklärung in Alltagssprache (keine Fachbegriffe ohne Erklärung)</li>
+        <li>FAQ zu häufigen Fragen (Kosten, Förderhöhe, Ablauf)</li>
+        <li class="highlight">Vor-Ort-Termin als niedrigschwelliger Einstieg kommunizieren</li>
+        <li>Kostenloser Erstcheck als Lead-Magnet anbieten</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 5: Alleinstellungsmerkmal -->
+  <div id="tab-differenz" class="section">
+    <div class="section-title">Dein einzigartiges Profil – so hebst du dich ab</div>
+
+    <div class="highlight-box">
+      <div class="label">Dein Kernvorteil</div>
+      <div style="font-size:14px;color:var(--color-text-primary);font-weight:500;">Du bist kein allgemeiner Energieberater – du bist die technische Schnittstelle zwischen Energieberatung, Bauphysik und ausführendem Handwerk.</div>
+    </div>
+
+    <div class="section-title">Positionierungsaussagen für deine Website</div>
+
+    <div class="card">
+      <div class="card-title">Headline-Option 1 (für Handwerker)</div>
+      <div class="card-sub" style="font-style:italic;">"Heizlastberechnung & hydraulischer Abgleich – präzise, schnell und normgerecht. Für Heizungsbauer, die keine Zeit verlieren wollen."</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Headline-Option 2 (allgemein)</div>
+      <div class="card-sub" style="font-style:italic;">"Von der Energieberatung bis zur Bauphysik – alles aus einer Hand. Für Eigentümer, Handwerker und Architekten."</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Headline-Option 3 (Abgrenzung)</div>
+      <div class="card-sub" style="font-style:italic;">"Ich liefere nicht nur Beratung – ich liefere die Berechnungen, mit denen dein Projekt wirklich funktioniert."</div>
+    </div>
+
+    <div class="section-title">Was sonst noch heraussticht</div>
+    <div class="card">
+      <ul class="check-list">
+        <li class="highlight">Transparente Preise / Preisspannen nennen – die meisten Konkurrenten tun das NICHT</li>
+        <li class="highlight">Lieferzeit kommunizieren ("Heizlastberechnung in 48 Stunden")</li>
+        <li class="highlight">B2B-Rabattstaffel für Heizungsbauer mit mehreren Aufträgen</li>
+        <li>Digitaler Auftragsprozess: alles ohne Post oder Fax</li>
+        <li>Online-Terminbuchung (Calendly oder ähnlich)</li>
+        <li class="highlight">Aktualitätsversprechen: "Immer auf neuestem Stand von GEG & BEG"</li>
+        <li>Weiterempfehlungsrate / NPS sichtbar machen</li>
+        <li>Video-Erklärung auf der Startseite (60 Sekunden reichen)</li>
+      </ul>
+    </div>
+
+    <div class="section-title">SEO-Schlüsselthemen für deine Seite</div>
+    <div class="card">
+      <ul class="check-list">
+        <li>"Heizlastberechnung [Stadt/Region]"</li>
+        <li>"Hydraulischer Abgleich Berechnung Handwerker"</li>
+        <li>"GEG Nachweis Architekt beauftragen"</li>
+        <li>"Energieberatung BAFA gefördert [Region]"</li>
+        <li>"Wärmebrückenberechnung Neubau"</li>
+        <li>"U-Wert Berechnung Bauteil"</li>
+        <li>"iSFP individueller Sanierungsfahrplan"</li>
+      </ul>
+    </div>
+
+    <button class="cta-btn" onclick="sendPrompt('Kannst du mir einen konkreten Entwurf für die Startseite (Hero-Bereich + Leistungsübersicht) als HTML-Layout erstellen?')">Startseiten-Entwurf erstellen lassen ↗</button>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>

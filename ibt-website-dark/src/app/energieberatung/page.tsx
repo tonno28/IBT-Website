@@ -1,0 +1,160 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import CTABanner from "@/components/CTABanner";
+
+export const metadata: Metadata = {
+  title: "Energieberatung — iSFP, Förderung, Energieausweis",
+  description:
+    "Professionelle Energieberatung für Wohngebäude: iSFP Sanierungsfahrplan, Förderberatung BEG (BAFA/KfW), Energieausweis, Baubegleitung und Effizienzhaus-Nachweis. Region Köln / Bonn / Rheinbach.",
+};
+
+const leistungen = [
+  {
+    href: "/energieberatung/isfp",
+    icon: "📋",
+    title: "iSFP Sanierungsfahrplan",
+    desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung — mit 5 % Extra-Bonus auf alle Folgemaßnahmen.",
+    highlight: "5 % iSFP-Bonus",
+    price: "ab 650 € netto (EFH)",
+  },
+  {
+    href: "/energieberatung/foerderberatung",
+    icon: "💶",
+    title: "Förderberatung BEG",
+    desc: "Vollständige Antragsbearbeitung bei BAFA und KfW: Technische Projektbeschreibung, Energieeffizienz-Experten-Bestätigung, Verwendungsnachweis.",
+    highlight: "bis 70 % Förderung",
+    price: "auf Anfrage",
+  },
+  {
+    href: "/energieberatung/energieausweis",
+    icon: "📄",
+    title: "Energieausweis",
+    desc: "Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflichtdokument bei Verkauf, Vermietung und Neubau — schnell und rechtssicher.",
+    highlight: "ab 95 €",
+    price: "ab 95 € (Verbrauch) / ab 250 € (Bedarf EFH)",
+  },
+  {
+    href: "/energieberatung/baubegleitung",
+    icon: "🏗️",
+    title: "Fachplanung & Baubegleitung",
+    desc: "Energetische Fachplanung und Baubegleitung nach BEG. Pflicht für Einzelmaßnahmen mit Förderantrag — ich übernehme Planung, Kontrolle und Dokumentation.",
+    highlight: "50 % BEG-Förderung auf Baubegleitung",
+    price: "ab 1.000 € (EFH)",
+  },
+  {
+    href: "/energieberatung/effizienzhaus",
+    icon: "🏠",
+    title: "Effizienzhaus-Bilanzierung",
+    desc: "Nachweis Effizienzhaus 40/55/70/85 nach GEG — Voraussetzung für KfW-Wohngebäudekredit und höhere Tilgungszuschüsse.",
+    highlight: "KfW-Voraussetzung",
+    price: "auf Anfrage",
+  },
+];
+
+export default function EnergieberatungPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-void relative overflow-hidden">
+        <div className="absolute inset-0 grid-dots opacity-30" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-electric/5 blur-[100px] pointer-events-none" />
+        <div className="container-max relative">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="h-px w-8 bg-teal-mid" />
+              <p className="section-eyebrow mb-0">Energieberatung</p>
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ink-bright leading-tight mb-6">
+              Energieberatung für{" "}
+              <span className="text-electric-grad">Wohngebäude</span>
+            </h1>
+            <p className="text-xl text-ink-muted leading-relaxed mb-8">
+              Von der Erstberatung bis zur ausgezahlten Förderung. Als dena-gelisteter
+              Energieeffizienz-Experte und akkreditierter Energieberater (BAFA/KfW) begleite
+              ich Sie durch den gesamten Prozess.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/kontakt" className="btn-electric">
+                Jetzt anfragen
+              </Link>
+              <Link href="/foerderrechner" className="btn-outline">
+                Förderrechner starten
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leistungen Grid */}
+      <section className="section-pad bg-void">
+        <div className="container-max">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {leistungen.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="card p-6 flex flex-col gap-4 group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-electric/10 text-electric flex items-center justify-center text-2xl">
+                    {l.icon}
+                  </div>
+                  <span className="badge-electric text-xs">{l.highlight}</span>
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-ink-bright mb-2 group-hover:text-electric transition-colors">
+                    {l.title}
+                  </h2>
+                  <p className="text-sm text-ink-muted leading-relaxed">{l.desc}</p>
+                </div>
+                <div className="mt-auto pt-4 border-t border-line-dim flex items-center justify-between">
+                  <span className="text-xs text-ink-ghost font-mono">{l.price}</span>
+                  <span className="text-xs font-medium text-electric">Details →</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why IBT */}
+      <section className="section-pad bg-surface border-y border-line-dim">
+        <div className="container-max">
+          <div className="text-center mb-10">
+            <p className="section-eyebrow">Warum IBT</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-ink-bright">
+              Energieberatung mit technischer Tiefe
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                icon: "⚙️",
+                title: "Ingenieur-Know-how",
+                desc: "Ich berechne Heizlasten, U-Werte und Wärmebrücken selbst — kein Outsourcing, keine Verzögerungen.",
+              },
+              {
+                icon: "🎯",
+                title: "Förder-Optimierung",
+                desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: iSFP-Bonus, Klima-Geschwindigkeitsbonus, Effizienz-Bonus.",
+              },
+              {
+                icon: "🤝",
+                title: "Ein Ansprechpartner",
+                desc: "Von der ersten Beratung bis zum Verwendungsnachweis: Sie haben immer denselben Ansprechpartner.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="text-center p-6">
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <h3 className="font-semibold text-ink-bright mb-2">{item.title}</h3>
+                <p className="text-sm text-ink-muted">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTABanner />
+    </>
+  );
+}

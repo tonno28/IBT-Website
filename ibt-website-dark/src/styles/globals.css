@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* RGB channels — used by Tailwind opacity modifiers */
+  --c-electric: 6 214 160;
+  --c-warm: 245 158 11;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #030508;
+  color: #eef2ff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%; height: 4px; border-radius: 2px;
+  background: #0e2040; outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgb(var(--c-warm)); cursor: pointer;
+  border: 2px solid #030508;
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgb(var(--c-warm)); cursor: pointer; border: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
+
+:focus-visible { outline: 2px solid rgb(var(--c-electric)); outline-offset: 3px; }
+::selection    { background: rgb(var(--c-electric)); color: #030508; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #030508; }
+::-webkit-scrollbar-thumb { background: #1a334f; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #254870; }
+
+@layer components {
+
+  /* ── Typography ── */
+  .heading-display { @apply font-display font-bold text-ink-bright leading-none tracking-tight; }
+  .section-eyebrow { @apply font-mono text-xs tracking-[0.25em] uppercase text-electric; }
+
+  /* ── Layout ── */
+  .container-max { @apply max-w-6xl mx-auto; }
+  .section-pad   { @apply py-24 px-4 sm:px-6 lg:px-8; }
+
+  /* ── Buttons ── */
+  .btn-electric {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+           bg-electric text-void font-semibold text-sm tracking-wide
+           transition-all duration-200
+           hover:shadow-[0_0_28px_rgba(6,214,160,0.45)] hover:scale-[1.02];
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+           border border-line-mid text-ink-body font-medium text-sm
+           transition-all duration-200
+           hover:border-electric/50 hover:text-electric hover:bg-electric/5;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-1 text-sm text-ink-muted font-medium
+           transition-colors hover:text-ink-bright;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-card border border-line-dim rounded-2xl
+           transition-all duration-300
+           hover:border-electric/30 hover:shadow-[0_0_40px_rgba(6,214,160,0.06)];
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-mono tracking-widest uppercase
+           px-3 py-1.5 rounded-full border;
+  }
+  .badge-electric { @apply badge bg-electric/10 text-electric border-electric/20; }
+  .badge-warm     { @apply badge bg-warm/10 text-warm border-warm/20; }
+
+  /* ── Decorative ── */
+  .dot-grid {
+    background-image: radial-gradient(circle, #1a334f 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* ── Text gradients ── */
+  .text-electric-grad {
+    background: linear-gradient(135deg, rgb(var(--c-electric)), #00f5c4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-warm-grad {
+    background: linear-gradient(135deg, rgb(var(--c-warm)), #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Glow blobs ── */
+  .glow-electric {
+    @apply absolute rounded-full blur-[120px] pointer-events-none animate-glow-breathe
+           bg-electric/10;
+  }
+  .glow-warm {
+    @apply absolute rounded-full blur-[100px] pointer-events-none bg-warm/10;
+  }
+}

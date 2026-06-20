@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-primary: #0e1117;
+  --color-bg-card: #16181f;
+  --color-bg-accent: #1a2a2e;
+  --color-teal-dark: #0F6E56;
+  --color-teal-mid: #1D9E75;
+  --color-teal-light: #34d399;
+  --color-amber: #D4942A;
+  --color-amber-hover: #e0a43a;
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-text-hint: #52525b;
+  --color-border: #26282f;
+  --color-border-hover: #3a3d44;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--color-amber-hover);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  cursor: pointer;
+  border: none;
+}
+
+/* Number input — remove arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-amber);
+  color: #0e1117;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hover);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-hint);
+}
+
+@layer components {
+  .badge {
+    @apply inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full;
+  }
+  .badge-amber {
+    @apply badge bg-amber/10 text-amber border border-amber/20;
+  }
+  .badge-teal {
+    @apply badge bg-teal-dark/20 text-teal-light border border-teal-dark/30;
+  }
+  .section-label {
+    @apply text-xs font-semibold tracking-[0.2em] uppercase text-amber mb-3;
+  }
+  .card-base {
+    @apply bg-bg-card border border-zinc-border rounded-xl transition-all duration-200;
+  }
+  .card-hover {
+    @apply card-base hover:border-zinc-borderHover hover:bg-bg-hover;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber text-bg-primary font-semibold text-sm transition-all duration-150 hover:bg-amber-hover focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-bg-card border border-zinc-border text-zinc-primary font-semibold text-sm transition-all duration-150 hover:border-amber hover:text-amber;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-zinc-secondary font-medium text-sm transition-all duration-150 hover:text-zinc-primary hover:bg-bg-card;
+  }
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  .container-max {
+    @apply max-w-6xl mx-auto;
+  }
+  .gradient-teal {
+    background: linear-gradient(135deg, #0F6E56 0%, #1D9E75 100%);
+  }
+  .gradient-amber {
+    background: linear-gradient(135deg, #D4942A 0%, #e0a43a 100%);
+  }
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #1D9E75 0%, #34d399 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grid-dots {
+    background-image: radial-gradient(circle, #26282f 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
