@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -37,6 +37,20 @@ body {
   font-family: 'Instrument Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Numerals & technical labels: geometric display face with aligned figures */
+.font-mono,
+.font-display {
+  font-feature-settings: "tnum" 1, "ss01" 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Headlines use the display face for a sharper, more engineered voice */
+h1, h2, h3 {
+  font-family: 'Space Grotesk', var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* Custom range input */
@@ -163,4 +177,64 @@ input[type="number"] {
     background-image: radial-gradient(circle, #26282f 1px, transparent 1px);
     background-size: 32px 32px;
   }
+  /* Blueprint grid — technical, engineered backdrop (replaces generic blobs) */
+  .grid-blueprint {
+    background-image:
+      linear-gradient(to right, rgba(38, 40, 47, 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(38, 40, 47, 0.6) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .text-gradient-amber {
+    background: linear-gradient(120deg, #e0a43a 0%, #D4942A 50%, #34d399 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Animated hairline used under section labels */
+  .rule-accent {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-amber), transparent);
+  }
+  .stat-num {
+    @apply font-display font-semibold tracking-tight;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ---- Scroll-reveal (driven by IntersectionObserver in <Reveal/>) ---- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal="right"] { transform: translateX(28px); }
+[data-reveal="scale"] { transform: scale(0.94); }
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- 3D tilt card ---- */
+.tilt-card {
+  transform: perspective(900px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+}
+.tilt-card .tilt-layer {
+  transform: translateZ(40px);
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  [data-reveal] {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
 }

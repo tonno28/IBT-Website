@@ -6,6 +6,9 @@ import Testimonials from "@/components/Testimonials";
 import CTABanner from "@/components/CTABanner";
 import Link from "next/link";
 import Foerderrechner from "@/components/Foerderrechner";
+import Reveal from "@/components/Reveal";
+import TiltCard from "@/components/TiltCard";
+import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen Köln Bonn Rheinbach",
@@ -30,7 +33,7 @@ export default function Home() {
         <div className="container-max">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left: copy */}
-            <div className="lg:sticky lg:top-24">
+            <Reveal variant="left" className="lg:sticky lg:top-24">
               <p className="section-label">BEG-Förderrechner</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
                 Wie viel Förderung ist drin?
@@ -42,14 +45,16 @@ export default function Home() {
               </p>
 
               <div className="space-y-4 mb-8">
-                {[
-                  { icon: "🔥", text: "Heizungsförderung bis 70 % (Klima- + Effizienz- + Einkommensbonus)" },
-                  { icon: "🏠", text: "Gebäudehülle bis 20 % (+ 5 % mit iSFP)" },
-                  { icon: "🏗️", text: "Baubegleitung 50 % bis 5.000 €" },
-                  { icon: "💡", text: "Alle Boni transparent erklärt" },
-                ].map((item) => (
+                {([
+                  { icon: "flame", text: "Heizungsförderung bis 70 % (Klima- + Effizienz- + Einkommensbonus)" },
+                  { icon: "house", text: "Gebäudehülle bis 20 % (+ 5 % mit iSFP)" },
+                  { icon: "crane", text: "Baubegleitung 50 % bis 5.000 €" },
+                  { icon: "bulb", text: "Alle Boni transparent erklärt" },
+                ] as { icon: IconName; text: string }[]).map((item) => (
                   <div key={item.text} className="flex items-start gap-3">
-                    <span className="text-lg">{item.icon}</span>
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">
+                      <Icon name={item.icon} className="w-4 h-4" />
+                    </span>
                     <span className="text-sm text-zinc-secondary">{item.text}</span>
                   </div>
                 ))}
@@ -62,12 +67,12 @@ export default function Home() {
               <p className="text-xs text-zinc-hint mt-4">
                 Unverbindliche Schätzung. Stand: BEG 2025.
               </p>
-            </div>
+            </Reveal>
 
             {/* Right: calculator */}
-            <div className="bg-bg-card border border-zinc-border rounded-2xl p-6 sm:p-8">
+            <Reveal variant="right" className="bg-bg-card border border-zinc-border rounded-2xl p-6 sm:p-8">
               <Foerderrechner />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -79,7 +84,7 @@ export default function Home() {
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <Reveal variant="left">
               <p className="section-label">Über mich</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
                 Jonas Tonn
@@ -109,7 +114,7 @@ export default function Home() {
               <Link href="/ueber-mich" className="btn-secondary">
                 Mehr über mich →
               </Link>
-            </div>
+            </Reveal>
 
             <div className="grid grid-cols-2 gap-4">
               {[
@@ -117,16 +122,17 @@ export default function Home() {
                 { value: "BAFA", label: "& KfW akkreditiert" },
                 { value: "dena", label: "Energieeffizienz-Experte" },
                 { value: "100 %", label: "unabhängig" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="card-base p-5 text-center"
-                >
-                  <div className="text-2xl font-bold font-mono text-amber mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-zinc-muted">{stat.label}</div>
-                </div>
+              ].map((stat, i) => (
+                <Reveal key={stat.label} variant="scale" delay={i * 80}>
+                  <TiltCard>
+                    <div className="card-base tilt-layer p-5 text-center h-full">
+                      <div className="stat-num text-2xl text-amber mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-zinc-muted">{stat.label}</div>
+                    </div>
+                  </TiltCard>
+                </Reveal>
               ))}
             </div>
           </div>

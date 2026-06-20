@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, DM_Mono } from "next/font/google";
+import { Instrument_Sans, Space_Grotesk } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,10 +12,11 @@ const instrumentSans = Instrument_Sans({
   display: "swap",
 });
 
-const dmMono = DM_Mono({
+// Display / numerals — geometric, engineered look (replaces the typewriter mono)
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -67,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${instrumentSans.variable} ${dmMono.variable}`}>
+    <html lang="de" className={`${instrumentSans.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-bg-primary text-zinc-primary antialiased">
         <Header />
         <main>{children}</main>

@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const steps = [
   {
     number: "01",
@@ -40,7 +42,7 @@ export default function ProcessTimeline() {
   return (
     <section className="section-padding bg-bg-card border-y border-zinc-border">
       <div className="container-max">
-        <div className="text-center mb-14">
+        <Reveal className="text-center mb-14">
           <p className="section-label">Ablauf</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
             So läuft&apos;s ab
@@ -49,7 +51,7 @@ export default function ProcessTimeline() {
             Transparent, planbar, ohne Überraschungen — von der ersten Anfrage bis zur
             ausgezahlten Förderung.
           </p>
-        </div>
+        </Reveal>
 
         {/* Timeline */}
         <div className="relative max-w-3xl mx-auto">
@@ -58,8 +60,9 @@ export default function ProcessTimeline() {
 
           <div className="space-y-8">
             {steps.map((step, i) => (
-              <div
+              <Reveal
                 key={step.number}
+                variant={i % 2 === 0 ? "left" : "right"}
                 className={`relative flex flex-col sm:flex-row gap-6 sm:gap-0 ${
                   i % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
                 }`}
@@ -98,7 +101,7 @@ export default function ProcessTimeline() {
 
                 {/* Empty side (desktop) */}
                 <div className="hidden sm:block sm:w-[calc(50%-2rem)]" />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

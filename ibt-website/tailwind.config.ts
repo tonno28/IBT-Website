@@ -36,11 +36,19 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-instrument)", "system-ui", "sans-serif"],
-        mono: ["var(--font-dm-mono)", "monospace"],
+        display: ["var(--font-display)", "var(--font-instrument)", "sans-serif"],
+        // numerals & technical labels now render in the geometric display face,
+        // not a typewriter mono — kept under `mono` so existing usage just works
+        mono: ["var(--font-display)", "var(--font-instrument)", "sans-serif"],
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease-out forwards",
         "fade-in": "fadeIn 0.4s ease-out forwards",
+        float: "float 6s ease-in-out infinite",
+        "float-slow": "float 9s ease-in-out infinite",
+        shimmer: "shimmer 2.5s linear infinite",
+        "gradient-pan": "gradientPan 8s ease infinite",
+        "spin-slow": "spin 24s linear infinite",
       },
       keyframes: {
         fadeUp: {
@@ -50,6 +58,18 @@ const config: Config = {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        gradientPan: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
         },
       },
     },

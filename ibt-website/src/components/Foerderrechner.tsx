@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Icon, { type IconName } from "./Icon";
 
 interface Bonus {
   id: string;
@@ -12,7 +13,7 @@ interface Bonus {
 
 interface Massnahme {
   label: string;
-  icon: string;
+  icon: IconName;
   desc: string;
   basis: number;
   maxKosten: number;
@@ -26,7 +27,7 @@ interface Massnahme {
 const MASSNAHMEN: Record<string, Massnahme> = {
   heizung: {
     label: "Heizungsförderung",
-    icon: "🔥",
+    icon: "flame",
     desc: "Wärmepumpe, Biomasse, Solarthermie, Brennstoffzelle",
     basis: 30,
     maxKosten: 30000,
@@ -55,7 +56,7 @@ const MASSNAHMEN: Record<string, Massnahme> = {
   },
   fenster: {
     label: "Fenster & Haustür",
-    icon: "🪟",
+    icon: "window",
     desc: "Austausch von Fenstern, Balkon-/Terrassentüren, Haustüren",
     basis: 15,
     maxKosten: 30000,
@@ -74,7 +75,7 @@ const MASSNAHMEN: Record<string, Massnahme> = {
   },
   dach: {
     label: "Dachdämmung",
-    icon: "🏠",
+    icon: "house",
     desc: "Dämmung der obersten Geschossdecke oder des Daches",
     basis: 15,
     maxKosten: 30000,
@@ -93,7 +94,7 @@ const MASSNAHMEN: Record<string, Massnahme> = {
   },
   fassade: {
     label: "Fassadendämmung",
-    icon: "🧱",
+    icon: "brick",
     desc: "Dämmung der Außenwände (WDVS, Kerndämmung, Innendämmung)",
     basis: 15,
     maxKosten: 30000,
@@ -232,7 +233,15 @@ export default function Foerderrechner() {
                     : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
                 }`}
               >
-                <span className="text-2xl leading-none mt-0.5">{val.icon}</span>
+                <span
+                  className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ring-1 transition-colors ${
+                    typ === key
+                      ? "bg-amber/15 text-amber ring-amber/25"
+                      : "bg-bg-accent text-zinc-secondary ring-zinc-border"
+                  }`}
+                >
+                  <Icon name={val.icon} className="w-5 h-5" />
+                </span>
                 <div>
                   <div
                     className={`font-semibold text-sm ${

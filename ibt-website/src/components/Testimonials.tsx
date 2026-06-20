@@ -1,3 +1,6 @@
+import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
+
 const testimonials = [
   {
     text: "Jonas Tonn hat uns den gesamten iSFP erstellt und sämtliche Förderanträge übernommen. Wir haben am Ende 65 % Förderung auf unsere Wärmepumpe bekommen — mehr als wir erwartet hätten. Sehr kompetent und immer erreichbar.",
@@ -26,7 +29,7 @@ export default function Testimonials() {
   return (
     <section className="section-padding bg-bg-primary">
       <div className="container-max">
-        <div className="text-center mb-14">
+        <Reveal className="text-center mb-14">
           <p className="section-label">Kundenstimmen</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
             Was Kunden sagen
@@ -34,11 +37,13 @@ export default function Testimonials() {
           <p className="max-w-xl mx-auto text-zinc-muted">
             Echte Ergebnisse, keine Hochglanz-Versprechen.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <div key={i} className="card-base p-6 flex flex-col gap-4">
+            <Reveal key={i} variant="up" delay={i * 90}>
+            <TiltCard max={5} className="h-full">
+            <div className="card-base tilt-layer p-6 flex flex-col gap-4 h-full">
               {/* Stars */}
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, s) => (
@@ -66,7 +71,7 @@ export default function Testimonials() {
                   <div className="text-right shrink-0">
                     <div className="text-xs text-zinc-hint">{t.measure}</div>
                     {t.foerderung && (
-                      <div className="text-sm font-bold text-teal-light font-mono">
+                      <div className="stat-num text-sm font-semibold text-teal-light">
                         {t.foerderung} Förderung
                       </div>
                     )}
@@ -74,6 +79,8 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
+            </TiltCard>
+            </Reveal>
           ))}
         </div>
 

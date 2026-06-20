@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Reveal from "./Reveal";
 
 interface CTABannerProps {
   title?: string;
@@ -20,7 +21,7 @@ export default function CTABanner({
   return (
     <section className="section-padding">
       <div className="container-max">
-        <div className="relative overflow-hidden rounded-2xl bg-bg-accent border border-teal-dark/30 p-8 sm:p-12">
+        <Reveal variant="scale" className="relative overflow-hidden rounded-2xl bg-bg-accent border border-teal-dark/30 p-8 sm:p-12">
           {/* Background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-teal-dark/10 blur-[80px] pointer-events-none" />
           <div className="absolute bottom-0 left-1/4 w-48 h-48 rounded-full bg-amber/5 blur-[60px] pointer-events-none" />
@@ -67,7 +68,7 @@ export default function CTABanner({
               </Link>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

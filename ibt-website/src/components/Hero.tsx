@@ -1,19 +1,49 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
+  const glowRef = useRef<HTMLDivElement | null>(null);
+
+  // Pointer parallax on the accent glow (fine pointers only).
+  useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const handle = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 40;
+      const y = (e.clientY / window.innerHeight - 0.5) * 40;
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
+    };
+    window.addEventListener("mousemove", handle, { passive: true });
+    return () => window.removeEventListener("mousemove", handle);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Grid dot background */}
-      <div className="absolute inset-0 grid-dots opacity-40" />
+      {/* Blueprint grid backdrop */}
+      <div className="absolute inset-0 grid-blueprint opacity-[0.35] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
 
-      {/* Accent glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-teal-dark/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-amber/5 blur-[80px] pointer-events-none" />
+      {/* Parallax accent glow */}
+      <div
+        ref={glowRef}
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] rounded-full bg-teal-dark/15 blur-[130px] pointer-events-none transition-transform duration-300 ease-out"
+      />
+      <div className="absolute bottom-1/4 right-1/5 w-[320px] h-[320px] rounded-full bg-amber/10 blur-[90px] pointer-events-none animate-float-slow" />
+
+      {/* Slow rotating technical ring for depth */}
+      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] rounded-full border border-zinc-border/40 animate-spin-slow pointer-events-none hidden md:block" />
+      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full border border-zinc-border/30 pointer-events-none hidden md:block" />
 
       <div className="relative container-max px-4 sm:px-6 lg:px-8 py-20 text-center">
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bg-card border border-zinc-border text-xs font-medium text-zinc-muted mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-teal-light animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bg-card/80 backdrop-blur-sm border border-zinc-border text-xs font-medium text-zinc-secondary mb-8 animate-fade-in">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-teal-light opacity-75 animate-ping" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-teal-light" />
+          </span>
           dena-gelistet · BAFA/KfW-akkreditiert · §88 GEG
         </div>
 
@@ -49,24 +79,26 @@ export default function Hero() {
         </div>
 
         {/* Stats bar */}
-        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm">
-          {[
-            { value: "70 %", label: "max. BEG-Förderung" },
-            { value: "§88", label: "GEG-qualifiziert" },
-            { value: "BAFA", label: "& KfW akkreditiert" },
-            { value: "dena", label: "Expertenliste" },
-          ].map((s) => (
-            <div key={s.label} className="flex flex-col items-center">
-              <span className="text-2xl font-bold font-mono text-amber">{s.value}</span>
-              <span className="text-zinc-hint">{s.label}</span>
-            </div>
-          ))}
+        <div className="mx-auto max-w-2xl rounded-2xl border border-zinc-border bg-bg-card/50 backdrop-blur-sm px-6 py-5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 divide-zinc-border">
+            {[
+              { value: "70 %", label: "max. BEG-Förderung" },
+              { value: "§88", label: "GEG-qualifiziert" },
+              { value: "BAFA", label: "& KfW akkreditiert" },
+              { value: "dena", label: "Expertenliste" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center text-center">
+                <span className="stat-num text-2xl text-amber">{s.value}</span>
+                <span className="text-xs text-zinc-muted mt-1">{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-zinc-hint">
-        <span className="text-xs tracking-widest uppercase">Mehr erfahren</span>
+        <span className="text-[10px] tracking-[0.25em] uppercase">Mehr erfahren</span>
         <svg className="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>

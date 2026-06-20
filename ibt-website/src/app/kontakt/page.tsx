@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Metadata } from "next";
+import Icon from "@/components/Icon";
 
 // Note: metadata can't be in client components — move to separate file if needed
 // For now, we keep contact form logic here
@@ -120,7 +121,9 @@ export default function KontaktPage() {
             <div className="lg:col-span-2">
               {submitted ? (
                 <div className="card-base p-10 text-center">
-                  <div className="text-4xl mb-4">✅</div>
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-teal-dark/15 text-teal-light ring-1 ring-teal-dark/30">
+                    <Icon name="check" className="w-7 h-7" />
+                  </div>
                   <h2 className="text-xl font-bold text-zinc-primary mb-3">
                     Nachricht erhalten!
                   </h2>
