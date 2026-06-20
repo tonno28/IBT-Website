@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "./Logo";
 
 const leistungen = [
   { label: "iSFP Sanierungsfahrplan", href: "/energieberatung/isfp" },
@@ -25,16 +25,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <div className="bg-white rounded-lg px-2 py-1 inline-block">
-                <Image
-                  src="/logo.jpg"
-                  alt="IBT Ingenieurbüro Tonn"
-                  width={130}
-                  height={44}
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
+            <Link href="/" className="inline-block mb-4" aria-label="IBT Ingenieurbüro Tonn — Startseite">
+              <Logo size="sm" />
             </Link>
             <p className="text-sm text-zinc-muted leading-relaxed mb-4">
               Energieberatung und Ingenieurleistungen aus einer Hand. Qualifiziert nach §88 GEG,

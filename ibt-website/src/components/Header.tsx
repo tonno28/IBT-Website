@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
 const nav = [
   {
@@ -61,17 +61,12 @@ export default function Header() {
       <div className="container-max px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="bg-white rounded-lg px-2 py-1 shrink-0">
-              <Image
-                src="/logo.jpg"
-                alt="IBT Ingenieurbüro Tonn"
-                width={120}
-                height={40}
-                className="h-9 w-auto object-contain"
-                priority
-              />
-            </div>
+          <Link
+            href="/"
+            className="flex items-center group rounded-lg transition-opacity hover:opacity-90"
+            aria-label="IBT Ingenieurbüro Tonn — Startseite"
+          >
+            <Logo size="sm" />
           </Link>
 
           {/* Desktop nav */}

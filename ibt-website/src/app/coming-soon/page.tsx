@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Bald verfügbar",
@@ -22,16 +22,7 @@ export default function ComingSoonPage() {
       <div className="relative container-max text-center animate-fade-up">
         {/* Logo */}
         <div className="flex justify-center mb-10">
-          <div className="bg-white rounded-lg px-3 py-2 shrink-0">
-            <Image
-              src="/logo.jpg"
-              alt="IBT Ingenieurbüro Tonn"
-              width={160}
-              height={54}
-              className="h-12 w-auto object-contain"
-              priority
-            />
-          </div>
+          <Logo size="lg" />
         </div>
 
         {/* Eyebrow */}
