@@ -32,3 +32,11 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Lokale Agent-/Tool-Daten (nicht ins Repo)
+.claude/
+.agents/
+skills-lock.json
+
+# Referenzmaterial (lokal, nicht deployen)
+Referenz Website Animation/

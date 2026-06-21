@@ -4,87 +4,127 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bald verfügbar — IBT Ingenieurbüro Tonn</title>
-  <meta name="description" content="Die Website von IBT Ingenieurbüro Tonn befindet sich im Aufbau. Energieberatung (BAFA/KfW, iSFP, dena) und Ingenieurleistungen aus einer Hand — Region Köln / Bonn / Rheinbach." />
+  <meta name="description" content="IBT Ingenieurbüro Tonn — Energieberatung, Förderberatung (BAFA/KfW) und technische Ingenieurleistungen aus einer Hand. Die neue Website entsteht gerade. Region Düren, Aachen, Köln." />
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#1e4435" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Reveal-Inhalte nur verstecken, wenn JS aktiv ist (sonst bleibt alles sichtbar). -->
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <div class="bg-dots"></div>
-  <div class="glow glow-teal"></div>
-  <div class="glow glow-amber"></div>
+  <div class="wrap">
 
-  <main class="hero fade-up">
-    <!-- Logo: das „I" als Doppel-T-Träger (Stahlprofil) im Teal→Amber-Verlauf -->
-    <span class="logo">
-      <span class="logo-word">
-        <svg class="logo-beam" viewBox="0 0 24 40" role="img" aria-label="I" fill="none">
-          <defs>
-            <linearGradient id="ibt-beam" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#34d399" />
-              <stop offset="55%" stop-color="#1D9E75" />
-              <stop offset="100%" stop-color="#D4942A" />
-            </linearGradient>
-          </defs>
-          <path d="M3 2 H21 V8 H15 V32 H21 V38 H3 V32 H9 V8 H3 Z" fill="url(#ibt-beam)" />
-        </svg>
-        <span class="logo-bt">BT</span>
+    <!-- Kopf -->
+    <header class="top" data-reveal>
+      <span class="brand" aria-label="IBT Ingenieurbüro Tonn">
+        <span class="logo-ibt"><span class="rule"></span><span class="ibt">IBT</span></span>
+        <span class="logo-name"><span>Ingenieurbüro</span><span>Tonn</span></span>
       </span>
-      <span class="logo-sub">Ingenieurbüro&nbsp;Tonn</span>
-    </span>
+      <span class="status"><span class="pulse"></span> Website im Aufbau</span>
+    </header>
 
-    <div class="eyebrow">
-      <span class="dot"></span>
-      Website im Aufbau
-    </div>
-
-    <h1>
-      Wir sind bald<br />
-      <span class="text-gradient-teal">für Sie da.</span>
-    </h1>
-
-    <p class="subline">
-      An unserem neuen Webauftritt wird gerade gearbeitet. Energieberatung und
-      Ingenieurleistungen aus einer Hand — Jonas Tonn, Dipl.-Ing., für die Region
-      Köln / Bonn / Rheinbach.
-    </p>
-
-    <div class="badges">
-      <span class="badge badge-teal">dena-gelistet</span>
-      <span class="badge badge-amber">BAFA/KfW-akkreditiert</span>
-      <span class="badge badge-teal">§88 GEG</span>
-    </div>
-
-    <div class="card">
-      <div class="card-label">Schon jetzt erreichbar</div>
-      <a class="contact-row" href="mailto:info@ibt-tonn.de">
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-        info@ibt-tonn.de
-      </a>
-      <a class="contact-row" href="tel:+4922514839">
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
-        +49 (0) 2251 48 39
-      </a>
-      <div class="contact-row muted">
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-        Rheinbach / Köln / Bonn
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <p class="kicker" data-reveal style="--si:0">Energieberatung · Ingenieurleistungen</p>
+      <h1 data-reveal style="--si:1">Bald für Sie <em>da.</em></h1>
+      <p class="lede" data-reveal style="--si:2">
+        An meiner neuen Website arbeite ich gerade. Ich begleite Ihr Sanierungs- und
+        Bauvorhaben vollständig: von der Förderberatung bis zur technischen Berechnung.
+        Für die Region Düren, Aachen, Köln und Umgebung.
+      </p>
+      <div class="badges t-avatar-group" data-reveal style="--si:3">
+        <span class="badge t-avatar">§88 GEG</span>
+        <span class="badge t-avatar">dena-Expertenliste</span>
+        <span class="badge t-avatar">BAFA</span>
+        <span class="badge t-avatar">KfW</span>
       </div>
-    </div>
+    </section>
 
-    <div class="legal">
-      <a href="impressum.html">Impressum</a>
-      <span>·</span>
-      <a href="datenschutz.html">Datenschutz</a>
-    </div>
-  </main>
+    <!-- Leistungen -->
+    <section>
+      <p class="section-label" data-reveal>In Kürze verfügbar</p>
+      <div class="services" data-reveal-group>
+        <article class="svc">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M12 13v6"/>
+          </svg>
+          <div>
+            <h3>Energieberatung &amp; Förderung</h3>
+            <p>BAFA/KfW-Förderberatung, iSFP-Sanierungsfahrplan und Effizienzhaus. Förderung optimal ausschöpfen.</p>
+            <span class="soon">geplant</span>
+          </div>
+        </article>
+        <article class="svc">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="7" cy="6" r="2"/><path d="M7 8v9a2 2 0 002 2h8"/><path d="M14 5h6M14 9h6M17 5v8"/>
+          </svg>
+          <div>
+            <h3>Technische Ingenieurleistungen</h3>
+            <p>Heizlast, U-Wert &amp; Bauteil, Taupunkt, Lüftungskonzept und Wärmebrücken. Fundiert berechnet.</p>
+            <span class="soon">geplant</span>
+          </div>
+        </article>
+        <article class="svc">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 8h6M9 12h6M9 16h4"/>
+          </svg>
+          <div>
+            <h3>Energieausweis</h3>
+            <p>Bedarfs- und Verbrauchsausweise nach GEG. Schnell, korrekt und §88-konform.</p>
+            <span class="soon">geplant</span>
+          </div>
+        </article>
+        <article class="svc">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M10 21v-6h4v6"/>
+          </svg>
+          <div>
+            <h3>Baubegleitung</h3>
+            <p>Energetische Baubegleitung während der Sanierung. Qualität sichern, Förderung absichern.</p>
+            <span class="soon">geplant</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="contact" data-reveal-group>
+      <div class="block">
+        <div class="lbl">Schon jetzt erreichbar</div>
+        <div style="display:flex;flex-direction:column;gap:.55rem;align-items:flex-start">
+          <a href="mailto:info@ib-tonn.de">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            info@ib-tonn.de
+          </a>
+          <a href="tel:+4915231060247">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            0152 31060247
+          </a>
+        </div>
+      </div>
+      <div class="block">
+        <div class="lbl">Ansprechpartner</div>
+        <div class="who"><b>Jonas Tonn</b><br>IBT Ingenieurbüro Tonn</div>
+      </div>
+      <div class="block">
+        <div class="lbl">Region</div>
+        <div class="who">Düren · Aachen · Köln<br>und Umgebung</div>
+      </div>
+    </section>
+
+    <!-- Fußzeile -->
+    <footer class="foot" data-reveal>
+      <span>© 2026 IBT Ingenieurbüro Tonn · Jonas Tonn</span>
+      <nav>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </footer>
+
+  </div>
+  <script src="script.js" defer></script>
 </body>
 </html>
