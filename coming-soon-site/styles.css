@@ -8,7 +8,7 @@
   --pine:#1e4435;--pine-2:#20493a;
   --ink:#1d201b;--ink-soft:#54574d;--ink-faint:#8a8c80;
   --on-pine:#eef2ea;
-  --ochre:#bd7335;--ochre-soft:#d7a877;
+  --ochre:#5c8a3a;--ochre-soft:#93b96b;
   --line:#e2d9c8;--line-2:#d4c8b2;
   --shadow:0 1px 2px rgba(29,32,27,.05),0 18px 40px -20px rgba(29,32,27,.16);
   --serif:"Fraunces","Iowan Old Style",Georgia,serif;
@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none}
 .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
 .status{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
 .status .pulse{width:.45rem;height:.45rem;border-radius:9999px;background:var(--ochre);animation:pulse 2.4s ease-out infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(189,115,53,.45)}70%{box-shadow:0 0 0 7px rgba(189,115,53,0)}100%{box-shadow:0 0 0 0 rgba(189,115,53,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,138,58,.45)}70%{box-shadow:0 0 0 7px rgba(92,138,58,0)}100%{box-shadow:0 0 0 0 rgba(92,138,58,0)}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;max-width:42rem;margin-bottom:clamp(3rem,7vw,5rem)}
@@ -75,7 +75,7 @@ h1 em{font-style:italic;color:var(--ochre)}
 .svc .ic{width:2rem;height:2rem;color:var(--pine);flex-shrink:0}
 .svc h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin-bottom:.25rem;line-height:1.2}
 .svc p{font-size:.88rem;color:var(--ink-soft)}
-.svc .soon{display:inline-block;margin-top:.5rem;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ochre);background:rgba(189,115,53,.09);border:1px solid rgba(189,115,53,.22);border-radius:9999px;padding:.15rem .5rem}
+.svc .soon{display:inline-block;margin-top:.5rem;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ochre);background:rgba(92,138,58,.09);border:1px solid rgba(92,138,58,.22);border-radius:9999px;padding:.15rem .5rem}
 
 /* ---------- Kontakt ---------- */
 .contact{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 0;margin-bottom:2.5rem;display:flex;flex-wrap:wrap;gap:1.5rem 3rem}
