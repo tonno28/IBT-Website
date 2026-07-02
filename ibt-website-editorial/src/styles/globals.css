@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-primary: #f3ede2;
+  --color-bg-card: #fbf7f0;
+  --color-bg-accent: #ece3d3;
+  --color-teal-dark: #1e4435;
+  --color-teal-mid: #2e5c48;
+  --color-teal-light: #3f7a5c;
+  --color-amber: #5c8a3a;
+  --color-amber-hover: #4a7530;
+  --color-text-primary: #1d201b;
+  --color-text-secondary: #54574d;
+  --color-text-muted: #6f7266;
+  --color-text-hint: #8a8c80;
+  --color-border: #e2d9c8;
+  --color-border-hover: #d4c8b2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Numerals & technical labels: tabular figures for aligned stats */
+.font-mono,
+.font-display {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Headlines use the editorial serif face, matching the Coming-Soon branding */
+h1, h2, h3 {
+  font-family: var(--font-serif), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+/* Custom range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--color-amber-hover);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  cursor: pointer;
+  border: none;
+}
+
+/* Number input — remove arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-amber);
+  color: #fbf7f0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hover);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-hint);
+}
+
+@layer components {
+  .badge {
+    @apply inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full;
+  }
+  .badge-amber {
+    @apply badge bg-amber/10 text-amber border border-amber/20;
+  }
+  .badge-teal {
+    @apply badge bg-teal-dark/20 text-teal-light border border-teal-dark/30;
+  }
+  .section-label {
+    @apply text-xs font-semibold tracking-[0.2em] uppercase text-amber mb-3;
+  }
+  .card-base {
+    @apply bg-bg-card border border-zinc-border rounded-xl transition-all duration-200;
+  }
+  .card-hover {
+    @apply card-base hover:border-zinc-borderHover hover:bg-bg-hover;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber text-onAccent font-semibold text-sm transition-all duration-150 hover:bg-amber-hover focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-bg-card border border-zinc-border text-zinc-primary font-semibold text-sm transition-all duration-150 hover:border-amber hover:text-amber;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-zinc-secondary font-medium text-sm transition-all duration-150 hover:text-zinc-primary hover:bg-bg-card;
+  }
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  .container-max {
+    @apply max-w-6xl mx-auto;
+  }
+  .gradient-teal {
+    background: linear-gradient(135deg, #1e4435 0%, #2e5c48 100%);
+  }
+  .gradient-amber {
+    background: linear-gradient(135deg, #5c8a3a 0%, #4a7530 100%);
+  }
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #2e5c48 0%, #3f7a5c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grid-dots {
+    background-image: radial-gradient(circle, #d4c8b2 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  /* Blueprint grid — technical, engineered backdrop (replaces generic blobs) */
+  .grid-blueprint {
+    background-image:
+      linear-gradient(to right, rgba(212, 200, 178, 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 200, 178, 0.6) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .text-gradient-amber {
+    background: linear-gradient(120deg, #4a7530 0%, #5c8a3a 50%, #3f7a5c 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Animated hairline used under section labels */
+  .rule-accent {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-amber), transparent);
+  }
+  .stat-num {
+    @apply font-display font-semibold tracking-tight;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ---- Scroll-reveal (driven by IntersectionObserver in <Reveal/>) ---- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal="right"] { transform: translateX(28px); }
+[data-reveal="scale"] { transform: scale(0.94); }
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- 3D tilt card ---- */
+.tilt-card {
+  transform: perspective(900px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+}
+.tilt-card .tilt-layer {
+  transform: translateZ(40px);
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  [data-reveal] {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
