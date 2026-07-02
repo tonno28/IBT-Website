@@ -26,6 +26,14 @@ const testimonials = [
     foerderung: "20 %",
     category: "energie" as const,
   },
+  {
+    text: "Wir wollten unsere alte Haustür austauschen und wussten gar nicht, dass es dafür Förderung gibt. Vinlux hat uns Herrn Tonn vom Ingenieurbüro Tonn empfohlen. Er hat uns aufgeklärt, welche Zuschüsse möglich sind, und den kompletten Antrag für uns gestellt. Am Ende haben wir 15 % der Kosten über die BEG zurückbekommen, ohne selbst etwas ausfüllen zu müssen.",
+    author: "B. Krause",
+    location: "Köln",
+    measure: "Haustürsanierung",
+    foerderung: "15 %",
+    category: "energie" as const,
+  },
 ];
 
 interface TestimonialsProps {
