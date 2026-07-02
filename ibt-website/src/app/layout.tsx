@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "dena",
     "GEG",
   ],
-  authors: [{ name: "Jonas Tonn", url: "https://ibt-tonn.de" }],
+  authors: [{ name: "Jonas Tonn", url: "https://ib-tonn.de" }],
   creator: "Jonas Tonn",
   openGraph: {
     type: "website",

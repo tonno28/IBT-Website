@@ -27,7 +27,7 @@ export default function DatenschutzPage() {
             <h3 className="text-sm font-semibold text-zinc-secondary mb-2">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h3>
             <p className="mb-3">
               Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber:
-              Jonas Tonn, IBT Ingenieurbüro Tonn, Rheinbach. Kontakt: info@ibt-tonn.de
+              Jonas Tonn, IBT Ingenieurbüro Tonn, Rheinbach. Kontakt: info@ib-tonn.de
             </p>
 
             <h3 className="text-sm font-semibold text-zinc-secondary mb-2">Wie erfassen wir Ihre Daten?</h3>
@@ -92,7 +92,7 @@ export default function DatenschutzPage() {
               ))}
             </ul>
             <p className="mt-3">
-              Zur Ausübung Ihrer Rechte wenden Sie sich an: info@ibt-tonn.de<br />
+              Zur Ausübung Ihrer Rechte wenden Sie sich an: info@ib-tonn.de<br />
               Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren
               (zuständig: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW).
             </p>

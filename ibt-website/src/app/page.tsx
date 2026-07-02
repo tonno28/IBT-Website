@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import LeistungenOverview from "@/components/LeistungenOverview";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
 import Link from "next/link";
 import Foerderrechner from "@/components/Foerderrechner";
@@ -138,7 +139,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. CTA Banner */}
+      {/* 7. FAQ */}
+      <FAQ />
+
+      {/* 8. CTA Banner */}
       <CTABanner />
     </>
   );

@@ -25,8 +25,8 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-base font-semibold text-zinc-primary mb-3">Kontakt</h2>
             <p>
-              E-Mail: <a href="mailto:info@ibt-tonn.de" className="text-amber hover:underline">info@ibt-tonn.de</a><br />
-              Telefon: +49 (0) 2251 48 39
+              E-Mail: <a href="mailto:info@ib-tonn.de" className="text-amber hover:underline">info@ib-tonn.de</a><br />
+              Telefon: 0152 31060247
             </p>
           </div>
 
