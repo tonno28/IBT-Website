@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Über mich — Jonas Tonn, Energieberater & Ingenieur",
   description:
-    "Jonas Tonn — Dipl.-Ing., Teamleiter bei Siemens AG, nebenberuflich Energieberater und Inhaber IBT Ingenieurbüro Tonn. §88 GEG qualifiziert, dena-gelistet, BAFA/KfW-akkreditiert.",
+    "Jonas Tonn — Dipl.-Ing., unabhängiger Energieberater und Inhaber IBT Ingenieurbüro Tonn. §88 GEG qualifiziert, dena-gelistet, BAFA/KfW-akkreditiert.",
 };
 
 export default function UeberMichPage() {
@@ -42,9 +42,9 @@ export default function UeberMichPage() {
               <h2 className="text-2xl font-bold text-zinc-primary mb-6">Ingenieur aus Leidenschaft</h2>
               <div className="space-y-4 text-zinc-muted leading-relaxed text-sm">
                 <p>
-                  Ich bin Diplom-Ingenieur und arbeite hauptberuflich als Teamleiter bei der
-                  Siemens AG in Köln. Nebenberuflich bin ich seit Jahren als unabhängiger
-                  Energieberater tätig und betreibe das IBT Ingenieurbüro Tonn.
+                  Ich bin Diplom-Ingenieur und unabhängiger Energieberater. Mit dem IBT
+                  Ingenieurbüro Tonn begleite ich Sanierungs- und Bauvorhaben vollständig,
+                  von der Förderberatung bis zur technischen Berechnung.
                 </p>
                 <p>
                   Was das bedeutet: Ich habe keine Abhängigkeiten von Heizungsherstellern,
@@ -99,24 +99,23 @@ export default function UeberMichPage() {
         </div>
       </section>
 
-      {/* Warum nebenberuflich */}
+      {/* Warum bewusst klein */}
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
           <p className="section-label text-center">Transparenz</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">
-            Warum nebenberuflich?
+            Warum bewusst klein?
           </h2>
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed">
             <p>
               IBT ist bewusst klein und fokussiert. Ich nehme nur so viele Aufträge an, wie
               ich mit voller Aufmerksamkeit bearbeiten kann. Kein Wachstum um des Wachstums
-              willen — sondern Qualität für jeden einzelnen Auftrag.
+              willen, sondern Qualität für jeden einzelnen Auftrag.
             </p>
             <p>
-              Durch meine Haupttätigkeit bei Siemens bleibe ich technisch auf dem aktuellen
-              Stand, ohne auf jeden Umsatz angewiesen zu sein. Das ermöglicht mir,
-              Aufträge abzulehnen, die nicht passen — und die anzunehmen, bei denen ich
-              wirklich einen Mehrwert schaffe.
+              Das bedeutet für Sie: ein direkter Ansprechpartner von der ersten Beratung
+              bis zum Abschluss, keine Weitergabe an wechselnde Sachbearbeiter, und die
+              Möglichkeit, mich auf Ihr Vorhaben wirklich einzulassen.
             </p>
           </div>
 

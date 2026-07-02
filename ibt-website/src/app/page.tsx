@@ -90,9 +90,8 @@ export default function Home() {
                 Jonas Tonn
               </h2>
               <p className="text-zinc-muted leading-relaxed mb-4">
-                Dipl.-Ing. und Teamleiter bei der Siemens AG in Köln — nebenberuflich seit Jahren
-                als unabhängiger Energieberater tätig. Was das bedeutet: keine Abhängigkeit von
-                Herstellern, keine Verkaufsziele, keine Provisionen.
+                Dipl.-Ing. und unabhängiger Energieberater. Was das bedeutet: keine
+                Abhängigkeit von Herstellern, keine Verkaufsziele, keine Provisionen.
               </p>
               <p className="text-zinc-muted leading-relaxed mb-6">
                 Ich kenne beide Seiten: die technischen Anforderungen an der Schnittstelle zu
