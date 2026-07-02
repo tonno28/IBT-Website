@@ -17,8 +17,8 @@ export default function ImpressumPage() {
             <p>
               Jonas Tonn<br />
               IBT Ingenieurbüro Tonn<br />
-              [Straße, Hausnummer]<br />
-              [PLZ, Ort]
+              Friedhofstr. 15<br />
+              52399 Merzenich
             </p>
           </div>
 
