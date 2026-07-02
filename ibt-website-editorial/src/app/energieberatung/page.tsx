@@ -4,7 +4,6 @@ import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessTimeline from "@/components/ProcessTimeline";
-import Foerderrechner from "@/components/Foerderrechner";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 
@@ -90,9 +89,6 @@ export default function EnergieberatungPage() {
               <Link href="/kontakt" className="btn-primary">
                 Jetzt anfragen
               </Link>
-              <Link href="/foerderrechner" className="btn-secondary">
-                Förderrechner starten
-              </Link>
             </div>
           </Reveal>
         </div>
@@ -172,53 +168,6 @@ export default function EnergieberatungPage() {
 
       {/* Ablauf */}
       <ProcessTimeline />
-
-      {/* Förderrechner */}
-      <section className="section-padding bg-bg-primary">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <Reveal variant="left" className="lg:sticky lg:top-24">
-              <p className="section-label">BEG-Förderrechner</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
-                Wie viel Förderung ist drin?
-              </h2>
-              <p className="text-zinc-muted leading-relaxed mb-6">
-                Berechnen Sie in 4 Schritten, wie viel Bundesförderung für effiziente Gebäude
-                (BEG) Sie für Ihre geplante Sanierungsmaßnahme erhalten können, ohne
-                persönliche Daten, sofort und kostenlos.
-              </p>
-
-              <div className="space-y-4 mb-8">
-                {([
-                  { icon: "flame", text: "Heizungsförderung bis 70 % (Klima- + Effizienz- + Einkommensbonus)" },
-                  { icon: "house", text: "Gebäudehülle bis 20 % (+ 5 % mit iSFP)" },
-                  { icon: "crane", text: "Baubegleitung 50 % bis 5.000 €" },
-                  { icon: "bulb", text: "Alle Boni transparent erklärt" },
-                ] as { icon: IconName; text: string }[]).map((item) => (
-                  <div key={item.text} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">
-                      <Icon name={item.icon} className="w-4 h-4" />
-                    </span>
-                    <span className="text-sm text-zinc-secondary">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Link href="/foerderrechner" className="btn-secondary text-sm">
-                Vollständiger Förderrechner →
-              </Link>
-
-              <p className="text-xs text-zinc-hint mt-4">
-                Unverbindliche Schätzung. Stand: BEG 2025.
-              </p>
-            </Reveal>
-
-            <Reveal variant="right" className="bg-bg-card border border-zinc-border rounded-2xl p-6 sm:p-8">
-              <Foerderrechner />
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* Kundenstimmen */}
       <Testimonials filter="energie" title="Was Eigentümer sagen" />

@@ -28,7 +28,6 @@ const nav = [
       { label: "Wärmebrücken", href: "/ingenieurleistungen/waermebruecken" },
     ],
   },
-  { label: "Förderrechner", href: "/foerderrechner" },
   { label: "Über mich", href: "/ueber-mich" },
   { label: "Kontakt", href: "/kontakt" },
 ];

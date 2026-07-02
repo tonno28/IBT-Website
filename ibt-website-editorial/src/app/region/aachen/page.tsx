@@ -28,7 +28,6 @@ export default function AachenPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/kontakt" className="btn-primary">Anfrage Aachen</Link>
-            <Link href="/foerderrechner" className="btn-secondary">Förderrechner</Link>
           </div>
         </div>
       </section>

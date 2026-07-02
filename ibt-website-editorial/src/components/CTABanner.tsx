@@ -15,8 +15,8 @@ export default function CTABanner({
   description = "Kostenlose Erstberatung: Ich schaue mir Ihre Situation an und zeige Ihnen, welche Förderung realistisch ist. Ohne Verpflichtung.",
   primaryLabel = "Jetzt Erstberatung anfragen",
   primaryHref = "/kontakt",
-  secondaryLabel = "Förderrechner starten",
-  secondaryHref = "/foerderrechner",
+  secondaryLabel = "Anrufen: 0152 31060247",
+  secondaryHref = "tel:+4915231060247",
 }: CTABannerProps) {
   return (
     <section className="section-padding">

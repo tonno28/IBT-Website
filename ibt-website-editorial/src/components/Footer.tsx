@@ -72,16 +72,8 @@ export default function Footer() {
               ))}
             </ul>
             <div className="mt-6">
-              <h3 className="text-sm font-semibold text-zinc-primary mb-4">Tools</h3>
+              <h3 className="text-sm font-semibold text-zinc-primary mb-4">Mehr</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/foerderrechner"
-                    className="text-sm text-zinc-muted hover:text-zinc-primary transition-colors"
-                  >
-                    BEG-Förderrechner
-                  </Link>
-                </li>
                 <li>
                   <Link
                     href="/blog"
