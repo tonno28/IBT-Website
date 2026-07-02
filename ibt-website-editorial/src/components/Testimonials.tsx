@@ -8,6 +8,7 @@ const testimonials = [
     location: "Rheinbach",
     measure: "Wärmepumpe + iSFP",
     foerderung: "65 %",
+    category: "energie" as const,
   },
   {
     text: "Ich bin Heizungsbauer und nutze IBT regelmäßig für Heizlastberechnungen und hydraulische Abgleiche. Schnelle Lieferzeit, normgerechte Unterlagen — das Handwerk, das ich brauche.",
@@ -15,6 +16,7 @@ const testimonials = [
     location: "Köln",
     measure: "Heizlastberechnung",
     role: "Heizungsbauer",
+    category: "technik" as const,
   },
   {
     text: "Die Förderberatung war ausgezeichnet. Herr Tonn hat klar erklärt, welche Boni wir nutzen können und warum. Die Kombination aus Klima-Geschwindigkeitsbonus und iSFP-Bonus hat unsere Förderquote deutlich erhöht.",
@@ -22,25 +24,34 @@ const testimonials = [
     location: "Bonn",
     measure: "Dachdämmung + Fenster",
     foerderung: "20 %",
+    category: "energie" as const,
   },
 ];
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  /** Which subset to show — pillar pages show only their own category. */
+  filter?: "all" | "energie" | "technik";
+  title?: string;
+}
+
+export default function Testimonials({ filter = "all", title = "Was Kunden sagen" }: TestimonialsProps) {
+  const items = filter === "all" ? testimonials : testimonials.filter((t) => t.category === filter);
+
   return (
     <section className="section-padding bg-bg-primary">
       <div className="container-max">
         <Reveal className="text-center mb-14">
           <p className="section-label">Kundenstimmen</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
-            Was Kunden sagen
+            {title}
           </h2>
           <p className="max-w-xl mx-auto text-zinc-muted">
             Echte Ergebnisse, keine Hochglanz-Versprechen.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+        <div className={`grid grid-cols-1 gap-6 ${items.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2 max-w-2xl mx-auto"}`}>
+          {items.map((t, i) => (
             <Reveal key={i} variant="up" delay={i * 90}>
             <TiltCard max={5} className="h-full">
             <div className="card-base tilt-layer p-6 flex flex-col gap-4 h-full">

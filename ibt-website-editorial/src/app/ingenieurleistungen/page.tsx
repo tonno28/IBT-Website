@@ -3,6 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
+import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "Ingenieurleistungen — Heizlast, U-Wert, Taupunkt, Lüftung",
@@ -161,6 +162,9 @@ export default function IngenieurleistungenPage() {
           </div>
         </div>
       </section>
+
+      {/* Kundenstimmen */}
+      <Testimonials filter="technik" title="Was Handwerk & Planung sagen" />
 
       <CTABanner
         title="Berechnung beauftragen"

@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import LeistungenOverview from "@/components/LeistungenOverview";
-import ProcessTimeline from "@/components/ProcessTimeline";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
 import Link from "next/link";
-import Foerderrechner from "@/components/Foerderrechner";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
-import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen Köln Bonn Rheinbach",
@@ -23,65 +18,10 @@ export default function Home() {
       {/* 1. Hero */}
       <Hero />
 
-      {/* 2. Leistungsübersicht */}
+      {/* 2. Zwei Säulen (Teaser, Details auf /energieberatung und /ingenieurleistungen) */}
       <LeistungenOverview />
 
-      {/* 3. Prozess-Timeline */}
-      <ProcessTimeline />
-
-      {/* 4. Förderrechner Teaser */}
-      <section className="section-padding bg-bg-primary">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left: copy */}
-            <Reveal variant="left" className="lg:sticky lg:top-24">
-              <p className="section-label">BEG-Förderrechner</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
-                Wie viel Förderung ist drin?
-              </h2>
-              <p className="text-zinc-muted leading-relaxed mb-6">
-                Berechnen Sie in 4 Schritten, wie viel Bundesförderung für effiziente Gebäude
-                (BEG) Sie für Ihre geplante Sanierungsmaßnahme erhalten können —
-                ohne persönliche Daten, sofort und kostenlos.
-              </p>
-
-              <div className="space-y-4 mb-8">
-                {([
-                  { icon: "flame", text: "Heizungsförderung bis 70 % (Klima- + Effizienz- + Einkommensbonus)" },
-                  { icon: "house", text: "Gebäudehülle bis 20 % (+ 5 % mit iSFP)" },
-                  { icon: "crane", text: "Baubegleitung 50 % bis 5.000 €" },
-                  { icon: "bulb", text: "Alle Boni transparent erklärt" },
-                ] as { icon: IconName; text: string }[]).map((item) => (
-                  <div key={item.text} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">
-                      <Icon name={item.icon} className="w-4 h-4" />
-                    </span>
-                    <span className="text-sm text-zinc-secondary">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Link href="/foerderrechner" className="btn-secondary text-sm">
-                Vollständiger Förderrechner →
-              </Link>
-
-              <p className="text-xs text-zinc-hint mt-4">
-                Unverbindliche Schätzung. Stand: BEG 2025.
-              </p>
-            </Reveal>
-
-            {/* Right: calculator */}
-            <Reveal variant="right" className="bg-bg-card border border-zinc-border rounded-2xl p-6 sm:p-8">
-              <Foerderrechner />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Testimonials */}
-      <Testimonials />
-
-      {/* 6. Über mich (Preview) */}
+      {/* 3. Über mich (Preview) */}
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -139,10 +79,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. FAQ */}
-      <FAQ />
-
-      {/* 8. CTA Banner */}
+      {/* 4. CTA Banner */}
       <CTABanner />
     </>
   );
