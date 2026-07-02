@@ -3,12 +3,12 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Energieberater Rheinbach — IBT Ingenieurbüro Tonn",
+  title: "Energieberater Düren — IBT Ingenieurbüro Tonn",
   description:
-    "Energieberater in Rheinbach und Umgebung (Meckenheim, Euskirchen, Swisttal): iSFP, BEG-Förderung, Heizlast, Energieausweis. Jonas Tonn, §88 GEG, dena-gelistet. Vor Ort verfügbar.",
+    "Energieberater in Düren und Umgebung (Merzenich, Jülich, Niederzier): iSFP, BEG-Förderung, Heizlast, Energieausweis. Jonas Tonn, §88 GEG, dena-gelistet. Vor Ort verfügbar.",
 };
 
-export default function RheinbachPage() {
+export default function DuerenPage() {
   return (
     <>
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-bg-primary relative overflow-hidden">
@@ -19,12 +19,12 @@ export default function RheinbachPage() {
             <p className="section-label mb-0">Heimatregion</p>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-            Energieberater in Rheinbach —<br />
+            Energieberater in Düren —<br />
             <span className="text-gradient-teal">IBT Ingenieurbüro Tonn</span>
           </h1>
           <p className="text-xl text-zinc-muted leading-relaxed mb-8">
-            IBT hat seinen Sitz in Rheinbach. Beratung und Vor-Ort-Begehung für Rheinbach,
-            Meckenheim, Swisttal, Euskirchen und den gesamten Kreis Euskirchen.
+            IBT ist in der Region Düren zu Hause. Beratung und Vor-Ort-Begehung für Düren,
+            Merzenich, Niederzier, Jülich und den gesamten Kreis Düren.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/kontakt" className="btn-primary">Anfrage stellen</Link>
@@ -39,9 +39,9 @@ export default function RheinbachPage() {
           </h2>
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed">
             <p>
-              Als Büro mit Sitz in Rheinbach bin ich in der Region besonders gut erreichbar.
-              Kurzfristige Vor-Ort-Begehungen sind in Rheinbach, Meckenheim, Swisttal,
-              Euskirchen und Umgebung ohne zusätzliche Fahrtkosten möglich.
+              In der Region Düren bin ich besonders gut erreichbar. Kurzfristige
+              Vor-Ort-Begehungen sind in Düren, Merzenich, Niederzier, Jülich und Umgebung
+              ohne zusätzliche Fahrtkosten möglich.
             </p>
             <p>
               Die Region hat viele Einfamilienhäuser aus den 1970er und 1980er Jahren mit
@@ -52,8 +52,8 @@ export default function RheinbachPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
             {[
-              "Rheinbach", "Meckenheim", "Swisttal",
-              "Euskirchen", "Weilerswist", "Bad Münstereifel"
+              "Düren", "Merzenich", "Niederzier",
+              "Jülich", "Langerwehe", "Kreis Düren"
             ].map((a) => (
               <div key={a} className="card-base p-3 text-center text-xs text-zinc-secondary">{a}</div>
             ))}
@@ -62,8 +62,8 @@ export default function RheinbachPage() {
       </section>
 
       <CTABanner
-        title="Vor Ort in Rheinbach"
-        description="Kurzfristige Begehungen und persönliche Beratung in Rheinbach und der Region Euskirchen."
+        title="Vor Ort in Düren"
+        description="Kurzfristige Begehungen und persönliche Beratung in Düren und der Region."
         primaryLabel="Jetzt anfragen"
       />
     </>

@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Heizlastberechnung DIN EN 12831 — Wärmepumpe, Heizkörper",
   description:
-    "Normheizlast nach DIN EN 12831 für Wärmepumpenauslegung, Heizkörperbemessung und Hydraulischen Abgleich. Ab 250 € für EFH. Schnelle Lieferzeit. Region Köln / Bonn / Rheinbach.",
+    "Normheizlast nach DIN EN 12831 für Wärmepumpenauslegung, Heizkörperbemessung und Hydraulischen Abgleich. Ab 250 € für EFH. Schnelle Lieferzeit. Region Köln / Aachen / Düren.",
 };
 
 export default function HeizlastPage() {

@@ -79,7 +79,7 @@ export default function KoelnPage() {
             </p>
             <p>
               Ich fahre regelmäßig zu Vor-Ort-Begehungen in Köln und der gesamten Region
-              Köln / Bonn / Rheinbach. Fahrkosten auf Anfrage.
+              Köln / Aachen / Düren. Fahrkosten auf Anfrage.
             </p>
           </div>
         </div>

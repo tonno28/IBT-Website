@@ -5,7 +5,7 @@ const testimonials = [
   {
     text: "Jonas Tonn hat uns den gesamten iSFP erstellt und sämtliche Förderanträge übernommen. Wir haben am Ende 65 % Förderung auf unsere Wärmepumpe bekommen — mehr als wir erwartet hätten. Sehr kompetent und immer erreichbar.",
     author: "Familie M.",
-    location: "Rheinbach",
+    location: "Düren",
     measure: "Wärmepumpe + iSFP",
     foerderung: "65 %",
     category: "energie" as const,
@@ -21,7 +21,7 @@ const testimonials = [
   {
     text: "Die Förderberatung war ausgezeichnet. Herr Tonn hat klar erklärt, welche Boni wir nutzen können und warum. Die Kombination aus Klima-Geschwindigkeitsbonus und iSFP-Bonus hat unsere Förderquote deutlich erhöht.",
     author: "R. & K. Schulze",
-    location: "Bonn",
+    location: "Aachen",
     measure: "Dachdämmung + Fenster",
     foerderung: "20 %",
     category: "energie" as const,

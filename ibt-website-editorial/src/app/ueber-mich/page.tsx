@@ -23,7 +23,7 @@ export default function UeberMichPage() {
             <p className="text-xl text-zinc-muted mb-2">
               Ingenieur & Energieberater
             </p>
-            <p className="text-zinc-hint mb-8">IBT Ingenieurbüro Tonn · Rheinbach</p>
+            <p className="text-zinc-hint mb-8">IBT Ingenieurbüro Tonn · Köln · Aachen · Düren</p>
             <div className="flex flex-wrap gap-2">
               {["§88 GEG qualifiziert", "dena Energieeffizienz-Experte", "BAFA/KfW akkreditiert", "BEG-Fachplaner"].map((b) => (
                 <span key={b} className="badge-teal">{b}</span>

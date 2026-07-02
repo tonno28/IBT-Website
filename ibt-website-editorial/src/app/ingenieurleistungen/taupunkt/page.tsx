@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Taupunktnachweis — Feuchteschutz DIN 4108-3 Köln Bonn",
+  title: "Taupunktnachweis — Feuchteschutz DIN 4108-3 Köln Aachen",
   description:
-    "Taupunktnachweis nach Glaser-Verfahren (DIN 4108-3): Feuchteschutznachweis für Außenbauteile, verhindert Kondensatschäden und Schimmel. Ab 120 € pro Bauteil. Region Köln / Bonn / Rheinbach.",
+    "Taupunktnachweis nach Glaser-Verfahren (DIN 4108-3): Feuchteschutznachweis für Außenbauteile, verhindert Kondensatschäden und Schimmel. Ab 120 € pro Bauteil. Region Köln / Aachen / Düren.",
 };
 
 export default function TaupunktPage() {

@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Förderberatung BEG — BAFA & KfW Förderung Köln Bonn",
+  title: "Förderberatung BEG — BAFA & KfW Förderung Köln Aachen",
   description:
-    "Professionelle Förderberatung für BEG Einzelmaßnahmen und Effizienzhaus. Antragsstellung bei BAFA und KfW, Förderoptimierung bis 70 %, vollständige Begleitung. Region Köln / Bonn / Rheinbach.",
+    "Professionelle Förderberatung für BEG Einzelmaßnahmen und Effizienzhaus. Antragsstellung bei BAFA und KfW, Förderoptimierung bis 70 %, vollständige Begleitung. Region Köln / Aachen / Düren.",
 };
 
 export default function FoerderberatungPage() {

@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 export const metadata: Metadata = {
   title: "Bald verfügbar",
   description:
-    "Die Website von IBT Ingenieurbüro Tonn befindet sich im Aufbau. Energieberatung (BAFA/KfW, iSFP, dena) und Ingenieurleistungen aus einer Hand — Region Köln / Bonn / Rheinbach.",
+    "Die Website von IBT Ingenieurbüro Tonn befindet sich im Aufbau. Energieberatung (BAFA/KfW, iSFP, dena) und Ingenieurleistungen aus einer Hand — Region Köln / Aachen / Düren.",
   robots: { index: false, follow: false },
 };
 
@@ -42,7 +42,7 @@ export default function ComingSoonPage() {
         <p className="max-w-xl mx-auto text-lg text-zinc-muted leading-relaxed mb-10">
           An unserem neuen Webauftritt wird gerade gearbeitet. Energieberatung und
           Ingenieurleistungen aus einer Hand — Jonas Tonn, Dipl.-Ing., für die Region
-          Köln / Bonn / Rheinbach.
+          Köln / Aachen / Düren.
         </p>
 
         {/* Badges */}
@@ -79,7 +79,7 @@ export default function ComingSoonPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              Rheinbach / Köln / Bonn
+              Köln / Aachen / Düren
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Fachplanung & Baubegleitung BEG — Energetische Baubegleitung",
   description:
-    "Energetische Fachplanung und Baubegleitung nach BEG: Pflicht für geförderte Einzelmaßnahmen, 50 % BEG-Förderung auf Baubegleitung (max. 5.000 €). Region Köln / Bonn / Rheinbach.",
+    "Energetische Fachplanung und Baubegleitung nach BEG: Pflicht für geförderte Einzelmaßnahmen, 50 % BEG-Förderung auf Baubegleitung (max. 5.000 €). Region Köln / Aachen / Düren.",
 };
 
 export default function BaubegleitungPage() {

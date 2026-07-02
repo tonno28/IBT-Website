@@ -18,7 +18,7 @@ export default function ImpressumPage() {
               Jonas Tonn<br />
               IBT Ingenieurbüro Tonn<br />
               [Straße, Hausnummer]<br />
-              53359 Rheinbach
+              [PLZ, Ort]
             </p>
           </div>
 

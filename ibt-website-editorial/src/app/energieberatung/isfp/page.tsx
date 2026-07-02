@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "iSFP Sanierungsfahrplan — Individueller Sanierungsfahrplan",
   description:
-    "Individueller Sanierungsfahrplan (iSFP) nach BEG: maßgeschneiderte Sanierungsreihenfolge, 5 % Extra-Förderbonus auf alle Folgemaßnahmen. Ab 650 € für EFH. Region Köln / Bonn / Rheinbach.",
+    "Individueller Sanierungsfahrplan (iSFP) nach BEG: maßgeschneiderte Sanierungsreihenfolge, 5 % Extra-Förderbonus auf alle Folgemaßnahmen. Ab 650 € für EFH. Region Köln / Aachen / Düren.",
 };
 
 const steps = [

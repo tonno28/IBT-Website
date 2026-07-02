@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     template: "%s | IBT Ingenieurbüro Tonn",
   },
   description:
-    "Professionelle Energieberatung (BAFA/KfW, iSFP, dena) und technische Ingenieurleistungen (Heizlast, Taupunkt, U-Wert) aus einer Hand. Jonas Tonn, Dipl.-Ing. — Region Köln, Bonn, Rheinbach.",
+    "Professionelle Energieberatung (BAFA/KfW, iSFP, dena) und technische Ingenieurleistungen (Heizlast, Taupunkt, U-Wert) aus einer Hand. Jonas Tonn, Dipl.-Ing. — Region Köln, Aachen, Düren.",
   keywords: [
     "Energieberatung",
     "Energieberater",
     "Köln",
-    "Bonn",
-    "Rheinbach",
+    "Aachen",
+    "Düren",
     "iSFP",
     "Sanierungsfahrplan",
     "BAFA",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "IBT Ingenieurbüro Tonn",
     title: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen",
     description:
-      "Energieberatung und Ingenieurleistungen aus einer Hand. Förderung bis 70 %. Region Köln / Bonn / Rheinbach.",
+      "Energieberatung und Ingenieurleistungen aus einer Hand. Förderung bis 70 %. Region Köln / Aachen / Düren.",
   },
   robots: {
     index: true,

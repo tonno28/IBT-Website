@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Lüftungskonzept DIN 1946-6 — Köln Bonn Rheinbach",
+  title: "Lüftungskonzept DIN 1946-6 — Köln Aachen Düren",
   description:
-    "Lüftungskonzept nach DIN 1946-6: Pflicht bei luftdichter Gebäudehülle und energetischer Sanierung. Nachweis für BEG-Förderung. Ab 180 € für EFH. Region Köln / Bonn / Rheinbach.",
+    "Lüftungskonzept nach DIN 1946-6: Pflicht bei luftdichter Gebäudehülle und energetischer Sanierung. Nachweis für BEG-Förderung. Ab 180 € für EFH. Region Köln / Aachen / Düren.",
 };
 
 export default function LueftungPage() {

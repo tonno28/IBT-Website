@@ -11,7 +11,7 @@ import FAQ from "@/components/FAQ";
 export const metadata: Metadata = {
   title: "Energieberatung — iSFP, Förderung, Energieausweis",
   description:
-    "Professionelle Energieberatung für Wohngebäude: iSFP Sanierungsfahrplan, Förderberatung BEG (BAFA/KfW), Energieausweis, Baubegleitung und Effizienzhaus-Nachweis. Region Köln / Bonn / Rheinbach.",
+    "Professionelle Energieberatung für Wohngebäude: iSFP Sanierungsfahrplan, Förderberatung BEG (BAFA/KfW), Energieausweis, Baubegleitung und Effizienzhaus-Nachweis. Region Köln / Aachen / Düren.",
 };
 
 const leistungen: {

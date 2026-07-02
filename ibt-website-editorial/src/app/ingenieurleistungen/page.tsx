@@ -8,7 +8,7 @@ import Testimonials from "@/components/Testimonials";
 export const metadata: Metadata = {
   title: "Ingenieurleistungen — Heizlast, U-Wert, Taupunkt, Lüftung",
   description:
-    "Technische Ingenieurleistungen für Handwerk und Planer: Heizlastberechnung DIN 12831, Bauteilberechnung U-Wert, Taupunktnachweis, Lüftungskonzept DIN 1946-6. Region Köln / Bonn / Rheinbach.",
+    "Technische Ingenieurleistungen für Handwerk und Planer: Heizlastberechnung DIN 12831, Bauteilberechnung U-Wert, Taupunktnachweis, Lüftungskonzept DIN 1946-6. Region Köln / Aachen / Düren.",
 };
 
 const leistungen: {

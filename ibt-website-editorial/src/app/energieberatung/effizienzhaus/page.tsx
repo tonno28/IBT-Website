@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Effizienzhaus-Bilanzierung — KfW Effizienzhaus 40 55 70 85",
   description:
-    "Effizienzhaus-Nachweis nach GEG: Bilanzierung Effizienzhaus 40/55/70/85 nach DIN V 18599 — Voraussetzung für KfW-Wohngebäudekredit und Tilgungszuschüsse. Region Köln / Bonn / Rheinbach.",
+    "Effizienzhaus-Nachweis nach GEG: Bilanzierung Effizienzhaus 40/55/70/85 nach DIN V 18599 — Voraussetzung für KfW-Wohngebäudekredit und Tilgungszuschüsse. Region Köln / Aachen / Düren.",
 };
 
 export default function EffizienzhausPage() {

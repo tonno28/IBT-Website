@@ -14,8 +14,8 @@ const leistungen = [
 
 const regions = [
   { label: "Energieberater Köln", href: "/region/koeln" },
-  { label: "Energieberater Bonn", href: "/region/bonn" },
-  { label: "Energieberater Rheinbach", href: "/region/rheinbach" },
+  { label: "Energieberater Aachen", href: "/region/aachen" },
+  { label: "Energieberater Düren", href: "/region/duren" },
 ];
 
 export default function Footer() {
@@ -119,7 +119,7 @@ export default function Footer() {
                 </a>
               </div>
               <div className="text-zinc-hint text-xs">
-                Rheinbach / Köln / Bonn
+                Köln / Aachen / Düren
               </div>
             </div>
             <div className="flex flex-col gap-2.5 mt-5">
