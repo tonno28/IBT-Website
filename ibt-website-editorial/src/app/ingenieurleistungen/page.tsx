@@ -4,12 +4,26 @@ import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
 import Testimonials from "@/components/Testimonials";
+import StatsBanner from "@/components/StatsBanner";
 
 export const metadata: Metadata = {
   title: "Ingenieurleistungen — Heizlast, U-Wert, Taupunkt, Lüftung",
   description:
     "Technische Ingenieurleistungen für Handwerk und Planer: Heizlastberechnung DIN 12831, Bauteilberechnung U-Wert, Taupunktnachweis, Lüftungskonzept DIN 1946-6. Region Köln / Aachen / Düren.",
 };
+
+// TODO Jonas: bitte mit echten, aktuellen Zahlen befüllen und bei jedem
+// abgeschlossenen Projekt aktualisieren. Dritte Kennzahl ist ein Vorschlag,
+// gerne durch etwas Passenderes ersetzen.
+const technikStats: [
+  { value: string; label: string },
+  { value: string; label: string },
+  { value: string; label: string }
+] = [
+  { value: "[Anzahl]", label: "Realisierte Projekte" },
+  { value: "[kW]", label: "Ermittelte Heizlast" },
+  { value: "[Anzahl]", label: "Erstellte Berechnungen" },
+];
 
 const leistungen: {
   href: string;
@@ -90,6 +104,9 @@ export default function IngenieurleistungenPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Zahlen */}
+      <StatsBanner stats={technikStats} note="Stand: laufend aktualisiert" />
 
       {/* Leistungen */}
       <section className="section-padding bg-bg-primary">

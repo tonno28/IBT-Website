@@ -6,6 +6,19 @@ import Icon, { type IconName } from "@/components/Icon";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import StatsBanner from "@/components/StatsBanner";
+
+// TODO Jonas: bitte mit echten, aktuellen Zahlen befüllen und bei jedem
+// abgeschlossenen Projekt aktualisieren.
+const energieStats: [
+  { value: string; label: string },
+  { value: string; label: string },
+  { value: string; label: string }
+] = [
+  { value: "[Anzahl]", label: "Realisierte Maßnahmen" },
+  { value: "[€]", label: "Projektvolumen" },
+  { value: "[€]", label: "Davon gefördert" },
+];
 
 export const metadata: Metadata = {
   title: "Energieberatung — iSFP, Förderung, Energieausweis",
@@ -93,6 +106,9 @@ export default function EnergieberatungPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Zahlen */}
+      <StatsBanner stats={energieStats} note="Stand: laufend aktualisiert" />
 
       {/* Leistungen Grid */}
       <section className="section-padding bg-bg-primary">
