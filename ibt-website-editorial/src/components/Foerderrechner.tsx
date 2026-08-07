@@ -466,7 +466,7 @@ export default function Foerderrechner() {
                 className="h-full rounded-full transition-all duration-700"
                 style={{
                   width: `${Math.min(100, (result.foerderBetrag / (parseFloat(investition) || 1)) * 100)}%`,
-                  background: "linear-gradient(90deg, #0F6E56, #34d399)",
+                  background: "linear-gradient(90deg, #16a34a, #4ade80)",
                 }}
               />
             </div>
