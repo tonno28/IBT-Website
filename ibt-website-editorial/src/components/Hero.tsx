@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import SanierungsAnimation, { PHASEN, useSanierungsPhase } from "./SanierungsAnimation";
 
 export default function Hero() {
   const glowRef = useRef<HTMLDivElement | null>(null);
+  const [phase] = useSanierungsPhase();
+  const aktuell = PHASEN[phase];
 
   // Pointer parallax on the accent glow (fine pointers only).
   useEffect(() => {
@@ -24,18 +27,31 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Blueprint grid backdrop */}
-      <div className="absolute inset-0 grid-blueprint opacity-[0.35] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      <div className="absolute inset-0 grid-blueprint opacity-[0.28] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+
+      {/* Sanierung im Zeitraffer — großflächig und ausgeblichen hinter der Headline */}
+      <div className="absolute inset-0 overflow-hidden">
+        <SanierungsAnimation
+          variant="backdrop"
+          phase={phase}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] sm:w-[165%] lg:w-[124%] aspect-[1440/760] opacity-[0.32]"
+        />
+      </div>
+
+      {/* Wash: hält die Szene im Hintergrund und die Typo lesbar */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 58% 46% at 50% 44%, rgba(243,237,226,0.88) 0%, rgba(243,237,226,0.55) 45%, rgba(243,237,226,0.08) 78%)",
+        }}
+      />
 
       {/* Parallax accent glow */}
       <div
         ref={glowRef}
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] rounded-full bg-teal-dark/15 blur-[130px] pointer-events-none transition-transform duration-300 ease-out"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] rounded-full bg-teal-dark/10 blur-[130px] pointer-events-none transition-transform duration-300 ease-out"
       />
-      <div className="absolute bottom-1/4 right-1/5 w-[320px] h-[320px] rounded-full bg-amber/10 blur-[90px] pointer-events-none animate-float-slow" />
-
-      {/* Slow rotating technical ring for depth */}
-      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] rounded-full border border-zinc-border/40 animate-spin-slow pointer-events-none hidden md:block" />
-      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full border border-zinc-border/30 pointer-events-none hidden md:block" />
 
       <div className="relative container-max px-4 sm:px-6 lg:px-8 py-20 text-center">
         {/* Eyebrow */}
@@ -49,40 +65,54 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-zinc-primary leading-[1.05] tracking-tight mb-6">
-          Energieberatung
+          Sanierung
           <br />
-          <span className="text-gradient-teal">und Ingenieur&shy;leistungen</span>
+          <span className="text-gradient-teal">vom Bestand zum Effizienzhaus</span>
           <br />
           <span className="text-zinc-secondary">aus einer Hand.</span>
         </h1>
 
         {/* Subline */}
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-zinc-muted leading-relaxed mb-10">
-          Von der Förderantragstellung bis zur technischen Berechnung —
-          Jonas Tonn begleitet Ihr Sanierungsprojekt vollständig. Region Köln / Aachen / Düren.
+          Energieberatung, Förderantrag und technische Berechnung — Jonas Tonn begleitet
+          Ihre Sanierung vom alten Objekt bis zur Abnahme. Region Köln / Aachen / Düren.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Link href="/energieberatung" className="btn-primary text-base px-8 py-3.5">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
             Energieberatung
           </Link>
-          <Link href="/ingenieurleistungen" className="btn-secondary text-base px-8 py-3.5">
+          <Link href="/foerderrechner" className="btn-secondary text-base px-8 py-3.5">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            Ingenieurleistungen
+            Förderrechner 2026
           </Link>
         </div>
 
+        {/* Läuft mit der Animation im Hintergrund mit */}
+        <div className="flex justify-center mb-12" aria-live="polite">
+          <div className="inline-flex items-center gap-3 rounded-full border border-zinc-border bg-bg-card/80 backdrop-blur-sm pl-3 pr-4 py-1.5">
+            <span className="font-mono text-[11px] font-semibold text-amber tabular-nums">
+              {String(phase + 1).padStart(2, "0")}/{String(PHASEN.length).padStart(2, "0")}
+            </span>
+            <span className="h-3 w-px bg-zinc-border" />
+            <span className="text-xs text-zinc-secondary">
+              <span className="font-semibold text-zinc-primary">{aktuell.titel}</span>
+              <span className="hidden sm:inline"> — {aktuell.kurz}</span>
+            </span>
+          </div>
+        </div>
+
         {/* Stats bar */}
-        <div className="mx-auto max-w-2xl rounded-2xl border border-zinc-border bg-bg-card/50 backdrop-blur-sm px-6 py-5">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-zinc-border bg-bg-card/70 backdrop-blur-sm px-6 py-5">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 divide-zinc-border">
             {[
-              { value: "70 %", label: "max. BEG-Förderung" },
+              { value: "80 %", label: "max. Heizungsförderung" },
               { value: "§88", label: "GEG-qualifiziert" },
               { value: "BAFA", label: "& KfW akkreditiert" },
               { value: "dena", label: "Expertenliste" },

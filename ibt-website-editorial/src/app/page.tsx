@@ -5,6 +5,7 @@ import CTABanner from "@/components/CTABanner";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
+import SanierungsAnimation from "@/components/SanierungsAnimation";
 
 export const metadata: Metadata = {
   title: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen Köln Aachen Düren",
@@ -18,7 +19,37 @@ export default function Home() {
       {/* 1. Hero */}
       <Hero />
 
-      {/* 2. Zwei Säulen (Teaser, Details auf /energieberatung und /ingenieurleistungen) */}
+      {/* 2. Sanierung im Zeitraffer */}
+      <section className="section-padding bg-bg-primary">
+        <div className="container-max">
+          <Reveal className="max-w-2xl mb-10">
+            <p className="section-label">Sanierung im Zeitraffer</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
+              Vom alten Objekt zum Effizienzhaus
+            </h2>
+            <p className="text-zinc-muted leading-relaxed">
+              Der weitaus größte Teil unserer Projekte sind Sanierungen im Bestand. Der Ablauf
+              ist fast immer derselbe — und genau an dieser Reihenfolge entscheidet sich, wie
+              viel Förderung am Ende ankommt. Klicken Sie sich durch die Schritte.
+            </p>
+          </Reveal>
+
+          <Reveal variant="scale">
+            <SanierungsAnimation variant="feature" />
+          </Reveal>
+
+          <Reveal className="mt-8 flex flex-col sm:flex-row gap-3">
+            <Link href="/energieberatung" className="btn-primary">
+              Sanierung begleiten lassen
+            </Link>
+            <Link href="/foerderrechner" className="btn-secondary">
+              Förderung berechnen
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 3. Zwei Säulen (Teaser, Details auf /energieberatung und /ingenieurleistungen) */}
       <LeistungenOverview />
 
       {/* 3. Über mich (Preview) */}

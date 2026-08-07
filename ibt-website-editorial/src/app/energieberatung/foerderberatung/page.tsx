@@ -33,6 +33,7 @@ export default function FoerderberatungPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/kontakt" className="btn-primary">Förderberatung anfragen</Link>
+              <Link href="/foerderrechner" className="btn-secondary">Förderrechner →</Link>
             </div>
           </div>
         </div>

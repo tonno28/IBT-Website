@@ -4,6 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessTimeline from "@/components/ProcessTimeline";
+import Foerderrechner from "@/components/Foerderrechner";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import StatsBanner from "@/components/StatsBanner";
@@ -102,6 +103,9 @@ export default function EnergieberatungPage() {
               <Link href="/kontakt" className="btn-primary">
                 Jetzt anfragen
               </Link>
+              <Link href="/foerderrechner" className="btn-secondary">
+                Förderrechner 2026
+              </Link>
             </div>
           </Reveal>
         </div>
@@ -184,6 +188,52 @@ export default function EnergieberatungPage() {
 
       {/* Ablauf */}
       <ProcessTimeline />
+
+      {/* Förderrechner */}
+      <section className="section-padding bg-bg-primary">
+        <div className="container-max">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <Reveal variant="left" className="lg:sticky lg:top-24">
+              <p className="section-label">BEG-Förderrechner</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary mb-4">
+                Wie viel Förderung ist drin?
+              </h2>
+              <p className="text-zinc-muted leading-relaxed mb-6">
+                Rechnen Sie Ihr Sanierungspaket nach den seit dem 21.07.2026 geltenden
+                BEG-Richtlinien durch — ohne persönliche Daten, sofort und kostenlos.
+              </p>
+
+              <div className="space-y-4 mb-8">
+                {([
+                  { icon: "flame", text: "Heizung bis 70 %, mit dem höchsten Einkommensbonus bis 80 %" },
+                  { icon: "house", text: "Hülle & Technik 15 %, mit iSFP 20 % auf den Anteil oberhalb der Grenze" },
+                  { icon: "crane", text: "Fachplanung & Baubegleitung 50 %" },
+                  { icon: "bulb", text: "Reformstand 2026 eingearbeitet — inklusive Degression ab 2027" },
+                ] as { icon: IconName; text: string }[]).map((item) => (
+                  <div key={item.text} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">
+                      <Icon name={item.icon} className="w-4 h-4" />
+                    </span>
+                    <span className="text-sm text-zinc-secondary">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link href="/foerderrechner" className="btn-secondary text-sm">
+                Vollständiger Förderrechner →
+              </Link>
+
+              <p className="text-xs text-zinc-hint mt-4">
+                Unverbindliche Schätzung. Stand: BEG-Richtlinien vom 17.07.2026.
+              </p>
+            </Reveal>
+
+            <Reveal variant="right" className="bg-bg-card border border-zinc-border rounded-2xl p-6 sm:p-8">
+              <Foerderrechner />
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* Kundenstimmen */}
       <Testimonials filter="energie" title="Was Eigentümer sagen" />

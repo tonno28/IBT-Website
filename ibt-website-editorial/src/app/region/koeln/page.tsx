@@ -28,6 +28,7 @@ export default function KoelnPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/kontakt" className="btn-primary">Anfrage Köln</Link>
+            <Link href="/foerderrechner" className="btn-secondary">Förderrechner starten</Link>
           </div>
         </div>
       </section>
