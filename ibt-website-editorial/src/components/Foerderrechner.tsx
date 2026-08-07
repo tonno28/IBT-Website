@@ -5,8 +5,8 @@ import Link from "next/link";
 import Icon from "./Icon";
 import {
   BAFA,
-  BAUBEGLEITUNG,
   HEIZUNG,
+  HONORAR,
   MASSNAHMEN,
   STAND,
   STEUERBONUS,
@@ -36,25 +36,24 @@ export default function Foerderrechner() {
   const [klimaBonus, setKlimaBonus] = useState(false);
   const [zvE, setZvE] = useState<number | null>(null);
   const [kindImHaushalt, setKindImHaushalt] = useState(false);
-  const [baubegleitung, setBaubegleitung] = useState(true);
+  const [details, setDetails] = useState(false);
 
   const eingabe: Eingabe = useMemo(
     () => ({
       wohneinheiten,
       selbstnutzend,
-      kosten: Object.fromEntries(
-        gewaehlt.map((id) => [id, kosten[id] ?? 0])
-      ) as Partial<Record<MassnahmeId, number>>,
+      kosten: Object.fromEntries(gewaehlt.map((id) => [id, kosten[id] ?? 0])) as Partial<
+        Record<MassnahmeId, number>
+      >,
       isfp,
       klimaBonus,
       zvE,
       kindImHaushalt,
-      baubegleitung,
     }),
-    [wohneinheiten, selbstnutzend, gewaehlt, kosten, isfp, klimaBonus, zvE, kindImHaushalt, baubegleitung]
+    [wohneinheiten, selbstnutzend, gewaehlt, kosten, isfp, klimaBonus, zvE, kindImHaushalt]
   );
 
-  const ergebnis = useMemo(() => berechne(eingabe), [eingabe]);
+  const r = useMemo(() => berechne(eingabe), [eingabe]);
 
   const heizungGewaehlt = gewaehlt.includes("heizung");
   const bafaGewaehlt = gewaehlt.some((id) => id !== "heizung");
@@ -87,116 +86,87 @@ export default function Foerderrechner() {
     setKlimaBonus(false);
     setZvE(null);
     setKindImHaushalt(false);
-    setBaubegleitung(true);
+    setDetails(false);
   }
 
-  const eb = selbstnutzend ? einkommensbonus(zvE, kindImHaushalt) : 0;
-  const kgb = selbstnutzend && klimaBonus ? HEIZUNG.klimaBonus : 0;
-  const heizSatzLive = Math.min(
-    HEIZUNG.grundfoerderung + kgb + eb,
-    eb === 40 ? HEIZUNG.deckelEinkommen : HEIZUNG.deckel
-  );
+  // Nur die zwei wichtigsten Hinweise stehen im Ergebnis, der Rest in den Details.
+  const rang = { warnung: 0, chance: 1, info: 2 } as const;
+  const hinweise = [...r.hinweise].sort((a, b) => rang[a.art] - rang[b.art]);
+  const hinweiseOben = hinweise.slice(0, 2);
+  const hinweiseDetails = hinweise.slice(2);
 
   return (
     <div className="max-w-2xl mx-auto">
       {/* Fortschritt */}
-      <div className="mb-8">
-        <div className="flex items-center gap-2">
-          {SCHRITTE.map((label, i) => (
-            <button
-              key={label}
-              type="button"
-              onClick={() => i < step && setStep(i)}
-              disabled={i > step}
-              className={`flex-1 text-left transition-opacity duration-200 ${
-                i > step ? "cursor-default" : "cursor-pointer"
+      <div className="flex items-center gap-2 mb-8">
+        {SCHRITTE.map((label, i) => (
+          <button
+            key={label}
+            type="button"
+            onClick={() => i < step && setStep(i)}
+            disabled={i > step}
+            className="flex-1 text-left"
+          >
+            <div
+              className={`h-1.5 rounded-full transition-colors duration-300 ${
+                i === step ? "bg-amber" : i < step ? "bg-teal-light" : "bg-zinc-border"
+              }`}
+            />
+            <span
+              className={`mt-2 block text-[11px] font-semibold uppercase tracking-wide ${
+                i === step ? "text-amber" : i < step ? "text-teal-light" : "text-zinc-hint"
               }`}
             >
-              <div
-                className={`h-1.5 rounded-full transition-colors duration-300 ${
-                  i === step ? "bg-amber" : i < step ? "bg-teal-light" : "bg-zinc-border"
-                }`}
-              />
-              <span
-                className={`mt-2 block text-[11px] font-semibold tracking-wide uppercase ${
-                  i === step ? "text-amber" : i < step ? "text-teal-light" : "text-zinc-hint"
-                }`}
-              >
-                {label}
-              </span>
-            </button>
-          ))}
-        </div>
+              {label}
+            </span>
+          </button>
+        ))}
       </div>
 
-      {/* ---------------- Schritt 0: Gebäude ---------------- */}
+      {/* ---------------- 0: Gebäude ---------------- */}
       {step === 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-zinc-primary mb-1">
+          <h2 className="text-lg font-semibold text-zinc-primary mb-5">
             Um welches Gebäude geht es?
           </h2>
-          <p className="text-sm text-zinc-muted mb-6">
-            Die Höchstgrenzen der Förderung hängen an der Zahl der Wohneinheiten, die Boni an
-            der Nutzung.
+
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            {[
+              { wert: true, label: "Selbst genutzt" },
+              { wert: false, label: "Vermietet" },
+            ].map((opt) => (
+              <button
+                key={String(opt.wert)}
+                type="button"
+                onClick={() => setSelbstnutzend(opt.wert)}
+                className={`p-3 rounded-xl border text-sm font-semibold transition-colors duration-150 ${
+                  selbstnutzend === opt.wert
+                    ? "border-amber bg-bg-accent text-zinc-primary"
+                    : "border-zinc-border bg-bg-card text-zinc-secondary hover:border-zinc-borderHover"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-zinc-hint mb-7 -mt-4">
+            Klima- und Einkommensbonus gibt es nur für selbst genutzte Wohneinheiten.
           </p>
 
-          <div className="mb-7">
-            <span className="block text-sm font-medium text-zinc-secondary mb-3">Nutzung</span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {[
-                {
-                  wert: true,
-                  label: "Selbst genutzt",
-                  desc: "Sie wohnen selbst im Gebäude — Klima- und Einkommensbonus möglich",
-                },
-                {
-                  wert: false,
-                  label: "Vermietet",
-                  desc: "Vermietung oder gewerbliche Nutzung — Grundförderung 30 %",
-                },
-              ].map((opt) => (
-                <button
-                  key={String(opt.wert)}
-                  type="button"
-                  onClick={() => setSelbstnutzend(opt.wert)}
-                  className={`text-left p-4 rounded-xl border transition-colors duration-150 ${
-                    selbstnutzend === opt.wert
-                      ? "border-amber bg-bg-accent"
-                      : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
-                  }`}
-                >
-                  <span className="block text-sm font-semibold text-zinc-primary">
-                    {opt.label}
-                  </span>
-                  <span className="block text-xs text-zinc-muted mt-1 leading-relaxed">
-                    {opt.desc}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-7">
-            <label htmlFor="we" className="block text-sm font-medium text-zinc-secondary mb-3">
-              Wohneinheiten im Gebäude:{" "}
-              <span className="text-amber font-bold font-mono">{wohneinheiten}</span>
-            </label>
-            <input
-              id="we"
-              type="range"
-              min="1"
-              max="20"
-              value={wohneinheiten}
-              onChange={(ev) => setWohneinheiten(parseInt(ev.target.value, 10))}
-            />
-            <div className="flex justify-between text-xs text-zinc-hint mt-1.5">
-              <span>1 WE (EFH)</span>
-              <span>20 WE (MFH)</span>
-            </div>
-            <p className="text-xs text-zinc-hint mt-3 leading-relaxed">
-              Staffelung der förderfähigen Höchstkosten: 1. Wohneinheit voll, 2.–6. je
-              15.000 €, ab der 7. je 8.000 €.
-            </p>
+          <label htmlFor="we" className="block text-sm font-medium text-zinc-secondary mb-3">
+            Wohneinheiten: <span className="text-amber font-bold">{wohneinheiten}</span>
+          </label>
+          <input
+            id="we"
+            type="range"
+            min="1"
+            max="20"
+            value={wohneinheiten}
+            onChange={(ev) => setWohneinheiten(parseInt(ev.target.value, 10))}
+          />
+          <div className="flex justify-between text-xs text-zinc-hint mt-1.5 mb-8">
+            <span>1 (EFH)</span>
+            <span>20 (MFH)</span>
           </div>
 
           <div className="flex justify-end">
@@ -207,18 +177,15 @@ export default function Foerderrechner() {
         </div>
       )}
 
-      {/* ---------------- Schritt 1: Maßnahmen ---------------- */}
+      {/* ---------------- 1: Maßnahmen ---------------- */}
       {step === 1 && (
         <div>
-          <h2 className="text-lg font-semibold text-zinc-primary mb-1">
-            Welche Maßnahmen planen Sie?
-          </h2>
-          <p className="text-sm text-zinc-muted mb-6">
-            Mehrfachauswahl möglich. Die Kosten sind mit Richtwerten vorbelegt — tragen Sie
-            Ihre eigenen Angebotssummen ein, wenn Sie sie haben.
+          <h2 className="text-lg font-semibold text-zinc-primary mb-1">Was ist geplant?</h2>
+          <p className="text-sm text-zinc-muted mb-5">
+            Mehrfachauswahl. Kosten sind mit Richtwerten vorbelegt.
           </p>
 
-          <div className="space-y-2 mb-6">
+          <div className="space-y-1.5 mb-6">
             {MASSNAHMEN.map((m) => {
               const aktiv = gewaehlt.includes(m.id);
               return (
@@ -233,55 +200,43 @@ export default function Foerderrechner() {
                   <button
                     type="button"
                     onClick={() => toggle(m.id)}
-                    className="w-full text-left flex items-start gap-3 p-4"
                     aria-pressed={aktiv}
+                    className="w-full text-left flex items-center gap-3 px-4 py-3"
                   >
                     <span
-                      className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ring-1 transition-colors ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ring-1 ${
                         aktiv
                           ? "bg-amber/15 text-amber ring-amber/25"
                           : "bg-bg-accent text-zinc-secondary ring-zinc-border"
                       }`}
                     >
-                      <Icon name={m.icon} className="w-5 h-5" />
+                      <Icon name={m.icon} className="w-4 h-4" />
                     </span>
-                    <span className="flex-1">
-                      <span className="flex items-center gap-2 flex-wrap">
-                        <span className="font-semibold text-sm text-zinc-primary">
-                          {m.label}
-                        </span>
-                        <span className="text-[10px] font-semibold tracking-wider uppercase text-zinc-hint border border-zinc-border rounded px-1.5 py-0.5">
-                          {m.traeger}
-                        </span>
-                      </span>
-                      <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">
-                        {m.desc}
-                      </span>
+                    <span className="flex-1 text-sm font-semibold text-zinc-primary">
+                      {m.label}
+                    </span>
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-hint">
+                      {m.traeger}
                     </span>
                   </button>
 
                   {aktiv && (
-                    <div className="px-4 pb-4 pl-16">
-                      <label
-                        htmlFor={`kosten-${m.id}`}
-                        className="block text-xs text-zinc-muted mb-1.5"
-                      >
-                        Geschätzte Kosten brutto
-                      </label>
-                      <div className="relative max-w-[220px]">
+                    <div className="px-4 pb-3 pl-15">
+                      <div className="relative max-w-[200px] ml-11">
                         <input
-                          id={`kosten-${m.id}`}
                           type="number"
                           min={0}
                           step={500}
+                          aria-label={`Kosten ${m.label}`}
                           value={kosten[m.id] ?? ""}
                           onChange={(ev) =>
                             setKosten((k) => ({
                               ...k,
-                              [m.id]: ev.target.value === "" ? 0 : Math.max(0, Number(ev.target.value)),
+                              [m.id]:
+                                ev.target.value === "" ? 0 : Math.max(0, Number(ev.target.value)),
                             }))
                           }
-                          className="w-full px-3 py-2 pr-8 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary font-mono text-sm focus:outline-none focus:border-amber transition-colors"
+                          className="w-full px-3 py-1.5 pr-7 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors"
                         />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-hint text-sm">
                           €
@@ -294,39 +249,10 @@ export default function Foerderrechner() {
             })}
           </div>
 
-          {bafaGewaehlt && (
-            <button
-              type="button"
-              onClick={() => setBaubegleitung((v) => !v)}
-              className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border mb-6 transition-colors duration-150 ${
-                baubegleitung
-                  ? "border-teal-light/50 bg-bg-accent"
-                  : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
-              }`}
-            >
-              <Checkbox checked={baubegleitung} />
-              <span className="flex-1">
-                <span className="block text-sm font-semibold text-zinc-primary">
-                  Fachplanung & Baubegleitung mitbeantragen
-                </span>
-                <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">
-                  {BAUBEGLEITUNG.satz} % Zuschuss auf das Honorar des Energieeffizienz-Experten
-                  — förderfähig bis {fmtEuro(BAUBEGLEITUNG.capBis2WE)} (bis 2 WE) bzw.{" "}
-                  {fmtEuro(BAUBEGLEITUNG.capProWEab3)} je WE (max.{" "}
-                  {fmtEuro(BAUBEGLEITUNG.capGesamtAb3WE)}).
-                </span>
-              </span>
-            </button>
-          )}
-
           {gewaehlt.length > 0 && (
-            <div className="flex items-center justify-between rounded-xl border border-zinc-border bg-bg-card px-4 py-3 mb-6">
-              <span className="text-sm text-zinc-muted">
-                {gewaehlt.length} Maßnahme{gewaehlt.length > 1 ? "n" : ""} gewählt
-              </span>
-              <span className="font-mono font-semibold text-zinc-primary">
-                {fmtEuro(summeKosten)}
-              </span>
+            <div className="flex items-center justify-between rounded-xl border border-zinc-border bg-bg-card px-4 py-3 mb-6 text-sm">
+              <span className="text-zinc-muted">Baukosten gesamt</span>
+              <span className="font-semibold text-zinc-primary">{fmtEuro(summeKosten)}</span>
             </div>
           )}
 
@@ -347,139 +273,69 @@ export default function Foerderrechner() {
         </div>
       )}
 
-      {/* ---------------- Schritt 2: Boni ---------------- */}
+      {/* ---------------- 2: Boni ---------------- */}
       {step === 2 && (
         <div>
-          <h2 className="text-lg font-semibold text-zinc-primary mb-1">Boni prüfen</h2>
-          <p className="text-sm text-zinc-muted mb-6">
-            Jede zutreffende Angabe erhöht den Fördersatz. {STAND.lang}.
-          </p>
+          <h2 className="text-lg font-semibold text-zinc-primary mb-1">Was trifft zu?</h2>
+          <p className="text-sm text-zinc-muted mb-5">Jede Angabe erhöht den Fördersatz.</p>
 
           {bafaGewaehlt && (
-            <button
-              type="button"
+            <Schalter
+              an={isfp}
               onClick={() => setIsfp((v) => !v)}
-              className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border mb-3 transition-colors duration-150 ${
-                isfp
-                  ? "border-amber/50 bg-bg-accent"
-                  : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
-              }`}
-            >
-              <Checkbox checked={isfp} />
-              <span className="flex-1">
-                <span className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-semibold text-zinc-primary">
-                    Individueller Sanierungsfahrplan (iSFP) liegt vor
-                  </span>
-                  <span className="text-sm font-bold text-amber font-mono shrink-0">
-                    + {BAFA.isfpBonus} %
-                  </span>
-                </span>
-                <span className="block text-xs text-zinc-muted mt-1 leading-relaxed">
-                  Seit 21.07.2026 gilt der Bonus nur für den Ausgabenanteil oberhalb der
-                  Basis-Höchstgrenze — dafür verdoppelt der iSFP die förderfähigen Kosten.
-                </span>
-              </span>
-            </button>
+              titel="Individueller Sanierungsfahrplan (iSFP) liegt vor"
+              zusatz={`+ ${BAFA.isfpBonus} %`}
+              text="Verdoppelt die förderfähigen Kosten. Der Bonus gilt für den Anteil über 30.000 €."
+            />
           )}
 
           {heizungGewaehlt && selbstnutzend && (
-            <button
-              type="button"
+            <Schalter
+              an={klimaBonus}
               onClick={() => setKlimaBonus((v) => !v)}
-              className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border mb-3 transition-colors duration-150 ${
-                klimaBonus
-                  ? "border-amber/50 bg-bg-accent"
-                  : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
-              }`}
-            >
-              <Checkbox checked={klimaBonus} />
-              <span className="flex-1">
-                <span className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-semibold text-zinc-primary">
-                    Klimageschwindigkeitsbonus
-                  </span>
-                  <span className="text-sm font-bold text-amber font-mono shrink-0">
-                    + {HEIZUNG.klimaBonus} %
-                  </span>
-                </span>
-                <span className="block text-xs text-zinc-muted mt-1 leading-relaxed">
-                  Ersetzt wird eine noch funktionsfähige fossile Heizung: Öl, Kohle,
-                  Gas-Etagenheizung, Nachtspeicher oder eine mindestens 20 Jahre alte
-                  Gasheizung. Abgesenkt von 20 auf 16 % — ab 01.02.2027 sinkt er weiter.
-                </span>
-              </span>
-            </button>
+              titel="Alte fossile Heizung wird ersetzt"
+              zusatz={`+ ${HEIZUNG.klimaBonus} %`}
+              text="Öl, Kohle, Gas-Etagenheizung, Nachtspeicher oder Gasheizung ab 20 Jahren."
+            />
           )}
 
           {heizungGewaehlt && selbstnutzend && (
-            <div className="rounded-xl border border-zinc-border bg-bg-card p-4 mb-3">
+            <div className="rounded-xl border border-zinc-border bg-bg-card p-4 mb-2">
               <span className="block text-sm font-semibold text-zinc-primary mb-1">
-                Einkommensbonus
+                Zu versteuerndes Haushaltseinkommen
               </span>
-              <p className="text-xs text-zinc-muted mb-4 leading-relaxed">
-                Maßgeblich ist das zu versteuernde Haushaltseinkommen (Durchschnitt aus dem
-                zweiten und dritten Jahr vor Antragstellung). Neu: dreistufig statt pauschal
-                30 %.
+              <p className="text-xs text-zinc-muted mb-3">
+                Entscheidet über den Einkommensbonus von 10 bis 40 %.
               </p>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-                {EINKOMMEN_PRESETS.map((p) => {
-                  const aktiv = zvE === p.wert;
-                  return (
-                    <button
-                      key={p.label}
-                      type="button"
-                      onClick={() => setZvE(aktiv ? null : p.wert)}
-                      className={`rounded-lg border px-2 py-2 text-center transition-colors duration-150 ${
-                        aktiv
-                          ? "border-amber bg-bg-accent"
-                          : "border-zinc-border hover:border-zinc-borderHover"
-                      }`}
-                    >
-                      <span className="block text-[11px] text-zinc-muted">{p.label}</span>
-                      <span className="block text-sm font-bold font-mono text-amber">
-                        +{einkommensbonus(p.wert, kindImHaushalt)} %
-                      </span>
-                    </button>
-                  );
-                })}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                {EINKOMMEN_PRESETS.map((p) => (
+                  <button
+                    key={p.label}
+                    type="button"
+                    onClick={() => setZvE(zvE === p.wert ? null : p.wert)}
+                    className={`rounded-lg border px-2 py-2 text-center transition-colors duration-150 ${
+                      zvE === p.wert
+                        ? "border-amber bg-bg-accent"
+                        : "border-zinc-border hover:border-zinc-borderHover"
+                    }`}
+                  >
+                    <span className="block text-[11px] text-zinc-muted">{p.label}</span>
+                    <span className="block text-sm font-bold text-amber">
+                      +{einkommensbonus(p.wert, kindImHaushalt)} %
+                    </span>
+                  </button>
+                ))}
               </div>
-
-              <label htmlFor="zve" className="block text-xs text-zinc-muted mb-1.5">
-                Oder exakt eintragen (zu versteuerndes Haushaltseinkommen)
-              </label>
-              <div className="relative max-w-[220px] mb-4">
-                <input
-                  id="zve"
-                  type="number"
-                  min={0}
-                  step={1000}
-                  value={zvE ?? ""}
-                  placeholder="z. B. 46000"
-                  onChange={(ev) =>
-                    setZvE(ev.target.value === "" ? null : Math.max(0, Number(ev.target.value)))
-                  }
-                  className="w-full px-3 py-2 pr-8 bg-bg-primary border border-zinc-border rounded-lg text-zinc-primary font-mono text-sm focus:outline-none focus:border-amber transition-colors"
-                />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-hint text-sm">
-                  €
-                </span>
-              </div>
-
               <button
                 type="button"
                 onClick={() => setKindImHaushalt((v) => !v)}
-                className="w-full text-left flex items-start gap-3"
+                className="flex items-start gap-2.5 text-left"
               >
-                <Checkbox checked={kindImHaushalt} />
-                <span className="flex-1">
-                  <span className="block text-sm font-medium text-zinc-primary">
-                    Mindestens ein minderjähriges Kind im Haushalt
-                  </span>
-                  <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">
-                    Familienzuschlag: Das maßgebliche Einkommen wird einmalig um 10.000 €
-                    reduziert.
+                <Haken an={kindImHaushalt} />
+                <span className="text-sm text-zinc-secondary">
+                  Mindestens ein minderjähriges Kind im Haushalt
+                  <span className="block text-xs text-zinc-hint">
+                    Familienzuschlag: 10.000 € Abschlag auf das Einkommen
                   </span>
                 </span>
               </button>
@@ -487,304 +343,217 @@ export default function Foerderrechner() {
           )}
 
           {heizungGewaehlt && !selbstnutzend && (
-            <div className="rounded-xl border border-zinc-border bg-bg-card p-4 mb-3">
-              <p className="text-sm text-zinc-muted leading-relaxed">
-                Klimageschwindigkeits- und Einkommensbonus sind selbstnutzenden Eigentümern
-                vorbehalten. Für vermietete Wohneinheiten bleibt es bei der Grundförderung von{" "}
-                {HEIZUNG.grundfoerderung} %.
-              </p>
-            </div>
-          )}
-
-          {!heizungGewaehlt && !bafaGewaehlt && (
-            <p className="text-sm text-zinc-muted mb-3">
-              Bitte wählen Sie im vorherigen Schritt mindestens eine Maßnahme.
+            <p className="text-sm text-zinc-muted mb-2 rounded-xl border border-zinc-border bg-bg-card p-4">
+              Für vermietete Wohneinheiten bleibt es bei der Grundförderung von{" "}
+              {HEIZUNG.grundfoerderung} %.
             </p>
           )}
 
-          {/* Live-Satz */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
-            {heizungGewaehlt && (
-              <div className="rounded-xl border border-zinc-border bg-bg-card p-4">
-                <div className="text-xs text-zinc-muted mb-1">Fördersatz Heizung</div>
-                <div className="text-3xl font-bold font-mono text-amber">{heizSatzLive} %</div>
-                <div className="text-xs text-zinc-hint mt-1">
-                  {HEIZUNG.grundfoerderung} % Grund
-                  {kgb > 0 ? ` + ${kgb} % Klima` : ""}
-                  {eb > 0 ? ` + ${eb} % Einkommen` : ""} · Deckel{" "}
-                  {eb === 40 ? HEIZUNG.deckelEinkommen : HEIZUNG.deckel} %
-                </div>
-              </div>
-            )}
-            {bafaGewaehlt && (
-              <div className="rounded-xl border border-zinc-border bg-bg-card p-4">
-                <div className="text-xs text-zinc-muted mb-1">Fördersatz Einzelmaßnahmen</div>
-                <div className="text-3xl font-bold font-mono text-amber">
-                  {BAFA.grundfoerderung}
-                  {isfp ? `–${BAFA.grundfoerderung + BAFA.isfpBonus}` : ""} %
-                </div>
-                <div className="text-xs text-zinc-hint mt-1">
-                  {isfp
-                    ? `${BAFA.grundfoerderung} % bis zur Höchstgrenze, ${BAFA.grundfoerderung + BAFA.isfpBonus} % darüber`
-                    : `Basissatz ohne iSFP`}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="flex justify-between gap-3">
+          <div className="flex justify-between gap-3 mt-6">
             <button type="button" className="btn-secondary" onClick={() => setStep(1)}>
               ← Zurück
             </button>
             <button type="button" className="btn-primary" onClick={() => setStep(3)}>
-              Förderung berechnen →
+              Berechnen →
             </button>
           </div>
         </div>
       )}
 
-      {/* ---------------- Schritt 3: Ergebnis ---------------- */}
+      {/* ---------------- 3: Ergebnis ---------------- */}
       {step === 3 && (
         <div>
-          <div className="text-center mb-7">
+          <div className="text-center mb-6">
             <div className="text-xs text-zinc-muted mb-1">Ihre geschätzte Förderung</div>
-            <div className="text-5xl sm:text-6xl font-bold font-mono text-teal-light">
-              {fmtEuro(ergebnis.gesamtZuschuss)}
+            <div className="text-5xl sm:text-6xl font-bold text-teal-light">
+              {fmtEuro(r.gesamtZuschuss)}
             </div>
             <div className="text-sm text-zinc-secondary mt-2">
-              das sind {Math.round(ergebnis.gesamtSatz)} % Ihrer Investition von{" "}
-              {fmtEuro(ergebnis.gesamtKosten)}
+              {Math.round(r.gesamtSatz)} % von {fmtEuro(r.gesamtKosten)}
             </div>
           </div>
 
-          {/* Balken */}
-          <div className="mb-7">
-            <div className="flex h-3 rounded-full overflow-hidden bg-zinc-border">
-              <div
-                className="h-full transition-[width] duration-700"
-                style={{
-                  width: `${Math.min(100, ergebnis.gesamtSatz)}%`,
-                  background: "linear-gradient(90deg, #16a34a, #4ade80)",
-                }}
+          <div className="flex h-3 rounded-full overflow-hidden bg-zinc-border mb-7">
+            <div
+              className="h-full transition-[width] duration-700"
+              style={{
+                width: `${Math.min(100, r.gesamtSatz)}%`,
+                background: "linear-gradient(90deg, #16a34a, #4ade80)",
+              }}
+            />
+          </div>
+
+          {/* Kosten */}
+          <div className="card-base p-5 mb-3 space-y-2">
+            <Zeile label="Baukosten" wert={fmtEuro(r.baukosten)} />
+            <Zeile
+              label={`Mein Honorar (${HONORAR.satz} %, mind. ${fmtEuro(HONORAR.mindest)})`}
+              wert={fmtEuro(r.honorar.betrag)}
+            />
+            <div className="border-t border-zinc-border pt-2">
+              <Zeile label="Gesamt" wert={fmtEuro(r.gesamtKosten)} fett />
+            </div>
+          </div>
+
+          {/* Förderung */}
+          <div className="card-base p-5 mb-3 space-y-2">
+            {r.heizung.aktiv && (
+              <Zeile
+                label={`Heizung (KfW) · ${r.heizung.satz} %`}
+                wert={`− ${fmtEuro(r.heizung.zuschuss)}`}
+                gruen
               />
-            </div>
-            <div className="flex justify-between text-xs text-zinc-hint mt-2">
-              <span>Förderung {fmtEuro(ergebnis.gesamtZuschuss)}</span>
-              <span>Eigenanteil {fmtEuro(ergebnis.eigenanteil)}</span>
-            </div>
+            )}
+            {r.bafa.aktiv && (
+              <Zeile
+                label={`Hülle & Technik (BAFA) · ${r.bafa.satzBasis}${
+                  r.bafa.isfpAnteil > 0 ? `–${r.bafa.satzIsfp}` : ""
+                } %`}
+                wert={`− ${fmtEuro(r.bafa.zuschuss)}`}
+                gruen
+              />
+            )}
+            {r.honorar.zuschuss > 0 && (
+              <Zeile
+                label={`Baubegleitung · ${r.honorar.foerdersatz} % vom Honorar`}
+                wert={`− ${fmtEuro(r.honorar.zuschuss)}`}
+                gruen
+              />
+            )}
           </div>
-
-          {/* Aufschlüsselung Heizung */}
-          {ergebnis.heizung.aktiv && (
-            <div className="card-base p-5 mb-3">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-semibold text-zinc-primary text-sm">
-                  Heizungstausch (KfW)
-                </h3>
-                <span className="font-mono font-bold text-teal-light">
-                  {fmtEuro(ergebnis.heizung.zuschuss)}
-                </span>
-              </div>
-              <div className="space-y-2">
-                <Zeile label="Ihre Kosten" wert={fmtEuro(ergebnis.heizung.kosten)} />
-                <Zeile
-                  label={`Höchstgrenze (${wohneinheiten} WE)`}
-                  wert={fmtEuro(ergebnis.heizung.cap)}
-                />
-                <Zeile
-                  label="Anrechenbare Kosten"
-                  wert={fmtEuro(ergebnis.heizung.anrechenbar)}
-                />
-                <div className="border-t border-zinc-border pt-2 space-y-2">
-                  <Zeile
-                    label="Grundförderung"
-                    wert={`${ergebnis.heizung.grundfoerderung} %`}
-                  />
-                  {ergebnis.heizung.klimaBonus > 0 && (
-                    <Zeile
-                      label="Klimageschwindigkeitsbonus"
-                      wert={`+ ${ergebnis.heizung.klimaBonus} %`}
-                      akzent
-                    />
-                  )}
-                  {ergebnis.heizung.einkommensbonus > 0 && (
-                    <Zeile
-                      label="Einkommensbonus"
-                      wert={`+ ${ergebnis.heizung.einkommensbonus} %`}
-                      akzent
-                    />
-                  )}
-                  <Zeile
-                    label={`Fördersatz (Deckel ${ergebnis.heizung.deckel} %)`}
-                    wert={`${ergebnis.heizung.satz} %`}
-                    fett
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Aufschlüsselung BAFA */}
-          {ergebnis.bafa.aktiv && (
-            <div className="card-base p-5 mb-3">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-semibold text-zinc-primary text-sm">
-                  Einzelmaßnahmen an Hülle & Technik (BAFA)
-                </h3>
-                <span className="font-mono font-bold text-teal-light">
-                  {fmtEuro(ergebnis.bafa.zuschuss)}
-                </span>
-              </div>
-              <div className="space-y-2">
-                {gewaehlt
-                  .filter((id) => id !== "heizung")
-                  .map((id) => {
-                    const m = MASSNAHMEN.find((x) => x.id === id)!;
-                    return (
-                      <Zeile key={id} label={m.label} wert={fmtEuro(kosten[id] ?? 0)} />
-                    );
-                  })}
-                <div className="border-t border-zinc-border pt-2 space-y-2">
-                  <Zeile
-                    label={`Höchstgrenze (${wohneinheiten} WE)`}
-                    wert={fmtEuro(isfp ? ergebnis.bafa.capMitIsfp : ergebnis.bafa.cap)}
-                  />
-                  <Zeile
-                    label={`Anteil bis Höchstgrenze × ${ergebnis.bafa.satzBasis} %`}
-                    wert={fmtEuro(ergebnis.bafa.basisAnteil)}
-                  />
-                  {ergebnis.bafa.isfpAnteil > 0 && (
-                    <Zeile
-                      label={`Anteil darüber × ${ergebnis.bafa.satzIsfp} % (iSFP)`}
-                      wert={fmtEuro(ergebnis.bafa.isfpAnteil)}
-                      akzent
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Baubegleitung */}
-          {ergebnis.baubegleitung.aktiv && (
-            <div className="card-base p-5 mb-3">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-semibold text-zinc-primary text-sm">
-                    Fachplanung & Baubegleitung
-                  </h3>
-                  <p className="text-xs text-zinc-muted mt-1">
-                    {ergebnis.baubegleitung.satz} % von bis zu{" "}
-                    {fmtEuro(ergebnis.baubegleitung.foerderfaehig)} Honorar
-                  </p>
-                </div>
-                <span className="font-mono font-bold text-teal-light">
-                  bis {fmtEuro(ergebnis.baubegleitung.zuschuss)}
-                </span>
-              </div>
-            </div>
-          )}
 
           {/* Eigenanteil */}
           <div className="rounded-xl border border-zinc-border bg-bg-accent p-5 mb-5">
             <div className="flex items-end justify-between gap-4">
-              <div>
-                <div className="text-xs text-zinc-muted">Ihr Eigenanteil</div>
-                <div className="text-3xl font-bold font-mono text-zinc-primary">
-                  {fmtEuro(ergebnis.eigenanteil)}
-                </div>
-              </div>
-              <div className="text-right text-sm">
-                <div className="text-zinc-hint line-through">
-                  {fmtEuro(ergebnis.gesamtKosten)}
-                </div>
-                <div className="text-teal-light font-semibold">
-                  − {fmtEuro(ergebnis.gesamtZuschuss)}
-                </div>
-              </div>
+              <span className="text-sm text-zinc-secondary">Ihr Eigenanteil</span>
+              <span className="text-3xl font-bold text-zinc-primary">
+                {fmtEuro(r.eigenanteil)}
+              </span>
             </div>
-            {ergebnis.nichtAnrechenbar > 0 && (
-              <p className="text-xs text-zinc-hint mt-3 leading-relaxed">
-                Davon {fmtEuro(ergebnis.nichtAnrechenbar)} oberhalb der förderfähigen
-                Höchstgrenzen — dieser Teil bleibt ungefördert.
-              </p>
-            )}
+            <p className="text-xs text-zinc-hint mt-2">
+              Davon Honorar {fmtEuro(r.honorar.eigenanteil)} nach Abzug der Förderung.
+            </p>
           </div>
 
-          {/* Steuerbonus */}
-          {ergebnis.steuerbonus.moeglich && (
-            <div className="card-base p-5 mb-5">
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-semibold text-zinc-primary text-sm">
-                  Alternative: Steuerbonus § 35c EStG
-                </h3>
-                <span
-                  className={`font-mono font-bold ${
-                    ergebnis.steuerbonus.besser ? "text-amber" : "text-zinc-secondary"
+          {/* Die zwei wichtigsten Hinweise */}
+          <div className="space-y-2 mb-4">
+            {hinweiseOben.map((h, i) => (
+              <div
+                key={i}
+                className={`flex items-start gap-2.5 rounded-lg border p-3 text-xs leading-relaxed ${
+                  h.art === "warnung"
+                    ? "border-amber/30 bg-amber/5 text-zinc-secondary"
+                    : "border-teal-light/30 bg-teal-light/5 text-zinc-secondary"
+                }`}
+              >
+                <Icon
+                  name={h.art === "chance" ? "bulb" : "target"}
+                  className={`w-4 h-4 shrink-0 mt-0.5 ${
+                    h.art === "chance" ? "text-teal-light" : "text-amber"
                   }`}
-                >
-                  {fmtEuro(ergebnis.steuerbonus.betrag)}
-                </span>
+                />
+                <span>{h.text}</span>
               </div>
-              <p className="text-xs text-zinc-muted leading-relaxed">
-                {STEUERBONUS.satz} % der Kosten bei selbst genutztem Wohneigentum, maximal{" "}
-                {fmtEuro(STEUERBONUS.maxBonus)}, verteilt {STEUERBONUS.verteilung}. Für
-                dieselbe Maßnahme nicht mit Zuschuss kombinierbar — eine Aufteilung nach
-                Maßnahmen ist aber zulässig.
-              </p>
-            </div>
-          )}
+            ))}
+          </div>
 
-          {/* Hinweise */}
-          {ergebnis.hinweise.length > 0 && (
-            <div className="space-y-2 mb-5">
-              {ergebnis.hinweise.map((h, i) => (
-                <div
-                  key={i}
-                  className={`flex items-start gap-2.5 rounded-lg border p-3 text-xs leading-relaxed ${
-                    h.art === "warnung"
-                      ? "border-amber/30 bg-amber/5 text-zinc-secondary"
-                      : h.art === "chance"
-                      ? "border-teal-light/30 bg-teal-light/5 text-zinc-secondary"
-                      : "border-zinc-border bg-bg-card text-zinc-muted"
-                  }`}
-                >
-                  <Icon
-                    name={h.art === "chance" ? "bulb" : h.art === "warnung" ? "target" : "check"}
-                    className={`w-4 h-4 shrink-0 mt-0.5 ${
-                      h.art === "chance"
-                        ? "text-teal-light"
-                        : h.art === "warnung"
-                        ? "text-amber"
-                        : "text-zinc-hint"
-                    }`}
+          {/* Alles Weitere eingeklappt */}
+          <button
+            type="button"
+            onClick={() => setDetails((v) => !v)}
+            className="w-full text-left text-sm font-semibold text-zinc-secondary hover:text-zinc-primary border-t border-zinc-border pt-4 mb-4 transition-colors"
+          >
+            {details ? "Rechenweg ausblenden ▴" : "Rechenweg und Details ▾"}
+          </button>
+
+          {details && (
+            <div className="space-y-3 mb-5">
+              {r.heizung.aktiv && (
+                <div className="card-base p-5 space-y-2">
+                  <h3 className="text-sm font-semibold text-zinc-primary mb-2">Heizung</h3>
+                  <Zeile label="Ihre Kosten" wert={fmtEuro(r.heizung.kosten)} />
+                  <Zeile label="Höchstgrenze" wert={fmtEuro(r.heizung.cap)} />
+                  <Zeile label="Anrechenbar" wert={fmtEuro(r.heizung.anrechenbar)} />
+                  <Zeile label="Grundförderung" wert={`${r.heizung.grundfoerderung} %`} />
+                  {r.heizung.klimaBonus > 0 && (
+                    <Zeile label="Klimageschwindigkeitsbonus" wert={`+ ${r.heizung.klimaBonus} %`} />
+                  )}
+                  {r.heizung.einkommensbonus > 0 && (
+                    <Zeile label="Einkommensbonus" wert={`+ ${r.heizung.einkommensbonus} %`} />
+                  )}
+                  <Zeile
+                    label={`Fördersatz (Deckel ${r.heizung.deckel} %)`}
+                    wert={`${r.heizung.satz} %`}
+                    fett
                   />
-                  <span>{h.text}</span>
                 </div>
+              )}
+
+              {r.bafa.aktiv && (
+                <div className="card-base p-5 space-y-2">
+                  <h3 className="text-sm font-semibold text-zinc-primary mb-2">
+                    Hülle & Technik
+                  </h3>
+                  <Zeile label="Ihre Kosten" wert={fmtEuro(r.bafa.kosten)} />
+                  <Zeile
+                    label="Höchstgrenze"
+                    wert={fmtEuro(isfp ? r.bafa.capMitIsfp : r.bafa.cap)}
+                  />
+                  <Zeile
+                    label={`Bis Höchstgrenze × ${r.bafa.satzBasis} %`}
+                    wert={fmtEuro(r.bafa.basisAnteil)}
+                  />
+                  {r.bafa.isfpAnteil > 0 && (
+                    <Zeile
+                      label={`Darüber × ${r.bafa.satzIsfp} % (iSFP)`}
+                      wert={fmtEuro(r.bafa.isfpAnteil)}
+                    />
+                  )}
+                </div>
+              )}
+
+              {r.steuerbonus.moeglich && (
+                <div className="card-base p-5">
+                  <h3 className="text-sm font-semibold text-zinc-primary mb-1">
+                    Alternative: Steuerbonus § 35c EStG
+                  </h3>
+                  <p className="text-xs text-zinc-muted leading-relaxed">
+                    {STEUERBONUS.satz} % der Kosten ({fmtEuro(r.steuerbonus.betrag)}), verteilt{" "}
+                    {STEUERBONUS.verteilung}. Für dieselbe Maßnahme nicht mit dem Zuschuss
+                    kombinierbar.
+                  </p>
+                </div>
+              )}
+
+              {r.nichtAnrechenbar > 0 && (
+                <p className="text-xs text-zinc-hint px-1">
+                  {fmtEuro(r.nichtAnrechenbar)} liegen oberhalb der förderfähigen Höchstgrenzen
+                  und bleiben ungefördert.
+                </p>
+              )}
+
+              {hinweiseDetails.map((h, i) => (
+                <p key={i} className="text-xs text-zinc-muted leading-relaxed px-1">
+                  {h.text}
+                </p>
               ))}
             </div>
           )}
 
           <p className="text-xs text-zinc-hint mb-5 leading-relaxed">
-            Unverbindliche Schätzung nach den {STAND.lang}. Verbindlich ist ausschließlich der
-            Zuwendungsbescheid von BAFA bzw. KfW. Fördersätze, Höchstgrenzen und technische
-            Mindestanforderungen können sich ändern.
+            Unverbindliche Schätzung nach den {STAND.lang}. Auch das Honorar ist ein Richtwert —
+            verbindlich wird es erst nach einem Blick auf Ihr Objekt.
           </p>
 
-          {/* CTA */}
           <div className="rounded-xl bg-bg-accent border border-amber/20 p-6 text-center mb-4">
-            <h3 className="font-bold text-zinc-primary mb-2">Förderung sichern?</h3>
+            <h3 className="font-bold text-zinc-primary mb-2">Konkret werden?</h3>
             <p className="text-sm text-zinc-muted mb-4 leading-relaxed">
-              Als dena-gelisteter Energieeffizienz-Experte übernehme ich die technische
-              Projektbeschreibung, die Antragstellung bei BAFA und KfW und die Baubegleitung
-              bis zum Verwendungsnachweis.
+              Ich prüfe Ihre Zahlen, stelle die Anträge bei BAFA und KfW und begleite bis zum
+              Verwendungsnachweis.
             </p>
             <Link href="/kontakt" className="btn-primary w-full justify-center text-base py-3.5">
               Kostenlose Erstberatung anfragen
             </Link>
-            <p className="text-xs text-zinc-hint mt-3">
-              Jonas Tonn · IBT Ingenieurbüro · Energieberater (BAFA/KfW)
-            </p>
           </div>
 
           <div className="flex justify-between gap-3">
@@ -801,16 +570,16 @@ export default function Foerderrechner() {
   );
 }
 
-/* ---------------- kleine Bausteine ---------------- */
+/* ---------------- Bausteine ---------------- */
 
-function Checkbox({ checked }: { checked: boolean }) {
+function Haken({ an }: { an: boolean }) {
   return (
     <span
       className={`w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors duration-150 ${
-        checked ? "bg-amber border-amber text-onAccent" : "border-zinc-borderHover"
+        an ? "bg-amber border-amber text-onAccent" : "border-zinc-borderHover"
       }`}
     >
-      {checked && (
+      {an && (
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
         </svg>
@@ -819,23 +588,56 @@ function Checkbox({ checked }: { checked: boolean }) {
   );
 }
 
+function Schalter({
+  an,
+  onClick,
+  titel,
+  zusatz,
+  text,
+}: {
+  an: boolean;
+  onClick: () => void;
+  titel: string;
+  zusatz: string;
+  text: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border mb-2 transition-colors duration-150 ${
+        an ? "border-amber/50 bg-bg-accent" : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
+      }`}
+    >
+      <Haken an={an} />
+      <span className="flex-1">
+        <span className="flex items-center justify-between gap-2">
+          <span className="text-sm font-semibold text-zinc-primary">{titel}</span>
+          <span className="text-sm font-bold text-amber shrink-0">{zusatz}</span>
+        </span>
+        <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">{text}</span>
+      </span>
+    </button>
+  );
+}
+
 function Zeile({
   label,
   wert,
-  akzent,
   fett,
+  gruen,
 }: {
   label: string;
   wert: string;
-  akzent?: boolean;
   fett?: boolean;
+  gruen?: boolean;
 }) {
   return (
     <div className={`flex justify-between gap-3 text-sm ${fett ? "font-semibold" : ""}`}>
       <span className="text-zinc-muted">{label}</span>
       <span
-        className={`font-mono shrink-0 ${
-          akzent ? "text-amber font-semibold" : fett ? "text-amber" : "text-zinc-secondary"
+        className={`shrink-0 ${
+          gruen ? "text-teal-light font-semibold" : fett ? "text-zinc-primary" : "text-zinc-secondary"
         }`}
       >
         {wert}

@@ -205,10 +205,9 @@ export default function EnergieberatungPage() {
 
               <div className="space-y-4 mb-8">
                 {([
-                  { icon: "flame", text: "Heizung bis 70 %, mit dem höchsten Einkommensbonus bis 80 %" },
-                  { icon: "house", text: "Hülle & Technik 15 %, mit iSFP 20 % auf den Anteil oberhalb der Grenze" },
-                  { icon: "crane", text: "Fachplanung & Baubegleitung 50 %" },
-                  { icon: "bulb", text: "Reformstand 2026 eingearbeitet — inklusive Degression ab 2027" },
+                  { icon: "flame", text: "Heizung bis 80 %, Hülle & Technik bis 20 %" },
+                  { icon: "crane", text: "Baubegleitung 50 % — direkt vom Honorar abgezogen" },
+                  { icon: "euro", text: "Honorarschätzung inklusive: 4,5 % der Baukosten" },
                 ] as { icon: IconName; text: string }[]).map((item) => (
                   <div key={item.text} className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">

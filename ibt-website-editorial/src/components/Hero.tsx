@@ -2,12 +2,18 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import SanierungsAnimation, { PHASEN, useSanierungsPhase } from "./SanierungsAnimation";
+
+// Hero visual — custom 3D render + exploded-view animation, generated with
+// Higgsfield (Nano Banana Pro / MiniMax H3). Hotlinked from the Higgsfield CDN
+// for the preview; download and move to /public/hero/ before go-live.
+const HERO_POSTER =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_3H3LMlSrmsgrEZPXbtNJId4ElQH/hf_20260807_094634_27521eb3-be84-4f82-b2f5-cd52b1916219.png";
+const HERO_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_3H3LMlSrmsgrEZPXbtNJId4ElQH/hf_20260807_095154_1497b83f-13ac-4fbd-8d6e-18b0773ccca8.mp4";
 
 export default function Hero() {
   const glowRef = useRef<HTMLDivElement | null>(null);
-  const [phase] = useSanierungsPhase();
-  const aktuell = PHASEN[phase];
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Pointer parallax on the accent glow (fine pointers only).
   useEffect(() => {
@@ -24,35 +30,17 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handle);
   }, []);
 
+  // Respect reduced motion: stop the hero animation, keep the poster frame.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      videoRef.current?.pause();
+    }
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Blueprint grid backdrop */}
       <div className="absolute inset-0 grid-blueprint opacity-[0.35] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-
-      {/* Sanierung im Zeitraffer — großflächig und ausgeblichen hinter der Headzeile */}
-      <div className="absolute inset-0 overflow-hidden">
-        <SanierungsAnimation
-          variant="backdrop"
-          phase={phase}
-          className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 lg:left-[66%] w-[265%] sm:w-[175%] lg:w-[112%] aspect-[1440/760] opacity-[0.3] lg:opacity-[0.7]"
-        />
-      </div>
-
-      {/* Wash: hält die Szene hinten und die Typo vorn */}
-      <div
-        className="absolute inset-0 pointer-events-none lg:hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse 62% 48% at 50% 46%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 48%, rgba(255,255,255,0.05) 80%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none hidden lg:block"
-        style={{
-          background:
-            "linear-gradient(100deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 34%, rgba(255,255,255,0.45) 54%, rgba(255,255,255,0) 72%)",
-        }}
-      />
 
       {/* Parallax accent glow */}
       <div
@@ -84,14 +72,14 @@ export default function Hero() {
             </h1>
 
             {/* Subline */}
-            <p className="max-w-xl mx-auto lg:mx-0 text-lg text-zinc-muted leading-relaxed mb-8">
+            <p className="max-w-xl mx-auto lg:mx-0 text-lg sm:text-xl text-zinc-muted leading-relaxed mb-10">
               Von der Förderantragstellung bis zur technischen Berechnung —
               Jonas Tonn begleitet Ihr Sanierungsprojekt vollständig. Region
               Köln / Aachen / Düren.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
               <Link href="/energieberatung" className="btn-primary text-base px-8 py-3.5">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -106,22 +94,8 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Läuft mit der Animation im Hintergrund mit */}
-            <div className="flex justify-center lg:justify-start mb-8" aria-live="polite">
-              <div className="inline-flex items-center gap-3 rounded-full border border-zinc-border bg-bg-card/85 backdrop-blur-sm pl-3 pr-4 py-1.5">
-                <span className="text-[11px] font-bold text-amber tabular-nums">
-                  {String(phase + 1).padStart(2, "0")}/{String(PHASEN.length).padStart(2, "0")}
-                </span>
-                <span className="h-3 w-px bg-zinc-border" />
-                <span className="text-xs text-zinc-secondary">
-                  <span className="font-semibold text-zinc-primary">{aktuell.titel}</span>
-                  <span className="hidden sm:inline"> — {aktuell.kurz}</span>
-                </span>
-              </div>
-            </div>
-
             {/* Stats bar */}
-            <div className="mx-auto lg:mx-0 max-w-2xl rounded-2xl border border-zinc-border bg-bg-card/70 backdrop-blur-sm px-6 py-5">
+            <div className="mx-auto lg:mx-0 max-w-2xl rounded-2xl border border-zinc-border bg-bg-card/50 backdrop-blur-sm px-6 py-5">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 divide-zinc-border">
                 {[
                   { value: "80 %", label: "max. Heizungsförderung" },
@@ -138,8 +112,22 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Rechte Spalte bleibt frei — dort steht das Haus aus der Hintergrund-Animation */}
-          <div className="hidden lg:block" aria-hidden="true" />
+          {/* Hero visual: house dissolving into its energy components */}
+          <div className="relative order-first lg:order-none">
+            <video
+              ref={videoRef}
+              className="w-full aspect-video object-cover select-none pointer-events-none"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={HERO_POSTER}
+              aria-label="3D-Animation: Ein Einfamilienhaus zerlegt sich in seine energetischen Komponenten — Dach mit Photovoltaik, Dämmung, Fenster und Wärmepumpe"
+            >
+              <source src={HERO_VIDEO} type="video/mp4" />
+            </video>
+          </div>
         </div>
       </div>
 

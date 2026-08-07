@@ -75,6 +75,17 @@ export const BAUBEGLEITUNG = {
   capGesamtAb3WE: 20000,
 } as const;
 
+/** Honorar IBT — Richtwert für die Erstschätzung */
+export const HONORAR = {
+  satz: 4.5,
+  mindest: 500,
+} as const;
+
+/** Honorarschätzung: 4,5 % der Baukosten, mindestens 500 € */
+export function honorarSchaetzung(baukosten: number): number {
+  return Math.max(HONORAR.mindest, Math.round((baukosten * HONORAR.satz) / 100));
+}
+
 /** Steuerbonus nach § 35c EStG — Alternative zum Zuschuss, nicht kombinierbar */
 export const STEUERBONUS = {
   satz: 20,
@@ -230,8 +241,6 @@ export interface Eingabe {
   klimaBonus: boolean;
   zvE: number | null;
   kindImHaushalt: boolean;
-  /** Fachplanung & Baubegleitung durch einen Energieeffizienz-Experten mitbeantragen */
-  baubegleitung: boolean;
 }
 
 export interface Hinweis {
@@ -266,12 +275,19 @@ export interface Ergebnis {
     satzIsfp: number;
     zuschuss: number;
   };
-  baubegleitung: {
-    aktiv: boolean;
-    foerderfaehig: number;
+  /** Honorar IBT inkl. der Förderung für Fachplanung & Baubegleitung */
+  honorar: {
+    betrag: number;
     satz: number;
+    /** Anteil des Honorars, der unter die Baubegleitungsförderung fällt */
+    foerderfaehig: number;
+    foerdersatz: number;
     zuschuss: number;
+    eigenanteil: number;
   };
+  /** reine Baukosten ohne Honorar */
+  baukosten: number;
+  /** Baukosten + Honorar */
   gesamtKosten: number;
   gesamtZuschuss: number;
   gesamtSatz: number;
@@ -327,12 +343,6 @@ export function berechne(e: Eingabe): Ergebnis {
       anteilSelbst = Math.min(anrechenbar, HEIZUNG.capErsteWE);
       const rest = anrechenbar - anteilSelbst;
       zuschuss = (anteilSelbst * satz) / 100 + (rest * HEIZUNG.grundfoerderung) / 100;
-      hinweise.push({
-        art: "info",
-        text:
-          "Klimageschwindigkeits- und Einkommensbonus gelten nur für selbstgenutzte Wohneinheiten. " +
-          "Für die übrigen Wohneinheiten ist die Grundförderung von 30 % angesetzt.",
-      });
     } else {
       zuschuss = (anrechenbar * satz) / 100;
     }
@@ -354,20 +364,12 @@ export function berechne(e: Eingabe): Ergebnis {
     if (heizKosten > cap) {
       hinweise.push({
         art: "warnung",
-        text: `Die Heizungskosten liegen über der Höchstgrenze von ${fmtEuro(cap)}. Der übersteigende Betrag ist nicht förderfähig.`,
-      });
-    }
-    if (!e.selbstnutzend) {
-      hinweise.push({
-        art: "info",
-        text:
-          "Als Vermieter erhalten Sie die Grundförderung von 30 %. Klimageschwindigkeits- und Einkommensbonus sind Selbstnutzern vorbehalten.",
+        text: `Heizungskosten über der Höchstgrenze von ${fmtEuro(cap)} — der Rest ist nicht förderfähig.`,
       });
     }
     hinweise.push({
       art: "warnung",
-      text:
-        "Der Klimageschwindigkeitsbonus sinkt ab 01.02.2027 halbjährlich um 4 %-Punkte (16 → 12 → 8 → 4 → 0 %), die förderfähigen Höchstkosten ab dann halbjährlich um 750 €. Maßgeblich ist der Zeitpunkt der Förderzusage.",
+      text: "Der Klimageschwindigkeitsbonus sinkt ab 01.02.2027 halbjährlich. Wer 2026 beantragt, sichert sich den höheren Satz.",
     });
   }
 
@@ -400,19 +402,19 @@ export function berechne(e: Eingabe): Ergebnis {
     if (e.isfp && bafaKosten <= bafaCap) {
       hinweise.push({
         art: "chance",
-        text: `Neu seit 21.07.2026: Der iSFP-Bonus greift erst oberhalb von ${fmtEuro(bafaCap)} förderfähiger Ausgaben — und nur für den übersteigenden Anteil. Bei diesem Investitionsvolumen bringt der iSFP noch keinen Bonus. Ein Maßnahmenpaket über ${fmtEuro(bafaCap)} hebt den Satz auf ${BAFA.grundfoerderung + BAFA.isfpBonus} % für den darüber liegenden Teil.`,
+        text: `Der iSFP-Bonus greift erst oberhalb von ${fmtEuro(bafaCap)} — bei diesem Volumen bringt er noch nichts.`,
       });
     }
     if (!e.isfp && bafaKosten > bafaCap) {
       hinweise.push({
         art: "chance",
-        text: `Mit einem individuellen Sanierungsfahrplan (iSFP) verdoppelt sich die Höchstgrenze auf ${fmtEuro(bafaCapMitIsfp)} — der Anteil oberhalb von ${fmtEuro(bafaCap)} wird dann mit ${BAFA.grundfoerderung + BAFA.isfpBonus} % gefördert. Möglicher Mehrzuschuss: bis ${fmtEuro(Math.round((Math.min(bafaKosten - bafaCap, bafaCap) * (BAFA.grundfoerderung + BAFA.isfpBonus)) / 100))}.`,
+        text: `Mit einem iSFP wären bis zu ${fmtEuro(Math.round((Math.min(bafaKosten - bafaCap, bafaCap) * (BAFA.grundfoerderung + BAFA.isfpBonus)) / 100))} mehr Förderung drin.`,
       });
     }
     if (bafaKosten > (e.isfp ? bafaCapMitIsfp : bafaCap)) {
       hinweise.push({
         art: "warnung",
-        text: `Die Höchstgrenze der förderfähigen Ausgaben (${fmtEuro(e.isfp ? bafaCapMitIsfp : bafaCap)}) ist ausgeschöpft. Sie gilt pro Gebäude und Kalenderjahr — eine Aufteilung über zwei Kalenderjahre kann sinnvoll sein.`,
+        text: `Höchstgrenze ${fmtEuro(e.isfp ? bafaCapMitIsfp : bafaCap)} ausgeschöpft. Sie gilt pro Gebäude und Kalenderjahr — eine Aufteilung auf zwei Jahre kann sich lohnen.`,
       });
     }
     if (bafaKosten < BAFA.mindestinvestition) {
@@ -421,55 +423,43 @@ export function berechne(e: Eingabe): Ergebnis {
         text: `Die Mindestinvestition von ${fmtEuro(BAFA.mindestinvestition)} brutto je Antrag ist nicht erreicht.`,
       });
     }
-    if (kosten("optimierung") > 0 && we > 5) {
-      hinweise.push({
-        art: "info",
-        text: "Die Heizungsoptimierung ist auf Gebäude mit höchstens fünf Wohneinheiten begrenzt — bitte im Einzelfall prüfen.",
-      });
-    }
   }
 
-  /* ---------------- Fachplanung & Baubegleitung ---------------- */
-  const bbMoeglich = bafaKosten > 0;
-  const bbFoerderfaehig =
+  /* ---------------- Honorar IBT + Förderung der Baubegleitung ---------------- */
+  const baukosten = heizKosten + bafaKosten;
+  const honorarBetrag = baukosten > 0 ? honorarSchaetzung(baukosten) : 0;
+
+  // Fachplanung & Baubegleitung ist ein eigener Fördertatbestand nur bei
+  // Einzelmaßnahmen an Hülle und Anlagentechnik — beim reinen Heizungstausch
+  // laufen die Kosten als Umfeldmaßnahme mit dem Satz des Heizungstauschs.
+  const bbCap =
     we <= 2
       ? BAUBEGLEITUNG.capBis2WE
       : Math.min(BAUBEGLEITUNG.capProWEab3 * we, BAUBEGLEITUNG.capGesamtAb3WE);
-  const bbAktiv = e.baubegleitung && bbMoeglich;
-  const baubegleitung = {
-    aktiv: bbAktiv,
+  const bbFoerderfaehig = bafaKosten > 0 ? Math.min(honorarBetrag, bbCap) : 0;
+  const bbZuschuss = Math.round((bbFoerderfaehig * BAUBEGLEITUNG.satz) / 100);
+
+  const honorar = {
+    betrag: honorarBetrag,
+    satz: HONORAR.satz,
     foerderfaehig: bbFoerderfaehig,
-    satz: BAUBEGLEITUNG.satz,
-    zuschuss: bbAktiv ? Math.round((bbFoerderfaehig * BAUBEGLEITUNG.satz) / 100) : 0,
+    foerdersatz: BAUBEGLEITUNG.satz,
+    zuschuss: bbZuschuss,
+    eigenanteil: honorarBetrag - bbZuschuss,
   };
 
-  if (e.baubegleitung && !bbMoeglich && heizKosten > 0) {
-    hinweise.push({
-      art: "info",
-      text:
-        "Beim reinen Heizungstausch ist die Baubegleitung kein eigener Fördertatbestand — die Kosten werden als Umfeldmaßnahme mit dem Fördersatz des Heizungstauschs berücksichtigt.",
-    });
-  }
-  if (bafaKosten > 0) {
-    hinweise.push({
-      art: "info",
-      text:
-        "Bei Einzelmaßnahmen an Gebäudehülle und Anlagentechnik ist die Einbindung eines Energieeffizienz-Experten (dena-Liste) verpflichtend.",
-    });
-  }
-
   /* ---------------- Summen ---------------- */
-  const gesamtKosten = heizKosten + bafaKosten;
-  const gesamtZuschuss = heizung.zuschuss + bafa.zuschuss + baubegleitung.zuschuss;
+  const gesamtKosten = baukosten + honorarBetrag;
+  const gesamtZuschuss = heizung.zuschuss + bafa.zuschuss + honorar.zuschuss;
   const gesamtSatz = gesamtKosten > 0 ? (gesamtZuschuss / gesamtKosten) * 100 : 0;
-  const nichtAnrechenbar = Math.max(0, gesamtKosten - (heizung.anrechenbar + bafa.anrechenbar));
+  const nichtAnrechenbar = Math.max(0, baukosten - (heizung.anrechenbar + bafa.anrechenbar));
 
   /* ---------------- Steuerbonus § 35c EStG ---------------- */
   const steuerBetrag = Math.round(
-    (Math.min(gesamtKosten, STEUERBONUS.maxBemessung) * STEUERBONUS.satz) / 100
+    (Math.min(baukosten, STEUERBONUS.maxBemessung) * STEUERBONUS.satz) / 100
   );
   const steuerbonus = {
-    moeglich: e.selbstnutzend && gesamtKosten > 0,
+    moeglich: e.selbstnutzend && baukosten > 0,
     betrag: Math.min(steuerBetrag, STEUERBONUS.maxBonus),
     besser: e.selbstnutzend && steuerBetrag > gesamtZuschuss,
   };
@@ -477,19 +467,20 @@ export function berechne(e: Eingabe): Ergebnis {
   if (steuerbonus.moeglich && steuerbonus.besser) {
     hinweise.push({
       art: "chance",
-      text: `In dieser Konstellation liegt der Steuerbonus nach § 35c EStG (${fmtEuro(steuerbonus.betrag)}, verteilt ${STEUERBONUS.verteilung}) über dem Zuschuss. Beides zusammen geht für dieselbe Maßnahme nicht — eine Aufteilung nach Maßnahmen aber schon.`,
+      text: `Der Steuerbonus nach § 35c EStG läge hier mit ${fmtEuro(steuerbonus.betrag)} über dem Zuschuss — beides zusammen geht für dieselbe Maßnahme aber nicht.`,
     });
   }
 
   hinweise.push({
     art: "warnung",
-    text: "Der Antrag muss vor der Auftragserteilung an das ausführende Unternehmen gestellt sein. Ein zu früh unterschriebener Handwerkervertrag ist der häufigste Ablehnungsgrund.",
+    text: "Der Antrag muss vor der Auftragserteilung gestellt sein — ein zu früh unterschriebener Handwerkervertrag ist der häufigste Ablehnungsgrund.",
   });
 
   return {
     heizung,
     bafa,
-    baubegleitung,
+    honorar,
+    baukosten,
     gesamtKosten,
     gesamtZuschuss,
     gesamtSatz,
