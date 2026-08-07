@@ -79,6 +79,9 @@ export function konfiguration(e: Eingabe, r: Ergebnis): string {
 
   const boni: string[] = [];
   if (e.isfp) boni.push("iSFP liegt vor");
+  if (e.isfpGewuenscht && !e.isfp) {
+    boni.push("*** SANIERUNGSFAHRPLAN GEWÜNSCHT — bitte mit anbieten ***");
+  }
   if (e.klimaBonus && e.selbstnutzend) boni.push("Alte fossile Heizung wird ersetzt");
   if (e.selbstnutzend && e.zvE !== null) {
     boni.push(`Haushaltseinkommen bis ${fmtEuro(e.zvE)}`);
@@ -97,8 +100,16 @@ export function konfiguration(e: Eingabe, r: Ergebnis): string {
   }
   if (r.bafa.aktiv) t.push(`Hülle & Technik (BAFA): ${fmtEuro(r.bafa.zuschuss)}`);
   if (r.honorar.zuschuss > 0) t.push(`Baubegleitung: ${fmtEuro(r.honorar.zuschuss)}`);
+  if (r.isfpPaket.aktiv) t.push(`Sanierungsfahrplan: ${fmtEuro(r.isfpPaket.zuschuss)}`);
   t.push(`Förderung gesamt: ${fmtEuro(r.gesamtZuschuss)}`);
   t.push(`Honorar (Schätzung): ${fmtEuro(r.honorar.betrag)}`);
+  if (r.isfpPaket.aktiv) {
+    t.push(
+      `Sanierungsfahrplan: ${fmtEuro(r.isfpPaket.honorar)} (Eigenanteil ${fmtEuro(
+        r.isfpPaket.eigenanteil
+      )})`
+    );
+  }
   t.push(`Eigenanteil: ${fmtEuro(r.eigenanteil)}`);
   t.push(`(unverbindlich, ${STAND.kurz})`);
 

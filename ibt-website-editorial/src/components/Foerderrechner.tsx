@@ -40,6 +40,7 @@ export default function Foerderrechner() {
   const [gewaehlt, setGewaehlt] = useState<MassnahmeId[]>([]);
   const [kosten, setKosten] = useState<Partial<Record<MassnahmeId, number>>>({});
   const [isfp, setIsfp] = useState(false);
+  const [isfpGewuenscht, setIsfpGewuenscht] = useState(false);
   const [klimaBonus, setKlimaBonus] = useState(false);
   const [zvE, setZvE] = useState<number | null>(null);
   const [kindImHaushalt, setKindImHaushalt] = useState(false);
@@ -64,11 +65,22 @@ export default function Foerderrechner() {
         Record<MassnahmeId, number>
       >,
       isfp,
+      isfpGewuenscht,
       klimaBonus,
       zvE,
       kindImHaushalt,
     }),
-    [wohneinheiten, selbstnutzend, gewaehlt, kosten, isfp, klimaBonus, zvE, kindImHaushalt]
+    [
+      wohneinheiten,
+      selbstnutzend,
+      gewaehlt,
+      kosten,
+      isfp,
+      isfpGewuenscht,
+      klimaBonus,
+      zvE,
+      kindImHaushalt,
+    ]
   );
 
   const r = useMemo(() => berechne(eingabe), [eingabe]);
@@ -101,6 +113,7 @@ export default function Foerderrechner() {
     setGewaehlt([]);
     setKosten({});
     setIsfp(false);
+    setIsfpGewuenscht(false);
     setKlimaBonus(false);
     setZvE(null);
     setKindImHaushalt(false);
@@ -322,13 +335,32 @@ export default function Foerderrechner() {
           <p className="text-sm text-zinc-muted mb-5">Jede Angabe erhöht den Fördersatz.</p>
 
           {bafaGewaehlt && (
-            <Schalter
-              an={isfp}
-              onClick={() => setIsfp((v) => !v)}
-              titel="Individueller Sanierungsfahrplan (iSFP) liegt vor"
-              zusatz={`+ ${BAFA.isfpBonus} %`}
-              text="Verdoppelt die förderfähigen Kosten. Der Bonus gilt für den Anteil über 30.000 €."
-            />
+            <>
+              <Schalter
+                an={isfp}
+                onClick={() => {
+                  setIsfp((v) => !v);
+                  setIsfpGewuenscht(false);
+                }}
+                titel="Individueller Sanierungsfahrplan (iSFP) liegt vor"
+                zusatz={`+ ${BAFA.isfpBonus} %`}
+                text="Verdoppelt die förderfähigen Kosten. Der Bonus gilt für den Anteil über 30.000 €."
+              />
+
+              {!isfp && (
+                <Schalter
+                  an={isfpGewuenscht}
+                  onClick={() => setIsfpGewuenscht((v) => !v)}
+                  titel="Noch keiner vorhanden — bitte mit anbieten"
+                  zusatz={`+ ${BAFA.isfpBonus} %`}
+                  text={`Ich erstelle den Sanierungsfahrplan, dann greift der Bonus. Honorar ${fmtEuro(
+                    r.isfpPaket.honorar
+                  )}, davon ${fmtEuro(r.isfpPaket.zuschuss)} gefördert — Ihr Anteil ${fmtEuro(
+                    r.isfpPaket.eigenanteil
+                  )}.`}
+                />
+              )}
+            </>
           )}
 
           {heizungGewaehlt && selbstnutzend && (
@@ -429,6 +461,9 @@ export default function Foerderrechner() {
           <div className="card-base p-5 mb-3 space-y-2">
             <Zeile label="Baukosten" wert={fmtEuro(r.baukosten)} />
             <Zeile label="Mein Honorar (Schätzung)" wert={fmtEuro(r.honorar.betrag)} />
+            {r.isfpPaket.aktiv && (
+              <Zeile label="Sanierungsfahrplan (iSFP)" wert={fmtEuro(r.isfpPaket.honorar)} />
+            )}
             <div className="border-t border-zinc-border pt-2">
               <Zeile label="Gesamt" wert={fmtEuro(r.gesamtKosten)} fett />
             </div>
@@ -456,6 +491,13 @@ export default function Foerderrechner() {
               <Zeile
                 label={`Baubegleitung · ${r.honorar.foerdersatz} % vom Honorar`}
                 wert={`− ${fmtEuro(r.honorar.zuschuss)}`}
+                gruen
+              />
+            )}
+            {r.isfpPaket.aktiv && (
+              <Zeile
+                label={`Sanierungsfahrplan · ${r.isfpPaket.satz} %`}
+                wert={`− ${fmtEuro(r.isfpPaket.zuschuss)}`}
                 gruen
               />
             )}

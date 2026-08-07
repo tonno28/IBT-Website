@@ -81,6 +81,19 @@ export const HONORAR = {
   mindest: 500,
 } as const;
 
+/**
+ * Individueller Sanierungsfahrplan, falls noch keiner vorliegt.
+ * Gefördert über die Bundesförderung für Energieberatung für Wohngebäude:
+ * 50 % des Honorars, gedeckelt auf 650 € (1–2 WE) bzw. 850 € (ab 3 WE).
+ */
+export const ISFP = {
+  honorarBis2WE: 1300,
+  honorarAb3WE: 1700,
+  satz: 50,
+  maxZuschussBis2WE: 650,
+  maxZuschussAb3WE: 850,
+} as const;
+
 /** Honorarschätzung: 4,5 % der Baukosten, mindestens 500 € */
 export function honorarSchaetzung(baukosten: number): number {
   return Math.max(HONORAR.mindest, Math.round((baukosten * HONORAR.satz) / 100));
@@ -237,6 +250,8 @@ export interface Eingabe {
   /** Bruttokosten je Maßnahme; nicht gewählte Maßnahmen fehlen oder sind 0 */
   kosten: Partial<Record<MassnahmeId, number>>;
   isfp: boolean;
+  /** Noch kein iSFP vorhanden, soll aber mit angeboten werden */
+  isfpGewuenscht: boolean;
   /** Voraussetzungen des Klimageschwindigkeitsbonus erfüllt */
   klimaBonus: boolean;
   zvE: number | null;
@@ -285,7 +300,15 @@ export interface Ergebnis {
     zuschuss: number;
     eigenanteil: number;
   };
-  /** reine Baukosten ohne Honorar */
+  /** Sanierungsfahrplan, wenn er mit beauftragt werden soll */
+  isfpPaket: {
+    aktiv: boolean;
+    honorar: number;
+    satz: number;
+    zuschuss: number;
+    eigenanteil: number;
+  };
+  /** reine Baukosten ohne Honorare */
   baukosten: number;
   /** Baukosten + Honorar */
   gesamtKosten: number;
@@ -377,10 +400,14 @@ export function berechne(e: Eingabe): Ergebnis {
   const bafaIds = MASSNAHMEN.filter((m) => m.traeger === "BAFA").map((m) => m.id);
   const bafaKosten = bafaIds.reduce((s, id) => s + kosten(id), 0);
 
+  // Der Bonus zählt auch, wenn der iSFP erst noch erstellt wird — er muss nur
+  // vor der Antragstellung vorliegen, nicht vor der Berechnung.
+  const mitIsfp = e.isfp || e.isfpGewuenscht;
+
   const bafaCap = staffelCap(we, BAFA.capErsteWE);
   const bafaCapMitIsfp = bafaCap * 2;
   const basisAnteil = Math.min(bafaKosten, bafaCap);
-  const isfpAnteil = e.isfp ? Math.min(Math.max(bafaKosten - bafaCap, 0), bafaCap) : 0;
+  const isfpAnteil = mitIsfp ? Math.min(Math.max(bafaKosten - bafaCap, 0), bafaCap) : 0;
   const bafaZuschuss =
     (basisAnteil * BAFA.grundfoerderung) / 100 +
     (isfpAnteil * (BAFA.grundfoerderung + BAFA.isfpBonus)) / 100;
@@ -399,22 +426,22 @@ export function berechne(e: Eingabe): Ergebnis {
   };
 
   if (bafaKosten > 0) {
-    if (e.isfp && bafaKosten <= bafaCap) {
+    if (mitIsfp && bafaKosten <= bafaCap) {
       hinweise.push({
         art: "chance",
         text: `Der iSFP-Bonus greift erst oberhalb von ${fmtEuro(bafaCap)} — bei diesem Volumen bringt er noch nichts.`,
       });
     }
-    if (!e.isfp && bafaKosten > bafaCap) {
+    if (!mitIsfp && bafaKosten > bafaCap) {
       hinweise.push({
         art: "chance",
         text: `Mit einem iSFP wären bis zu ${fmtEuro(Math.round((Math.min(bafaKosten - bafaCap, bafaCap) * (BAFA.grundfoerderung + BAFA.isfpBonus)) / 100))} mehr Förderung drin.`,
       });
     }
-    if (bafaKosten > (e.isfp ? bafaCapMitIsfp : bafaCap)) {
+    if (bafaKosten > (mitIsfp ? bafaCapMitIsfp : bafaCap)) {
       hinweise.push({
         art: "warnung",
-        text: `Höchstgrenze ${fmtEuro(e.isfp ? bafaCapMitIsfp : bafaCap)} ausgeschöpft. Sie gilt pro Gebäude und Kalenderjahr — eine Aufteilung auf zwei Jahre kann sich lohnen.`,
+        text: `Höchstgrenze ${fmtEuro(mitIsfp ? bafaCapMitIsfp : bafaCap)} ausgeschöpft. Sie gilt pro Gebäude und Kalenderjahr — eine Aufteilung auf zwei Jahre kann sich lohnen.`,
       });
     }
     if (bafaKosten < BAFA.mindestinvestition) {
@@ -448,9 +475,34 @@ export function berechne(e: Eingabe): Ergebnis {
     eigenanteil: honorarBetrag - bbZuschuss,
   };
 
+  /* ---------------- Sanierungsfahrplan, falls mit beauftragt ---------------- */
+  const isfpHonorar = we <= 2 ? ISFP.honorarBis2WE : ISFP.honorarAb3WE;
+  const isfpMaxZuschuss = we <= 2 ? ISFP.maxZuschussBis2WE : ISFP.maxZuschussAb3WE;
+  const isfpZuschuss = Math.min(Math.round((isfpHonorar * ISFP.satz) / 100), isfpMaxZuschuss);
+
+  const isfpPaket = {
+    aktiv: e.isfpGewuenscht && !e.isfp,
+    honorar: isfpHonorar,
+    satz: ISFP.satz,
+    zuschuss: isfpZuschuss,
+    eigenanteil: isfpHonorar - isfpZuschuss,
+  };
+
+  if (isfpPaket.aktiv) {
+    hinweise.push({
+      art: "info",
+      text: "Der Sanierungsfahrplan muss vor dem Förderantrag fertig sein. Ich erstelle ihn und stelle beide Anträge in der richtigen Reihenfolge.",
+    });
+  }
+
   /* ---------------- Summen ---------------- */
-  const gesamtKosten = baukosten + honorarBetrag;
-  const gesamtZuschuss = heizung.zuschuss + bafa.zuschuss + honorar.zuschuss;
+  const gesamtKosten =
+    baukosten + honorarBetrag + (isfpPaket.aktiv ? isfpPaket.honorar : 0);
+  const gesamtZuschuss =
+    heizung.zuschuss +
+    bafa.zuschuss +
+    honorar.zuschuss +
+    (isfpPaket.aktiv ? isfpPaket.zuschuss : 0);
   const gesamtSatz = gesamtKosten > 0 ? (gesamtZuschuss / gesamtKosten) * 100 : 0;
   const nichtAnrechenbar = Math.max(0, baukosten - (heizung.anrechenbar + bafa.anrechenbar));
 
@@ -480,6 +532,7 @@ export function berechne(e: Eingabe): Ergebnis {
     heizung,
     bafa,
     honorar,
+    isfpPaket,
     baukosten,
     gesamtKosten,
     gesamtZuschuss,
