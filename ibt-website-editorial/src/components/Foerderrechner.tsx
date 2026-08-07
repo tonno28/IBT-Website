@@ -564,7 +564,7 @@ export default function Foerderrechner() {
                 className="h-full transition-[width] duration-700"
                 style={{
                   width: `${Math.min(100, ergebnis.gesamtSatz)}%`,
-                  background: "linear-gradient(90deg, #1e4435, #3f7a5c)",
+                  background: "linear-gradient(90deg, #16a34a, #4ade80)",
                 }}
               />
             </div>

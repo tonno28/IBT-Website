@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,12 +11,11 @@ const inter = Inter({
   display: "swap",
 });
 
-// Editorial serif for headlines — matches the Coming-Soon branding (Fraunces)
-const fraunces = Fraunces({
+// Geometric display sans for headlines — modern, fresh, energetic
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -68,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="de" className={`${inter.variable} ${jakarta.variable}`}>
       <body className="bg-bg-primary text-zinc-primary antialiased">
         <Header />
         <main>{children}</main>

@@ -170,18 +170,21 @@ const SCHUTT: { x: number; y: number; w: number; h: number; r: number }[] = [
   { x: 880, y: 406, w: 28, h: 16, r: -6 },
 ];
 
+// Passend zur Seitenpalette (weiß + kräftiges Grün, siehe tailwind.config.ts)
 const FARBEN = {
-  ink: "#1d201b",
-  muted: "#6f7266",
-  hint: "#8a8c80",
-  line: "#d4c8b2",
-  card: "#fbf7f0",
-  alt: "#a89e89",
-  altDunkel: "#7d7566",
-  gruen: "#5c8a3a",
-  teal: "#2e5c48",
-  tealHell: "#3f7a5c",
-  glas: "#9dc3d4",
+  ink: "#0f1d15",
+  muted: "#5f7166",
+  hint: "#8b9c91",
+  line: "#cbdad0",
+  card: "#ffffff",
+  /** Füllung der Innenräume — knapp abgesetzt vom weißen Hintergrund */
+  flaeche: "#f6f9f6",
+  alt: "#a9b5ad",
+  altDunkel: "#7b8a82",
+  gruen: "#16a34a",
+  teal: "#0b6b3a",
+  tealHell: "#22c55e",
+  glas: "#a9cfe0",
 };
 
 /* ------------------------------------------------------------------ *
@@ -287,8 +290,8 @@ function Szene({ phase, schilder = true }: { phase: number; schilder?: boolean }
         <rect x={IN_L} y={DECK_T} width={IN_R - IN_L} height={16} fill={FARBEN.alt} opacity="0.9" />
         <rect x={IN_L} y={GROUND - 16} width={IN_R - IN_L} height={16} fill={FARBEN.alt} opacity="0.9" />
         {/* Innenraum */}
-        <rect x={IN_L} y={WALL_T} width={IN_R - IN_L} height={DECK_T - WALL_T} fill={FARBEN.card} style={{ opacity: rohbau ? 0.55 : 0.3, transition: `opacity 900ms ${EASE}` }} />
-        <rect x={IN_L} y={DECK_T + 16} width={IN_R - IN_L} height={GROUND - 16 - DECK_T - 16} fill={FARBEN.card} style={{ opacity: rohbau ? 0.55 : 0.3, transition: `opacity 900ms ${EASE}` }} />
+        <rect x={IN_L} y={WALL_T} width={IN_R - IN_L} height={DECK_T - WALL_T} fill={FARBEN.flaeche} style={{ opacity: rohbau ? 1 : 0.55, transition: `opacity 900ms ${EASE}` }} />
+        <rect x={IN_L} y={DECK_T + 16} width={IN_R - IN_L} height={GROUND - 16 - DECK_T - 16} fill={FARBEN.flaeche} style={{ opacity: rohbau ? 1 : 0.55, transition: `opacity 900ms ${EASE}` }} />
       </g>
 
       {/* ---------- Neuer Bodenaufbau, Schicht für Schicht ---------- */}
