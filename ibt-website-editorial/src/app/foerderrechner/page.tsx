@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Foerderrechner from "@/components/Foerderrechner";
 import CTABanner from "@/components/CTABanner";
-import { BAFA, HEIZUNG, HONORAR, STAND, fmtEuro } from "@/lib/foerderung";
+import { BAFA, HEIZUNG, STAND } from "@/lib/foerderung";
 
 export const metadata: Metadata = {
   title: "BEG-Förderrechner 2026 — Förderung und Honorar schätzen",
@@ -14,13 +14,12 @@ const KURZUEBERSICHT = [
   { label: "Heizung", wert: `${HEIZUNG.grundfoerderung}–${HEIZUNG.deckelEinkommen} %` },
   { label: "Hülle & Technik", wert: `${BAFA.grundfoerderung}–${BAFA.grundfoerderung + BAFA.isfpBonus} %` },
   { label: "Baubegleitung", wert: "50 %" },
-  { label: "Mein Honorar", wert: `${HONORAR.satz} %, mind. ${fmtEuro(HONORAR.mindest)}` },
 ];
 
 const FAQ = [
   {
-    q: "Wie kommt das Honorar zustande?",
-    a: `Als Richtwert rechne ich ${HONORAR.satz} % der Baukosten, mindestens ${fmtEuro(HONORAR.mindest)}. Bei Einzelmaßnahmen an Hülle und Anlagentechnik wird davon die Hälfte über die Förderung für Fachplanung und Baubegleitung erstattet — der Rechner zieht das direkt ab. Verbindlich wird das Honorar nach einem Blick auf Ihr Objekt.`,
+    q: "Was kostet mich Ihre Begleitung?",
+    a: "Der Rechner zeigt Ihnen direkt eine Honorarschätzung für Ihr Vorhaben. Bei Einzelmaßnahmen an Hülle und Anlagentechnik wird davon die Hälfte über die Förderung für Fachplanung und Baubegleitung erstattet — das ist im Eigenanteil schon berücksichtigt. Verbindlich wird das Honorar nach einem Blick auf Ihr Objekt.",
   },
   {
     q: "Was hat sich zum 21. Juli 2026 geändert?",

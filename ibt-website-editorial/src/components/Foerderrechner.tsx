@@ -6,7 +6,6 @@ import Icon from "./Icon";
 import {
   BAFA,
   HEIZUNG,
-  HONORAR,
   MASSNAHMEN,
   STAND,
   STEUERBONUS,
@@ -16,6 +15,7 @@ import {
   type Eingabe,
   type MassnahmeId,
 } from "@/lib/foerderung";
+import { anfrageMailto } from "@/lib/anfrage";
 
 const SCHRITTE = ["Gebäude", "Maßnahmen", "Boni", "Ergebnis"];
 
@@ -386,10 +386,7 @@ export default function Foerderrechner() {
           {/* Kosten */}
           <div className="card-base p-5 mb-3 space-y-2">
             <Zeile label="Baukosten" wert={fmtEuro(r.baukosten)} />
-            <Zeile
-              label={`Mein Honorar (${HONORAR.satz} %, mind. ${fmtEuro(HONORAR.mindest)})`}
-              wert={fmtEuro(r.honorar.betrag)}
-            />
+            <Zeile label="Mein Honorar (Schätzung)" wert={fmtEuro(r.honorar.betrag)} />
             <div className="border-t border-zinc-border pt-2">
               <Zeile label="Gesamt" wert={fmtEuro(r.gesamtKosten)} fett />
             </div>
@@ -548,12 +545,30 @@ export default function Foerderrechner() {
           <div className="rounded-xl bg-bg-accent border border-amber/20 p-6 text-center mb-4">
             <h3 className="font-bold text-zinc-primary mb-2">Konkret werden?</h3>
             <p className="text-sm text-zinc-muted mb-4 leading-relaxed">
-              Ich prüfe Ihre Zahlen, stelle die Anträge bei BAFA und KfW und begleite bis zum
-              Verwendungsnachweis.
+              Schicken Sie mir Ihre Berechnung. Ich prüfe die Zahlen, stelle die Anträge bei BAFA
+              und KfW und begleite bis zum Verwendungsnachweis.
             </p>
-            <Link href="/kontakt" className="btn-primary w-full justify-center text-base py-3.5">
-              Kostenlose Erstberatung anfragen
-            </Link>
+            <a
+              href={anfrageMailto(eingabe, r)}
+              className="btn-primary w-full justify-center text-base py-3.5"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              Anfrage mit diesen Angaben senden
+            </a>
+            <p className="text-xs text-zinc-hint mt-3">
+              Öffnet Ihr E-Mail-Programm — Ihre Angaben sind schon eingetragen. Lieber
+              telefonisch?{" "}
+              <Link href="/kontakt" className="text-amber hover:underline">
+                Kontaktseite
+              </Link>
+            </p>
           </div>
 
           <div className="flex justify-between gap-3">

@@ -207,7 +207,7 @@ export default function EnergieberatungPage() {
                 {([
                   { icon: "flame", text: "Heizung bis 80 %, Hülle & Technik bis 20 %" },
                   { icon: "crane", text: "Baubegleitung 50 % — direkt vom Honorar abgezogen" },
-                  { icon: "euro", text: "Honorarschätzung inklusive: 4,5 % der Baukosten" },
+                  { icon: "euro", text: "Honorarschätzung für meine Begleitung inklusive" },
                 ] as { icon: IconName; text: string }[]).map((item) => (
                   <div key={item.text} className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">

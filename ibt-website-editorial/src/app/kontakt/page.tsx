@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Metadata } from "next";
 import Icon from "@/components/Icon";
+import { ANFRAGE_EMPFAENGER } from "@/lib/anfrage";
 
 // Note: metadata can't be in client components — move to separate file if needed
 // For now, we keep contact form logic here
@@ -44,7 +45,25 @@ export default function KontaktPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // In production: connect to email service or API route
+    // Statischer Export, kein Server: die Anfrage geht als fertig ausgefüllte
+    // Mail aus dem Mailprogramm des Absenders raus.
+    const text = [
+      `Anliegen: ${form.anliegen}`,
+      "",
+      form.nachricht,
+      "",
+      "─────────────────────────",
+      `Name: ${form.name}`,
+      `E-Mail: ${form.email}`,
+      form.telefon ? `Telefon: ${form.telefon}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.location.href =
+      `mailto:${ANFRAGE_EMPFAENGER}` +
+      `?subject=${encodeURIComponent(`Anfrage: ${form.anliegen || "Erstberatung"}`)}` +
+      `&body=${encodeURIComponent(text)}`;
     setSubmitted(true);
   }
 
@@ -125,11 +144,18 @@ export default function KontaktPage() {
                     <Icon name="check" className="w-7 h-7" />
                   </div>
                   <h2 className="text-xl font-bold text-zinc-primary mb-3">
-                    Nachricht erhalten!
+                    Fast geschafft
                   </h2>
                   <p className="text-zinc-muted">
-                    Vielen Dank für Ihre Anfrage. Ich melde mich innerhalb eines Werktags
-                    bei Ihnen. Bitte prüfen Sie ggf. Ihren Spam-Ordner.
+                    Ihr E-Mail-Programm hat sich mit der fertigen Nachricht geöffnet — bitte
+                    einmal abschicken. Danach melde ich mich innerhalb eines Werktags bei Ihnen.
+                  </p>
+                  <p className="text-sm text-zinc-hint mt-4">
+                    Hat sich nichts geöffnet? Schreiben Sie mir direkt an{" "}
+                    <a href={`mailto:${ANFRAGE_EMPFAENGER}`} className="text-amber hover:underline">
+                      {ANFRAGE_EMPFAENGER}
+                    </a>
+                    .
                   </p>
                 </div>
               ) : (
