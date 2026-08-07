@@ -65,6 +65,13 @@ export default function DatenschutzPage() {
               gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
             </p>
             <p className="mt-2">
+              Für den technischen Versand der Formulare nutzen wir den Dienst Web3Forms
+              (Web3Forms, Indien). Ihre Formulareingaben werden dort zur Zustellung per
+              E-Mail verarbeitet und nicht dauerhaft gespeichert. Grundlage ist ein
+              Auftragsverarbeitungsverhältnis; die Übermittlung erfolgt zur Erfüllung
+              Ihrer Anfrage.
+            </p>
+            <p className="mt-2">
               Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) oder
               Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Die Daten werden
               gelöscht, sobald sie für den Verarbeitungszweck nicht mehr benötigt werden.
@@ -101,10 +108,45 @@ export default function DatenschutzPage() {
           <div>
             <h2 className="text-base font-semibold text-zinc-primary mb-3">6. Förderrechner</h2>
             <p>
-              Der BEG-Förderrechner auf dieser Website verarbeitet ausschließlich Daten,
-              die Sie freiwillig eingeben (Maßnahmenart, Wohneinheiten, Investitionskosten).
-              Es werden keine personenbezogenen Daten erhoben. Die Berechnung erfolgt
-              rein clientseitig im Browser — es werden keine Daten an Server übertragen.
+              Die Berechnung selbst läuft vollständig in Ihrem Browser. Solange Sie nur
+              rechnen, werden keine Daten übertragen und nichts gespeichert.
+            </p>
+            <p className="mt-2">
+              Erst wenn Sie am Ende aktiv eine Anfrage absenden, werden Ihre Eingaben
+              (Wohneinheiten, Nutzungsart, gewählte Maßnahmen mit Kosten, Boni sowie das
+              Berechnungsergebnis) zusammen mit Ihren Kontaktdaten an uns übermittelt —
+              technisch über den unter Ziffer 4 genannten Dienst. Das ist notwendig, damit
+              wir Ihre Anfrage inhaltlich beantworten können.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-base font-semibold text-zinc-primary mb-3">
+              7. Cookies und Reichweitenmessung
+            </h2>
+            <p>
+              Technisch notwendige Speicherung setzen wir ein, damit die Website
+              funktioniert und wir uns Ihre Cookie-Entscheidung merken können. Diese
+              Speicherung erfolgt auf Grundlage von § 25 Abs. 2 TDDDG und
+              Art. 6 Abs. 1 lit. f DSGVO und bedarf keiner Einwilligung.
+            </p>
+            <h3 className="text-sm font-semibold text-zinc-secondary mt-4 mb-2">Google Tag</h3>
+            <p>
+              Zur Reichweitenmessung setzen wir Google Tag (Google Ireland Limited, Gordon
+              House, Barrow Street, Dublin 4, Irland) ein. Damit werten wir aus, wie diese
+              Website genutzt wird, um sie zu verbessern. Dabei können Cookies gesetzt und
+              Daten — einschließlich Ihrer gekürzten IP-Adresse — an Google übertragen und
+              gegebenenfalls in die USA weitergeleitet werden.
+            </p>
+            <p className="mt-2">
+              Diese Dienste werden <strong>erst nach Ihrer ausdrücklichen Einwilligung</strong>{" "}
+              geladen. Lehnen Sie ab oder haben Sie noch nicht entschieden, wird kein
+              Google-Skript ausgeführt. Rechtsgrundlage ist Ihre Einwilligung nach
+              § 25 Abs. 1 TDDDG und Art. 6 Abs. 1 lit. a DSGVO.
+            </p>
+            <p className="mt-2">
+              Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen —
+              über den Link „Cookie-Einstellungen" am Ende jeder Seite.
             </p>
           </div>
         </div>

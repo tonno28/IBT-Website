@@ -3,6 +3,8 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
+import { CONSENT_DEFAULT_SNIPPET, TRACKING_AKTIV } from "@/lib/consent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -68,10 +70,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={`${inter.variable} ${jakarta.variable}`}>
+      <head>
+        {/* Consent Mode auf "denied", bevor irgendein Google-Skript laufen kann */}
+        {TRACKING_AKTIV && (
+          <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SNIPPET }} />
+        )}
+      </head>
       <body className="bg-bg-primary text-zinc-primary antialiased">
         <Header />
         <main>{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

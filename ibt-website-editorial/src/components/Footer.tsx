@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import CookieEinstellungen from "./CookieEinstellungen";
 
 const leistungen = [
   { label: "iSFP Sanierungsfahrplan", href: "/energieberatung/isfp" },
@@ -153,6 +154,7 @@ export default function Footer() {
             <Link href="/datenschutz" className="hover:text-zinc-muted transition-colors">
               Datenschutz
             </Link>
+            <CookieEinstellungen />
           </div>
         </div>
       </div>
