@@ -15,7 +15,14 @@ import {
   type Eingabe,
   type MassnahmeId,
 } from "@/lib/foerderung";
-import { anfrageMailto } from "@/lib/anfrage";
+import {
+  ANFRAGE_EMPFAENGER,
+  anfrageBetreff,
+  anfrageMailto,
+  konfiguration,
+  sendeAnfrage,
+  type Versandstatus,
+} from "@/lib/anfrage";
 
 const SCHRITTE = ["Gebäude", "Maßnahmen", "Boni", "Ergebnis"];
 
@@ -37,6 +44,17 @@ export default function Foerderrechner() {
   const [zvE, setZvE] = useState<number | null>(null);
   const [kindImHaushalt, setKindImHaushalt] = useState(false);
   const [details, setDetails] = useState(false);
+
+  // Anfrage
+  const [kontakt, setKontakt] = useState({
+    name: "",
+    email: "",
+    telefon: "",
+    nachricht: "",
+    botcheck: "",
+  });
+  const [status, setStatus] = useState<Versandstatus>("bereit");
+  const [fehler, setFehler] = useState("");
 
   const eingabe: Eingabe = useMemo(
     () => ({
@@ -87,6 +105,30 @@ export default function Foerderrechner() {
     setZvE(null);
     setKindImHaushalt(false);
     setDetails(false);
+    setStatus("bereit");
+    setFehler("");
+  }
+
+  async function anfrageSenden(ev: React.FormEvent) {
+    ev.preventDefault();
+    if (kontakt.botcheck) return; // Honeypot
+    setStatus("sendet");
+    setFehler("");
+    try {
+      await sendeAnfrage({
+        subject: anfrageBetreff(eingabe, r),
+        from_name: kontakt.name,
+        name: kontakt.name,
+        email: kontakt.email,
+        telefon: kontakt.telefon || "—",
+        nachricht: kontakt.nachricht || "—",
+        konfiguration: konfiguration(eingabe, r),
+      });
+      setStatus("ok");
+    } catch (err) {
+      setStatus("fehler");
+      setFehler(err instanceof Error ? err.message : "Unbekannter Fehler");
+    }
   }
 
   // Nur die zwei wichtigsten Hinweise stehen im Ergebnis, der Rest in den Details.
@@ -542,33 +584,110 @@ export default function Foerderrechner() {
             verbindlich wird es erst nach einem Blick auf Ihr Objekt.
           </p>
 
-          <div className="rounded-xl bg-bg-accent border border-amber/20 p-6 text-center mb-4">
-            <h3 className="font-bold text-zinc-primary mb-2">Konkret werden?</h3>
-            <p className="text-sm text-zinc-muted mb-4 leading-relaxed">
-              Schicken Sie mir Ihre Berechnung. Ich prüfe die Zahlen, stelle die Anträge bei BAFA
-              und KfW und begleite bis zum Verwendungsnachweis.
-            </p>
-            <a
-              href={anfrageMailto(eingabe, r)}
-              className="btn-primary w-full justify-center text-base py-3.5"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              Anfrage mit diesen Angaben senden
-            </a>
-            <p className="text-xs text-zinc-hint mt-3">
-              Öffnet Ihr E-Mail-Programm — Ihre Angaben sind schon eingetragen. Lieber
-              telefonisch?{" "}
-              <Link href="/kontakt" className="text-amber hover:underline">
-                Kontaktseite
-              </Link>
-            </p>
+          {/* Anfrage — die Berechnung wird automatisch mitgeschickt */}
+          <div className="rounded-xl bg-bg-accent border border-amber/20 p-6 mb-4">
+            {status === "ok" ? (
+              <div className="text-center py-4">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-teal-dark/15 text-teal-light ring-1 ring-teal-dark/30">
+                  <Icon name="check" className="w-6 h-6" />
+                </div>
+                <h3 className="font-bold text-zinc-primary mb-2">Anfrage ist raus</h3>
+                <p className="text-sm text-zinc-muted leading-relaxed">
+                  Ihre Berechnung liegt mir vor. Ich melde mich innerhalb eines Werktags bei
+                  Ihnen — bei Rückfragen erreichen Sie mich unter {ANFRAGE_EMPFAENGER}.
+                </p>
+              </div>
+            ) : (
+              <>
+                <h3 className="font-bold text-zinc-primary mb-2 text-center">Konkret werden?</h3>
+                <p className="text-sm text-zinc-muted mb-5 text-center leading-relaxed">
+                  Ihre Berechnung wird automatisch mitgeschickt. Ich prüfe die Zahlen, stelle die
+                  Anträge bei BAFA und KfW und begleite bis zum Verwendungsnachweis.
+                </p>
+
+                <form onSubmit={anfrageSenden} className="space-y-3">
+                  {/* Honeypot gegen Bots */}
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    checked={!!kontakt.botcheck}
+                    onChange={(ev) =>
+                      setKontakt((k) => ({ ...k, botcheck: ev.target.checked ? "1" : "" }))
+                    }
+                  />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Feld
+                      id="af-name"
+                      label="Name *"
+                      value={kontakt.name}
+                      onChange={(v) => setKontakt((k) => ({ ...k, name: v }))}
+                      required
+                    />
+                    <Feld
+                      id="af-email"
+                      label="E-Mail *"
+                      type="email"
+                      value={kontakt.email}
+                      onChange={(v) => setKontakt((k) => ({ ...k, email: v }))}
+                      required
+                    />
+                  </div>
+                  <Feld
+                    id="af-telefon"
+                    label="Telefon (optional)"
+                    type="tel"
+                    value={kontakt.telefon}
+                    onChange={(v) => setKontakt((k) => ({ ...k, telefon: v }))}
+                  />
+                  <div>
+                    <label htmlFor="af-nachricht" className="block text-xs text-zinc-secondary mb-1">
+                      Anmerkung (optional)
+                    </label>
+                    <textarea
+                      id="af-nachricht"
+                      rows={3}
+                      value={kontakt.nachricht}
+                      onChange={(ev) =>
+                        setKontakt((k) => ({ ...k, nachricht: ev.target.value }))
+                      }
+                      placeholder="Baujahr, Adresse des Objekts, offene Fragen …"
+                      className="w-full px-3 py-2 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors resize-y"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === "sendet"}
+                    className="btn-primary w-full justify-center text-base py-3.5"
+                    style={{ opacity: status === "sendet" ? 0.6 : 1 }}
+                  >
+                    {status === "sendet" ? "Wird gesendet …" : "Anfrage mit Berechnung senden"}
+                  </button>
+
+                  {status === "fehler" && (
+                    <p className="text-xs text-zinc-secondary leading-relaxed rounded-lg border border-amber/30 bg-amber/5 p-3">
+                      Das Senden hat nicht geklappt ({fehler}). Bitte versuchen Sie es noch einmal
+                      oder schicken Sie mir die Berechnung{" "}
+                      <a href={anfrageMailto(eingabe, r)} className="text-amber hover:underline">
+                        direkt per E-Mail
+                      </a>
+                      .
+                    </p>
+                  )}
+
+                  <p className="text-xs text-zinc-hint text-center">
+                    Ihre Angaben nutze ich nur zur Beantwortung.{" "}
+                    <Link href="/datenschutz" className="hover:underline">
+                      Datenschutz
+                    </Link>
+                  </p>
+                </form>
+              </>
+            )}
           </div>
 
           <div className="flex justify-between gap-3">
@@ -633,6 +752,38 @@ function Schalter({
         <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">{text}</span>
       </span>
     </button>
+  );
+}
+
+function Feld({
+  id,
+  label,
+  value,
+  onChange,
+  type = "text",
+  required,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-xs text-zinc-secondary mb-1">
+        {label}
+      </label>
+      <input
+        id={id}
+        type={type}
+        required={required}
+        value={value}
+        onChange={(ev) => onChange(ev.target.value)}
+        className="w-full px-3 py-2 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors"
+      />
+    </div>
   );
 }
 

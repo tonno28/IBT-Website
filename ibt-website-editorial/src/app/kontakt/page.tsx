@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { Metadata } from "next";
 import Icon from "@/components/Icon";
-import { ANFRAGE_EMPFAENGER } from "@/lib/anfrage";
+import { ANFRAGE_EMPFAENGER, sendeAnfrage, type Versandstatus } from "@/lib/anfrage";
 
 // Note: metadata can't be in client components — move to separate file if needed
 // For now, we keep contact form logic here
@@ -32,6 +32,8 @@ export default function KontaktPage() {
     datenschutz: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Versandstatus>("bereit");
+  const [fehler, setFehler] = useState("");
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -43,28 +45,26 @@ export default function KontaktPage() {
     }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Statischer Export, kein Server: die Anfrage geht als fertig ausgefüllte
-    // Mail aus dem Mailprogramm des Absenders raus.
-    const text = [
-      `Anliegen: ${form.anliegen}`,
-      "",
-      form.nachricht,
-      "",
-      "─────────────────────────",
-      `Name: ${form.name}`,
-      `E-Mail: ${form.email}`,
-      form.telefon ? `Telefon: ${form.telefon}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    window.location.href =
-      `mailto:${ANFRAGE_EMPFAENGER}` +
-      `?subject=${encodeURIComponent(`Anfrage: ${form.anliegen || "Erstberatung"}`)}` +
-      `&body=${encodeURIComponent(text)}`;
-    setSubmitted(true);
+    setStatus("sendet");
+    setFehler("");
+    try {
+      await sendeAnfrage({
+        subject: `Anfrage: ${form.anliegen || "Erstberatung"}`,
+        from_name: form.name,
+        name: form.name,
+        email: form.email,
+        telefon: form.telefon || "—",
+        anliegen: form.anliegen,
+        nachricht: form.nachricht,
+      });
+      setStatus("ok");
+      setSubmitted(true);
+    } catch (err) {
+      setStatus("fehler");
+      setFehler(err instanceof Error ? err.message : "Unbekannter Fehler");
+    }
   }
 
   return (
@@ -144,18 +144,11 @@ export default function KontaktPage() {
                     <Icon name="check" className="w-7 h-7" />
                   </div>
                   <h2 className="text-xl font-bold text-zinc-primary mb-3">
-                    Fast geschafft
+                    Nachricht erhalten!
                   </h2>
                   <p className="text-zinc-muted">
-                    Ihr E-Mail-Programm hat sich mit der fertigen Nachricht geöffnet — bitte
-                    einmal abschicken. Danach melde ich mich innerhalb eines Werktags bei Ihnen.
-                  </p>
-                  <p className="text-sm text-zinc-hint mt-4">
-                    Hat sich nichts geöffnet? Schreiben Sie mir direkt an{" "}
-                    <a href={`mailto:${ANFRAGE_EMPFAENGER}`} className="text-amber hover:underline">
-                      {ANFRAGE_EMPFAENGER}
-                    </a>
-                    .
+                    Vielen Dank für Ihre Anfrage. Ich melde mich innerhalb eines Werktags bei
+                    Ihnen.
                   </p>
                 </div>
               ) : (
@@ -262,9 +255,28 @@ export default function KontaktPage() {
                     </label>
                   </div>
 
-                  <button type="submit" className="btn-primary w-full justify-center py-3.5 text-base">
-                    Anfrage absenden
+                  <button
+                    type="submit"
+                    disabled={status === "sendet"}
+                    style={{ opacity: status === "sendet" ? 0.6 : 1 }}
+                    className="btn-primary w-full justify-center py-3.5 text-base"
+                  >
+                    {status === "sendet" ? "Wird gesendet …" : "Anfrage absenden"}
                   </button>
+
+                  {status === "fehler" && (
+                    <p className="text-xs text-zinc-secondary leading-relaxed rounded-lg border border-amber/30 bg-amber/5 p-3">
+                      Das Senden hat nicht geklappt ({fehler}). Bitte versuchen Sie es noch einmal
+                      oder schreiben Sie mir direkt an{" "}
+                      <a
+                        href={`mailto:${ANFRAGE_EMPFAENGER}`}
+                        className="text-amber hover:underline"
+                      >
+                        {ANFRAGE_EMPFAENGER}
+                      </a>
+                      .
+                    </p>
+                  )}
 
                   <p className="text-xs text-zinc-hint">
                     * Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage
