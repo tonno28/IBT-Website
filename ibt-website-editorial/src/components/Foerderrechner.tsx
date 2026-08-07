@@ -13,6 +13,7 @@ import {
   einkommensbonus,
   fmtEuro,
   type Eingabe,
+  type IsfpStatus,
   type MassnahmeId,
 } from "@/lib/foerderung";
 import {
@@ -39,8 +40,7 @@ export default function Foerderrechner() {
   const [selbstnutzend, setSelbstnutzend] = useState(true);
   const [gewaehlt, setGewaehlt] = useState<MassnahmeId[]>([]);
   const [kosten, setKosten] = useState<Partial<Record<MassnahmeId, number>>>({});
-  const [isfp, setIsfp] = useState(false);
-  const [isfpGewuenscht, setIsfpGewuenscht] = useState(false);
+  const [isfpStatus, setIsfpStatus] = useState<IsfpStatus>("keiner");
   const [klimaBonus, setKlimaBonus] = useState(false);
   const [zvE, setZvE] = useState<number | null>(null);
   const [kindImHaushalt, setKindImHaushalt] = useState(false);
@@ -64,23 +64,12 @@ export default function Foerderrechner() {
       kosten: Object.fromEntries(gewaehlt.map((id) => [id, kosten[id] ?? 0])) as Partial<
         Record<MassnahmeId, number>
       >,
-      isfp,
-      isfpGewuenscht,
+      isfpStatus,
       klimaBonus,
       zvE,
       kindImHaushalt,
     }),
-    [
-      wohneinheiten,
-      selbstnutzend,
-      gewaehlt,
-      kosten,
-      isfp,
-      isfpGewuenscht,
-      klimaBonus,
-      zvE,
-      kindImHaushalt,
-    ]
+    [wohneinheiten, selbstnutzend, gewaehlt, kosten, isfpStatus, klimaBonus, zvE, kindImHaushalt]
   );
 
   const r = useMemo(() => berechne(eingabe), [eingabe]);
@@ -112,8 +101,7 @@ export default function Foerderrechner() {
     setSelbstnutzend(true);
     setGewaehlt([]);
     setKosten({});
-    setIsfp(false);
-    setIsfpGewuenscht(false);
+    setIsfpStatus("keiner");
     setKlimaBonus(false);
     setZvE(null);
     setKindImHaushalt(false);
@@ -335,32 +323,40 @@ export default function Foerderrechner() {
           <p className="text-sm text-zinc-muted mb-5">Jede Angabe erhöht den Fördersatz.</p>
 
           {bafaGewaehlt && (
-            <>
-              <Schalter
-                an={isfp}
-                onClick={() => {
-                  setIsfp((v) => !v);
-                  setIsfpGewuenscht(false);
-                }}
-                titel="Individueller Sanierungsfahrplan (iSFP) liegt vor"
-                zusatz={`+ ${BAFA.isfpBonus} %`}
-                text="Verdoppelt die förderfähigen Kosten. Der Bonus gilt für den Anteil über 30.000 €."
-              />
-
-              {!isfp && (
-                <Schalter
-                  an={isfpGewuenscht}
-                  onClick={() => setIsfpGewuenscht((v) => !v)}
-                  titel="Noch keiner vorhanden — bitte mit anbieten"
+            <div className="rounded-xl border border-zinc-border bg-bg-card p-4 mb-2">
+              <span className="block text-sm font-semibold text-zinc-primary mb-1">
+                Individueller Sanierungsfahrplan (iSFP)
+              </span>
+              <p className="text-xs text-zinc-muted mb-3">
+                Verdoppelt die förderfähigen Kosten — der Bonus gilt für den Anteil über
+                30.000 €.
+              </p>
+              <div className="space-y-1.5">
+                <Auswahl
+                  an={isfpStatus === "vorhanden"}
+                  onClick={() => setIsfpStatus("vorhanden")}
+                  titel="Liegt bereits vor"
                   zusatz={`+ ${BAFA.isfpBonus} %`}
-                  text={`Ich erstelle den Sanierungsfahrplan, dann greift der Bonus. Honorar ${fmtEuro(
+                />
+                <Auswahl
+                  an={isfpStatus === "gewuenscht"}
+                  onClick={() => setIsfpStatus("gewuenscht")}
+                  titel="Noch keiner — bitte mit anbieten"
+                  zusatz={`+ ${BAFA.isfpBonus} %`}
+                  text={`Ich erstelle ihn, dann greift der Bonus. Honorar ${fmtEuro(
                     r.isfpPaket.honorar
                   )}, davon ${fmtEuro(r.isfpPaket.zuschuss)} gefördert — Ihr Anteil ${fmtEuro(
                     r.isfpPaket.eigenanteil
                   )}.`}
                 />
-              )}
-            </>
+                <Auswahl
+                  an={isfpStatus === "keiner"}
+                  onClick={() => setIsfpStatus("keiner")}
+                  titel="Kein iSFP notwendig"
+                  zusatz="kein Bonus"
+                />
+              </div>
+            </div>
           )}
 
           {heizungGewaehlt && selbstnutzend && (
@@ -578,7 +574,7 @@ export default function Foerderrechner() {
                   <Zeile label="Ihre Kosten" wert={fmtEuro(r.bafa.kosten)} />
                   <Zeile
                     label="Höchstgrenze"
-                    wert={fmtEuro(isfp ? r.bafa.capMitIsfp : r.bafa.cap)}
+                    wert={fmtEuro(r.bafa.isfpAnteil > 0 ? r.bafa.capMitIsfp : r.bafa.cap)}
                   />
                   <Zeile
                     label={`Bis Höchstgrenze × ${r.bafa.satzBasis} %`}
@@ -761,6 +757,53 @@ function Haken({ an }: { an: boolean }) {
         </svg>
       )}
     </span>
+  );
+}
+
+/** Eine Option aus einer Auswahlgruppe — runder Punkt statt Haken */
+function Auswahl({
+  an,
+  onClick,
+  titel,
+  zusatz,
+  text,
+}: {
+  an: boolean;
+  onClick: () => void;
+  titel: string;
+  zusatz: string;
+  text?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={an}
+      className={`w-full text-left flex items-start gap-3 p-3 rounded-lg border transition-colors duration-150 ${
+        an ? "border-amber bg-bg-accent" : "border-zinc-border hover:border-zinc-borderHover"
+      }`}
+    >
+      <span
+        className={`mt-0.5 flex h-4.5 w-4.5 h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-150 ${
+          an ? "border-amber" : "border-zinc-borderHover"
+        }`}
+      >
+        {an && <span className="h-2 w-2 rounded-full bg-amber" />}
+      </span>
+      <span className="flex-1">
+        <span className="flex items-center justify-between gap-2">
+          <span className="text-sm font-medium text-zinc-primary">{titel}</span>
+          <span
+            className={`text-xs font-bold shrink-0 ${an ? "text-amber" : "text-zinc-hint"}`}
+          >
+            {zusatz}
+          </span>
+        </span>
+        {text && (
+          <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">{text}</span>
+        )}
+      </span>
+    </button>
   );
 }
 

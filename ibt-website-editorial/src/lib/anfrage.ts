@@ -78,10 +78,11 @@ export function konfiguration(e: Eingabe, r: Ergebnis): string {
   t.push(`Baukosten gesamt: ${fmtEuro(r.baukosten)}`);
 
   const boni: string[] = [];
-  if (e.isfp) boni.push("iSFP liegt vor");
-  if (e.isfpGewuenscht && !e.isfp) {
+  if (e.isfpStatus === "vorhanden") boni.push("iSFP liegt vor");
+  if (e.isfpStatus === "gewuenscht") {
     boni.push("*** SANIERUNGSFAHRPLAN GEWÜNSCHT — bitte mit anbieten ***");
   }
+  if (e.isfpStatus === "keiner") boni.push("Kein iSFP gewünscht (ausdrücklich abgewählt)");
   if (e.klimaBonus && e.selbstnutzend) boni.push("Alte fossile Heizung wird ersetzt");
   if (e.selbstnutzend && e.zvE !== null) {
     boni.push(`Haushaltseinkommen bis ${fmtEuro(e.zvE)}`);

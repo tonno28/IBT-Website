@@ -244,14 +244,20 @@ export function einkommensbonus(zvE: number | null, kindImHaushalt: boolean): nu
   return 0;
 }
 
+/**
+ * Sanierungsfahrplan: liegt vor, soll mit beauftragt werden, oder
+ * ausdrücklich nicht gewünscht. Die dritte Antwort ist bewusst eine
+ * eigene Option und nicht bloß "nichts angeklickt" — nur so weiß man
+ * in der Anfrage, ob der Kunde die Frage überhaupt gesehen hat.
+ */
+export type IsfpStatus = "vorhanden" | "gewuenscht" | "keiner";
+
 export interface Eingabe {
   wohneinheiten: number;
   selbstnutzend: boolean;
   /** Bruttokosten je Maßnahme; nicht gewählte Maßnahmen fehlen oder sind 0 */
   kosten: Partial<Record<MassnahmeId, number>>;
-  isfp: boolean;
-  /** Noch kein iSFP vorhanden, soll aber mit angeboten werden */
-  isfpGewuenscht: boolean;
+  isfpStatus: IsfpStatus;
   /** Voraussetzungen des Klimageschwindigkeitsbonus erfüllt */
   klimaBonus: boolean;
   zvE: number | null;
@@ -402,7 +408,7 @@ export function berechne(e: Eingabe): Ergebnis {
 
   // Der Bonus zählt auch, wenn der iSFP erst noch erstellt wird — er muss nur
   // vor der Antragstellung vorliegen, nicht vor der Berechnung.
-  const mitIsfp = e.isfp || e.isfpGewuenscht;
+  const mitIsfp = e.isfpStatus === "vorhanden" || e.isfpStatus === "gewuenscht";
 
   const bafaCap = staffelCap(we, BAFA.capErsteWE);
   const bafaCapMitIsfp = bafaCap * 2;
@@ -481,7 +487,7 @@ export function berechne(e: Eingabe): Ergebnis {
   const isfpZuschuss = Math.min(Math.round((isfpHonorar * ISFP.satz) / 100), isfpMaxZuschuss);
 
   const isfpPaket = {
-    aktiv: e.isfpGewuenscht && !e.isfp,
+    aktiv: e.isfpStatus === "gewuenscht",
     honorar: isfpHonorar,
     satz: ISFP.satz,
     zuschuss: isfpZuschuss,
