@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Förderberatung BEG — BAFA & KfW Förderung Köln Aachen",
   description:
-    "Professionelle Förderberatung für BEG Einzelmaßnahmen und Effizienzhaus. Antragsstellung bei BAFA und KfW, Förderoptimierung bis 70 %, vollständige Begleitung. Region Köln / Aachen / Düren.",
+    "Professionelle Förderberatung für BEG Einzelmaßnahmen und Effizienzhaus. Antragsstellung bei BAFA und KfW, Förderoptimierung bis 80 %, vollständige Begleitung. Region Köln / Aachen / Düren.",
 };
 
 export default function FoerderberatungPage() {
@@ -28,7 +28,7 @@ export default function FoerderberatungPage() {
               <span className="text-gradient-teal">BAFA & KfW</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
-              Bis zu 70 % Förderung auf Ihre Sanierungsmaßnahmen — wenn Sie alle Boni
+              Bis zu 80 % Förderung auf Ihre Sanierungsmaßnahmen — wenn Sie alle Boni
               konsequent nutzen. Ich kenne das System und stelle alle Anträge vollständig für Sie.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -42,7 +42,7 @@ export default function FoerderberatungPage() {
       {/* BEG Overview */}
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max">
-          <p className="section-label text-center">BEG 2025</p>
+          <p className="section-label text-center">BEG — Stand 21.07.2026</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-10">
             Welche Förderung ist möglich?
           </h2>
@@ -52,12 +52,12 @@ export default function FoerderberatungPage() {
                 title: "Heizungsförderung",
                 icon: "🔥",
                 basis: "30 %",
-                max: "70 %",
+                max: "80 %",
                 details: [
-                  "Klima-Geschwindigkeitsbonus: +20 % (Altkessel-Austausch)",
-                  "Effizienz-Bonus: +5 % (Erdwärme/Wasser-WP)",
-                  "Einkommens-Bonus: +30 % (≤ 40.000 € Einkommen)",
-                  "Max. förderfähig: 30.000 € (EFH) + 15.000 € je WE",
+                  "Klimageschwindigkeitsbonus: +16 % (fossile Altanlage, Selbstnutzer)",
+                  "Einkommensbonus: +40 / 30 / 10 % (≤ 30.000 / 40.000 / 50.000 €)",
+                  "Deckel 70 %, mit dem höchsten Einkommensbonus 80 %",
+                  "Max. förderfähig: 28.000 € (1. WE), 15.000 € (2.–6.), 8.000 € (ab 7.)",
                 ],
               },
               {
@@ -66,9 +66,9 @@ export default function FoerderberatungPage() {
                 basis: "15 %",
                 max: "20 %",
                 details: [
-                  "iSFP-Bonus: +5 % (wenn im Sanierungsfahrplan)",
-                  "Fenster, Dach, Fassade, Boden",
-                  "Max. förderfähig: 30.000 € (ohne iSFP)",
+                  "Fenster, Dach, Fassade, Kellerdecke, sommerlicher Wärmeschutz",
+                  "iSFP-Bonus: +5 %, nur auf den Anteil über 30.000 €",
+                  "Max. förderfähig: 30.000 € (1. WE)",
                   "Mit iSFP: max. 60.000 € förderfähig",
                 ],
               },
@@ -78,10 +78,10 @@ export default function FoerderberatungPage() {
                 basis: "50 %",
                 max: "50 %",
                 details: [
-                  "Max. 5.000 € (EFH) + 2.000 € je weitere WE",
-                  "Pflicht für viele Fördermaßnahmen",
-                  "Ich übernehme das vollständig",
-                  "Fachplanung & Qualitätssicherung",
+                  "Förderfähig bis 5.000 € (bis 2 WE)",
+                  "Ab 3 WE: 2.000 € je WE, max. 20.000 €",
+                  "Pflicht bei Einzelmaßnahmen an Hülle und Anlagentechnik",
+                  "Fachplanung & Qualitätssicherung — ich übernehme das vollständig",
                 ],
               },
               {
@@ -90,10 +90,10 @@ export default function FoerderberatungPage() {
                 basis: "15 %",
                 max: "20 %",
                 details: [
-                  "Smart-Home/Gebäudeautomation",
-                  "Heizungsoptimierung (Hydraulischer Abgleich)",
-                  "Sommerlicher Wärmeschutz",
-                  "iSFP-Bonus ebenfalls anwendbar",
+                  "Lüftung mit Wärmerückgewinnung (≥ 80 %)",
+                  "Heizungsoptimierung (hydraulischer Abgleich, Pumpen, Regler)",
+                  "Gebäudeautomation",
+                  "iSFP-Bonus ebenfalls nur oberhalb der Höchstgrenze",
                 ],
               },
             ].map((item) => (

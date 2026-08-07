@@ -39,8 +39,8 @@ const leistungen: {
     href: "/energieberatung/isfp",
     icon: "roadmap",
     title: "iSFP Sanierungsfahrplan",
-    desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung — mit 5 % Extra-Bonus auf alle Folgemaßnahmen.",
-    highlight: "5 % iSFP-Bonus",
+    desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung — er verdoppelt die förderfähigen Kosten Ihrer Einzelmaßnahmen.",
+    highlight: "bis 60.000 € förderfähig",
     price: "ab 650 € netto (EFH)",
   },
   {
@@ -48,7 +48,7 @@ const leistungen: {
     icon: "euro",
     title: "Förderberatung BEG",
     desc: "Vollständige Antragsbearbeitung bei BAFA und KfW: Technische Projektbeschreibung, Energieeffizienz-Experten-Bestätigung, Verwendungsnachweis.",
-    highlight: "bis 70 % Förderung",
+    highlight: "bis 80 % Förderung",
     price: "auf Anfrage",
   },
   {
@@ -166,7 +166,7 @@ export default function EnergieberatungPage() {
               {
                 icon: "target",
                 title: "Förder-Optimierung",
-                desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: iSFP-Bonus, Klima-Geschwindigkeitsbonus, Effizienz-Bonus.",
+                desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: Klimageschwindigkeitsbonus, Einkommensbonus mit Familienzuschlag, iSFP-Bonus — auf dem Stand der Reform vom 21.07.2026.",
               },
               {
                 icon: "handshake",

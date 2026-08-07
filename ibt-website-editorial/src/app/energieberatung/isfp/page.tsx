@@ -37,11 +37,12 @@ export default function ISFPPage() {
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
               Der iSFP ist Ihr persönlicher Masterplan: Welche Maßnahmen in welcher Reihenfolge,
-              welche Förderung, welche Einsparung. Und: +5 % Extra-Bonus auf jede geförderte Maßnahme.
+              welche Förderung, welche Einsparung. Und er verdoppelt die förderfähigen Kosten —
+              mit +5 % Bonus auf den Anteil oberhalb der Basis-Höchstgrenze.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/kontakt" className="btn-primary">iSFP anfragen</Link>
-              <span className="badge-teal self-center">5 % iSFP-Bonus</span>
+              <span className="badge-teal self-center">bis 60.000 € förderfähig</span>
             </div>
           </div>
         </div>
@@ -63,13 +64,20 @@ export default function ISFPPage() {
                 </p>
                 <p>
                   Der iSFP wird von einem akkreditierten Energieeffizienz-Experten erstellt und gilt
-                  für 15 Jahre. In dieser Zeit können Sie jede im iSFP empfohlene Maßnahme mit
-                  einem zusätzlichen Bonus von 5 % gefördert bekommen.
+                  für 15 Jahre. In dieser Zeit können Sie die empfohlenen Maßnahmen schrittweise
+                  umsetzen.
                 </p>
                 <p>
-                  Beispiel: Dachdämmung ohne iSFP = 15 % BEG. Mit iSFP = 20 % BEG.
-                  Bei 20.000 € Investition bedeutet das 1.000 € mehr Förderung — allein für eine
-                  Maßnahme.
+                  <strong className="text-zinc-secondary">Wichtig seit dem 21.07.2026:</strong> Der
+                  Bonus wird nicht mehr pauschal auf jede Maßnahme gezahlt. Er gilt nur noch für den
+                  Ausgabenanteil oberhalb von 30.000 € (erste Wohneinheit) — dafür verdoppelt der
+                  iSFP die förderfähigen Kosten auf 60.000 €.
+                </p>
+                <p>
+                  Beispiel: Ein Sanierungspaket über 55.000 € bekommt ohne iSFP 15 % auf 30.000 €
+                  = 4.500 €. Mit iSFP zusätzlich 20 % auf die restlichen 25.000 € = 5.000 € — also
+                  5.000 € mehr Förderung. Bei einer einzelnen Maßnahme unter 30.000 € bringt der
+                  iSFP dagegen keinen Bonus mehr.
                 </p>
               </div>
             </div>
@@ -77,7 +85,7 @@ export default function ISFPPage() {
               <div className="card-base p-5">
                 <div className="text-2xl font-bold text-teal-light font-mono mb-1">+5 %</div>
                 <div className="text-sm font-semibold text-zinc-primary mb-1">iSFP-Bonus</div>
-                <div className="text-xs text-zinc-muted">auf alle BEG-Einzelmaßnahmen die im iSFP empfohlen sind</div>
+                <div className="text-xs text-zinc-muted">auf den Ausgabenanteil über 30.000 € — Stand 21.07.2026</div>
               </div>
               <div className="card-base p-5">
                 <div className="text-2xl font-bold text-amber font-mono mb-1">15 Jahre</div>
@@ -124,7 +132,7 @@ export default function ISFPPage() {
             {[
               {
                 q: "Ist der iSFP selbst förderbar?",
-                a: "Ja. Die Beratungskosten für den iSFP sind über die Bundesförderung für Energieberatung Wohngebäude (BEW) zu 80 % förderbar (max. 1.300 € für EFH). Ich unterstütze Sie auch hier bei der Antragstellung."
+                a: "Ja. Die Beratungskosten für den iSFP sind über die Bundesförderung für Energieberatung für Wohngebäude zu 50 % förderbar — maximal 650 € beim Ein- und Zweifamilienhaus, 850 € ab drei Wohneinheiten. Ich unterstütze Sie auch hier bei der Antragstellung."
               },
               {
                 q: "Muss ich alle Maßnahmen umsetzen?",
@@ -132,7 +140,7 @@ export default function ISFPPage() {
               },
               {
                 q: "Gilt der iSFP-Bonus für alle Maßnahmen?",
-                a: "Der +5 % Bonus gilt für alle BEG-Einzelmaßnahmen (BEG EM), die im iSFP explizit empfohlen sind. Heizungsförderung und Komplettsanierung (BEG WG) haben eigene Regelungen."
+                a: "Er gilt für die BEG-Einzelmaßnahmen an Gebäudehülle und Anlagentechnik, die im iSFP explizit empfohlen sind — seit dem 21.07.2026 aber nur noch für den Ausgabenanteil oberhalb von 30.000 €. Nicht anwendbar ist er auf den Heizungstausch, die Emissionsminderung bei Biomasse sowie auf Fachplanung und Baubegleitung. Heizungsförderung und Komplettsanierung (BEG WG) haben eigene Regelungen."
               },
               {
                 q: "Wie lange dauert die Erstellung?",

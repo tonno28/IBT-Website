@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const posts = [
   {
     slug: "beg-aenderungen-2025",
-    title: "BEG 2025: Was hat sich geändert?",
+    title: "BEG-Reform 2026: Was sich zum 21. Juli geändert hat",
     date: "2025-03-15",
     category: "BEG / Förderung",
     excerpt: "Die Bundesförderung für effiziente Gebäude wurde zum Jahresbeginn 2025 angepasst. Welche Änderungen bei Heizungsförderung und Gebäudehülle relevant sind — und was das für Ihren Förderantrag bedeutet.",

@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "IBT Ingenieurbüro Tonn",
     title: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen",
     description:
-      "Energieberatung und Ingenieurleistungen aus einer Hand. Förderung bis 70 %. Region Köln / Aachen / Düren.",
+      "Energieberatung und Ingenieurleistungen aus einer Hand. Förderung bis 80 %. Region Köln / Aachen / Düren.",
   },
   robots: {
     index: true,

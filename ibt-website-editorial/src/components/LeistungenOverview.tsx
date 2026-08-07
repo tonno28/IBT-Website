@@ -20,7 +20,7 @@ const pillars: {
     title: "Für Eigentümer & Wohngebäude",
     description:
       "iSFP, Förderberatung BEG, Energieausweis und Baubegleitung. Von der Erstberatung bis zur ausgezahlten Förderung.",
-    points: ["Bis 70 % Förderung", "dena-gelistet, BAFA/KfW-akkreditiert"],
+    points: ["Bis 80 % Förderung", "dena-gelistet, BAFA/KfW-akkreditiert"],
     cta: "Zur Energieberatung",
   },
   {
