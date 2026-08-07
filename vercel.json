@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --prefix ibt-website-editorial",
+  "buildCommand": "npm run build --prefix ibt-website-editorial",
+  "outputDirectory": "ibt-website-editorial/out"
+}
