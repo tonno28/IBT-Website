@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Energieberater Düren — IBT Ingenieurbüro Tonn",
+  title: "Energieberater Düren",
   description:
     "Energieberater in Düren und Umgebung (Merzenich, Jülich, Niederzier): iSFP, BEG-Förderung, Heizlast, Energieausweis. Jonas Tonn, §88 GEG, dena-gelistet. Vor Ort verfügbar.",
 };
@@ -19,7 +19,7 @@ export default function DuerenPage() {
             <p className="section-label mb-0">Heimatregion</p>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-            Energieberater in Düren —<br />
+            Energieberater in Düren<br />
             <span className="text-gradient-teal">IBT Ingenieurbüro Tonn</span>
           </h1>
           <p className="text-xl text-zinc-muted leading-relaxed mb-8">

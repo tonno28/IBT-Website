@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog — GEG, BEG & Energieberatung Ratgeber",
+  title: "Blog: GEG, BEG und Energieberatung",
   description:
     "Aktuelles zu GEG, BEG-Änderungen und Energieberatung: Praxistipps, Förder-Updates und Erklärungen von Jonas Tonn, IBT Ingenieurbüro Tonn.",
 };
@@ -13,25 +13,25 @@ const posts = [
     title: "BEG-Reform 2026: Was sich zum 21. Juli geändert hat",
     date: "2025-03-15",
     category: "BEG / Förderung",
-    excerpt: "Die Bundesförderung für effiziente Gebäude wurde zum Jahresbeginn 2025 angepasst. Welche Änderungen bei Heizungsförderung und Gebäudehülle relevant sind — und was das für Ihren Förderantrag bedeutet.",
+    excerpt: "Die Bundesförderung für effiziente Gebäude wurde zum Jahresbeginn 2025 angepasst. Welche Änderungen bei Heizungsförderung und Gebäudehülle relevant sind, und was das für Ihren Förderantrag bedeutet.",
   },
   {
     slug: "isfp-bonus-erklaert",
     title: "Der iSFP-Bonus: Warum sich der Sanierungsfahrplan fast immer lohnt",
     date: "2025-02-20",
     category: "iSFP",
-    excerpt: "Mit einem individuellen Sanierungsfahrplan erhalten Sie +5 % auf jede BEG-Einzelmaßnahme. Klingt klein — kann bei mehreren Maßnahmen mehrere tausend Euro ausmachen. Eine Rechnung.",
+    excerpt: "Mit einem individuellen Sanierungsfahrplan erhalten Sie +5 % auf jede BEG-Einzelmaßnahme. Klingt klein, kann bei mehreren Maßnahmen aber mehrere tausend Euro ausmachen. Eine Rechnung.",
   },
   {
     slug: "waermepumpe-heizlast",
-    title: "Wärmepumpe ohne Heizlastberechnung — ein häufiger Fehler",
+    title: "Wärmepumpe ohne Heizlastberechnung: ein häufiger Fehler",
     date: "2025-01-10",
     category: "Heizung",
     excerpt: "Zu viele Wärmepumpen laufen ineffizient, weil sie falsch dimensioniert wurden. Die Ursache: keine normgerechte Heizlastberechnung. Was zu beachten ist und warum die DIN EN 12831 unverzichtbar ist.",
   },
   {
     slug: "geg-2024-ueberblick",
-    title: "GEG 2024 — Was Hauseigentümer wissen müssen",
+    title: "GEG 2024: Was Hauseigentümer wissen müssen",
     date: "2024-12-05",
     category: "GEG",
     excerpt: "Das Gebäudeenergiegesetz wurde 2024 erheblich überarbeitet. Neue Anforderungen an Heizungen, neue Effizienzklassen, neue Ausweispflichten. Der Überblick für Bestandsgebäude.",
@@ -50,7 +50,7 @@ export default function BlogPage() {
               Aktuelles zu Energie & Förderung
             </h1>
             <p className="text-zinc-muted leading-relaxed">
-              Praxistipps, GEG-Updates, BEG-Änderungen — klar erklärt, ohne Marketing-Sprache.
+              Praxistipps, GEG-Updates und BEG-Änderungen, klar erklärt und ohne Marketing-Sprache.
             </p>
           </div>
         </div>

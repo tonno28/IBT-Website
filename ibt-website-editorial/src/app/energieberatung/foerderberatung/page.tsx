@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Förderberatung BEG — BAFA & KfW Förderung Köln Aachen",
+  title: "Förderberatung BEG: BAFA und KfW",
   description:
     "Professionelle Förderberatung für BEG Einzelmaßnahmen und Effizienzhaus. Antragsstellung bei BAFA und KfW, Förderoptimierung bis 80 %, vollständige Begleitung. Region Köln / Aachen / Düren.",
 };
@@ -28,7 +28,7 @@ export default function FoerderberatungPage() {
               <span className="text-gradient-teal">BAFA & KfW</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
-              Bis zu 80 % Förderung auf Ihre Sanierungsmaßnahmen — wenn Sie alle Boni
+              Bis zu 80 % Förderung auf Ihre Sanierungsmaßnahmen, wenn Sie alle Boni
               konsequent nutzen. Ich kenne das System und stelle alle Anträge vollständig für Sie.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -42,7 +42,7 @@ export default function FoerderberatungPage() {
       {/* BEG Overview */}
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max">
-          <p className="section-label text-center">BEG — Stand 21.07.2026</p>
+          <p className="section-label text-center">BEG, Stand 21.07.2026</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-10">
             Welche Förderung ist möglich?
           </h2>
@@ -81,7 +81,7 @@ export default function FoerderberatungPage() {
                   "Förderfähig bis 5.000 € (bis 2 WE)",
                   "Ab 3 WE: 2.000 € je WE, max. 20.000 €",
                   "Pflicht bei Einzelmaßnahmen an Hülle und Anlagentechnik",
-                  "Fachplanung & Qualitätssicherung — ich übernehme das vollständig",
+                  "Fachplanung und Qualitätssicherung, ich übernehme das vollständig",
                 ],
               },
               {
@@ -133,11 +133,11 @@ export default function FoerderberatungPage() {
           </h2>
           <div className="space-y-4">
             {[
-              { icon: "📝", title: "Technische Projektbeschreibung (TPB)", desc: "Pflichtdokument für alle BEG-Anträge — ich erstelle sie normgerecht und vollständig." },
+              { icon: "📝", title: "Technische Projektbeschreibung (TPB)", desc: "Pflichtdokument für alle BEG-Anträge. Ich erstelle sie normgerecht und vollständig." },
               { icon: "✅", title: "Energieeffizienz-Experten-Bestätigung", desc: "Als dena-gelisteter EEE bestätige ich die technische Richtigkeit der Maßnahmen. Ohne EEE keine Förderung." },
-              { icon: "🖥️", title: "Antragsstellung BAFA / KfW", desc: "Vollständige Online-Antragstellung in den Portalen von BAFA und KfW — Sie müssen sich um nichts kümmern." },
-              { icon: "📋", title: "Verwendungsnachweis", desc: "Nach Abschluss der Maßnahme erstelle ich den Verwendungsnachweis — Voraussetzung für die Auszahlung." },
-              { icon: "💡", title: "Förder-Optimierung", desc: "Ich prüfe, welche Boni für Sie zutreffen und kombiniere sie optimal — nicht alle Berater kennen alle Möglichkeiten." },
+              { icon: "🖥️", title: "Antragsstellung BAFA / KfW", desc: "Vollständige Online-Antragstellung in den Portalen von BAFA und KfW. Sie müssen sich um nichts kümmern." },
+              { icon: "📋", title: "Verwendungsnachweis", desc: "Nach Abschluss der Maßnahme erstelle ich den Verwendungsnachweis, die Voraussetzung für die Auszahlung." },
+              { icon: "💡", title: "Förder-Optimierung", desc: "Ich prüfe, welche Boni für Sie zutreffen und kombiniere sie optimal. Nicht alle Berater kennen alle Möglichkeiten." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
                 <span className="text-xl mt-0.5">{item.icon}</span>

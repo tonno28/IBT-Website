@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Energieberater Aachen — IBT Ingenieurbüro Tonn",
+  title: "Energieberater Aachen",
   description:
     "Energieberater in Aachen: iSFP, BAFA/KfW-Förderung, Heizlastberechnung, Energieausweis. Jonas Tonn, §88 GEG, dena-gelistet. Für Bestandsgebäude in Aachen und der Städteregion.",
 };
@@ -19,7 +19,7 @@ export default function AachenPage() {
             <p className="section-label mb-0">Region Aachen</p>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-            Energieberater in Aachen —<br />
+            Energieberater in Aachen<br />
             <span className="text-gradient-teal">IBT Ingenieurbüro Tonn</span>
           </h1>
           <p className="text-xl text-zinc-muted leading-relaxed mb-8">

@@ -11,7 +11,7 @@ interface CTABannerProps {
   /**
    * Slug aus src/lib/leistungen.ts. Wird an das Kontaktformular
    * durchgereicht, das damit das Anliegen vorwählt und die passenden
-   * Rückfragen einblendet — die Anfrage kommt qualifiziert statt leer an.
+   * Rückfragen einblendet, die Anfrage kommt qualifiziert statt leer an.
    */
   anliegen?: string;
 }

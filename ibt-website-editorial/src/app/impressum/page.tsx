@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Impressum — IBT Ingenieurbüro Tonn",
+  title: "Impressum",
   robots: { index: false, follow: false },
 };
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
  * und § 18 Abs. 2 MStV, ergänzt um die Pflichtangaben der DL-InfoV für
  * Dienstleister (Berufshaftpflicht, Berufsrecht).
  *
- * Mit [...] markierte Stellen kann nur Jonas ausfüllen — bitte vor dem
+ * Mit [...] markierte Stellen kann nur Jonas ausfüllen, bitte vor dem
  * Livegang ersetzen oder den jeweiligen Abschnitt streichen.
  */
 

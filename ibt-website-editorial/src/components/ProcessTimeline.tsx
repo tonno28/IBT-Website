@@ -5,7 +5,7 @@ const steps = [
     number: "01",
     title: "Kostenlose Erstberatung",
     description:
-      "Telefonisch oder vor Ort. Ich verschaffe mir ein Bild von Ihrem Gebäude und Ihren Zielen — ohne Verpflichtung.",
+      "Telefonisch oder vor Ort. Ich verschaffe mir ein Bild von Ihrem Gebäude und Ihren Zielen, ohne Verpflichtung.",
     duration: "ca. 30 Min.",
   },
   {
@@ -26,7 +26,7 @@ const steps = [
     number: "04",
     title: "Förderantragstellung",
     description:
-      "Ich stelle alle Anträge bei BAFA und KfW für Sie. Energieeffizienz-Experten-Bestätigung, Technische Projektbeschreibung — alles inklusive.",
+      "Ich stelle alle Anträge bei BAFA und KfW für Sie. Energieeffizienz-Experten-Bestätigung, Technische Projektbeschreibung: alles inklusive.",
     duration: "sofort nach Beauftragung",
   },
   {
@@ -48,7 +48,7 @@ export default function ProcessTimeline() {
             So läuft&apos;s ab
           </h2>
           <p className="max-w-xl mx-auto text-zinc-muted">
-            Transparent, planbar, ohne Überraschungen — von der ersten Anfrage bis zur
+            Transparent, planbar und ohne Überraschungen, von der ersten Anfrage bis zur
             ausgezahlten Förderung.
           </p>
         </Reveal>

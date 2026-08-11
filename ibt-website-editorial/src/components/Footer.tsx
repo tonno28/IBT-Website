@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block mb-4" aria-label="IBT Ingenieurbüro Tonn — Startseite">
+            <Link href="/" className="inline-block mb-4" aria-label="IBT Ingenieurbüro Tonn, zur Startseite">
               <Logo size="sm" />
             </Link>
             <p className="text-sm text-zinc-muted leading-relaxed mb-4">

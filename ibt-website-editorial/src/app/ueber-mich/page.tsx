@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Über mich — Jonas Tonn, Energieberater & Ingenieur",
+  title: "Über mich: Jonas Tonn, Energieberater und Ingenieur",
   description:
-    "Jonas Tonn — B. Eng. Smart Building Engineering (FH Aachen), unabhängiger Energieberater und Inhaber IBT Ingenieurbüro Tonn. §88 GEG qualifiziert, dena-gelistet, BAFA/KfW-akkreditiert.",
+    "Jonas Tonn, B. Eng. Smart Building Engineering (FH Aachen), unabhängiger Energieberater und Inhaber IBT Ingenieurbüro Tonn. §88 GEG qualifiziert, dena-gelistet, BAFA/KfW-akkreditiert.",
 };
 
 export default function UeberMichPage() {
@@ -43,7 +43,7 @@ export default function UeberMichPage() {
               <div className="space-y-4 text-zinc-muted leading-relaxed text-sm">
                 <p>
                   Ich bin Bauingenieur (B. Eng.) und unabhängiger Energieberater. Studiert
-                  habe ich Smart Building Engineering an der FH Aachen — als einer der ersten
+                  habe ich Smart Building Engineering an der FH Aachen, als einer der ersten
                   Absolventen dieses noch jungen Studiengangs. Mit dem IBT Ingenieurbüro Tonn
                   begleite ich Sanierungs- und Bauvorhaben vollständig, von der Förderberatung
                   bis zur technischen Berechnung.
@@ -66,13 +66,13 @@ export default function UeberMichPage() {
               <h3 className="text-sm font-semibold text-zinc-secondary uppercase tracking-wider">Qualifikationen</h3>
               {[
                 {
-                  title: "§88 GEG — Qualifikationsnachweis",
+                  title: "§88 GEG, Qualifikationsnachweis",
                   desc: "Nachweis der fachlichen Eignung als Energieberater nach Gebäudeenergiegesetz (GEG).",
                   year: "laufend gültig",
                 },
                 {
                   title: "dena Energieeffizienz-Experte",
-                  desc: "Gelistet in der offiziellen Expertenliste der Deutschen Energie-Agentur — Voraussetzung für BAFA/KfW-Anträge.",
+                  desc: "Gelistet in der offiziellen Expertenliste der Deutschen Energie-Agentur, Voraussetzung für BAFA/KfW-Anträge.",
                   year: "dena-Expertenliste",
                 },
                 {
@@ -82,7 +82,7 @@ export default function UeberMichPage() {
                 },
                 {
                   title: "B. Eng. Smart Building Engineering",
-                  desc: "FH Aachen — Gebäudetechnik, Energieeffizienz und Gebäudeautomation. Einer der ersten Absolventen des Studiengangs.",
+                  desc: "FH Aachen: Gebäudetechnik, Energieeffizienz und Gebäudeautomation. Einer der ersten Absolventen des Studiengangs.",
                   year: "Hochschulabschluss",
                 },
               ].map((q) => (
@@ -138,7 +138,7 @@ export default function UeberMichPage() {
 
       <CTABanner
         title="Erstgespräch vereinbaren"
-        description="Ich freue mich auf Ihre Anfrage. Beschreiben Sie kurz Ihr Vorhaben — ich melde mich innerhalb eines Werktags."
+        description="Ich freue mich auf Ihre Anfrage. Beschreiben Sie kurz Ihr Vorhaben. Ich melde mich innerhalb eines Werktags."
         primaryLabel="Jetzt anfragen"
       />
     </>

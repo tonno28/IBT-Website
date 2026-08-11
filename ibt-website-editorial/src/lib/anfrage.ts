@@ -5,7 +5,7 @@
  * eigenen Server. Der Versand läuft deshalb über Web3Forms: ein POST aus dem
  * Browser, die Mail stellt Web3Forms zu.
  *
- * Der Access-Key ist bei Web3Forms bewusst öffentlich — er steht in deren
+ * Der Access-Key ist bei Web3Forms bewusst öffentlich, er steht in deren
  * Beispielen direkt im HTML und erlaubt nur den Versand an die eine hinterlegte
  * Adresse. Über NEXT_PUBLIC_WEB3FORMS_KEY lässt er sich in den Vercel-Einstellungen
  * austauschen, ohne den Code anzufassen (z. B. wenn er wegen Spam rotiert werden muss).
@@ -23,7 +23,7 @@ import {
 export const WEB3FORMS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "136c096b-1cf8-4bfd-a26b-230e60d99f7c";
 
-/** Zieladresse, auch im Impressum und im Footer hinterlegt — für Direktkontakt. */
+/** Zieladresse, auch im Impressum und im Footer hinterlegt, für Direktkontakt. */
 export const ANFRAGE_EMPFAENGER = "info@ib-tonn.de";
 
 export type Versandstatus = "bereit" | "sendet" | "ok" | "fehler";
@@ -40,7 +40,7 @@ export async function sendeAnfrage(felder: Record<string, string>): Promise<void
   try {
     data = await res.json();
   } catch {
-    // Antwort war kein JSON — unten als Fehler behandelt
+    // Antwort war kein JSON, unten als Fehler behandelt
   }
 
   if (!res.ok || !data.success) {
@@ -80,7 +80,7 @@ export function konfiguration(e: Eingabe, r: Ergebnis): string {
   const boni: string[] = [];
   if (e.isfpStatus === "vorhanden") boni.push("iSFP liegt vor");
   if (e.isfpStatus === "gewuenscht") {
-    boni.push("*** SANIERUNGSFAHRPLAN GEWÜNSCHT — bitte mit anbieten ***");
+    boni.push("*** SANIERUNGSFAHRPLAN GEWÜNSCHT: bitte mit anbieten ***");
   }
   if (e.isfpStatus === "keiner") boni.push("Kein iSFP gewünscht (ausdrücklich abgewählt)");
   if (e.klimaBonus && e.selbstnutzend) boni.push("Alte fossile Heizung wird ersetzt");

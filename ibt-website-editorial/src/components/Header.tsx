@@ -64,7 +64,7 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center group rounded-lg transition-opacity hover:opacity-90"
-            aria-label="IBT Ingenieurbüro Tonn — Startseite"
+            aria-label="IBT Ingenieurbüro Tonn, zur Startseite"
           >
             <Logo size="sm" />
           </Link>

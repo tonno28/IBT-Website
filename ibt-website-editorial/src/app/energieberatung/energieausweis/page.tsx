@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Energieausweis — Verbrauchs- & Bedarfsausweis Köln Aachen Düren",
+  title: "Energieausweis: Verbrauchs- und Bedarfsausweis",
   description:
     "Energieausweis für Wohngebäude: Verbrauchsausweis ab 95 €, Bedarfsausweis (DIN V 18599) ab 250 €. Pflicht bei Verkauf, Vermietung und Neubau. Schnell und rechtssicher. Region Köln / Aachen / Düren.",
 };
@@ -29,7 +29,7 @@ export default function EnergieausweisPage() {
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
               Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflicht bei Verkauf, Vermietung
-              und Neubau — ich stelle ihn schnell, korrekt und GEG-konform aus.
+              und Neubau. Ich stelle ihn schnell, korrekt und GEG-konform aus.
             </p>
             <Link href="/kontakt?anliegen=energieausweis" className="btn-primary">Energieausweis beauftragen</Link>
           </div>
@@ -48,14 +48,14 @@ export default function EnergieausweisPage() {
               {
                 title: "Verbrauchsausweis",
                 price: "ab 95 €",
-                desc: "Basiert auf den tatsächlichen Verbrauchsdaten der letzten 3 Jahre. Schnell und günstig — geeignet für Bestandsgebäude mit mehr als 4 Wohneinheiten.",
+                desc: "Basiert auf den tatsächlichen Verbrauchsdaten der letzten 3 Jahre. Schnell und günstig, geeignet für Bestandsgebäude mit mehr als 4 Wohneinheiten.",
                 when: ["Verkauf / Vermietung MFH", "Schnelle Lieferung gewünscht", "Verbrauchsdaten vorhanden"],
                 limit: "Nicht geeignet für Neubau oder Sanierungsnachweis",
               },
               {
                 title: "Bedarfsausweis",
                 price: "ab 250 € (EFH)",
-                desc: "Basiert auf der berechneten Energiebilanz des Gebäudes (DIN V 18599 / DIN V 4108-6). Objektiv, unabhängig vom Nutzerverhalten — erforderlich für viele Förderprogramme.",
+                desc: "Basiert auf der berechneten Energiebilanz des Gebäudes (DIN V 18599 / DIN V 4108-6). Objektiv, unabhängig vom Nutzerverhalten und erforderlich für viele Förderprogramme.",
                 when: ["Neubau / kernsanierte Gebäude", "EFH mit weniger als 4 WE (Pflicht)", "Förderantrag KfW / BAFA", "Genauere Aussage gewünscht"],
                 highlight: true,
               },
@@ -99,7 +99,7 @@ export default function EnergieausweisPage() {
             {[
               { title: "Verkauf", desc: "Bei jedem Verkauf eines Gebäudes oder einer Wohneinheit muss der Energieausweis spätestens bei der Besichtigung vorliegen. Verstöße werden mit bis zu 15.000 € Bußgeld geahndet." },
               { title: "Vermietung", desc: "Bei jeder Neuvermietung gilt dieselbe Pflicht. Auch Inserate (ImmobilienScout, ImmoWelt etc.) müssen Energiekennwerte ausweisen." },
-              { title: "Neubau", desc: "Für jeden Neubau ist ein Bedarfsausweis Pflicht — er muss der Baugenehmigungsbehörde vorgelegt werden." },
+              { title: "Neubau", desc: "Für jeden Neubau ist ein Bedarfsausweis Pflicht. Er muss der Baugenehmigungsbehörde vorgelegt werden." },
               { title: "Größere Sanierung", desc: "Bei umfanggreichen energetischen Sanierungen (mehr als 25 % der Gebäudehülle) ist ein neuer Energieausweis zu erstellen." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
@@ -117,7 +117,7 @@ export default function EnergieausweisPage() {
       <CTABanner
         anliegen="energieausweis"
         title="Energieausweis beauftragen"
-        description="Schicken Sie mir eine kurze Nachricht mit Gebäudetyp und Baujahr — ich melde mich innerhalb eines Werktags mit einem konkreten Angebot."
+        description="Schicken Sie mir eine kurze Nachricht mit Gebäudetyp und Baujahr. Ich melde mich innerhalb eines Werktags mit einem konkreten Angebot."
         primaryLabel="Energieausweis anfragen"
       />
     </>

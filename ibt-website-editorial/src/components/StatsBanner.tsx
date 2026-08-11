@@ -11,7 +11,7 @@ interface StatsBannerProps {
 }
 
 /**
- * Living stats strip — angelehnt an IBD Group's "300+ Projekte realisiert".
+ * Living stats strip, angelehnt an IBD Group's "300+ Projekte realisiert".
  * Werte kommen als Props rein und sollen regelmäßig aktualisiert werden,
  * sobald neue Projekte abgeschlossen sind (siehe Aufrufer-Seite).
  */

@@ -1,5 +1,5 @@
 /**
- * BEG — Bundesförderung für effiziente Gebäude
+ * BEG, Bundesförderung für effiziente Gebäude
  *
  * Rechtsstand: Förderrichtlinien BEG EM / BEG WG / BEG NWG vom 17.07.2026,
  * in Kraft seit dem 21.07.2026 (Gebäudemodernisierungsgesetz GModG,
@@ -14,7 +14,7 @@
  *  - iSFP-Bonus nur noch auf den Ausgabenanteil oberhalb der Basis-Höchstgrenze
  *  - Förderdeckel 70 %, ausnahmsweise 80 % bei Einkommensbonus 40 %
  *
- * Alle Sätze bewusst als Konstanten am Kopf der Datei — bei der nächsten
+ * Alle Sätze bewusst als Konstanten am Kopf der Datei, bei der nächsten
  * Novelle müssen nur diese Werte angefasst werden, nicht die Rechenlogik.
  */
 
@@ -61,7 +61,7 @@ export const BAFA = {
   mindestinvestition: 300,
 } as const;
 
-/** Staffelung der Höchstgrenzen über die Wohneinheiten — identisch bei KfW und BAFA */
+/** Staffelung der Höchstgrenzen über die Wohneinheiten, identisch bei KfW und BAFA */
 export const STAFFEL = {
   weiterePro2bis6: 15000,
   weiterePro7plus: 8000,
@@ -75,7 +75,7 @@ export const BAUBEGLEITUNG = {
   capGesamtAb3WE: 20000,
 } as const;
 
-/** Honorar IBT — Richtwert für die Erstschätzung */
+/** Honorar IBT, Richtwert für die Erstschätzung */
 export const HONORAR = {
   satz: 4.5,
   mindest: 500,
@@ -100,7 +100,7 @@ export function honorarSchaetzung(baukosten: number): number {
 }
 
 /**
- * Steuerbonus nach § 35c EStG — Alternative zum Zuschuss, nicht kombinierbar.
+ * Steuerbonus nach § 35c EStG, Alternative zum Zuschuss, nicht kombinierbar.
  *
  * Zwei Sätze, nicht einer: 20 % auf die Baumaßnahme (Abs. 1 Satz 1, verteilt
  * über drei Jahre) und daneben 50 % auf das Honorar des Energieberaters,
@@ -140,7 +140,7 @@ export interface MassnahmeDef {
   icon: IconName;
   gruppe: Gruppe;
   traeger: "KfW" | "BAFA";
-  /** grober Richtwert brutto für ein freistehendes EFH — nur als Startwert im Eingabefeld */
+  /** grober Richtwert brutto für ein freistehendes EFH, nur als Startwert im Eingabefeld */
   richtwert: number;
 }
 
@@ -257,7 +257,7 @@ export function einkommensbonus(zvE: number | null, kindImHaushalt: boolean): nu
 /**
  * Sanierungsfahrplan: liegt vor, soll mit beauftragt werden, oder
  * ausdrücklich nicht gewünscht. Die dritte Antwort ist bewusst eine
- * eigene Option und nicht bloß "nichts angeklickt" — nur so weiß man
+ * eigene Option und nicht bloß "nichts angeklickt", nur so weiß man
  * in der Anfrage, ob der Kunde die Frage überhaupt gesehen hat.
  */
 export type IsfpStatus = "vorhanden" | "gewuenscht" | "keiner";
@@ -408,7 +408,7 @@ export function berechne(e: Eingabe): Ergebnis {
     if (heizKosten > cap) {
       hinweise.push({
         art: "warnung",
-        text: `Heizungskosten über der Höchstgrenze von ${fmtEuro(cap)} — der Rest ist nicht förderfähig.`,
+        text: `Heizungskosten über der Höchstgrenze von ${fmtEuro(cap)}. Der Rest ist nicht förderfähig.`,
       });
     }
     hinweise.push({
@@ -421,7 +421,7 @@ export function berechne(e: Eingabe): Ergebnis {
   const bafaIds = MASSNAHMEN.filter((m) => m.traeger === "BAFA").map((m) => m.id);
   const bafaKosten = bafaIds.reduce((s, id) => s + kosten(id), 0);
 
-  // Der Bonus zählt auch, wenn der iSFP erst noch erstellt wird — er muss nur
+  // Der Bonus zählt auch, wenn der iSFP erst noch erstellt wird, er muss nur
   // vor der Antragstellung vorliegen, nicht vor der Berechnung.
   const mitIsfp = e.isfpStatus === "vorhanden" || e.isfpStatus === "gewuenscht";
 
@@ -450,7 +450,7 @@ export function berechne(e: Eingabe): Ergebnis {
     if (mitIsfp && bafaKosten <= bafaCap) {
       hinweise.push({
         art: "chance",
-        text: `Der iSFP-Bonus greift erst oberhalb von ${fmtEuro(bafaCap)} — bei diesem Volumen bringt er noch nichts.`,
+        text: `Der iSFP-Bonus greift erst oberhalb von ${fmtEuro(bafaCap)}. Bei diesem Volumen bringt er noch nichts.`,
       });
     }
     if (!mitIsfp && bafaKosten > bafaCap) {
@@ -462,7 +462,7 @@ export function berechne(e: Eingabe): Ergebnis {
     if (bafaKosten > (mitIsfp ? bafaCapMitIsfp : bafaCap)) {
       hinweise.push({
         art: "warnung",
-        text: `Höchstgrenze ${fmtEuro(mitIsfp ? bafaCapMitIsfp : bafaCap)} ausgeschöpft. Sie gilt pro Gebäude und Kalenderjahr — eine Aufteilung auf zwei Jahre kann sich lohnen.`,
+        text: `Höchstgrenze ${fmtEuro(mitIsfp ? bafaCapMitIsfp : bafaCap)} ausgeschöpft. Sie gilt pro Gebäude und Kalenderjahr, eine Aufteilung auf zwei Jahre kann sich lohnen.`,
       });
     }
     if (bafaKosten < BAFA.mindestinvestition) {
@@ -478,7 +478,7 @@ export function berechne(e: Eingabe): Ergebnis {
   const honorarBetrag = baukosten > 0 ? honorarSchaetzung(baukosten) : 0;
 
   // Fachplanung & Baubegleitung ist ein eigener Fördertatbestand nur bei
-  // Einzelmaßnahmen an Hülle und Anlagentechnik — beim reinen Heizungstausch
+  // Einzelmaßnahmen an Hülle und Anlagentechnik, beim reinen Heizungstausch
   // laufen die Kosten als Umfeldmaßnahme mit dem Satz des Heizungstauschs.
   const bbCap =
     we <= 2
@@ -552,13 +552,13 @@ export function berechne(e: Eingabe): Ergebnis {
   if (steuerbonus.moeglich && steuerbonus.besser) {
     hinweise.push({
       art: "chance",
-      text: `Der Steuerbonus nach § 35c EStG läge hier mit ${fmtEuro(steuerbonus.betrag)} über dem Zuschuss — beides zusammen geht für dieselbe Maßnahme aber nicht.`,
+      text: `Der Steuerbonus nach § 35c EStG läge hier mit ${fmtEuro(steuerbonus.betrag)} über dem Zuschuss. Beides zusammen geht für dieselbe Maßnahme aber nicht.`,
     });
   }
 
   hinweise.push({
     art: "warnung",
-    text: "Der Antrag muss vor der Auftragserteilung gestellt sein — ein zu früh unterschriebener Handwerkervertrag ist der häufigste Ablehnungsgrund.",
+    text: "Der Antrag muss vor der Auftragserteilung gestellt sein. Ein zu früh unterschriebener Handwerkervertrag ist der häufigste Ablehnungsgrund.",
   });
 
   return {

@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 import { BAFA, HEIZUNG, STAND } from "@/lib/foerderung";
 
 export const metadata: Metadata = {
-  title: "BEG-Förderrechner 2026 — Förderung und Honorar schätzen",
+  title: "BEG-Förderrechner 2026: Förderung und Honorar schätzen",
   description:
     "Förderrechner nach den BEG-Richtlinien vom 17.07.2026: Heizungstausch, Dämmung, Fenster und Lüftung. Mit Einkommensbonus, iSFP-Systematik und direkter Honorarschätzung. Unverbindlich, ohne Registrierung.",
 };
@@ -19,7 +19,7 @@ const KURZUEBERSICHT = [
 const FAQ = [
   {
     q: "Was kostet mich Ihre Begleitung?",
-    a: "Der Rechner zeigt Ihnen direkt eine Honorarschätzung für Ihr Vorhaben. Bei Einzelmaßnahmen an Hülle und Anlagentechnik wird davon die Hälfte über die Förderung für Fachplanung und Baubegleitung erstattet — das ist im Eigenanteil schon berücksichtigt. Verbindlich wird das Honorar nach einem Blick auf Ihr Objekt.",
+    a: "Der Rechner zeigt Ihnen direkt eine Honorarschätzung für Ihr Vorhaben. Bei Einzelmaßnahmen an Hülle und Anlagentechnik wird davon die Hälfte über die Förderung für Fachplanung und Baubegleitung erstattet, das ist im Eigenanteil schon berücksichtigt. Verbindlich wird das Honorar nach einem Blick auf Ihr Objekt.",
   },
   {
     q: "Was hat sich zum 21. Juli 2026 geändert?",
@@ -27,7 +27,7 @@ const FAQ = [
   },
   {
     q: "Muss ich vor der Beauftragung einen Antrag stellen?",
-    a: "Ja. Der Antrag muss vor der Auftragserteilung gestellt sein — ein zu früh unterschriebener Handwerkervertrag ist der häufigste Ablehnungsgrund. Ausnahme ist der Heizungsnotfall.",
+    a: "Ja. Der Antrag muss vor der Auftragserteilung gestellt sein. Ein zu früh unterschriebener Handwerkervertrag ist der häufigste Ablehnungsgrund. Ausnahme ist der Heizungsnotfall.",
   },
   {
     q: "Kann ich mehrere Maßnahmen kombinieren?",
@@ -82,7 +82,7 @@ export default function FoerderrechnerPage() {
               <div className="card-base p-5">
                 <h2 className="font-semibold text-zinc-primary mb-2">Nächster Schritt</h2>
                 <p className="text-sm text-zinc-muted mb-4 leading-relaxed">
-                  Als dena-gelisteter Energieeffizienz-Experte stelle ich alle Anträge für Sie —
+                  Als dena-gelisteter Energieeffizienz-Experte stelle ich alle Anträge für Sie,
                   vollständig und vor der Auftragsvergabe.
                 </p>
                 <Link href="/kontakt" className="btn-primary w-full justify-center text-sm">
@@ -112,7 +112,7 @@ export default function FoerderrechnerPage() {
 
       <CTABanner
         title="Förderung nicht liegen lassen"
-        description="Ich beantrage Ihre Förderung vollständig — BAFA und KfW, bis zum Verwendungsnachweis."
+        description="Ich beantrage Ihre Förderung vollständig: BAFA und KfW, bis zum Verwendungsnachweis."
         primaryLabel="Beratung anfragen"
       />
     </>

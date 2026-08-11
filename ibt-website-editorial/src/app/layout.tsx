@@ -7,7 +7,7 @@ import CookieBanner from "@/components/CookieBanner";
 import { CONSENT_DEFAULT_SNIPPET, TRACKING_AKTIV } from "@/lib/consent";
 
 /**
- * Eine Schrift für alles — so steht es auch im Markenleitfaden ("Inter 700,
+ * Eine Schrift für alles, so steht es auch im Markenleitfaden ("Inter 700,
  * geometrisch, technisch, kompakt"). Überschriften unterscheiden sich über
  * Größe und Gewicht, nicht über eine zweite Schriftfamilie. Das spart eine
  * Schriftdatei und hält die Seite ruhig.
@@ -24,11 +24,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen",
+    default: "IBT Ingenieurbüro Tonn: Energieberatung und Ingenieurleistungen",
     template: "%s | IBT Ingenieurbüro Tonn",
   },
   description:
-    "Professionelle Energieberatung (BAFA/KfW, iSFP, dena) und technische Ingenieurleistungen (Heizlast, Taupunkt, U-Wert) aus einer Hand. Jonas Tonn, B. Eng. — Region Köln, Aachen, Düren.",
+    "Professionelle Energieberatung (BAFA/KfW, iSFP, dena) und technische Ingenieurleistungen (Heizlast, Taupunkt, U-Wert) aus einer Hand. Jonas Tonn, B. Eng., für die Region Köln, Aachen und Düren.",
   keywords: [
     "Energieberatung",
     "Energieberater",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: "IBT Ingenieurbüro Tonn",
-    title: "IBT Ingenieurbüro Tonn — Energieberatung & Ingenieurleistungen",
+    title: "IBT Ingenieurbüro Tonn: Energieberatung und Ingenieurleistungen",
     description:
       "Energieberatung und Ingenieurleistungen aus einer Hand. Förderung bis 80 %. Region Köln / Aachen / Düren.",
   },

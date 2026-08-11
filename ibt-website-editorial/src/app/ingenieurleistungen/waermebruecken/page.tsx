@@ -43,19 +43,19 @@ export default function WaermebrueckenPage() {
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed mb-8">
             <p>
               Wärmebrücken sind Stellen in der Gebäudehülle, an denen die Wärmedämmung
-              unterbrochen ist — z.B. Balkonplatten, Fensteranschlüsse, Attiken oder Stürze.
+              unterbrochen ist, etwa Balkonplatten, Fensteranschlüsse, Attiken oder Stürze.
               An diesen Stellen fließt mehr Wärme ab als an der gedämmten Fläche.
             </p>
             <p>
               In der Energiebilanzierung werden Wärmebrücken entweder pauschal mit einem
-              Zuschlag von 0,10 W/(m²K) berücksichtigt — oder mit genau berechneten
+              Zuschlag von 0,10 W/(m²K) berücksichtigt, oder mit genau berechneten
               Ψ-Werten (Linienwärmedurchgangskoeffizienten), was eine bessere Bilanz ergibt.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { title: "Pauschaler Ansatz", value: "+ 0,10 W/(m²K)", desc: "Standard ohne genaue Berechnung — konservativ, schlechtere Bilanz" },
-              { title: "Detaillierter Ansatz", value: "< 0,05 W/(m²K)", desc: "Mit WTB-Katalog oder eigener Berechnung — bessere Effizienzhaus-Stufe möglich" },
+              { title: "Pauschaler Ansatz", value: "+ 0,10 W/(m²K)", desc: "Standard ohne genaue Berechnung, konservativ und mit schlechterer Bilanz" },
+              { title: "Detaillierter Ansatz", value: "< 0,05 W/(m²K)", desc: "Mit WTB-Katalog oder eigener Berechnung, bessere Effizienzhaus-Stufe möglich" },
             ].map((item) => (
               <div key={item.title} className="card-base p-5">
                 <div className="text-lg font-bold font-mono text-amber mb-1">{item.value}</div>
@@ -93,7 +93,7 @@ export default function WaermebrueckenPage() {
       <CTABanner
         anliegen="waermebruecken"
         title="Wärmebrücken berechnen"
-        description="Senden Sie mir Zeichnungen der kritischen Anschlusspunkte — ich ermittle die Ψ-Werte normgerecht nach DIN EN ISO 10211."
+        description="Senden Sie mir Zeichnungen der kritischen Anschlusspunkte. Ich ermittle die Ψ-Werte normgerecht nach DIN EN ISO 10211."
         primaryLabel="Wärmebrücken anfragen"
         secondaryLabel="Alle Ingenieurleistungen"
         secondaryHref="/ingenieurleistungen"

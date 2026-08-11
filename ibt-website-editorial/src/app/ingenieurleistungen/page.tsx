@@ -7,7 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import StatsBanner from "@/components/StatsBanner";
 
 export const metadata: Metadata = {
-  title: "Ingenieurleistungen — Heizlast, U-Wert, Taupunkt, Lüftung",
+  title: "Ingenieurleistungen: Heizlast, U-Wert, Taupunkt, Lüftung",
   description:
     "Technische Ingenieurleistungen für Handwerk und Planer: Heizlastberechnung DIN 12831, Bauteilberechnung U-Wert, Taupunktnachweis, Lüftungskonzept DIN 1946-6. Region Köln / Aachen / Düren.",
 };
@@ -43,7 +43,7 @@ const leistungen: {
     href: "/ingenieurleistungen/heizlast",
     icon: "thermometer",
     title: "Heizlastberechnung",
-    desc: "Normheizlast nach DIN EN 12831 — Grundlage für die korrekte Auslegung von Wärmepumpen, Heizkörpern und den Hydraulischen Abgleich.",
+    desc: "Normheizlast nach DIN EN 12831, Grundlage für die korrekte Auslegung von Wärmepumpen, Heizkörpern und den Hydraulischen Abgleich.",
     norm: "DIN EN 12831",
     price: "ab 250 € (EFH)",
   },
@@ -51,7 +51,7 @@ const leistungen: {
     href: "/ingenieurleistungen/bauteil",
     icon: "ruler",
     title: "Bauteilberechnung",
-    desc: "U-Wert-Berechnung für Wand, Dach, Boden und Fenster nach DIN EN ISO 6946 — als Nachweis für Förderanträge und Baugenehmigungen.",
+    desc: "U-Wert-Berechnung für Wand, Dach, Boden und Fenster nach DIN EN ISO 6946, als Nachweis für Förderanträge und Baugenehmigungen.",
     norm: "DIN EN ISO 6946",
     price: "ab 80 € / Bauteil",
   },
@@ -59,7 +59,7 @@ const leistungen: {
     href: "/ingenieurleistungen/taupunkt",
     icon: "droplet",
     title: "Taupunktnachweis",
-    desc: "Feuchteschutznachweis nach Glaser-Verfahren (DIN 4108-3) — verhindert Kondensatschäden und Schimmel in Bauteilen.",
+    desc: "Feuchteschutznachweis nach Glaser-Verfahren (DIN 4108-3), verhindert Kondensatschäden und Schimmel in Bauteilen.",
     norm: "DIN 4108-3",
     price: "ab 120 € / Bauteil",
   },
@@ -67,7 +67,7 @@ const leistungen: {
     href: "/ingenieurleistungen/lueftung",
     icon: "wind",
     title: "Lüftungskonzept",
-    desc: "Lüftungskonzept nach DIN 1946-6 — Pflicht bei luftdichter Gebäudehülle und vielen BEG-geförderten Sanierungen.",
+    desc: "Lüftungskonzept nach DIN 1946-6, Pflicht bei luftdichter Gebäudehülle und vielen BEG-geförderten Sanierungen.",
     norm: "DIN 1946-6",
     price: "ab 180 € (EFH)",
   },
@@ -75,7 +75,7 @@ const leistungen: {
     href: "/ingenieurleistungen/waermebruecken",
     icon: "scan",
     title: "Wärmebrückenberechnung",
-    desc: "Ψ-Werte (psi) für Wärmebrücken nach DIN EN ISO 10211 — für genaue Gebäudebilanzierung und Tauwassernachweis.",
+    desc: "Ψ-Werte (psi) für Wärmebrücken nach DIN EN ISO 10211, für genaue Gebäudebilanzierung und Tauwassernachweis.",
     norm: "DIN EN ISO 10211",
     price: "auf Anfrage",
   },
@@ -98,7 +98,7 @@ export default function IngenieurleistungenPage() {
               <span className="text-amber">normgerecht & schnell</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
-              Heizlast, U-Werte, Taupunkt, Lüftung — präzise Berechnungen nach DIN/EN-Normen
+              Heizlast, U-Werte, Taupunkt und Lüftung: präzise Berechnungen nach DIN/EN-Normen
               für Handwerksbetriebe, Architekten und Planer. Kurzfristig lieferbar.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -194,7 +194,7 @@ export default function IngenieurleistungenPage() {
 
       <CTABanner
         title="Berechnung beauftragen"
-        description="Kurzfristige Lieferzeiten. Normgerechte Unterlagen. Direkter Kontakt — kein Callcenter."
+        description="Kurzfristige Lieferzeiten. Normgerechte Unterlagen. Direkter Kontakt, kein Callcenter."
         primaryLabel="Jetzt anfragen"
         secondaryLabel="Alle Leistungen"
         secondaryHref="/ingenieurleistungen"

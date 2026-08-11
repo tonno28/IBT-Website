@@ -3,7 +3,7 @@ import TiltCard from "./TiltCard";
 
 const testimonials = [
   {
-    text: "Jonas Tonn hat uns den gesamten iSFP erstellt und sämtliche Förderanträge übernommen. Wir haben am Ende 65 % Förderung auf unsere Wärmepumpe bekommen — mehr als wir erwartet hätten. Sehr kompetent und immer erreichbar.",
+    text: "Jonas Tonn hat uns den gesamten iSFP erstellt und sämtliche Förderanträge übernommen. Wir haben am Ende 65 % Förderung auf unsere Wärmepumpe bekommen, mehr als wir erwartet hätten. Sehr kompetent und immer erreichbar.",
     author: "Familie M.",
     location: "Düren",
     measure: "Wärmepumpe + iSFP",
@@ -11,7 +11,7 @@ const testimonials = [
     category: "energie" as const,
   },
   {
-    text: "Ich bin Heizungsbauer und nutze IBT regelmäßig für Heizlastberechnungen und hydraulische Abgleiche. Schnelle Lieferzeit, normgerechte Unterlagen — das Handwerk, das ich brauche.",
+    text: "Ich bin Heizungsbauer und nutze IBT regelmäßig für Heizlastberechnungen und hydraulische Abgleiche. Schnelle Lieferzeit, normgerechte Unterlagen: genau das, was ich brauche.",
     author: "T. Bergmann",
     location: "Köln",
     measure: "Heizlastberechnung",
@@ -37,7 +37,7 @@ const testimonials = [
 ];
 
 interface TestimonialsProps {
-  /** Which subset to show — pillar pages show only their own category. */
+  /** Which subset to show, pillar pages show only their own category. */
   filter?: "all" | "energie" | "technik";
   title?: string;
 }

@@ -8,7 +8,7 @@ interface RevealProps {
   children: ReactNode;
   /** Direction the element animates in from. */
   variant?: RevealVariant;
-  /** Delay in ms — use to stagger siblings. */
+  /** Delay in ms, use to stagger siblings. */
   delay?: number;
   /** Render as a different element (default div). */
   as?: ElementType;

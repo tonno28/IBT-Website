@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Heizlastberechnung DIN EN 12831 — Wärmepumpe, Heizkörper",
+  title: "Heizlastberechnung nach DIN EN 12831",
   description:
     "Normheizlast nach DIN EN 12831 für Wärmepumpenauslegung, Heizkörperbemessung und Hydraulischen Abgleich. Ab 250 € für EFH. Schnelle Lieferzeit. Region Köln / Aachen / Düren.",
 };
@@ -48,7 +48,7 @@ export default function HeizlastPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { icon: "🌊", title: "Wärmepumpen-Auslegung", desc: "Wärmepumpen müssen exakt auf die Gebäudeheizlast dimensioniert werden — zu groß taktet zu oft, zu klein deckt den Bedarf nicht." },
+              { icon: "🌊", title: "Wärmepumpen-Auslegung", desc: "Wärmepumpen müssen exakt auf die Gebäudeheizlast dimensioniert werden. Zu groß taktet zu oft, zu klein deckt den Bedarf nicht." },
               { icon: "💧", title: "Hydraulischer Abgleich", desc: "Pflicht bei Heizungsförderung und KfW-Kredit. Ohne Heizlast keine korrekte Auslegung der Heizkörper-Ventileinstellungen." },
               { icon: "♨️", title: "Fußbodenheizung", desc: "Vorlauftemperatur-Auslegung und Heizkreisberechnung für Flächenheizungen erfordern die raumweise Heizlast." },
               { icon: "📋", title: "GEG / BEG Nachweise", desc: "Energetische Nachweise für Sanierungsförderung und Effizienzhaus-Bilanzierung basieren auf der normierten Heizlast." },
@@ -105,7 +105,7 @@ export default function HeizlastPage() {
       <CTABanner
         anliegen="heizlast"
         title="Heizlast beauftragen"
-        description="Senden Sie mir Grundrisse und Gebäudedaten — ich erstelle die normgerechte Heizlastberechnung kurzfristig."
+        description="Senden Sie mir Grundrisse und Gebäudedaten. Ich erstelle die normgerechte Heizlastberechnung kurzfristig."
         primaryLabel="Heizlast anfragen"
         secondaryLabel="Alle Ingenieurleistungen"
         secondaryHref="/ingenieurleistungen"

@@ -46,7 +46,7 @@ export default function LeistungenOverview() {
             Zwei Säulen. Ein Ansprechpartner.
           </h2>
           <p className="max-w-2xl mx-auto text-zinc-muted">
-            Energieberater und Ingenieur in einer Person — die Schnittstelle zwischen
+            Energieberater und Ingenieur in einer Person: die Schnittstelle zwischen
             Förderung, Bauphysik und ausführendem Handwerk.
           </p>
         </Reveal>

@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Effizienzhaus-Bilanzierung — KfW Effizienzhaus 40 55 70 85",
+  title: "Effizienzhaus-Bilanzierung 40 / 55 / 70 / 85",
   description:
-    "Effizienzhaus-Nachweis nach GEG: Bilanzierung Effizienzhaus 40/55/70/85 nach DIN V 18599 — Voraussetzung für KfW-Wohngebäudekredit und Tilgungszuschüsse. Region Köln / Aachen / Düren.",
+    "Effizienzhaus-Nachweis nach GEG: Bilanzierung Effizienzhaus 40/55/70/85 nach DIN V 18599, Voraussetzung für KfW-Wohngebäudekredit und Tilgungszuschüsse. Region Köln / Aachen / Düren.",
 };
 
 export default function EffizienzhausPage() {
@@ -61,7 +61,7 @@ export default function EffizienzhausPage() {
             ))}
           </div>
           <p className="text-xs text-zinc-hint text-center mt-6">
-            Je niedriger die Zahl, desto effizienter das Gebäude — und desto höher die KfW-Förderung.
+            Je niedriger die Zahl, desto effizienter das Gebäude und desto höher die KfW-Förderung.
           </p>
         </div>
       </section>
@@ -75,10 +75,10 @@ export default function EffizienzhausPage() {
           </h2>
           <div className="space-y-4">
             {[
-              { title: "Gebäudebilanzierung", desc: "Vollständige Berechnung nach DIN V 18599 (Neubau) oder DIN V 4108-6 (Bestand) — Primärenergiebedarf und Transmissionswärmeverlust." },
+              { title: "Gebäudebilanzierung", desc: "Vollständige Berechnung nach DIN V 18599 (Neubau) oder DIN V 4108-6 (Bestand): Primärenergiebedarf und Transmissionswärmeverlust." },
               { title: "U-Wert-Berechnungen", desc: "Berechnung aller Bauteile der Gebäudehülle (Wand, Dach, Boden, Fenster) als Grundlage der Bilanzierung." },
               { title: "Nachweisdokumentation", desc: "Vollständiger KfW-konformer Nachweis inkl. Bestätigung zum Kreditantrag (BzKA) und Bestätigung nach Durchführung (BnD)." },
-              { title: "Effizienzhaus-Optimierung", desc: "Falls nötig: Analyse, welche Maßnahmen das Gebäude auf die gewünschte Effizienzstufe bringen — mit Kosten-Nutzen-Abwägung." },
+              { title: "Effizienzhaus-Optimierung", desc: "Falls nötig: Analyse, welche Maßnahmen das Gebäude auf die gewünschte Effizienzstufe bringen, mit Kosten-Nutzen-Abwägung." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
                 <div className="w-2 h-2 rounded-full bg-teal-mid shrink-0 mt-2" />
@@ -95,7 +95,7 @@ export default function EffizienzhausPage() {
       <CTABanner
         anliegen="effizienzhaus"
         title="Effizienzhaus-Nachweis anfragen"
-        description="Neubau oder Kernsanierung? Ich erstelle den vollständigen KfW-Nachweis — normgerecht und fördersicher."
+        description="Neubau oder Kernsanierung? Ich erstelle den vollständigen KfW-Nachweis, normgerecht und fördersicher."
         primaryLabel="Bilanzierung anfragen"
       />
     </>

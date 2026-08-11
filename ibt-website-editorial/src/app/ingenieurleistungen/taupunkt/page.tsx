@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Taupunktnachweis — Feuchteschutz DIN 4108-3 Köln Aachen",
+  title: "Taupunktnachweis: Feuchteschutz nach DIN 4108-3",
   description:
     "Taupunktnachweis nach Glaser-Verfahren (DIN 4108-3): Feuchteschutznachweis für Außenbauteile, verhindert Kondensatschäden und Schimmel. Ab 120 € pro Bauteil. Region Köln / Aachen / Düren.",
 };
@@ -28,7 +28,7 @@ export default function TaupunktPage() {
               <span className="text-amber">Feuchteschutz DIN 4108-3</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
-              Der Taupunktnachweis zeigt, ob in einem Bauteil Kondensatfeuchtigkeit entsteht —
+              Der Taupunktnachweis zeigt, ob in einem Bauteil Kondensatfeuchtigkeit entsteht,
               und schützt so vor Schimmel, Bauteilschäden und teuren Sanierungen.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -46,7 +46,7 @@ export default function TaupunktPage() {
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed">
             <p>
               Das Glaser-Verfahren (DIN 4108-3) berechnet, ob in einer Bauteilschicht während der
-              Winterperiode Tauwasser ausfällt — also ob Feuchtigkeit kondensiert. Dies kann bei
+              Winterperiode Tauwasser ausfällt, also ob Feuchtigkeit kondensiert. Dies kann bei
               falsch aufgebautem Wärmedämmverbundsystem (WDVS), Innendämmung oder undichter
               Dampfbremse passieren.
             </p>
@@ -101,7 +101,7 @@ export default function TaupunktPage() {
       <CTABanner
         anliegen="taupunkt"
         title="Taupunktnachweis beauftragen"
-        description="Senden Sie mir den Bauteilaufbau — ich liefere den normierten Feuchteschutznachweis nach DIN 4108-3."
+        description="Senden Sie mir den Bauteilaufbau. Ich liefere den normierten Feuchteschutznachweis nach DIN 4108-3."
         primaryLabel="Taupunkt anfragen"
         secondaryLabel="Alle Ingenieurleistungen"
         secondaryHref="/ingenieurleistungen"

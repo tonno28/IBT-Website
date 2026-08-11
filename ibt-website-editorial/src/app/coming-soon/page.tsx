@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 export const metadata: Metadata = {
   title: "Bald verfügbar",
   description:
-    "Die Website von IBT Ingenieurbüro Tonn befindet sich im Aufbau. Energieberatung (BAFA/KfW, iSFP, dena) und Ingenieurleistungen aus einer Hand — Region Köln / Aachen / Düren.",
+    "Die Website von IBT Ingenieurbüro Tonn befindet sich im Aufbau. Energieberatung (BAFA/KfW, iSFP, dena) und Ingenieurleistungen aus einer Hand für die Region Köln / Aachen / Düren.",
   robots: { index: false, follow: false },
 };
 
@@ -41,7 +41,7 @@ export default function ComingSoonPage() {
         {/* Subline */}
         <p className="max-w-xl mx-auto text-lg text-zinc-muted leading-relaxed mb-10">
           An unserem neuen Webauftritt wird gerade gearbeitet. Energieberatung und
-          Ingenieurleistungen aus einer Hand — Jonas Tonn, B. Eng., für die Region
+          Ingenieurleistungen aus einer Hand. Jonas Tonn, B. Eng., für die Region
           Köln / Aachen / Düren.
         </p>
 

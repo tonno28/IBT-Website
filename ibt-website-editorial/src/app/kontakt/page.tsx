@@ -10,7 +10,7 @@ import {
   leistungBySlug,
 } from "@/lib/leistungen";
 
-// Note: metadata can't be in client components — move to separate file if needed
+// Note: metadata can't be in client components, move to separate file if needed
 // For now, we keep contact form logic here
 
 export default function KontaktPage() {
@@ -65,10 +65,10 @@ export default function KontaktPage() {
         from_name: form.name,
         name: form.name,
         email: form.email,
-        telefon: form.telefon || "—",
-        anliegen: leistung?.label ?? "—",
-        angaben: angaben || "— keine Angaben gemacht —",
-        nachricht: form.nachricht || "—",
+        telefon: form.telefon || "keine Angabe",
+        anliegen: leistung?.label ?? "keine Angabe",
+        angaben: angaben || "keine Angaben gemacht",
+        nachricht: form.nachricht || "keine Angabe",
       });
       setStatus("ok");
       setSubmitted(true);
@@ -89,7 +89,7 @@ export default function KontaktPage() {
               Kostenlose Erstberatung
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed">
-              Beschreiben Sie kurz Ihr Vorhaben — ich melde mich innerhalb eines Werktags
+              Beschreiben Sie kurz Ihr Vorhaben, ich melde mich innerhalb eines Werktags
               mit einer ersten Einschätzung. Keine Verpflichtung.
             </p>
           </div>
@@ -232,7 +232,7 @@ export default function KontaktPage() {
                     </div>
                   </div>
 
-                  {/* Qualifizierung — erscheint erst, wenn das Anliegen feststeht.
+                  {/* Qualifizierung: erscheint erst, wenn das Anliegen feststeht.
                       Alles freiwillig; die Angaben ersparen eine Rückfragerunde. */}
                   {leistung && fragen.length > 0 && (
                     <fieldset className="rounded-xl border border-zinc-border bg-bg-hover/50 p-5">
@@ -240,7 +240,7 @@ export default function KontaktPage() {
                         Damit ich Ihnen gleich etwas Konkretes sagen kann
                       </legend>
                       <p className="text-xs text-zinc-muted mb-4 leading-relaxed">
-                        Alles freiwillig — je mehr Sie ausfüllen, desto präziser fällt
+                        Alles freiwillig. Je mehr Sie ausfüllen, desto präziser fällt
                         meine erste Einschätzung aus.
                       </p>
 

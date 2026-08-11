@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Fachplanung & Baubegleitung BEG — Energetische Baubegleitung",
+  title: "Fachplanung und Baubegleitung nach BEG",
   description:
     "Energetische Fachplanung und Baubegleitung nach BEG: Pflicht für geförderte Einzelmaßnahmen, 50 % BEG-Förderung auf Baubegleitung (max. 5.000 €). Region Köln / Aachen / Düren.",
 };
@@ -29,7 +29,7 @@ export default function BaubegleitungPage() {
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
               Energetische Fachplanung und Baubegleitung (iSFP/BEG) ist für viele
-              Fördermaßnahmen Pflicht. Und selbst zu 50 % gefördert — bis 5.000 € für EFH.
+              Fördermaßnahmen Pflicht. Und selbst zu 50 % gefördert, bis 5.000 € für EFH.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/kontakt?anliegen=baubegleitung" className="btn-primary">Baubegleitung anfragen</Link>
@@ -53,7 +53,7 @@ export default function BaubegleitungPage() {
               { icon: "📸", title: "Baudokumentation", desc: "Fotodokumentation der Bauausführung als Nachweis für BAFA/KfW." },
               { icon: "✅", title: "Verwendungsnachweis", desc: "Vollständiger Abschlussbericht und Verwendungsnachweis für die Förderauszahlung." },
               { icon: "🔧", title: "Qualitätssicherung", desc: "Prüfung der Materialqualität und Ausführung auf Normkonformität (U-Werte, Anschlüsse)." },
-              { icon: "📞", title: "Kommunikation Handwerk", desc: "Direkter Austausch mit ausführenden Handwerksbetrieben — klar, schnell, technisch präzise." },
+              { icon: "📞", title: "Kommunikation Handwerk", desc: "Direkter Austausch mit ausführenden Handwerksbetrieben: klar, schnell, technisch präzise." },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 card-base p-5">
                 <span className="text-xl shrink-0">{item.icon}</span>
@@ -97,7 +97,7 @@ export default function BaubegleitungPage() {
       <CTABanner
         anliegen="baubegleitung"
         title="Baubegleitung beauftragen"
-        description="Planen Sie eine energetische Sanierung? Ich begleite Sie von der Planung bis zum Verwendungsnachweis — technisch kompetent und fördersicher."
+        description="Planen Sie eine energetische Sanierung? Ich begleite Sie von der Planung bis zum Verwendungsnachweis, technisch kompetent und fördersicher."
         primaryLabel="Baubegleitung anfragen"
       />
     </>

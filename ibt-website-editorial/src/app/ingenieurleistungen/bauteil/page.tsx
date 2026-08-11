@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Bauteilberechnung U-Wert — DIN EN ISO 6946 Köln Aachen",
+  title: "Bauteilberechnung U-Wert nach DIN EN ISO 6946",
   description:
     "U-Wert-Berechnung nach DIN EN ISO 6946 für Wand, Dach, Boden und Fenster. Nachweis für Förderanträge, BEG, Baugenehmigung. Ab 80 € pro Bauteil. Region Köln / Aachen / Düren.",
 };
@@ -69,7 +69,7 @@ export default function BauteilPage() {
               { title: "BEG Fördernachweis", desc: "Für Einzelmaßnahmen (Fassade, Dach, Fenster) muss der erreichte U-Wert den BEG-Mindestanforderungen entsprechen und nachgewiesen werden." },
               { title: "Energiebilanzierung (GEG)", desc: "Grundlage für den Bedarfsausweis und die Effizienzhaus-Bilanzierung nach DIN V 18599 / DIN V 4108-6." },
               { title: "Baugenehmigung", desc: "Bei Neubau und wesentlicher Änderung sind U-Werte nach GEG nachzuweisen." },
-              { title: "Taupunktnachweis", desc: "Voraussetzung für den Glaser-Nachweis (DIN 4108-3) — ohne U-Wert kein Taupunktnachweis." },
+              { title: "Taupunktnachweis", desc: "Voraussetzung für den Glaser-Nachweis (DIN 4108-3). Ohne U-Wert kein Taupunktnachweis." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
                 <div className="w-2 h-2 rounded-full bg-amber shrink-0 mt-2" />
@@ -86,7 +86,7 @@ export default function BauteilPage() {
       <CTABanner
         anliegen="bauteil"
         title="U-Wert berechnen lassen"
-        description="Senden Sie mir den Bauteilaufbau (Schichten, Materialien, Dicken) — ich liefere den normierten U-Wert-Nachweis."
+        description="Senden Sie mir den Bauteilaufbau (Schichten, Materialien, Dicken). Ich liefere den normierten U-Wert-Nachweis."
         primaryLabel="Bauteilberechnung anfragen"
         secondaryLabel="Alle Ingenieurleistungen"
         secondaryHref="/ingenieurleistungen"

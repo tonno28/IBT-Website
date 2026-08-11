@@ -15,7 +15,7 @@ import FAQ from "@/components/FAQ";
  * (Haustür, fertig 18.05.2026, Zuwendungsbescheid über 954 €) und Burghard
  * (9 Fenster + Haustür, 24.379 € brutto, beauftragt 13.07.2026, Ausführung
  * Ende August, noch kein Bescheid). Damit wäre genau eine Maßnahme
- * realisiert — eine Kennzahl, die schwächer wirkt als gar keine, und
+ * realisiert, eine Kennzahl, die schwächer wirkt als gar keine, und
  * 954 € gefördert steht im unglücklichen Kontrast zur Aussage "bis zu
  * 80 % Förderung" weiter oben auf der Seite.
  *
@@ -26,7 +26,7 @@ import FAQ from "@/components/FAQ";
  */
 
 export const metadata: Metadata = {
-  title: "Energieberatung — iSFP, Förderung, Energieausweis",
+  title: "Energieberatung: iSFP, Förderung, Energieausweis",
   description:
     "Professionelle Energieberatung für Wohngebäude: iSFP Sanierungsfahrplan, Förderberatung BEG (BAFA/KfW), Energieausweis, Baubegleitung und Effizienzhaus-Nachweis. Region Köln / Aachen / Düren.",
 };
@@ -43,7 +43,7 @@ const leistungen: {
     href: "/energieberatung/isfp",
     icon: "roadmap",
     title: "iSFP Sanierungsfahrplan",
-    desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung — er verdoppelt die förderfähigen Kosten Ihrer Einzelmaßnahmen.",
+    desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung. Er verdoppelt die förderfähigen Kosten Ihrer Einzelmaßnahmen.",
     highlight: "bis 60.000 € förderfähig",
     price: "ab 650 € netto (EFH)",
   },
@@ -59,7 +59,7 @@ const leistungen: {
     href: "/energieberatung/energieausweis",
     icon: "document",
     title: "Energieausweis",
-    desc: "Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflichtdokument bei Verkauf, Vermietung und Neubau — schnell und rechtssicher.",
+    desc: "Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflichtdokument bei Verkauf, Vermietung und Neubau, schnell und rechtssicher.",
     highlight: "ab 95 €",
     price: "ab 95 € (Verbrauch) / ab 250 € (Bedarf EFH)",
   },
@@ -67,7 +67,7 @@ const leistungen: {
     href: "/energieberatung/baubegleitung",
     icon: "crane",
     title: "Fachplanung & Baubegleitung",
-    desc: "Energetische Fachplanung und Baubegleitung nach BEG. Pflicht für Einzelmaßnahmen mit Förderantrag — ich übernehme Planung, Kontrolle und Dokumentation.",
+    desc: "Energetische Fachplanung und Baubegleitung nach BEG. Pflicht für Einzelmaßnahmen mit Förderantrag. Ich übernehme Planung, Kontrolle und Dokumentation.",
     highlight: "50 % BEG-Förderung auf Baubegleitung",
     price: "ab 1.000 € (EFH)",
   },
@@ -75,7 +75,7 @@ const leistungen: {
     href: "/energieberatung/effizienzhaus",
     icon: "house",
     title: "Effizienzhaus-Bilanzierung",
-    desc: "Nachweis Effizienzhaus 40/55/70/85 nach GEG — Voraussetzung für KfW-Wohngebäudekredit und höhere Tilgungszuschüsse.",
+    desc: "Nachweis Effizienzhaus 40/55/70/85 nach GEG, Voraussetzung für KfW-Wohngebäudekredit und höhere Tilgungszuschüsse.",
     highlight: "KfW-Voraussetzung",
     price: "auf Anfrage",
   },
@@ -162,12 +162,12 @@ export default function EnergieberatungPage() {
               {
                 icon: "gear",
                 title: "Ingenieur-Know-how",
-                desc: "Ich berechne Heizlasten, U-Werte und Wärmebrücken selbst — kein Outsourcing, keine Verzögerungen.",
+                desc: "Ich berechne Heizlasten, U-Werte und Wärmebrücken selbst. Kein Outsourcing, keine Verzögerungen.",
               },
               {
                 icon: "target",
                 title: "Förder-Optimierung",
-                desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: Klimageschwindigkeitsbonus, Einkommensbonus mit Familienzuschlag, iSFP-Bonus — auf dem Stand der Reform vom 21.07.2026.",
+                desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: Klimageschwindigkeitsbonus, Einkommensbonus mit Familienzuschlag, iSFP-Bonus, auf dem Stand der Reform vom 21.07.2026.",
               },
               {
                 icon: "handshake",
@@ -201,13 +201,13 @@ export default function EnergieberatungPage() {
               </h2>
               <p className="text-zinc-muted leading-relaxed mb-6">
                 Rechnen Sie Ihr Sanierungspaket nach den seit dem 21.07.2026 geltenden
-                BEG-Richtlinien durch — ohne persönliche Daten, sofort und kostenlos.
+                BEG-Richtlinien durch, ohne persönliche Daten, sofort und kostenlos.
               </p>
 
               <div className="space-y-4 mb-8">
                 {([
                   { icon: "flame", text: "Heizung bis 80 %, Hülle & Technik bis 20 %" },
-                  { icon: "crane", text: "Baubegleitung 50 % — direkt vom Honorar abgezogen" },
+                  { icon: "crane", text: "Baubegleitung 50 %, direkt vom Honorar abgezogen" },
                   { icon: "euro", text: "Honorarschätzung für meine Begleitung inklusive" },
                 ] as { icon: IconName; text: string }[]).map((item) => (
                   <div key={item.text} className="flex items-start gap-3">

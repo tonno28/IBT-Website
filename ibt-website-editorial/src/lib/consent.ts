@@ -2,13 +2,13 @@
  * Cookie-Einwilligung und Google Tag.
  *
  * Ablauf bewusst streng: Vor einer aktiven Einwilligung wird gar kein
- * Google-Skript geladen — nicht nur der Consent Mode auf "denied" gesetzt.
+ * Google-Skript geladen, nicht nur der Consent Mode auf "denied" gesetzt.
  * Das ist die Auslegung, die in Deutschland nach § 25 TDDDG und der
  * DSGVO gefordert ist.
  *
  * Die Tag-ID kommt aus NEXT_PUBLIC_GOOGLE_TAG_ID (in den Vercel-Projekt-
  * einstellungen zu setzen, z. B. G-XXXXXXXXXX oder GTM-XXXXXXX). Ist sie
- * nicht gesetzt, wird nichts geladen und der Banner erscheint auch nicht —
+ * nicht gesetzt, wird nichts geladen und der Banner erscheint auch nicht ,
  * ohne Tracking braucht es keine Einwilligung.
  */
 
@@ -18,7 +18,7 @@ export const GOOGLE_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "";
 export const TRACKING_AKTIV = GOOGLE_TAG_ID.length > 0;
 
 const SPEICHER_KEY = "ibt-consent";
-/** Hochzählen, wenn sich der Umfang der Einwilligung ändert — fragt dann neu. */
+/** Hochzählen, wenn sich der Umfang der Einwilligung ändert, fragt dann neu. */
 const VERSION = 1;
 
 export interface Einwilligung {
@@ -45,7 +45,7 @@ export function speichereEinwilligung(analytics: boolean): Einwilligung {
   try {
     window.localStorage.setItem(SPEICHER_KEY, JSON.stringify(e));
   } catch {
-    // Speicher gesperrt (privater Modus) — dann gilt die Entscheidung
+    // Speicher gesperrt (privater Modus), dann gilt die Entscheidung
     // nur für diese Sitzung. Kein Grund, die Seite zu blockieren.
   }
   return e;
@@ -100,7 +100,7 @@ export function aktiviereGoogleTag(): void {
 }
 
 /**
- * Consent Mode auf "denied" — läuft vor jedem Google-Skript und gilt
+ * Consent Mode auf "denied", läuft vor jedem Google-Skript und gilt
  * auch, wenn der Nutzer ablehnt oder noch nicht entschieden hat.
  */
 export const CONSENT_DEFAULT_SNIPPET = `

@@ -55,7 +55,7 @@ export default function Hero() {
 
           {/* Subline */}
           <p className="max-w-2xl mx-auto text-lg sm:text-xl text-zinc-muted leading-relaxed mb-10">
-            Von der Förderantragstellung bis zur technischen Berechnung —
+            Von der Förderantragstellung bis zur technischen Berechnung:
             Jonas Tonn begleitet Ihr Sanierungsprojekt vollständig. Region
             Köln / Aachen / Düren.
           </p>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Energieberater Köln — IBT Ingenieurbüro Tonn",
+  title: "Energieberater Köln",
   description:
     "Energieberater in Köln: iSFP Sanierungsfahrplan, Förderberatung BEG (BAFA/KfW), Heizlastberechnung und Energieausweis. Jonas Tonn, §88 GEG, dena-gelistet. Jetzt anfragen.",
 };
@@ -19,7 +19,7 @@ export default function KoelnPage() {
             <p className="section-label mb-0">Region Köln</p>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-            Energieberater in Köln —<br />
+            Energieberater in Köln<br />
             <span className="text-gradient-teal">IBT Ingenieurbüro Tonn</span>
           </h1>
           <p className="text-xl text-zinc-muted leading-relaxed mb-8">
@@ -63,13 +63,13 @@ export default function KoelnPage() {
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
           <h2 className="text-2xl font-bold text-zinc-primary mb-6">
-            Energieberatung in Köln — was relevant ist
+            Energieberatung in Köln: was relevant ist
           </h2>
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed">
             <p>
               Köln hat einen großen Bestand an Altbauten aus der Gründerzeit und der
               Nachkriegszeit. Viele dieser Gebäude haben noch ungedämmte Außenwände,
-              veraltete Heizungsanlagen und einfach verglaste Fenster — hier liegt
+              veraltete Heizungsanlagen und einfach verglaste Fenster. Hier liegt
               das größte Einsparungspotential.
             </p>
             <p>

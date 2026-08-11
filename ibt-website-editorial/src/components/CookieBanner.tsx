@@ -14,7 +14,7 @@ import {
 export default function CookieBanner() {
   const [sichtbar, setSichtbar] = useState(false);
 
-  // Erst nach dem Mount entscheiden — localStorage gibt es beim Prerender nicht.
+  // Erst nach dem Mount entscheiden, localStorage gibt es beim Prerender nicht.
   useEffect(() => {
     if (!TRACKING_AKTIV) return;
     const e = ladeEinwilligung();
@@ -59,7 +59,7 @@ export default function CookieBanner() {
                 Cookies und Reichweitenmessung
               </h2>
               <p className="text-sm text-zinc-muted leading-relaxed">
-                Technisch notwendige Cookies setze ich immer — ohne sie funktioniert die Seite
+                Technisch notwendige Cookies setze ich immer, ohne sie funktioniert die Seite
                 nicht. Zusätzlich würde ich gern mit <strong>Google Tag</strong> messen, wie die
                 Seite genutzt wird, um sie zu verbessern. Dabei werden Daten an Google übertragen.
                 Sie können das ablehnen und Ihre Entscheidung jederzeit ändern. Mehr dazu in der{" "}

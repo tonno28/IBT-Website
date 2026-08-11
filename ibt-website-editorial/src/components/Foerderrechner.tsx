@@ -121,8 +121,8 @@ export default function Foerderrechner() {
         from_name: kontakt.name,
         name: kontakt.name,
         email: kontakt.email,
-        telefon: kontakt.telefon || "—",
-        nachricht: kontakt.nachricht || "—",
+        telefon: kontakt.telefon || "keine Angabe",
+        nachricht: kontakt.nachricht || "keine Angabe",
         konfiguration: konfiguration(eingabe, r),
       });
       setStatus("ok");
@@ -328,7 +328,7 @@ export default function Foerderrechner() {
                 Individueller Sanierungsfahrplan (iSFP)
               </span>
               <p className="text-xs text-zinc-muted mb-3">
-                Verdoppelt die förderfähigen Kosten — der Bonus gilt für den Anteil über
+                Verdoppelt die förderfähigen Kosten. Der Bonus gilt für den Anteil über
                 30.000 €.
               </p>
               <div className="space-y-1.5">
@@ -341,11 +341,11 @@ export default function Foerderrechner() {
                 <Auswahl
                   an={isfpStatus === "gewuenscht"}
                   onClick={() => setIsfpStatus("gewuenscht")}
-                  titel="Noch keiner — bitte mit anbieten"
+                  titel="Noch keiner, bitte mit anbieten"
                   zusatz={`+ ${BAFA.isfpBonus} %`}
                   text={`Ich erstelle ihn, dann greift der Bonus. Honorar ${fmtEuro(
                     r.isfpPaket.honorar
-                  )}, davon ${fmtEuro(r.isfpPaket.zuschuss)} gefördert — Ihr Anteil ${fmtEuro(
+                  )}, davon ${fmtEuro(r.isfpPaket.zuschuss)} gefördert, Ihr Anteil ${fmtEuro(
                     r.isfpPaket.eigenanteil
                   )}.`}
                 />
@@ -629,11 +629,11 @@ export default function Foerderrechner() {
           )}
 
           <p className="text-xs text-zinc-hint mb-5 leading-relaxed">
-            Unverbindliche Schätzung nach den {STAND.lang}. Auch das Honorar ist ein Richtwert —
+            Unverbindliche Schätzung nach den {STAND.lang}. Auch das Honorar ist ein Richtwert,
             verbindlich wird es erst nach einem Blick auf Ihr Objekt.
           </p>
 
-          {/* Anfrage — die Berechnung wird automatisch mitgeschickt */}
+          {/* Anfrage, die Berechnung wird automatisch mitgeschickt */}
           <div className="rounded-xl bg-bg-accent border border-amber/20 p-6 mb-4">
             {status === "ok" ? (
               <div className="text-center py-4">
@@ -643,7 +643,7 @@ export default function Foerderrechner() {
                 <h3 className="font-bold text-zinc-primary mb-2">Anfrage ist raus</h3>
                 <p className="text-sm text-zinc-muted leading-relaxed">
                   Ihre Berechnung liegt mir vor. Ich melde mich innerhalb eines Werktags bei
-                  Ihnen — bei Rückfragen erreichen Sie mich unter {ANFRAGE_EMPFAENGER}.
+                  Ihnen. Bei Rückfragen erreichen Sie mich unter {ANFRAGE_EMPFAENGER}.
                 </p>
               </div>
             ) : (
@@ -771,7 +771,7 @@ function Haken({ an }: { an: boolean }) {
   );
 }
 
-/** Eine Option aus einer Auswahlgruppe — runder Punkt statt Haken */
+/** Eine Option aus einer Auswahlgruppe, runder Punkt statt Haken */
 function Auswahl({
   an,
   onClick,

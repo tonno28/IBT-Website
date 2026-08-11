@@ -3,7 +3,7 @@ import Link from "next/link";
 import CookieEinstellungen from "@/components/CookieEinstellungen";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung — IBT Ingenieurbüro Tonn",
+  title: "Datenschutzerklärung",
   robots: { index: false, follow: false },
 };
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
  * Beschreibt genau die Verarbeitungen, die diese Website tatsächlich
  * auslöst: Vercel als Hoster, Web3Forms für den Formularversand, Google Tag
  * nur nach Einwilligung. Kommt ein Dienst dazu oder fällt einer weg, gehört
- * das hier hinein — eine Erklärung, die etwas anderes behauptet als der Code
+ * das hier hinein, eine Erklärung, die etwas anderes behauptet als der Code
  * tut, ist der häufigste Mangel bei Abmahnungen.
  *
  * UMZUG NACH IONOS: Sobald der statische Export auf IONOS-Webspace liegt,
@@ -109,7 +109,7 @@ export default function DatenschutzPage() {
               Walnut, CA 91789, USA gehostet. Mit Vercel besteht ein Vertrag über
               Auftragsverarbeitung nach Art. 28 DSGVO. Da die Auslieferung über
               ein weltweites Servernetz erfolgt, können dabei personenbezogene
-              Daten — insbesondere Ihre IP-Adresse — in die USA übermittelt
+              Daten, insbesondere Ihre IP-Adresse, in die USA übermittelt
               werden. Grundlage der Übermittlung sind die
               Standardvertragsklauseln der EU-Kommission nach Art. 46 Abs. 2
               lit. c DSGVO.
@@ -178,8 +178,8 @@ export default function DatenschutzPage() {
             </p>
             <p>
               Erst wenn Sie am Ende aktiv eine Anfrage absenden, werden Ihre
-              Eingaben — Wohneinheiten, Nutzungsart, gewählte Maßnahmen mit Kosten,
-              Boni sowie das Berechnungsergebnis — zusammen mit Ihren Kontaktdaten
+              Eingaben (Wohneinheiten, Nutzungsart, gewählte Maßnahmen mit Kosten,
+              Boni sowie das Berechnungsergebnis) zusammen mit Ihren Kontaktdaten
               übermittelt. Das ist notwendig, damit ich Ihre Anfrage inhaltlich
               beantworten kann. Es gilt dann Ziffer 4.
             </p>
@@ -226,8 +226,8 @@ export default function DatenschutzPage() {
               Zur Reichweitenmessung setze ich Google Tag ein (Google Ireland
               Limited, Gordon House, Barrow Street, Dublin 4, Irland). Damit werte
               ich aus, wie diese Website genutzt wird, um sie zu verbessern. Dabei
-              können Cookies gesetzt und Daten — einschließlich Ihrer gekürzten
-              IP-Adresse — an Google übertragen und gegebenenfalls in die USA
+              können Cookies gesetzt und Daten, einschließlich Ihrer gekürzten
+              IP-Adresse, an Google übertragen und gegebenenfalls in die USA
               weitergeleitet werden. Google LLC ist unter dem EU-US Data Privacy
               Framework zertifiziert.
             </p>
@@ -242,7 +242,7 @@ export default function DatenschutzPage() {
             </p>
             <p>
               Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
-              widerrufen — über den Link „Cookie-Einstellungen" am Ende jeder
+              widerrufen, über den Link „Cookie-Einstellungen" am Ende jeder
               Seite oder direkt hier:
             </p>
             <div className="pt-1">
@@ -253,7 +253,7 @@ export default function DatenschutzPage() {
           <Abschnitt nr={9} titel="WhatsApp">
             <p>
               Auf dieser Website finden Sie Links zu WhatsApp. Es handelt sich um
-              einfache Verlinkungen — solange Sie sie nicht anklicken, werden keine
+              einfache Verlinkungen. Solange Sie sie nicht anklicken, werden keine
               Daten an WhatsApp übertragen. Klicken Sie den Link an, öffnet sich
               WhatsApp und es gelten die Datenschutzbestimmungen der WhatsApp
               Ireland Limited. Wenn Sie das vermeiden möchten, erreichen Sie mich
@@ -341,8 +341,8 @@ export default function DatenschutzPage() {
           <Abschnitt nr={12} titel="Änderungen dieser Erklärung">
             <p>
               Ich passe diese Datenschutzerklärung an, sobald sich die
-              Datenverarbeitung auf dieser Website ändert — etwa weil ein Dienst
-              hinzukommt oder wegfällt — oder die Rechtslage es erfordert. Für
+              Datenverarbeitung auf dieser Website ändert, etwa weil ein Dienst
+              hinzukommt oder wegfällt, oder wenn die Rechtslage es erfordert. Für
               Ihren erneuten Besuch gilt jeweils die hier veröffentlichte Fassung.
               Das Datum oben zeigt Ihnen den aktuellen Stand.
             </p>

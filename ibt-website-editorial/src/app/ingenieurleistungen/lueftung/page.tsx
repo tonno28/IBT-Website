@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Lüftungskonzept DIN 1946-6 — Köln Aachen Düren",
+  title: "Lüftungskonzept nach DIN 1946-6",
   description:
     "Lüftungskonzept nach DIN 1946-6: Pflicht bei luftdichter Gebäudehülle und energetischer Sanierung. Nachweis für BEG-Förderung. Ab 180 € für EFH. Region Köln / Aachen / Düren.",
 };
@@ -28,7 +28,7 @@ export default function LueftungPage() {
               <span className="text-amber">nach DIN 1946-6</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed mb-8">
-              Bei energetisch sanierten und luftdichten Gebäuden ist das Lüftungskonzept Pflicht —
+              Bei energetisch sanierten und luftdichten Gebäuden ist das Lüftungskonzept Pflicht,
               und oft Fördervoraussetzung. Ich erstelle es normkonform und schnell.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -47,7 +47,7 @@ export default function LueftungPage() {
           </h2>
           <div className="space-y-4">
             {[
-              { title: "Neubau", desc: "Grundsätzlich erforderlich — luftdichte Gebäudehülle erfordert kontrollierten Luftaustausch." },
+              { title: "Neubau", desc: "Grundsätzlich erforderlich, weil eine luftdichte Gebäudehülle kontrollierten Luftaustausch braucht." },
               { title: "Fenstertausch", desc: "Bei Austausch von mehr als 1/3 der Fenster ist ein Lüftungsnachweis zu erstellen." },
               { title: "BEG-Förderung Anlagentechnik", desc: "Für geförderte Lüftungsanlagen (BEG EM) ist das Konzept Pflicht und Fördervoraussetzung." },
               { title: "Luftdichtheitsnachweis", desc: "Nach Blower-Door-Test: zeigt, ob Infiltration als Lüftungsweg ausreichend ist oder eine Anlage benötigt wird." },
@@ -75,7 +75,7 @@ export default function LueftungPage() {
               "Auslegung des Lüftungsvolumenstroms",
               "Empfehlung Lüftungssystem (dezentral / zentral / Anlage)",
               "Nachweis für Förderantrag BEG und Baugenehmigung",
-              "Bericht als PDF — verwendbar als Planungsunterlage",
+              "Bericht als PDF, verwendbar als Planungsunterlage",
               "Lieferzeit 3–5 Werktage",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm text-zinc-muted">
@@ -92,7 +92,7 @@ export default function LueftungPage() {
       <CTABanner
         anliegen="lueftung"
         title="Lüftungskonzept beauftragen"
-        description="Grundrisse und n50-Wert aus dem Blower-Door-Test — ich erstelle das normkonforme Lüftungskonzept."
+        description="Grundrisse und n50-Wert aus dem Blower-Door-Test genügen. Ich erstelle das normkonforme Lüftungskonzept."
         primaryLabel="Lüftungskonzept anfragen"
         secondaryLabel="Alle Ingenieurleistungen"
         secondaryHref="/ingenieurleistungen"

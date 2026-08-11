@@ -3,12 +3,12 @@
  *
  * Jede Leistungsseite verlinkt das Kontaktformular mit ihrem Slug
  * (/kontakt?anliegen=energieausweis). Das Formular wählt das Anliegen dann
- * vor und blendet genau die Rückfragen ein, die für diese Leistung zählen —
+ * vor und blendet genau die Rückfragen ein, die für diese Leistung zählen ,
  * also die, die sonst im ersten Telefonat gestellt werden müssten.
  *
  * Leitlinie beim Erweitern: Pflicht bleiben nur Name, E-Mail und
  * Einwilligung. Alles hier ist freiwillig. Jede zusätzliche Frage kostet
- * Abschlüsse, also nur aufnehmen, was die Antwort wirklich verändert —
+ * Abschlüsse, also nur aufnehmen, was die Antwort wirklich verändert ,
  * nicht, was nett zu wissen wäre.
  */
 
@@ -29,7 +29,7 @@ export interface Leistung {
   fragen: Frage[];
 }
 
-/** Für jede Anfrage sinnvoll — unabhängig von der Leistung. */
+/** Für jede Anfrage sinnvoll, unabhängig von der Leistung. */
 export const ALLGEMEINE_FRAGEN: Frage[] = [
   {
     id: "gebaeudetyp",
@@ -194,7 +194,7 @@ export function leistungBySlug(slug: string | null): Leistung | undefined {
   return LEISTUNGEN.find((l) => l.slug === slug);
 }
 
-/** Alle Fragen für ein Anliegen — allgemeine zuerst, dann die spezifischen. */
+/** Alle Fragen für ein Anliegen, allgemeine zuerst, dann die spezifischen. */
 export function fragenFuer(leistung: Leistung | undefined): Frage[] {
   return [...ALLGEMEINE_FRAGEN, ...(leistung?.fragen ?? [])];
 }

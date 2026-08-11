@@ -2,7 +2,7 @@
 
 import { TRACKING_AKTIV, oeffneCookieEinstellungen } from "@/lib/consent";
 
-/** Widerruf muss so einfach sein wie die Einwilligung — daher im Footer. */
+/** Widerruf muss so einfach sein wie die Einwilligung, daher im Footer. */
 export default function CookieEinstellungen() {
   if (!TRACKING_AKTIV) return null;
 
