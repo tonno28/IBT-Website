@@ -7,19 +7,23 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import Foerderrechner from "@/components/Foerderrechner";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import StatsBanner from "@/components/StatsBanner";
 
-// TODO Jonas: bitte mit echten, aktuellen Zahlen befüllen und bei jedem
-// abgeschlossenen Projekt aktualisieren.
-const energieStats: [
-  { value: string; label: string },
-  { value: string; label: string },
-  { value: string; label: string }
-] = [
-  { value: "[Anzahl]", label: "Realisierte Maßnahmen" },
-  { value: "[€]", label: "Projektvolumen" },
-  { value: "[€]", label: "Davon gefördert" },
-];
+/**
+ * Der Zahlen-Streifen ist hier bewusst noch nicht eingebaut.
+ *
+ * Stand 11.08.2026 liegen zwei Förderprojekte vor: Marquardt-Hirte
+ * (Haustür, fertig 18.05.2026, Zuwendungsbescheid über 954 €) und Burghard
+ * (9 Fenster + Haustür, 24.379 € brutto, beauftragt 13.07.2026, Ausführung
+ * Ende August, noch kein Bescheid). Damit wäre genau eine Maßnahme
+ * realisiert — eine Kennzahl, die schwächer wirkt als gar keine, und
+ * 954 € gefördert steht im unglücklichen Kontrast zur Aussage "bis zu
+ * 80 % Förderung" weiter oben auf der Seite.
+ *
+ * Sobald Burghard beschieden und ausgeführt ist, lohnt der Streifen:
+ * dann 3 Maßnahmen, rund 29.000 € begleitetes Volumen und die dann
+ * bewilligte Fördersumme. StatsBanner wieder importieren und wie auf der
+ * Ingenieurleistungen-Seite einsetzen.
+ */
 
 export const metadata: Metadata = {
   title: "Energieberatung — iSFP, Förderung, Energieausweis",
@@ -110,9 +114,6 @@ export default function EnergieberatungPage() {
           </Reveal>
         </div>
       </section>
-
-      {/* Zahlen */}
-      <StatsBanner stats={energieStats} note="Stand: laufend aktualisiert" />
 
       {/* Leistungen Grid */}
       <section className="section-padding bg-bg-primary">
