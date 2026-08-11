@@ -27,7 +27,7 @@ export default function HeizlastPage() {
               Heizlastberechnung<br />
               <span className="text-amber">DIN EN 12831</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Normkonforme Heizlastberechnung als Basis für die richtige Dimensionierung von
               Wärmepumpen, Flächenheizungen, Heizkörpern und den Hydraulischen Abgleich.
             </p>

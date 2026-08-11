@@ -88,7 +88,7 @@ export default function KontaktPage() {
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-4">
               Kostenlose Erstberatung
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance">
               Beschreiben Sie kurz Ihr Vorhaben, ich melde mich innerhalb eines Werktags
               mit einer ersten Einschätzung. Keine Verpflichtung.
             </p>

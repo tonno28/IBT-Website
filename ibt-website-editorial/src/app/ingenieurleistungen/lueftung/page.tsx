@@ -27,7 +27,7 @@ export default function LueftungPage() {
               Lüftungskonzept<br />
               <span className="text-amber">nach DIN 1946-6</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Bei energetisch sanierten und luftdichten Gebäuden ist das Lüftungskonzept Pflicht,
               und oft Fördervoraussetzung. Ich erstelle es normkonform und schnell.
             </p>

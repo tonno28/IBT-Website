@@ -39,10 +39,10 @@ export default function ComingSoonPage() {
         </h1>
 
         {/* Subline */}
-        <p className="max-w-xl mx-auto text-lg text-zinc-muted leading-relaxed mb-10">
+        <p className="max-w-xl mx-auto text-lg text-zinc-muted leading-relaxed text-balance mb-10">
           An unserem neuen Webauftritt wird gerade gearbeitet. Energieberatung und
-          Ingenieurleistungen aus einer Hand. Jonas Tonn, B. Eng., für die Region
-          Köln / Aachen / Düren.
+          Ingenieurleistungen aus einer Hand, für die Region Köln, Aachen und
+          Düren.
         </p>
 
         {/* Badges */}

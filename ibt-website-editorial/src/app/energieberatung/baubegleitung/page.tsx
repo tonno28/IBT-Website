@@ -27,7 +27,7 @@ export default function BaubegleitungPage() {
               Fachplanung &<br />
               <span className="text-gradient-teal">Baubegleitung</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Energetische Fachplanung und Baubegleitung (iSFP/BEG) ist für viele
               Fördermaßnahmen Pflicht. Und selbst zu 50 % gefördert, bis 5.000 € für EFH.
             </p>

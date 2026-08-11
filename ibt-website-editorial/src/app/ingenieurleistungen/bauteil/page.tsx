@@ -27,7 +27,7 @@ export default function BauteilPage() {
               Bauteilberechnung<br />
               <span className="text-amber">U-Wert nach DIN EN ISO 6946</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der U-Wert ist der zentrale Kennwert für die Wärmedämmeigenschaft eines Bauteils.
               Ich berechne ihn normgerecht für Nachweis, Förderantrag und Energiebilanzierung.
             </p>

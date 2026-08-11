@@ -35,7 +35,7 @@ export default function ISFPPage() {
               Individueller<br />
               <span className="text-gradient-teal">Sanierungsfahrplan</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der iSFP ist Ihr persönlicher Masterplan: Welche Maßnahmen in welcher Reihenfolge,
               welche Förderung, welche Einsparung. Und er verdoppelt die förderfähigen Kosten,
               mit +5 % Bonus auf den Anteil oberhalb der Basis-Höchstgrenze.

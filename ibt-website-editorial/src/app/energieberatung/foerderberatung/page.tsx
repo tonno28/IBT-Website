@@ -27,7 +27,7 @@ export default function FoerderberatungPage() {
               Förderberatung<br />
               <span className="text-gradient-teal">BAFA & KfW</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Bis zu 80 % Förderung auf Ihre Sanierungsmaßnahmen, wenn Sie alle Boni
               konsequent nutzen. Ich kenne das System und stelle alle Anträge vollständig für Sie.
             </p>

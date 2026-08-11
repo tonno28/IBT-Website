@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials";
 import StatsBanner from "@/components/StatsBanner";
 
 export const metadata: Metadata = {
@@ -97,7 +97,7 @@ export default function IngenieurleistungenPage() {
               Technische Berechnungen<br />
               <span className="text-amber">normgerecht & schnell</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Heizlast, U-Werte, Taupunkt und Lüftung: präzise Berechnungen nach DIN/EN-Normen
               für Handwerksbetriebe, Architekten und Planer. Kurzfristig lieferbar.
             </p>
@@ -189,8 +189,9 @@ export default function IngenieurleistungenPage() {
         </div>
       </section>
 
-      {/* Kundenstimmen */}
-      <Testimonials filter="technik" title="Was Handwerk & Planung sagen" />
+      {/* Kundenstimmen: vorerst ausgeblendet, kommen später zurück.
+          Wieder einblenden = die nächste Zeile entkommentieren. */}
+      {/* <Testimonials filter="technik" title="Was Handwerk & Planung sagen" /> */}
 
       <CTABanner
         title="Berechnung beauftragen"

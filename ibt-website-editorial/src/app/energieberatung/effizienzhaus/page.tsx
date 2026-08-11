@@ -27,7 +27,7 @@ export default function EffizienzhausPage() {
               Effizienzhaus-<br />
               <span className="text-gradient-teal">Bilanzierung</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der KfW-Wohngebäudekredit setzt einen Effizienzhaus-Nachweis voraus.
               Ich erstelle die vollständige Gebäudebilanzierung nach DIN V 18599
               für KfW Effizienzhaus 40, 55, 70 und 85.

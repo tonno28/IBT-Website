@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Foerderrechner from "@/components/Foerderrechner";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 
 /**
@@ -98,7 +98,7 @@ export default function EnergieberatungPage() {
               Energieberatung für{" "}
               <span className="text-gradient-teal">Wohngebäude</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Von der Erstberatung bis zur ausgezahlten Förderung. Als dena-gelisteter
               Energieeffizienz-Experte und akkreditierter Energieberater (BAFA/KfW) begleite
               ich Sie durch den gesamten Prozess.
@@ -235,8 +235,9 @@ export default function EnergieberatungPage() {
         </div>
       </section>
 
-      {/* Kundenstimmen */}
-      <Testimonials filter="energie" title="Was Eigentümer sagen" />
+      {/* Kundenstimmen: vorerst ausgeblendet, kommen später zurück.
+          Wieder einblenden = die nächste Zeile entkommentieren. */}
+      {/* <Testimonials filter="energie" title="Was Eigentümer sagen" /> */}
 
       {/* FAQ */}
       <FAQ />

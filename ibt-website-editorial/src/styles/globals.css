@@ -44,12 +44,27 @@ body {
 }
 
 /* Überschriften: dieselbe Schrift wie der Fließtext, unterschieden über
-   Gewicht und Größe. Die Laufweite bleibt nur leicht negativ — enger wirkte
+   Gewicht und Größe. Die Laufweite bleibt nur leicht negativ, enger wirkte
    in großen Headlines gedrängt. */
 h1, h2, h3 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.011em;
+}
+
+/* Zeilenumbrüche.
+   Überschriften werden auf gleich lange Zeilen verteilt (balance), statt ein
+   einzelnes Wort in die letzte Zeile zu schieben. Fließtext bekommt pretty:
+   der Browser vermeidet Schusterjungen, also kurze Restzeilen mit ein bis
+   zwei Wörtern. Beides ignorieren ältere Browser einfach.
+   Bewusst ohne Silbentrennung: der Fließtext ist linksbündig, es entstehen
+   also keine Lücken, die ein Trennstrich schließen müsste. */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p, li, dd, blockquote, figcaption {
+  text-wrap: pretty;
 }
 
 /* Custom range input */

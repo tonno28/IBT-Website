@@ -27,7 +27,7 @@ export default function TaupunktPage() {
               Taupunktnachweis<br />
               <span className="text-amber">Feuchteschutz DIN 4108-3</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der Taupunktnachweis zeigt, ob in einem Bauteil Kondensatfeuchtigkeit entsteht,
               und schützt so vor Schimmel, Bauteilschäden und teuren Sanierungen.
             </p>

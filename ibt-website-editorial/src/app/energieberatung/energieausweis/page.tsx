@@ -27,7 +27,7 @@ export default function EnergieausweisPage() {
               Energieausweis<br />
               <span className="text-gradient-teal">rechtssicher & schnell</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflicht bei Verkauf, Vermietung
               und Neubau. Ich stelle ihn schnell, korrekt und GEG-konform aus.
             </p>

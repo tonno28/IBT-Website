@@ -46,7 +46,7 @@ export default function FoerderrechnerPage() {
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary mb-4">
               Förderrechner
             </h1>
-            <p className="text-lg text-zinc-muted leading-relaxed mb-5">
+            <p className="text-lg text-zinc-muted leading-relaxed text-balance mb-5">
               In vier Schritten zur Schätzung: Förderung, Eigenanteil und mein Honorar.
               Ohne Registrierung, ohne persönliche Daten.
             </p>

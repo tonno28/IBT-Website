@@ -27,7 +27,7 @@ export default function WaermebrueckenPage() {
               Wärmebrücken-<br />
               <span className="text-amber">berechnung</span>
             </h1>
-            <p className="text-xl text-zinc-muted leading-relaxed mb-8">
+            <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Ψ-Werte (psi) nach DIN EN ISO 10211 für präzise Gebäudebilanzierung,
               Schimmelpilznachweis und optimierte Energieeffizienz-Hausplanung.
             </p>

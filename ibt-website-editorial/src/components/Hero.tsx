@@ -53,11 +53,12 @@ export default function Hero() {
             <span className="text-zinc-secondary">Geplant vom Ingenieur.</span>
           </h1>
 
-          {/* Subline */}
-          <p className="max-w-2xl mx-auto text-lg sm:text-xl text-zinc-muted leading-relaxed mb-10">
-            Von der Förderantragstellung bis zur technischen Berechnung:
-            Jonas Tonn begleitet Ihr Sanierungsprojekt vollständig. Region
-            Köln / Aachen / Düren.
+          {/* Subline — text-balance verteilt die Zeilen gleichmäßig, statt
+              eine kurze Restzeile stehen zu lassen. */}
+          <p className="max-w-2xl mx-auto text-lg sm:text-xl text-zinc-muted leading-relaxed text-balance mb-10">
+            Von der Förderantragstellung bis zur technischen Berechnung
+            begleite ich Ihr Sanierungsprojekt vollständig. Für die Region
+            Köln, Aachen und Düren.
           </p>
 
           {/* CTAs */}
