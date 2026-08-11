@@ -595,9 +595,20 @@ export default function Foerderrechner() {
                     Alternative: Steuerbonus § 35c EStG
                   </h3>
                   <p className="text-xs text-zinc-muted leading-relaxed">
-                    {STEUERBONUS.satz} % der Kosten ({fmtEuro(r.steuerbonus.betrag)}), verteilt{" "}
-                    {STEUERBONUS.verteilung}. Für dieselbe Maßnahme nicht mit dem Zuschuss
-                    kombinierbar.
+                    Zusammen{" "}
+                    <strong className="text-zinc-secondary">
+                      {fmtEuro(r.steuerbonus.betrag)}
+                    </strong>
+                    : {STEUERBONUS.satz} % der Baukosten (
+                    {fmtEuro(r.steuerbonus.bauteil)}), verteilt {STEUERBONUS.verteilung}
+                    {r.steuerbonus.honorarteil > 0 && (
+                      <>
+                        , plus {STEUERBONUS.satzHonorar} % meines Honorars (
+                        {fmtEuro(r.steuerbonus.honorarteil)}) nach § 35c Abs. 1 Satz 4,
+                        weil ich die Maßnahme planerisch begleite
+                      </>
+                    )}
+                    . Für dieselbe Maßnahme nicht mit dem Zuschuss kombinierbar.
                   </p>
                 </div>
               )}

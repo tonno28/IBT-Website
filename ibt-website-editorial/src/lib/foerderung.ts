@@ -99,9 +99,19 @@ export function honorarSchaetzung(baukosten: number): number {
   return Math.max(HONORAR.mindest, Math.round((baukosten * HONORAR.satz) / 100));
 }
 
-/** Steuerbonus nach § 35c EStG — Alternative zum Zuschuss, nicht kombinierbar */
+/**
+ * Steuerbonus nach § 35c EStG — Alternative zum Zuschuss, nicht kombinierbar.
+ *
+ * Zwei Sätze, nicht einer: 20 % auf die Baumaßnahme (Abs. 1 Satz 1, verteilt
+ * über drei Jahre) und daneben 50 % auf das Honorar des Energieberaters,
+ * wenn er mit planerischer Begleitung oder Beaufsichtigung beauftragt ist
+ * (Abs. 1 Satz 4). Der zweite Teil wird gern übersehen und macht den
+ * Steuerweg für kleine Hüllenmaßnahmen noch deutlicher attraktiver.
+ */
 export const STEUERBONUS = {
   satz: 20,
+  /** § 35c Abs. 1 Satz 4: Aufwendungen für den Energieberater zu 50 %. */
+  satzHonorar: 50,
   maxBemessung: 200000,
   maxBonus: 40000,
   verteilung: "7 % / 7 % / 6 % über drei Jahre",
@@ -324,7 +334,12 @@ export interface Ergebnis {
   nichtAnrechenbar: number;
   steuerbonus: {
     moeglich: boolean;
+    /** Bauteil + Honorarteil, gedeckelt auf den Höchstbetrag. */
     betrag: number;
+    /** 20 % der Baukosten. */
+    bauteil: number;
+    /** 50 % des Honorars nach § 35c Abs. 1 Satz 4. */
+    honorarteil: number;
     besser: boolean;
   };
   hinweise: Hinweis[];
@@ -513,12 +528,24 @@ export function berechne(e: Eingabe): Ergebnis {
   const nichtAnrechenbar = Math.max(0, baukosten - (heizung.anrechenbar + bafa.anrechenbar));
 
   /* ---------------- Steuerbonus § 35c EStG ---------------- */
-  const steuerBetrag = Math.round(
+  // 20 % auf die Baumaßnahme …
+  const steuerBauteil = Math.round(
     (Math.min(baukosten, STEUERBONUS.maxBemessung) * STEUERBONUS.satz) / 100
+  );
+  // … und 50 % auf das Honorar, weil die Begleitung durch einen
+  // BAFA-qualifizierten Energieberater erfolgt (§ 35c Abs. 1 Satz 4).
+  const steuerHonorarteil = Math.round(
+    (honorarBetrag * STEUERBONUS.satzHonorar) / 100
+  );
+  const steuerBetrag = Math.min(
+    steuerBauteil + steuerHonorarteil,
+    STEUERBONUS.maxBonus
   );
   const steuerbonus = {
     moeglich: e.selbstnutzend && baukosten > 0,
-    betrag: Math.min(steuerBetrag, STEUERBONUS.maxBonus),
+    betrag: steuerBetrag,
+    bauteil: steuerBauteil,
+    honorarteil: steuerHonorarteil,
     besser: e.selbstnutzend && steuerBetrag > gesamtZuschuss,
   };
 
