@@ -83,14 +83,6 @@ export default function Footer() {
                     BEG-Förderrechner 2026
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="text-sm text-zinc-muted hover:text-zinc-primary transition-colors"
-                  >
-                    Blog &amp; Ratgeber
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>

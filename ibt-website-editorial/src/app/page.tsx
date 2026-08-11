@@ -31,8 +31,9 @@ export default function Home() {
                 Jonas Tonn
               </h2>
               <p className="text-zinc-muted leading-relaxed mb-4">
-                Dipl.-Ing. und unabhängiger Energieberater. Was das bedeutet: keine
-                Abhängigkeit von Herstellern, keine Verkaufsziele, keine Provisionen.
+                B. Eng. Smart Building Engineering und unabhängiger Energieberater.
+                Was das bedeutet: keine Abhängigkeit von Herstellern, keine
+                Verkaufsziele, keine Provisionen.
               </p>
               <p className="text-zinc-muted leading-relaxed mb-6">
                 Ich kenne beide Seiten: die technischen Anforderungen an der Schnittstelle zu
@@ -50,10 +51,6 @@ export default function Home() {
                   <span key={badge} className="badge-teal">{badge}</span>
                 ))}
               </div>
-
-              <Link href="/ueber-mich" className="btn-secondary">
-                Mehr über mich →
-              </Link>
             </Reveal>
 
             <div className="grid grid-cols-2 gap-4">

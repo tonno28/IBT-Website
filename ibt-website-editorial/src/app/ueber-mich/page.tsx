@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Über mich — Jonas Tonn, Energieberater & Ingenieur",
   description:
-    "Jonas Tonn — Dipl.-Ing., unabhängiger Energieberater und Inhaber IBT Ingenieurbüro Tonn. §88 GEG qualifiziert, dena-gelistet, BAFA/KfW-akkreditiert.",
+    "Jonas Tonn — B. Eng. Smart Building Engineering (FH Aachen), unabhängiger Energieberater und Inhaber IBT Ingenieurbüro Tonn. §88 GEG qualifiziert, dena-gelistet, BAFA/KfW-akkreditiert.",
 };
 
 export default function UeberMichPage() {
@@ -42,9 +42,11 @@ export default function UeberMichPage() {
               <h2 className="text-2xl font-bold text-zinc-primary mb-6">Ingenieur aus Leidenschaft</h2>
               <div className="space-y-4 text-zinc-muted leading-relaxed text-sm">
                 <p>
-                  Ich bin Diplom-Ingenieur und unabhängiger Energieberater. Mit dem IBT
-                  Ingenieurbüro Tonn begleite ich Sanierungs- und Bauvorhaben vollständig,
-                  von der Förderberatung bis zur technischen Berechnung.
+                  Ich bin Bauingenieur (B. Eng.) und unabhängiger Energieberater. Studiert
+                  habe ich Smart Building Engineering an der FH Aachen — als einer der ersten
+                  Absolventen dieses noch jungen Studiengangs. Mit dem IBT Ingenieurbüro Tonn
+                  begleite ich Sanierungs- und Bauvorhaben vollständig, von der Förderberatung
+                  bis zur technischen Berechnung.
                 </p>
                 <p>
                   Was das bedeutet: Ich habe keine Abhängigkeiten von Heizungsherstellern,
@@ -79,8 +81,8 @@ export default function UeberMichPage() {
                   year: "BAFA/KfW",
                 },
                 {
-                  title: "Diplom-Ingenieur",
-                  desc: "Ingenieurstudium mit Schwerpunkt Energietechnik und Gebäudetechnik.",
+                  title: "B. Eng. Smart Building Engineering",
+                  desc: "FH Aachen — Gebäudetechnik, Energieeffizienz und Gebäudeautomation. Einer der ersten Absolventen des Studiengangs.",
                   year: "Hochschulabschluss",
                 },
               ].map((q) => (

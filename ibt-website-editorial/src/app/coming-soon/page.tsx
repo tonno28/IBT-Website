@@ -41,7 +41,7 @@ export default function ComingSoonPage() {
         {/* Subline */}
         <p className="max-w-xl mx-auto text-lg text-zinc-muted leading-relaxed mb-10">
           An unserem neuen Webauftritt wird gerade gearbeitet. Energieberatung und
-          Ingenieurleistungen aus einer Hand — Jonas Tonn, Dipl.-Ing., für die Region
+          Ingenieurleistungen aus einer Hand — Jonas Tonn, B. Eng., für die Region
           Köln / Aachen / Düren.
         </p>
 

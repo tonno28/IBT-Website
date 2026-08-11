@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | IBT Ingenieurbüro Tonn",
   },
   description:
-    "Professionelle Energieberatung (BAFA/KfW, iSFP, dena) und technische Ingenieurleistungen (Heizlast, Taupunkt, U-Wert) aus einer Hand. Jonas Tonn, Dipl.-Ing. — Region Köln, Aachen, Düren.",
+    "Professionelle Energieberatung (BAFA/KfW, iSFP, dena) und technische Ingenieurleistungen (Heizlast, Taupunkt, U-Wert) aus einer Hand. Jonas Tonn, B. Eng. — Region Köln, Aachen, Düren.",
   keywords: [
     "Energieberatung",
     "Energieberater",
