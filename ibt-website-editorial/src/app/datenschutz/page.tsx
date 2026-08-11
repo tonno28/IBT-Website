@@ -11,11 +11,20 @@ export const metadata: Metadata = {
  * Datenschutzerklärung.
  *
  * Beschreibt genau die Verarbeitungen, die diese Website tatsächlich
- * auslöst: IONOS als Hoster, Web3Forms für den Formularversand, Google Tag
- * nur nach Einwilligung, KI-gestützte Bearbeitung der Anfragen. Kommt ein
- * Dienst dazu oder fällt einer weg, gehört das hier hinein — eine
- * Erklärung, die etwas anderes behauptet als der Code tut, ist der
- * häufigste Mangel bei Abmahnungen.
+ * auslöst: Vercel als Hoster, Web3Forms für den Formularversand, Google Tag
+ * nur nach Einwilligung. Kommt ein Dienst dazu oder fällt einer weg, gehört
+ * das hier hinein — eine Erklärung, die etwas anderes behauptet als der Code
+ * tut, ist der häufigste Mangel bei Abmahnungen.
+ *
+ * UMZUG NACH IONOS: Sobald der statische Export auf IONOS-Webspace liegt,
+ * Abschnitt 3 ersetzen durch:
+ *
+ *   Diese Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410
+ *   Montabaur, Deutschland gehostet. Die Server stehen in Deutschland. Mit
+ *   IONOS besteht ein Vertrag über Auftragsverarbeitung nach Art. 28 DSGVO.
+ *
+ * Der Absatz zum Drittlandtransfer entfällt dann ersatzlos, und das Datum
+ * in STAND wird hochgesetzt.
  *
  * Mit [...] markierte Stellen kann nur Jonas ausfüllen.
  */
@@ -96,10 +105,14 @@ export default function DatenschutzPage() {
 
           <Abschnitt nr={3} titel="Hosting und Server-Logfiles">
             <p>
-              Diese Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410
-              Montabaur, Deutschland gehostet. Die Server stehen in Deutschland.
-              Mit IONOS besteht ein Vertrag über Auftragsverarbeitung nach
-              Art. 28 DSGVO.
+              Diese Website wird bei der Vercel Inc., 340 S Lemon Ave #4133,
+              Walnut, CA 91789, USA gehostet. Mit Vercel besteht ein Vertrag über
+              Auftragsverarbeitung nach Art. 28 DSGVO. Da die Auslieferung über
+              ein weltweites Servernetz erfolgt, können dabei personenbezogene
+              Daten — insbesondere Ihre IP-Adresse — in die USA übermittelt
+              werden. Grundlage der Übermittlung sind die
+              Standardvertragsklauseln der EU-Kommission nach Art. 46 Abs. 2
+              lit. c DSGVO.
             </p>
             <p>
               Beim Aufruf der Website erhebt der Hoster automatisch Informationen,
@@ -157,72 +170,7 @@ export default function DatenschutzPage() {
             </p>
           </Abschnitt>
 
-          <Abschnitt nr={5} titel="KI-gestützte Bearbeitung Ihrer Anfrage">
-            <p>
-              Ich setze KI-Assistenzsysteme ein, um Anfragen schneller und
-              präziser zu beantworten. Das betrifft Sie, wenn Sie mir über diese
-              Website oder per E-Mail schreiben — deshalb erkläre ich es hier
-              ausdrücklich.
-            </p>
-            <p>
-              <strong className="text-zinc-secondary">Was passiert:</strong> Die
-              Inhalte Ihrer Anfrage — also Ihr Anliegen, Ihre Angaben zum Gebäude
-              und Ihre Nachricht — werden von einem KI-System ausgewertet, um die
-              Anfrage fachlich einzuordnen, passende Förderoptionen
-              vorzubereiten und einen Antwortentwurf zu erstellen.
-            </p>
-            <p>
-              <strong className="text-zinc-secondary">Was nicht passiert:</strong>{" "}
-              Es gibt keine automatisierte Entscheidung im Sinne des Art. 22 DSGVO.
-              Jede Antwort, jede Einschätzung und jedes Angebot wird von mir
-              persönlich geprüft und freigegeben, bevor Sie es erhalten. Das
-              KI-System trifft keine Entscheidung über Ihre Anfrage, es bereitet
-              sie vor.
-            </p>
-            <p>
-              <strong className="text-zinc-secondary">Rechtsgrundlage:</strong>{" "}
-              Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in
-              einer schnellen, fachlich fundierten Bearbeitung; als
-              Einzelunternehmen kann ich Anfragen damit gründlicher beantworten,
-              als es sonst möglich wäre. Zielt Ihre Anfrage auf einen Vertrag ab,
-              stütze ich die Verarbeitung zusätzlich auf Art. 6 Abs. 1 lit. b
-              DSGVO.
-            </p>
-            <p>
-              <strong className="text-zinc-secondary">Anbieter:</strong>{" "}
-              <span className="text-zinc-secondary">
-                [Name und Anschrift des KI-Anbieters eintragen]
-              </span>
-              . Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach
-              Art. 28 DSGVO. Die Verarbeitung erfolgt{" "}
-              <span className="text-zinc-secondary">
-                [Serverstandort eintragen — bei Verarbeitung außerhalb der EU
-                zusätzlich die Grundlage nennen, z. B. Standardvertragsklauseln
-                oder EU-US Data Privacy Framework]
-              </span>
-              . Der Anbieter ist vertraglich verpflichtet, Ihre Daten nicht zum
-              Training eigener Modelle zu verwenden.
-            </p>
-            <p>
-              <strong className="text-zinc-secondary">
-                Ihr Widerspruchsrecht:
-              </strong>{" "}
-              Sie können der KI-gestützten Verarbeitung Ihrer Anfrage jederzeit
-              formlos widersprechen — eine kurze Nachricht an{" "}
-              <a href="mailto:info@ib-tonn.de" className={A}>info@ib-tonn.de</a>{" "}
-              genügt, gern auch direkt in Ihrer Anfrage. Ich bearbeite Ihr
-              Anliegen dann ausschließlich manuell. Ihnen entstehen dadurch keine
-              Nachteile.
-            </p>
-            <p>
-              Besondere Kategorien personenbezogener Daten nach Art. 9 DSGVO
-              (etwa Gesundheitsdaten) werden nicht in KI-Systeme eingegeben. Bitte
-              teilen Sie mir solche Angaben, falls sie ausnahmsweise relevant sein
-              sollten, telefonisch mit.
-            </p>
-          </Abschnitt>
-
-          <Abschnitt nr={6} titel="Förderrechner">
+          <Abschnitt nr={5} titel="Förderrechner">
             <p>
               Die Berechnung läuft vollständig in Ihrem Browser. Solange Sie nur
               rechnen, werden keine Daten übertragen und nichts gespeichert. Der
@@ -233,13 +181,26 @@ export default function DatenschutzPage() {
               Eingaben — Wohneinheiten, Nutzungsart, gewählte Maßnahmen mit Kosten,
               Boni sowie das Berechnungsergebnis — zusammen mit Ihren Kontaktdaten
               übermittelt. Das ist notwendig, damit ich Ihre Anfrage inhaltlich
-              beantworten kann. Es gelten dann die Ziffern 4 und 5.
+              beantworten kann. Es gilt dann Ziffer 4.
             </p>
             <p>
               Angaben zum Haushaltseinkommen dienen ausschließlich der Berechnung
               des Einkommens-Bonus. Sie sind freiwillig, werden nur als
               Größenordnung übermittelt und nicht mit anderen Daten
               zusammengeführt.
+            </p>
+          </Abschnitt>
+
+          <Abschnitt nr={6} titel="Keine automatisierte Entscheidungsfindung">
+            <p>
+              Ihre Anfragen werden von mir persönlich gelesen und beantwortet. Es
+              findet keine automatisierte Entscheidungsfindung einschließlich
+              Profiling im Sinne des Art. 22 DSGVO statt.
+            </p>
+            <p>
+              Ich setze auch keine KI-Systeme zur Auswertung oder Bearbeitung Ihrer
+              Anfragen ein. Ihre Angaben werden nicht an Anbieter solcher Systeme
+              übermittelt und nicht zum Training von Modellen verwendet.
             </p>
           </Abschnitt>
 

@@ -63,13 +63,8 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-base font-semibold text-zinc-primary mb-3">Umsatzsteuer</h2>
             <p>
-              Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG:{" "}
-              <strong className="text-zinc-secondary">[USt-IdNr. eintragen]</strong>
-            </p>
-            <p className="mt-2 text-xs text-zinc-hint">
-              Ohne USt-IdNr. diesen Abschnitt streichen. Als Kleinunternehmer nach
-              § 19 UStG stattdessen den Hinweis aufnehmen, dass keine Umsatzsteuer
-              ausgewiesen wird.
+              Als Kleinunternehmer im Sinne des § 19 UStG wird keine Umsatzsteuer
+              berechnet und in Rechnungen nicht ausgewiesen.
             </p>
           </div>
 
