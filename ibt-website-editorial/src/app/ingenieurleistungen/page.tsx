@@ -12,17 +12,23 @@ export const metadata: Metadata = {
     "Technische Ingenieurleistungen für Handwerk und Planer: Heizlastberechnung DIN 12831, Bauteilberechnung U-Wert, Taupunktnachweis, Lüftungskonzept DIN 1946-6. Region Köln / Aachen / Düren.",
 };
 
-// TODO Jonas: bitte mit echten, aktuellen Zahlen befüllen und bei jedem
-// abgeschlossenen Projekt aktualisieren. Dritte Kennzahl ist ein Vorschlag,
-// gerne durch etwas Passenderes ersetzen.
+/**
+ * Aus den Projektunterlagen ausgezählt (Stand 11.08.2026): 12 Objekte mit
+ * 24 Heizlast- und Abgleichsdokumenten, Summe der Norm-Heizlasten 108,3 kW.
+ * Grundlage ist jeweils der Wert "Norm-Heizlast" für die
+ * Wärmeerzeugerauslegung, nicht der Orientierungswert aus dem
+ * Verbrauchsverfahren.
+ *
+ * Bei jedem abgeschlossenen Projekt fortschreiben.
+ */
 const technikStats: [
   { value: string; label: string },
   { value: string; label: string },
   { value: string; label: string }
 ] = [
-  { value: "[Anzahl]", label: "Realisierte Projekte" },
-  { value: "[kW]", label: "Ermittelte Heizlast" },
-  { value: "[Anzahl]", label: "Erstellte Berechnungen" },
+  { value: "12", label: "Realisierte Projekte" },
+  { value: "108,3 kW", label: "Ermittelte Heizlast" },
+  { value: "24", label: "Erstellte Berechnungen" },
 ];
 
 const leistungen: {
@@ -106,7 +112,10 @@ export default function IngenieurleistungenPage() {
       </section>
 
       {/* Zahlen */}
-      <StatsBanner stats={technikStats} note="Stand: laufend aktualisiert" />
+      <StatsBanner
+        stats={technikStats}
+        note="Stand: August 2026 · alle Berechnungen nach DIN/TS 12831-1, jedes Projekt raumweise und mit hydraulischem Abgleich"
+      />
 
       {/* Leistungen */}
       <section className="section-padding bg-bg-primary">
