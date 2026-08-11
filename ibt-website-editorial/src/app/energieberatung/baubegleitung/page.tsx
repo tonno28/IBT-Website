@@ -32,7 +32,7 @@ export default function BaubegleitungPage() {
               Fördermaßnahmen Pflicht. Und selbst zu 50 % gefördert — bis 5.000 € für EFH.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">Baubegleitung anfragen</Link>
+              <Link href="/kontakt?anliegen=baubegleitung" className="btn-primary">Baubegleitung anfragen</Link>
               <span className="badge-teal self-center">50 % BEG-gefördert</span>
             </div>
           </div>
@@ -95,6 +95,7 @@ export default function BaubegleitungPage() {
       </section>
 
       <CTABanner
+        anliegen="baubegleitung"
         title="Baubegleitung beauftragen"
         description="Planen Sie eine energetische Sanierung? Ich begleite Sie von der Planung bis zum Verwendungsnachweis — technisch kompetent und fördersicher."
         primaryLabel="Baubegleitung anfragen"

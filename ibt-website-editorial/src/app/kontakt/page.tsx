@@ -1,26 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import type { Metadata } from "next";
+import { useEffect, useState } from "react";
 import Icon from "@/components/Icon";
 import { ANFRAGE_EMPFAENGER, sendeAnfrage, type Versandstatus } from "@/lib/anfrage";
+import {
+  LEISTUNGEN,
+  antwortenBlock,
+  fragenFuer,
+  leistungBySlug,
+} from "@/lib/leistungen";
 
 // Note: metadata can't be in client components — move to separate file if needed
 // For now, we keep contact form logic here
-
-const anliegen = [
-  "Energieberatung / iSFP",
-  "Förderberatung BEG (BAFA/KfW)",
-  "Energieausweis",
-  "Fachplanung & Baubegleitung",
-  "Effizienzhaus-Bilanzierung",
-  "Heizlastberechnung",
-  "Bauteilberechnung (U-Wert)",
-  "Taupunktnachweis",
-  "Lüftungskonzept",
-  "Wärmebrückenberechnung",
-  "Sonstiges",
-];
 
 export default function KontaktPage() {
   const [form, setForm] = useState({
@@ -31,9 +22,27 @@ export default function KontaktPage() {
     nachricht: "",
     datenschutz: false,
   });
+  /** Antworten auf die Qualifizierungsfragen, nach Frage-ID. */
+  const [antworten, setAntworten] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<Versandstatus>("bereit");
   const [fehler, setFehler] = useState("");
+
+  // Das Anliegen kommt als ?anliegen=<slug> von der jeweiligen Leistungsseite.
+  // Bewusst über window statt useSearchParams: die Seite wird statisch
+  // exportiert, und useSearchParams zwingt sonst zu einer Suspense-Grenze.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("anliegen");
+    const treffer = leistungBySlug(slug);
+    if (treffer) setForm((prev) => ({ ...prev, anliegen: treffer.slug }));
+  }, []);
+
+  const leistung = leistungBySlug(form.anliegen);
+  const fragen = fragenFuer(leistung);
+
+  function setzeAntwort(id: string, wert: string) {
+    setAntworten((prev) => ({ ...prev, [id]: prev[id] === wert ? "" : wert }));
+  }
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -50,14 +59,16 @@ export default function KontaktPage() {
     setStatus("sendet");
     setFehler("");
     try {
+      const angaben = antwortenBlock(leistung, antworten);
       await sendeAnfrage({
-        subject: `Anfrage: ${form.anliegen || "Erstberatung"}`,
+        subject: `Anfrage: ${leistung?.label ?? "Erstberatung"}`,
         from_name: form.name,
         name: form.name,
         email: form.email,
         telefon: form.telefon || "—",
-        anliegen: form.anliegen,
-        nachricht: form.nachricht,
+        anliegen: leistung?.label ?? "—",
+        angaben: angaben || "— keine Angaben gemacht —",
+        nachricht: form.nachricht || "—",
       });
       setStatus("ok");
       setSubmitted(true);
@@ -214,25 +225,83 @@ export default function KontaktPage() {
                         className="w-full px-4 py-2.5 bg-bg-hover border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors appearance-none"
                       >
                         <option value="">Bitte wählen…</option>
-                        {anliegen.map((a) => (
-                          <option key={a} value={a}>{a}</option>
+                        {LEISTUNGEN.map((l) => (
+                          <option key={l.slug} value={l.slug}>{l.label}</option>
                         ))}
                       </select>
                     </div>
                   </div>
 
+                  {/* Qualifizierung — erscheint erst, wenn das Anliegen feststeht.
+                      Alles freiwillig; die Angaben ersparen eine Rückfragerunde. */}
+                  {leistung && fragen.length > 0 && (
+                    <fieldset className="rounded-xl border border-zinc-border bg-bg-hover/50 p-5">
+                      <legend className="px-2 text-sm font-semibold text-zinc-primary">
+                        Damit ich Ihnen gleich etwas Konkretes sagen kann
+                      </legend>
+                      <p className="text-xs text-zinc-muted mb-4 leading-relaxed">
+                        Alles freiwillig — je mehr Sie ausfüllen, desto präziser fällt
+                        meine erste Einschätzung aus.
+                      </p>
+
+                      <div className="space-y-4">
+                        {fragen.map((f) => (
+                          <div key={f.id}>
+                            <span className="block text-sm text-zinc-secondary mb-2">
+                              {f.label}
+                            </span>
+                            {f.typ === "auswahl" ? (
+                              <div className="flex flex-wrap gap-2">
+                                {f.optionen?.map((o) => {
+                                  const aktiv = antworten[f.id] === o;
+                                  return (
+                                    <button
+                                      key={o}
+                                      type="button"
+                                      onClick={() => setzeAntwort(f.id, o)}
+                                      aria-pressed={aktiv}
+                                      className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                                        aktiv
+                                          ? "border-amber bg-amber text-onAccent"
+                                          : "border-zinc-border bg-bg-primary text-zinc-secondary hover:border-zinc-borderHover"
+                                      }`}
+                                    >
+                                      {o}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              <input
+                                type="text"
+                                value={antworten[f.id] ?? ""}
+                                onChange={(e) =>
+                                  setAntworten((prev) => ({
+                                    ...prev,
+                                    [f.id]: e.target.value,
+                                  }))
+                                }
+                                placeholder={f.platzhalter}
+                                className="w-full max-w-[240px] px-4 py-2.5 bg-bg-primary border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors"
+                              />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </fieldset>
+                  )}
+
                   <div>
                     <label className="block text-sm text-zinc-secondary mb-1.5" htmlFor="nachricht">
-                      Ihre Nachricht *
+                      Ihre Nachricht (optional)
                     </label>
                     <textarea
                       id="nachricht"
                       name="nachricht"
-                      rows={5}
-                      required
+                      rows={4}
                       value={form.nachricht}
                       onChange={handleChange}
-                      placeholder="Kurze Beschreibung Ihres Gebäudes und Vorhabens (Baujahr, Wohnfläche, geplante Maßnahmen)…"
+                      placeholder="Alles, was oben nicht gepasst hat …"
                       className="w-full px-4 py-2.5 bg-bg-hover border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors resize-none"
                     />
                   </div>

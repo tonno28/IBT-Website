@@ -32,7 +32,7 @@ export default function BauteilPage() {
               Ich berechne ihn normgerecht für Nachweis, Förderantrag und Energiebilanzierung.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">U-Wert anfragen</Link>
+              <Link href="/kontakt?anliegen=bauteil" className="btn-primary">U-Wert anfragen</Link>
               <span className="self-center text-xs text-zinc-hint font-mono">ab 80 € / Bauteil</span>
             </div>
           </div>
@@ -84,6 +84,7 @@ export default function BauteilPage() {
       </section>
 
       <CTABanner
+        anliegen="bauteil"
         title="U-Wert berechnen lassen"
         description="Senden Sie mir den Bauteilaufbau (Schichten, Materialien, Dicken) — ich liefere den normierten U-Wert-Nachweis."
         primaryLabel="Bauteilberechnung anfragen"

@@ -8,16 +8,26 @@ interface CTABannerProps {
   primaryHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  /**
+   * Slug aus src/lib/leistungen.ts. Wird an das Kontaktformular
+   * durchgereicht, das damit das Anliegen vorwählt und die passenden
+   * Rückfragen einblendet — die Anfrage kommt qualifiziert statt leer an.
+   */
+  anliegen?: string;
 }
 
 export default function CTABanner({
   title = "Bereit für Ihre Sanierung?",
   description = "Kostenlose Erstberatung: Ich schaue mir Ihre Situation an und zeige Ihnen, welche Förderung realistisch ist. Ohne Verpflichtung.",
   primaryLabel = "Jetzt Erstberatung anfragen",
-  primaryHref = "/kontakt",
+  primaryHref,
   secondaryLabel = "Förderrechner 2026",
   secondaryHref = "/foerderrechner",
+  anliegen,
 }: CTABannerProps) {
+  const ziel =
+    primaryHref ?? (anliegen ? `/kontakt?anliegen=${anliegen}` : "/kontakt");
+
   return (
     <section className="section-padding">
       <div className="container-max">
@@ -60,7 +70,7 @@ export default function CTABanner({
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-              <Link href={primaryHref} className="btn-primary text-base px-8 py-3.5 whitespace-nowrap">
+              <Link href={ziel} className="btn-primary text-base px-8 py-3.5 whitespace-nowrap">
                 {primaryLabel}
               </Link>
               <Link href={secondaryHref} className="btn-secondary text-sm py-3 whitespace-nowrap">

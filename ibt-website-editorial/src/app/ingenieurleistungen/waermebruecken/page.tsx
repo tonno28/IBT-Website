@@ -31,7 +31,7 @@ export default function WaermebrueckenPage() {
               Ψ-Werte (psi) nach DIN EN ISO 10211 für präzise Gebäudebilanzierung,
               Schimmelpilznachweis und optimierte Energieeffizienz-Hausplanung.
             </p>
-            <Link href="/kontakt" className="btn-primary">Wärmebrücken anfragen</Link>
+            <Link href="/kontakt?anliegen=waermebruecken" className="btn-primary">Wärmebrücken anfragen</Link>
           </div>
         </div>
       </section>
@@ -91,6 +91,7 @@ export default function WaermebrueckenPage() {
       </section>
 
       <CTABanner
+        anliegen="waermebruecken"
         title="Wärmebrücken berechnen"
         description="Senden Sie mir Zeichnungen der kritischen Anschlusspunkte — ich ermittle die Ψ-Werte normgerecht nach DIN EN ISO 10211."
         primaryLabel="Wärmebrücken anfragen"

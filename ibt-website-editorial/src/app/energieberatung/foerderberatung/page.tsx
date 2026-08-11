@@ -32,7 +32,7 @@ export default function FoerderberatungPage() {
               konsequent nutzen. Ich kenne das System und stelle alle Anträge vollständig für Sie.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">Förderberatung anfragen</Link>
+              <Link href="/kontakt?anliegen=foerderberatung" className="btn-primary">Förderberatung anfragen</Link>
               <Link href="/foerderrechner" className="btn-secondary">Förderrechner →</Link>
             </div>
           </div>
@@ -152,6 +152,7 @@ export default function FoerderberatungPage() {
       </section>
 
       <CTABanner
+        anliegen="foerderberatung"
         title="Förderung nicht liegen lassen"
         description="Ich prüfe kostenlos und unverbindlich, welche Förderung für Ihr Vorhaben realistisch ist. Rufen Sie an oder schreiben Sie mir."
         primaryLabel="Förderberatung anfragen"

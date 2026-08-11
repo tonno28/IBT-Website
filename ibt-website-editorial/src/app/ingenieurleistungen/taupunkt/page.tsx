@@ -32,7 +32,7 @@ export default function TaupunktPage() {
               und schützt so vor Schimmel, Bauteilschäden und teuren Sanierungen.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">Taupunkt anfragen</Link>
+              <Link href="/kontakt?anliegen=taupunkt" className="btn-primary">Taupunkt anfragen</Link>
               <span className="self-center text-xs text-zinc-hint font-mono">ab 120 € / Bauteil</span>
             </div>
           </div>
@@ -99,6 +99,7 @@ export default function TaupunktPage() {
       </section>
 
       <CTABanner
+        anliegen="taupunkt"
         title="Taupunktnachweis beauftragen"
         description="Senden Sie mir den Bauteilaufbau — ich liefere den normierten Feuchteschutznachweis nach DIN 4108-3."
         primaryLabel="Taupunkt anfragen"

@@ -31,7 +31,7 @@ export default function EnergieausweisPage() {
               Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflicht bei Verkauf, Vermietung
               und Neubau — ich stelle ihn schnell, korrekt und GEG-konform aus.
             </p>
-            <Link href="/kontakt" className="btn-primary">Energieausweis beauftragen</Link>
+            <Link href="/kontakt?anliegen=energieausweis" className="btn-primary">Energieausweis beauftragen</Link>
           </div>
         </div>
       </section>
@@ -115,6 +115,7 @@ export default function EnergieausweisPage() {
       </section>
 
       <CTABanner
+        anliegen="energieausweis"
         title="Energieausweis beauftragen"
         description="Schicken Sie mir eine kurze Nachricht mit Gebäudetyp und Baujahr — ich melde mich innerhalb eines Werktags mit einem konkreten Angebot."
         primaryLabel="Energieausweis anfragen"

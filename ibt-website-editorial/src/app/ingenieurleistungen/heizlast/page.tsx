@@ -32,7 +32,7 @@ export default function HeizlastPage() {
               Wärmepumpen, Flächenheizungen, Heizkörpern und den Hydraulischen Abgleich.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">Heizlast anfragen</Link>
+              <Link href="/kontakt?anliegen=heizlast" className="btn-primary">Heizlast anfragen</Link>
               <span className="self-center text-xs text-zinc-hint font-mono">ab 250 € für EFH</span>
             </div>
           </div>
@@ -103,6 +103,7 @@ export default function HeizlastPage() {
       </section>
 
       <CTABanner
+        anliegen="heizlast"
         title="Heizlast beauftragen"
         description="Senden Sie mir Grundrisse und Gebäudedaten — ich erstelle die normgerechte Heizlastberechnung kurzfristig."
         primaryLabel="Heizlast anfragen"

@@ -32,7 +32,7 @@ export default function EffizienzhausPage() {
               Ich erstelle die vollständige Gebäudebilanzierung nach DIN V 18599
               für KfW Effizienzhaus 40, 55, 70 und 85.
             </p>
-            <Link href="/kontakt" className="btn-primary">Bilanzierung anfragen</Link>
+            <Link href="/kontakt?anliegen=effizienzhaus" className="btn-primary">Bilanzierung anfragen</Link>
           </div>
         </div>
       </section>
@@ -93,6 +93,7 @@ export default function EffizienzhausPage() {
       </section>
 
       <CTABanner
+        anliegen="effizienzhaus"
         title="Effizienzhaus-Nachweis anfragen"
         description="Neubau oder Kernsanierung? Ich erstelle den vollständigen KfW-Nachweis — normgerecht und fördersicher."
         primaryLabel="Bilanzierung anfragen"

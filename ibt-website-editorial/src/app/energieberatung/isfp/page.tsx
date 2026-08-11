@@ -41,7 +41,7 @@ export default function ISFPPage() {
               mit +5 % Bonus auf den Anteil oberhalb der Basis-Höchstgrenze.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">iSFP anfragen</Link>
+              <Link href="/kontakt?anliegen=isfp" className="btn-primary">iSFP anfragen</Link>
               <span className="badge-teal self-center">bis 60.000 € förderfähig</span>
             </div>
           </div>
@@ -157,6 +157,7 @@ export default function ISFPPage() {
       </section>
 
       <CTABanner
+        anliegen="isfp"
         title="iSFP erstellen lassen"
         description="Erster Schritt: kostenlose Erstberatung. Ich erkläre Ihnen, ob und wie ein iSFP für Ihr Gebäude Sinn macht."
         primaryLabel="iSFP anfragen"

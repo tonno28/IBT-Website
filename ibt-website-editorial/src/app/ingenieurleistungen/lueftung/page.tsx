@@ -32,7 +32,7 @@ export default function LueftungPage() {
               und oft Fördervoraussetzung. Ich erstelle es normkonform und schnell.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">Lüftungskonzept anfragen</Link>
+              <Link href="/kontakt?anliegen=lueftung" className="btn-primary">Lüftungskonzept anfragen</Link>
               <span className="self-center text-xs text-zinc-hint font-mono">ab 180 € (EFH)</span>
             </div>
           </div>
@@ -90,6 +90,7 @@ export default function LueftungPage() {
       </section>
 
       <CTABanner
+        anliegen="lueftung"
         title="Lüftungskonzept beauftragen"
         description="Grundrisse und n50-Wert aus dem Blower-Door-Test — ich erstelle das normkonforme Lüftungskonzept."
         primaryLabel="Lüftungskonzept anfragen"

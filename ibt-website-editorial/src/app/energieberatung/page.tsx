@@ -100,7 +100,7 @@ export default function EnergieberatungPage() {
               ich Sie durch den gesamten Prozess.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn-primary">
+              <Link href="/kontakt?anliegen=energieberatung" className="btn-primary">
                 Jetzt anfragen
               </Link>
               <Link href="/foerderrechner" className="btn-secondary">
@@ -240,7 +240,7 @@ export default function EnergieberatungPage() {
       {/* FAQ */}
       <FAQ />
 
-      <CTABanner />
+      <CTABanner anliegen="energieberatung" />
     </>
   );
 }
