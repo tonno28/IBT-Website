@@ -43,11 +43,13 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Headlines use the geometric display sans — modern, fresh, energetic */
+/* Überschriften: dieselbe Schrift wie der Fließtext, unterschieden über
+   Gewicht und Größe. Die Laufweite bleibt nur leicht negativ — enger wirkte
+   in großen Headlines gedrängt. */
 h1, h2, h3 {
-  font-family: var(--font-display), var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.011em;
 }
 
 /* Custom range input */

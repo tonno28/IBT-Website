@@ -37,9 +37,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-inter)", "sans-serif"],
-        // numerals & technical labels now render in the geometric display face,
-        // not a typewriter mono — kept under `mono` so existing usage just works
+        // Eine Familie für alles. display und mono zeigen bewusst auf
+        // dieselbe Schrift, damit bestehende Klassen weiter greifen — sie
+        // unterscheiden sich über Gewicht und Ziffernsatz, nicht über die
+        // Schriftart.
+        display: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       animation: {

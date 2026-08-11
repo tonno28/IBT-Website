@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import { CONSENT_DEFAULT_SNIPPET, TRACKING_AKTIV } from "@/lib/consent";
 
+/**
+ * Eine Schrift für alles — so steht es auch im Markenleitfaden ("Inter 700,
+ * geometrisch, technisch, kompakt"). Überschriften unterscheiden sich über
+ * Größe und Gewicht, nicht über eine zweite Schriftfamilie. Das spart eine
+ * Schriftdatei und hält die Seite ruhig.
+ *
+ * --font-display zeigt bewusst auf dieselbe Familie, damit bestehende
+ * font-display-Klassen weiter funktionieren.
+ */
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-// Geometric display sans for headlines — modern, fresh, energetic
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-display",
   display: "swap",
 });
 
@@ -69,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="de" className={inter.variable}>
       <head>
         {/* Consent Mode auf "denied", bevor irgendein Google-Skript laufen kann */}
         {TRACKING_AKTIV && (
