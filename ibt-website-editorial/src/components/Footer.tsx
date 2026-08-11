@@ -13,12 +13,6 @@ const leistungen = [
   { label: "Lüftungskonzept", href: "/ingenieurleistungen/lueftung" },
 ];
 
-const regions = [
-  { label: "Energieberater Köln", href: "/region/koeln" },
-  { label: "Energieberater Aachen", href: "/region/aachen" },
-  { label: "Energieberater Düren", href: "/region/duren" },
-];
-
 export default function Footer() {
   return (
     <footer className="border-t border-zinc-border bg-bg-card mt-20">
@@ -57,34 +51,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Region */}
+          {/* Tools */}
           <div>
-            <h3 className="text-sm font-semibold text-zinc-primary mb-4">Region</h3>
+            <h3 className="text-sm font-semibold text-zinc-primary mb-4">Tools</h3>
             <ul className="space-y-2">
-              {regions.map((r) => (
-                <li key={r.href}>
-                  <Link
-                    href={r.href}
-                    className="text-sm text-zinc-muted hover:text-zinc-primary transition-colors"
-                  >
-                    {r.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/foerderrechner"
+                  className="text-sm text-zinc-muted hover:text-zinc-primary transition-colors"
+                >
+                  BEG-Förderrechner 2026
+                </Link>
+              </li>
             </ul>
-            <div className="mt-6">
-              <h3 className="text-sm font-semibold text-zinc-primary mb-4">Tools</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/foerderrechner"
-                    className="text-sm text-zinc-muted hover:text-zinc-primary transition-colors"
-                  >
-                    BEG-Förderrechner 2026
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
 
           {/* Kontakt */}
