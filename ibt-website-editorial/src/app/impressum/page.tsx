@@ -104,13 +104,14 @@ export default function ImpressumPage() {
             <h2 className="text-base font-semibold text-zinc-primary mb-3">
               Berufshaftpflichtversicherung
             </h2>
-            <p>
-              Angabe gemäß § 2 Abs. 1 Nr. 11 DL-InfoV:
+            <p>Angabe gemäß § 2 Abs. 1 Nr. 11 DL-InfoV:</p>
+            <p className="mt-2">
+              Markel Insurance SE<br />
+              Sophienstraße 26<br />
+              80333 München
             </p>
             <p className="mt-2">
-              Versicherer: <strong className="text-zinc-secondary">[Name der Versicherung]</strong><br />
-              Anschrift: <strong className="text-zinc-secondary">[Anschrift des Versicherers]</strong><br />
-              Räumlicher Geltungsbereich: <strong className="text-zinc-secondary">[z. B. Deutschland / EU]</strong>
+              Räumlicher Geltungsbereich des Versicherungsschutzes: weltweit.
             </p>
           </div>
 
