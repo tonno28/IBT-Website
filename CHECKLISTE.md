@@ -1,6 +1,6 @@
 # Website IBT — Checkliste
 
-**Stand: 17.09.2026** · Diese Datei ist der Leitfaden. Sie wird bei jeder Arbeitssitzung
+**Stand: 17.09.2026, abends** · Diese Datei ist der Leitfaden. Sie wird bei jeder Arbeitssitzung
 aktualisiert, damit jederzeit klar ist, wo wir stehen und was als Nächstes dran ist.
 `[x]` erledigt · `[ ]` offen · `[?]` braucht eine Entscheidung von Jonas
 
@@ -61,15 +61,21 @@ bis dahin die Coming-Soon-Seite.
       cal.com …) oder bleibt es bei Formular + Telefon?
 
 ### Offen — kleinere Punkte
+- [ ] **Kontaktformular einmal aus dem Browser absenden** und prüfen, dass die Mail bei
+      info@ib-tonn.de ankommt. Automatisch geht das nicht: Web3Forms sitzt hinter einem
+      Cloudflare-Bot-Check, der nur echte Browser durchlässt. 30 Sekunden auf localhost.
+- [ ] Bilder verkleinern: `public/images/` liegt bei 230–580 KB pro Bild, zusammen 4,5 MB.
+      Ziel ~150 KB pro Bild (WebP oder JPEG 80 %, max. 1600 px breit).
 - [ ] Stats-Streifen auf der Energieberatung-Seite einbauen, sobald belastbare Zahlen da sind
-- [ ] Kontaktformular einmal echt absenden und prüfen, dass die Mail bei info@ib-tonn.de ankommt
 
 ---
 
 ## Phase 2 — Veröffentlichung (nach Phase 1)
 
-1. [ ] **Alles committen.** Aktuell 151 gelöschte, ~45 geänderte, ~15 neue Dateien nur lokal —
-       inklusive Bilder, Favicons, Fonts und OG-Banner-Code.
+1. [x] **Alles committen.** Drei Commits am 17.09.: Aufräumen (92ed51c), Design und Text
+       (61d656e), Checkliste (628bff2). Bilder, Favicons, Fonts und OG-Banner sind im Repo.
+   - [ ] **Pushen** nach GitHub (`git push`). Löst den IONOS-Workflow aus, der aber weiterhin
+         nur `coming-soon-site/` deployt — die Live-Seite ändert sich dadurch nicht.
 2. [ ] **Hosting festzurren.** Zwei Wege sind angelegt, keiner ist fertig:
    - **IONOS Deploy Now** (`.github/workflows/`): deployt heute `coming-soon-site/` ohne
      Build-Schritt. Für die Next.js-Seite müssen in `IBT-Website-build.yaml` rein:
@@ -89,6 +95,11 @@ bis dahin die Coming-Soon-Seite.
 
 ## Arbeitsregeln
 
+- **Das Projekt liegt in `~/Projekte/Website IBT/`, nicht mehr auf Google Drive.** Git auf
+  einem Cloud-Mount blockiert bei jedem Commit (macOS FileProvider cancelt die Lock-Dateien),
+  und Drive versucht, 18.000 `node_modules`-Dateien zu syncen. Die Sicherung ist GitHub
+  (`tonno28/IBT-Website`), nicht Drive. Der alte Drive-Ordner kann gelöscht werden — vorher
+  `snagtime/` und `.claude/` herausholen, die habe ich nicht mitkopiert.
 - **Hauptseite ist `ibt-website-editorial/`.** Dev-Server: `npm run dev` dort, dann
   http://localhost:3000. Port 3001 gehört `snagtime`.
 - **Nicht bauen, während der Dev-Server läuft.** `next build` und `next dev` teilen sich
