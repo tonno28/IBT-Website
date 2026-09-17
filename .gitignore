@@ -40,3 +40,6 @@ skills-lock.json
 
 # Referenzmaterial (lokal, nicht deployen)
 Referenz Website Animation/
+
+# SnagTime (eigenes Repo, eigenes Deployment - nicht Teil der Website)
+snagtime/
