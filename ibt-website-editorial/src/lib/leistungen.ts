@@ -121,7 +121,7 @@ const NACHWEIS_FRAGEN: Frage[] = [
 export const LEISTUNGEN: Leistung[] = [
   {
     slug: "energieberatung",
-    label: "Energieberatung / iSFP",
+    label: "Energieberatung (allgemein)",
     fragen: BERATUNG_FRAGEN,
   },
   {
@@ -181,6 +181,11 @@ export const LEISTUNGEN: Leistung[] = [
         optionen: ["Raumweise (für Heizkörperauslegung)", "Nur Gebäudeheizlast", "Weiß ich nicht"],
       },
     ],
+  },
+  {
+    slug: "ingenieurleistungen",
+    label: "Ingenieurleistung (Berechnung/Nachweis)",
+    fragen: NACHWEIS_FRAGEN,
   },
   { slug: "bauteil", label: "Bauteilberechnung (U-Wert)", fragen: NACHWEIS_FRAGEN },
   { slug: "taupunkt", label: "Taupunktnachweis", fragen: NACHWEIS_FRAGEN },

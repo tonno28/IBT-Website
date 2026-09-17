@@ -22,23 +22,32 @@ export default function WaermebrueckenPage() {
               <span>/</span>
               <span className="text-zinc-secondary">Wärmebrücken</span>
             </nav>
-            <p className="section-label text-amber">Ingenieurleistungen</p>
+            <p className="section-label text-ocker">Ingenieurleistungen</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Wärmebrücken-<br />
-              <span className="text-amber">berechnung</span>
+              Wärmebrücken
+              <span className="block font-medium text-zinc-secondary">Ψ-Werte nach DIN EN ISO 10211</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Ψ-Werte (psi) nach DIN EN ISO 10211 für präzise Gebäudebilanzierung,
-              Schimmelpilznachweis und optimierte Energieeffizienz-Hausplanung.
+              Schimmelpilznachweis und optimierte Effizienzhaus-Planung.
             </p>
             <Link href="/kontakt?anliegen=waermebruecken" className="btn-primary">Wärmebrücken anfragen</Link>
           </div>
+        </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/thermografie.jpg"
+            alt="Wärmebildkamera zeigt Thermografie einer Hausfassade"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
         </div>
       </section>
 
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Erklärung</p>
+          <p className="section-label text-center text-ocker">Erklärung</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Was sind Wärmebrücken?</h2>
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed mb-8">
             <p>
@@ -58,7 +67,7 @@ export default function WaermebrueckenPage() {
               { title: "Detaillierter Ansatz", value: "< 0,05 W/(m²K)", desc: "Mit WTB-Katalog oder eigener Berechnung, bessere Effizienzhaus-Stufe möglich" },
             ].map((item) => (
               <div key={item.title} className="card-base p-5">
-                <div className="text-lg font-bold font-mono text-amber mb-1">{item.value}</div>
+                <div className="text-lg font-bold font-mono text-ocker mb-1">{item.value}</div>
                 <div className="font-semibold text-zinc-primary text-sm mb-1">{item.title}</div>
                 <div className="text-xs text-zinc-muted">{item.desc}</div>
               </div>
@@ -69,7 +78,7 @@ export default function WaermebrueckenPage() {
 
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Einsatzbereiche</p>
+          <p className="section-label text-center text-ocker">Einsatzbereiche</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Wann sind Ψ-Werte wichtig?</h2>
           <div className="space-y-3">
             {[
@@ -79,7 +88,7 @@ export default function WaermebrueckenPage() {
               { title: "Qualitätssicherung Planung", desc: "Frühe Berechnung kritischer Anschlüsse verhindert teure Fehler auf der Baustelle." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
-                <div className="w-2 h-2 rounded-full bg-amber shrink-0 mt-2" />
+                <div className="w-2 h-2 rounded-full bg-ocker shrink-0 mt-2" />
                 <div>
                   <h3 className="font-semibold text-zinc-primary mb-1">{item.title}</h3>
                   <p className="text-sm text-zinc-muted">{item.desc}</p>

@@ -25,7 +25,7 @@ export default function EffizienzhausPage() {
             <p className="section-label">Energieberatung</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
               Effizienzhaus-<br />
-              <span className="text-gradient-teal">Bilanzierung</span>
+              Bilanzierung
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der KfW-Wohngebäudekredit setzt einen Effizienzhaus-Nachweis voraus.
@@ -34,6 +34,15 @@ export default function EffizienzhausPage() {
             </p>
             <Link href="/kontakt?anliegen=effizienzhaus" className="btn-primary">Bilanzierung anfragen</Link>
           </div>
+        </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/hero-sanierung.jpg"
+            alt="Saniertes Einfamilienhaus mit gedämmter Fassade, neuen Fenstern und Wärmepumpe"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -52,7 +61,7 @@ export default function EffizienzhausPage() {
               { stufe: "85", desc: "85 % des Referenzgebäudes (GEG)", kfw: "Basisförderung" },
             ].map((item) => (
               <div key={item.stufe} className="card-base p-5 text-center">
-                <div className="text-3xl font-bold font-mono text-teal-light mb-1">
+                <div className="text-3xl font-bold font-mono text-teal-dark mb-1">
                   EH {item.stufe}
                 </div>
                 <div className="text-xs text-zinc-muted mb-2">{item.desc}</div>

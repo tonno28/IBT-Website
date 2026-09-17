@@ -1,0 +1,5 @@
+# Nur für Apache-Hosting (IONOS). Next legt das OG-Bild ohne Dateiendung ab,
+# Apache würde es sonst als Text ausliefern und Link-Vorschauen blieben leer.
+<Files "opengraph-image">
+  ForceType image/png
+</Files>

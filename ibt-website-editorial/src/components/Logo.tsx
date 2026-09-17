@@ -19,7 +19,7 @@ export default function Logo({ size = "sm", className = "" }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <span className="inline-flex flex-col leading-none">
-        <span className="h-[2px] w-full bg-amber rounded-full mb-1" />
+        <span className="h-[2px] w-full bg-accent rounded-full mb-1" />
         <span className={`font-display font-semibold tracking-wide text-zinc-primary ${s.word}`}>
           IBT
         </span>

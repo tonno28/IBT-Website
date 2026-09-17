@@ -63,7 +63,7 @@ export default function CookieBanner() {
                 nicht. Zusätzlich würde ich gern mit <strong>Google Tag</strong> messen, wie die
                 Seite genutzt wird, um sie zu verbessern. Dabei werden Daten an Google übertragen.
                 Sie können das ablehnen und Ihre Entscheidung jederzeit ändern. Mehr dazu in der{" "}
-                <Link href="/datenschutz" className="text-amber hover:underline">
+                <Link href="/datenschutz" className="text-accent hover:underline">
                   Datenschutzerklärung
                 </Link>
                 .

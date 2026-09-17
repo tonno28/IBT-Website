@@ -20,10 +20,22 @@ const config: Config = {
           mid: "#16a34a",
           light: "#22c55e",
         },
-        amber: {
-          DEFAULT: "#16a34a",
-          hover: "#12833c",
-          muted: "#16a34a22",
+        // Eine Aktionsfarbe fuer die ganze Seite: Tannengruen. Dunkler als das
+        // fruehere #16a34a, damit weisser Buttontext 4,5:1 nach WCAG AA
+        // erreicht (vorher 3,30:1, also unter der Schwelle).
+        accent: {
+          DEFAULT: "#0b6b3a",
+          hover: "#084d2a",
+          muted: "#0b6b3a22",
+        },
+        // Zweitfarbe der Ingenieur-Säule, bewusst leise gehalten: nur
+        // Eyebrow-Labels, Norm-Badges, Icon-Kacheln und Aufzählungspunkte.
+        // Nie oberhalb von text-xl und nie für Aktionen — Buttons und Links
+        // sind überall accent. Sonst konkurrieren zwei gleich helle Akzente
+        // (Ocker/Grün haben nur 1,52:1 zueinander) und es entsteht Flimmern.
+        ocker: {
+          DEFAULT: "#b45309",
+          hover: "#92400e",
         },
         zinc: {
           primary: "#0f1d15",

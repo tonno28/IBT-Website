@@ -6,8 +6,8 @@
  * Das ist die Auslegung, die in Deutschland nach § 25 TDDDG und der
  * DSGVO gefordert ist.
  *
- * Die Tag-ID kommt aus NEXT_PUBLIC_GOOGLE_TAG_ID (in den Vercel-Projekt-
- * einstellungen zu setzen, z. B. G-XXXXXXXXXX oder GTM-XXXXXXX). Ist sie
+ * Die Tag-ID kommt aus NEXT_PUBLIC_GOOGLE_TAG_ID (als Umgebungsvariable
+ * beim Build zu setzen, z. B. G-XXXXXXXXXX oder GTM-XXXXXXX). Ist sie
  * nicht gesetzt, wird nichts geladen und der Banner erscheint auch nicht ,
  * ohne Tracking braucht es keine Einwilligung.
  */

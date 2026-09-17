@@ -15,7 +15,7 @@ export const metadata: Metadata = {
  * Livegang ersetzen oder den jeweiligen Abschnitt streichen.
  */
 
-const A = "text-amber hover:underline";
+const A = "text-accent hover:underline";
 
 export default function ImpressumPage() {
   return (
@@ -162,6 +162,11 @@ export default function ImpressumPage() {
               Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung,
               Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen
               des Urheberrechts bedürfen der schriftlichen Zustimmung.
+            </p>
+            <p className="mt-3">
+              Einige Fotografien auf dieser Website sind mit Hilfe künstlicher
+              Intelligenz erzeugte Symbolbilder. Sie zeigen keine realen Personen
+              und keine konkreten Projekte.
             </p>
           </div>
 

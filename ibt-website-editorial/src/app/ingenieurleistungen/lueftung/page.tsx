@@ -22,10 +22,10 @@ export default function LueftungPage() {
               <span>/</span>
               <span className="text-zinc-secondary">Lüftungskonzept</span>
             </nav>
-            <p className="section-label text-amber">Ingenieurleistungen</p>
+            <p className="section-label text-ocker">Ingenieurleistungen</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Lüftungskonzept<br />
-              <span className="text-amber">nach DIN 1946-6</span>
+              Lüftungskonzept
+              <span className="block font-medium text-zinc-secondary">nach DIN 1946-6</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Bei energetisch sanierten und luftdichten Gebäuden ist das Lüftungskonzept Pflicht,
@@ -37,11 +37,20 @@ export default function LueftungPage() {
             </div>
           </div>
         </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/lueftung.jpg"
+            alt="Dezentrales Lüftungsgerät an einer Innenwand neben dem Fenster"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Wann Pflicht?</p>
+          <p className="section-label text-center text-ocker">Wann Pflicht?</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">
             Wann ist ein Lüftungskonzept erforderlich?
           </h2>
@@ -53,7 +62,7 @@ export default function LueftungPage() {
               { title: "Luftdichtheitsnachweis", desc: "Nach Blower-Door-Test: zeigt, ob Infiltration als Lüftungsweg ausreichend ist oder eine Anlage benötigt wird." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
-                <div className="w-2 h-2 rounded-full bg-amber shrink-0 mt-2" />
+                <div className="w-2 h-2 rounded-full bg-ocker shrink-0 mt-2" />
                 <div>
                   <h3 className="font-semibold text-zinc-primary mb-1">{item.title}</h3>
                   <p className="text-sm text-zinc-muted">{item.desc}</p>
@@ -66,7 +75,7 @@ export default function LueftungPage() {
 
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Leistung & Preis</p>
+          <p className="section-label text-center text-ocker">Leistung & Preis</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Was Sie erhalten</h2>
           <div className="space-y-3">
             {[
@@ -79,7 +88,7 @@ export default function LueftungPage() {
               "Lieferzeit 3–5 Werktage",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm text-zinc-muted">
-                <svg className="w-4 h-4 text-amber shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-ocker shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 {item}

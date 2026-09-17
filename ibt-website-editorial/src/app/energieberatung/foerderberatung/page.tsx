@@ -24,8 +24,8 @@ export default function FoerderberatungPage() {
             </nav>
             <p className="section-label">Energieberatung</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Förderberatung<br />
-              <span className="text-gradient-teal">BAFA & KfW</span>
+              Förderberatung
+              <span className="block font-medium text-zinc-secondary">BAFA & KfW</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Bis zu 80 % Förderung auf Ihre Sanierungsmaßnahmen, wenn Sie alle Boni
@@ -36,6 +36,15 @@ export default function FoerderberatungPage() {
               <Link href="/foerderrechner" className="btn-secondary">Förderrechner →</Link>
             </div>
           </div>
+        </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/foerderantrag.jpg"
+            alt="Förderantrag mit Taschenrechner und Hausmodell auf dem Schreibtisch"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -105,7 +114,7 @@ export default function FoerderberatungPage() {
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-zinc-hint">bis zu</div>
-                    <div className="text-xl font-bold font-mono text-teal-light">{item.max}</div>
+                    <div className="text-xl font-bold font-mono text-teal-dark">{item.max}</div>
                   </div>
                 </div>
                 <ul className="space-y-1.5">
@@ -135,7 +144,7 @@ export default function FoerderberatungPage() {
             {[
               { icon: "📝", title: "Technische Projektbeschreibung (TPB)", desc: "Pflichtdokument für alle BEG-Anträge. Ich erstelle sie normgerecht und vollständig." },
               { icon: "✅", title: "Energieeffizienz-Experten-Bestätigung", desc: "Als dena-gelisteter EEE bestätige ich die technische Richtigkeit der Maßnahmen. Ohne EEE keine Förderung." },
-              { icon: "🖥️", title: "Antragsstellung BAFA / KfW", desc: "Vollständige Online-Antragstellung in den Portalen von BAFA und KfW. Sie müssen sich um nichts kümmern." },
+              { icon: "🖥️", title: "Antragstellung BAFA / KfW", desc: "Vollständige Online-Antragstellung in den Portalen von BAFA und KfW. Sie müssen sich um nichts kümmern." },
               { icon: "📋", title: "Verwendungsnachweis", desc: "Nach Abschluss der Maßnahme erstelle ich den Verwendungsnachweis, die Voraussetzung für die Auszahlung." },
               { icon: "💡", title: "Förder-Optimierung", desc: "Ich prüfe, welche Boni für Sie zutreffen und kombiniere sie optimal. Nicht alle Berater kennen alle Möglichkeiten." },
             ].map((item) => (

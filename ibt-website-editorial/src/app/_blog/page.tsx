@@ -74,11 +74,11 @@ export default function BlogPage() {
                     })}
                   </time>
                 </div>
-                <h2 className="text-lg font-semibold text-zinc-primary mb-2 group-hover:text-teal-light transition-colors">
+                <h2 className="text-lg font-semibold text-zinc-primary mb-2 group-hover:text-teal-dark transition-colors">
                   {post.title}
                 </h2>
                 <p className="text-sm text-zinc-muted leading-relaxed mb-4">{post.excerpt}</p>
-                <span className="text-xs font-medium text-teal-light">
+                <span className="text-xs font-medium text-teal-dark">
                   Artikel lesen →
                 </span>
               </article>

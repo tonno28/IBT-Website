@@ -7,8 +7,8 @@
  *
  * Der Access-Key ist bei Web3Forms bewusst öffentlich, er steht in deren
  * Beispielen direkt im HTML und erlaubt nur den Versand an die eine hinterlegte
- * Adresse. Über NEXT_PUBLIC_WEB3FORMS_KEY lässt er sich in den Vercel-Einstellungen
- * austauschen, ohne den Code anzufassen (z. B. wenn er wegen Spam rotiert werden muss).
+ * Adresse. Über NEXT_PUBLIC_WEB3FORMS_KEY lässt er sich beim Build (Umgebungsvariable
+ * im Deploy-Workflow) austauschen, ohne den Code anzufassen (z. B. wenn er wegen Spam rotiert werden muss).
  */
 
 import {

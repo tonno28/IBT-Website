@@ -29,7 +29,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap gap-2">
               <span className="badge-teal">dena-gelistet</span>
-              <span className="badge-amber">BAFA/KfW</span>
+              <span className="badge-accent">BAFA/KfW</span>
               <span className="badge-teal">§88 GEG</span>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function Footer() {
               <div>
                 <a
                   href="mailto:info@ib-tonn.de"
-                  className="hover:text-amber transition-colors"
+                  className="hover:text-accent transition-colors"
                 >
                   info@ib-tonn.de
                 </a>
@@ -85,7 +85,7 @@ export default function Footer() {
               <div>
                 <a
                   href="tel:+4915231060247"
-                  className="hover:text-amber transition-colors"
+                  className="hover:text-accent transition-colors"
                 >
                   0152 31060247
                 </a>

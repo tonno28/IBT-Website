@@ -37,7 +37,7 @@ const faqs: FAQItem[] = [
   {
     question: "In welcher Region sind Sie tätig?",
     answer:
-      "Ich berate Sie in der Region Düren, Aachen, Köln und Umgebung, bei Bedarf auch darüber hinaus. Sprechen Sie mich einfach an.",
+      "Ich berate Sie in der Region Köln, Aachen, Düren und Umgebung, bei Bedarf auch darüber hinaus. Sprechen Sie mich einfach an.",
   },
 ];
 
@@ -58,19 +58,19 @@ export default function FAQ() {
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <Reveal key={faq.question} variant="up" delay={i * 60}>
-                <div className="card-base overflow-hidden">
+              <div key={faq.question} className="card-base overflow-hidden">
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     aria-expanded={isOpen}
+                    aria-controls={`faq-antwort-${i}`}
                     className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
                   >
                     <span className="text-sm font-semibold text-zinc-primary">
                       {faq.question}
                     </span>
                     <svg
-                      className={`w-4 h-4 shrink-0 text-amber transition-transform duration-200 ${
+                      className={`w-4 h-4 shrink-0 text-accent transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                       fill="none"
@@ -81,13 +81,16 @@ export default function FAQ() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  {isOpen && (
-                    <div className="px-5 pb-4">
-                      <p className="text-sm text-zinc-muted leading-relaxed">{faq.answer}</p>
-                    </div>
-                  )}
+                {/* Antwort steht immer im HTML (Suchmaschinen, Screenreader), nur die
+                    Sichtbarkeit wird geschaltet. */}
+                <div
+                  id={`faq-antwort-${i}`}
+                  hidden={!isOpen}
+                  className="px-5 pb-4 animate-fade-in"
+                >
+                  <p className="text-sm text-zinc-muted leading-relaxed">{faq.answer}</p>
                 </div>
-              </Reveal>
+              </div>
             );
           })}
         </div>

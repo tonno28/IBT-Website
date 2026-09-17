@@ -8,7 +8,6 @@ import {
   HEIZUNG,
   MASSNAHMEN,
   STAND,
-  STEUERBONUS,
   berechne,
   einkommensbonus,
   fmtEuro,
@@ -152,12 +151,12 @@ export default function Foerderrechner() {
           >
             <div
               className={`h-1.5 rounded-full transition-colors duration-300 ${
-                i === step ? "bg-amber" : i < step ? "bg-teal-light" : "bg-zinc-border"
+                i === step ? "bg-accent" : i < step ? "bg-teal-light" : "bg-zinc-border"
               }`}
             />
             <span
               className={`mt-2 block text-[11px] font-semibold uppercase tracking-wide ${
-                i === step ? "text-amber" : i < step ? "text-teal-light" : "text-zinc-hint"
+                i === step ? "text-accent" : i < step ? "text-teal-dark" : "text-zinc-hint"
               }`}
             >
               {label}
@@ -184,7 +183,7 @@ export default function Foerderrechner() {
                 onClick={() => setSelbstnutzend(opt.wert)}
                 className={`p-3 rounded-xl border text-sm font-semibold transition-colors duration-150 ${
                   selbstnutzend === opt.wert
-                    ? "border-amber bg-bg-accent text-zinc-primary"
+                    ? "border-accent bg-bg-accent text-zinc-primary"
                     : "border-zinc-border bg-bg-card text-zinc-secondary hover:border-zinc-borderHover"
                 }`}
               >
@@ -197,7 +196,7 @@ export default function Foerderrechner() {
           </p>
 
           <label htmlFor="we" className="block text-sm font-medium text-zinc-secondary mb-3">
-            Wohneinheiten: <span className="text-amber font-bold">{wohneinheiten}</span>
+            Wohneinheiten: <span className="text-accent font-bold">{wohneinheiten}</span>
           </label>
           <input
             id="we"
@@ -236,7 +235,7 @@ export default function Foerderrechner() {
                   key={m.id}
                   className={`rounded-xl border transition-colors duration-150 ${
                     aktiv
-                      ? "border-amber bg-bg-accent"
+                      ? "border-accent bg-bg-accent"
                       : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
                   }`}
                 >
@@ -249,7 +248,7 @@ export default function Foerderrechner() {
                     <span
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ring-1 ${
                         aktiv
-                          ? "bg-amber/15 text-amber ring-amber/25"
+                          ? "bg-accent/15 text-accent ring-accent/25"
                           : "bg-bg-accent text-zinc-secondary ring-zinc-border"
                       }`}
                     >
@@ -279,7 +278,7 @@ export default function Foerderrechner() {
                                 ev.target.value === "" ? 0 : Math.max(0, Number(ev.target.value)),
                             }))
                           }
-                          className="w-full px-3 py-1.5 pr-7 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors"
+                          className="w-full px-3 py-1.5 pr-7 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:border-accent transition-colors"
                         />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-hint text-sm">
                           €
@@ -385,12 +384,12 @@ export default function Foerderrechner() {
                     onClick={() => setZvE(zvE === p.wert ? null : p.wert)}
                     className={`rounded-lg border px-2 py-2 text-center transition-colors duration-150 ${
                       zvE === p.wert
-                        ? "border-amber bg-bg-accent"
+                        ? "border-accent bg-bg-accent"
                         : "border-zinc-border hover:border-zinc-borderHover"
                     }`}
                   >
                     <span className="block text-[11px] text-zinc-muted">{p.label}</span>
-                    <span className="block text-sm font-bold text-amber">
+                    <span className="block text-sm font-bold text-accent">
                       +{einkommensbonus(p.wert, kindImHaushalt)} %
                     </span>
                   </button>
@@ -435,7 +434,7 @@ export default function Foerderrechner() {
         <div>
           <div className="text-center mb-6">
             <div className="text-xs text-zinc-muted mb-1">Ihre geschätzte Förderung</div>
-            <div className="text-5xl sm:text-6xl font-bold text-teal-light">
+            <div className="text-5xl sm:text-6xl font-bold text-teal-dark">
               {fmtEuro(r.gesamtZuschuss)}
             </div>
             <div className="text-sm text-zinc-secondary mt-2">
@@ -519,14 +518,14 @@ export default function Foerderrechner() {
                 key={i}
                 className={`flex items-start gap-2.5 rounded-lg border p-3 text-xs leading-relaxed ${
                   h.art === "warnung"
-                    ? "border-amber/30 bg-amber/5 text-zinc-secondary"
+                    ? "border-accent/30 bg-accent/5 text-zinc-secondary"
                     : "border-teal-light/30 bg-teal-light/5 text-zinc-secondary"
                 }`}
               >
                 <Icon
                   name={h.art === "chance" ? "bulb" : "target"}
                   className={`w-4 h-4 shrink-0 mt-0.5 ${
-                    h.art === "chance" ? "text-teal-light" : "text-amber"
+                    h.art === "chance" ? "text-teal-dark" : "text-accent"
                   }`}
                 />
                 <span>{h.text}</span>
@@ -589,30 +588,6 @@ export default function Foerderrechner() {
                 </div>
               )}
 
-              {r.steuerbonus.moeglich && (
-                <div className="card-base p-5">
-                  <h3 className="text-sm font-semibold text-zinc-primary mb-1">
-                    Alternative: Steuerbonus § 35c EStG
-                  </h3>
-                  <p className="text-xs text-zinc-muted leading-relaxed">
-                    Zusammen{" "}
-                    <strong className="text-zinc-secondary">
-                      {fmtEuro(r.steuerbonus.betrag)}
-                    </strong>
-                    : {STEUERBONUS.satz} % der Baukosten (
-                    {fmtEuro(r.steuerbonus.bauteil)}), verteilt {STEUERBONUS.verteilung}
-                    {r.steuerbonus.honorarteil > 0 && (
-                      <>
-                        , plus {STEUERBONUS.satzHonorar} % meines Honorars (
-                        {fmtEuro(r.steuerbonus.honorarteil)}) nach § 35c Abs. 1 Satz 4,
-                        weil ich die Maßnahme planerisch begleite
-                      </>
-                    )}
-                    . Für dieselbe Maßnahme nicht mit dem Zuschuss kombinierbar.
-                  </p>
-                </div>
-              )}
-
               {r.nichtAnrechenbar > 0 && (
                 <p className="text-xs text-zinc-hint px-1">
                   {fmtEuro(r.nichtAnrechenbar)} liegen oberhalb der förderfähigen Höchstgrenzen
@@ -634,10 +609,10 @@ export default function Foerderrechner() {
           </p>
 
           {/* Anfrage, die Berechnung wird automatisch mitgeschickt */}
-          <div className="rounded-xl bg-bg-accent border border-amber/20 p-6 mb-4">
+          <div className="rounded-xl bg-bg-accent border border-accent/20 p-6 mb-4">
             {status === "ok" ? (
               <div className="text-center py-4">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-teal-dark/15 text-teal-light ring-1 ring-teal-dark/30">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-teal-dark/15 text-teal-dark ring-1 ring-teal-dark/30">
                   <Icon name="check" className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-zinc-primary mb-2">Anfrage ist raus</h3>
@@ -704,7 +679,7 @@ export default function Foerderrechner() {
                         setKontakt((k) => ({ ...k, nachricht: ev.target.value }))
                       }
                       placeholder="Baujahr, Adresse des Objekts, offene Fragen …"
-                      className="w-full px-3 py-2 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors resize-y"
+                      className="w-full px-3 py-2 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:border-accent transition-colors resize-y"
                     />
                   </div>
 
@@ -718,10 +693,10 @@ export default function Foerderrechner() {
                   </button>
 
                   {status === "fehler" && (
-                    <p className="text-xs text-zinc-secondary leading-relaxed rounded-lg border border-amber/30 bg-amber/5 p-3">
+                    <p className="text-xs text-zinc-secondary leading-relaxed rounded-lg border border-accent/30 bg-accent/5 p-3">
                       Das Senden hat nicht geklappt ({fehler}). Bitte versuchen Sie es noch einmal
                       oder schicken Sie mir die Berechnung{" "}
-                      <a href={anfrageMailto(eingabe, r)} className="text-amber hover:underline">
+                      <a href={anfrageMailto(eingabe, r)} className="text-accent hover:underline">
                         direkt per E-Mail
                       </a>
                       .
@@ -759,7 +734,7 @@ function Haken({ an }: { an: boolean }) {
   return (
     <span
       className={`w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors duration-150 ${
-        an ? "bg-amber border-amber text-onAccent" : "border-zinc-borderHover"
+        an ? "bg-accent border-accent text-onAccent" : "border-zinc-borderHover"
       }`}
     >
       {an && (
@@ -791,21 +766,21 @@ function Auswahl({
       onClick={onClick}
       aria-pressed={an}
       className={`w-full text-left flex items-start gap-3 p-3 rounded-lg border transition-colors duration-150 ${
-        an ? "border-amber bg-bg-accent" : "border-zinc-border hover:border-zinc-borderHover"
+        an ? "border-accent bg-bg-accent" : "border-zinc-border hover:border-zinc-borderHover"
       }`}
     >
       <span
         className={`mt-0.5 flex h-4.5 w-4.5 h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-150 ${
-          an ? "border-amber" : "border-zinc-borderHover"
+          an ? "border-accent" : "border-zinc-borderHover"
         }`}
       >
-        {an && <span className="h-2 w-2 rounded-full bg-amber" />}
+        {an && <span className="h-2 w-2 rounded-full bg-accent" />}
       </span>
       <span className="flex-1">
         <span className="flex items-center justify-between gap-2">
           <span className="text-sm font-medium text-zinc-primary">{titel}</span>
           <span
-            className={`text-xs font-bold shrink-0 ${an ? "text-amber" : "text-zinc-hint"}`}
+            className={`text-xs font-bold shrink-0 ${an ? "text-accent" : "text-zinc-hint"}`}
           >
             {zusatz}
           </span>
@@ -836,14 +811,14 @@ function Schalter({
       type="button"
       onClick={onClick}
       className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border mb-2 transition-colors duration-150 ${
-        an ? "border-amber/50 bg-bg-accent" : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
+        an ? "border-accent/50 bg-bg-accent" : "border-zinc-border bg-bg-card hover:border-zinc-borderHover"
       }`}
     >
       <Haken an={an} />
       <span className="flex-1">
         <span className="flex items-center justify-between gap-2">
           <span className="text-sm font-semibold text-zinc-primary">{titel}</span>
-          <span className="text-sm font-bold text-amber shrink-0">{zusatz}</span>
+          <span className="text-sm font-bold text-accent shrink-0">{zusatz}</span>
         </span>
         <span className="block text-xs text-zinc-muted mt-0.5 leading-relaxed">{text}</span>
       </span>
@@ -877,7 +852,7 @@ function Feld({
         required={required}
         value={value}
         onChange={(ev) => onChange(ev.target.value)}
-        className="w-full px-3 py-2 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:outline-none focus:border-amber transition-colors"
+        className="w-full px-3 py-2 bg-bg-card border border-zinc-border rounded-lg text-zinc-primary text-sm focus:border-accent transition-colors"
       />
     </div>
   );
@@ -899,7 +874,7 @@ function Zeile({
       <span className="text-zinc-muted">{label}</span>
       <span
         className={`shrink-0 ${
-          gruen ? "text-teal-light font-semibold" : fett ? "text-zinc-primary" : "text-zinc-secondary"
+          gruen ? "text-teal-dark font-semibold" : fett ? "text-zinc-primary" : "text-zinc-secondary"
         }`}
       >
         {wert}

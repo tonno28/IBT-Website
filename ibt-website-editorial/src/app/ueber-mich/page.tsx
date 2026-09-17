@@ -15,7 +15,8 @@ export default function UeberMichPage() {
         <div className="absolute inset-0 grid-dots opacity-30" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-teal-dark/10 blur-[100px] pointer-events-none" />
         <div className="container-max relative">
-          <div className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
             <p className="section-label">Über mich</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-4">
               Jonas Tonn
@@ -30,6 +31,14 @@ export default function UeberMichPage() {
               ))}
             </div>
           </div>
+          <img
+            src="/images/arbeitsplatz.jpg"
+            alt="Arbeitsplatz eines Energieberaters mit Laptop, Wärmebildkamera und Bauplänen"
+            width={1289}
+            height={1600}
+            className="w-full max-w-sm lg:justify-self-end rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
+          />
+          </div>
         </div>
       </section>
 
@@ -42,16 +51,17 @@ export default function UeberMichPage() {
               <h2 className="text-2xl font-bold text-zinc-primary mb-6">Ingenieur aus Leidenschaft</h2>
               <div className="space-y-4 text-zinc-muted leading-relaxed text-sm">
                 <p>
-                  Ich bin Bauingenieur (B. Eng.) und unabhängiger Energieberater. Studiert
-                  habe ich Smart Building Engineering an der FH Aachen, als einer der ersten
-                  Absolventen dieses noch jungen Studiengangs. Mit dem IBT Ingenieurbüro Tonn
+                  Ich bin Ingenieur (B. Eng.) und unabhängiger Energieberater. Studiert
+                  habe ich Smart Building Engineering an der FH Aachen, einen Studiengang,
+                  der Gebäudetechnik, Energieeffizienz und Gebäudeautomation von Grund auf
+                  zusammen denkt. Mit dem IBT Ingenieurbüro Tonn
                   begleite ich Sanierungs- und Bauvorhaben vollständig, von der Förderberatung
                   bis zur technischen Berechnung.
                 </p>
                 <p>
-                  Was das bedeutet: Ich habe keine Abhängigkeiten von Heizungsherstellern,
-                  Dämmstofffirmen oder Handwerksbetrieben. Keine Provisionen, keine
-                  Verkaufsziele. Nur technische Beratung, die Ihren Interessen dient.
+                  Ich habe keine Abhängigkeiten von Heizungsherstellern, Dämmstofffirmen
+                  oder Handwerksbetrieben. Keine Provisionen, keine Verkaufsziele. Nur
+                  technische Beratung, die Ihren Interessen dient.
                 </p>
                 <p>
                   Meine Stärke ist die Verbindung von Ingenieurwissen und Praxisnähe:
@@ -82,7 +92,7 @@ export default function UeberMichPage() {
                 },
                 {
                   title: "B. Eng. Smart Building Engineering",
-                  desc: "FH Aachen: Gebäudetechnik, Energieeffizienz und Gebäudeautomation. Einer der ersten Absolventen des Studiengangs.",
+                  desc: "FH Aachen: Gebäudetechnik, Energieeffizienz und Gebäudeautomation.",
                   year: "Hochschulabschluss",
                 },
               ].map((q) => (
@@ -121,16 +131,14 @@ export default function UeberMichPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
-            {[
-              { value: "100 %", label: "herstellerunabhängig" },
-              { value: "0", label: "Provisionen" },
-              { value: "1", label: "Ansprechpartner" },
-            ].map((s) => (
-              <div key={s.label} className="card-base p-5 text-center">
-                <div className="text-2xl font-bold font-mono text-amber mb-1">{s.value}</div>
-                <div className="text-xs text-zinc-muted">{s.label}</div>
-              </div>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-10 text-sm text-zinc-secondary">
+            {["herstellerunabhängig", "keine Provisionen", "ein Ansprechpartner"].map((m) => (
+              <span key={m} className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-teal-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                {m}
+              </span>
             ))}
           </div>
         </div>

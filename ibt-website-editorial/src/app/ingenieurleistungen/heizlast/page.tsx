@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Heizlastberechnung nach DIN EN 12831",
   description:
-    "Normheizlast nach DIN EN 12831 für Wärmepumpenauslegung, Heizkörperbemessung und Hydraulischen Abgleich. Ab 250 € für EFH. Schnelle Lieferzeit. Region Köln / Aachen / Düren.",
+    "Normheizlast nach DIN EN 12831 für Wärmepumpenauslegung, Heizkörperbemessung und hydraulischen Abgleich. Ab 250 € für EFH. Schnelle Lieferzeit. Region Köln / Aachen / Düren.",
 };
 
 export default function HeizlastPage() {
@@ -22,14 +22,14 @@ export default function HeizlastPage() {
               <span>/</span>
               <span className="text-zinc-secondary">Heizlast</span>
             </nav>
-            <p className="section-label text-amber">Ingenieurleistungen</p>
+            <p className="section-label text-ocker">Ingenieurleistungen</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Heizlastberechnung<br />
-              <span className="text-amber">DIN EN 12831</span>
+              Heizlastberechnung
+              <span className="block font-medium text-zinc-secondary">DIN EN 12831</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Normkonforme Heizlastberechnung als Basis für die richtige Dimensionierung von
-              Wärmepumpen, Flächenheizungen, Heizkörpern und den Hydraulischen Abgleich.
+              Wärmepumpen, Flächenheizungen, Heizkörpern und den hydraulischen Abgleich.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/kontakt?anliegen=heizlast" className="btn-primary">Heizlast anfragen</Link>
@@ -37,12 +37,21 @@ export default function HeizlastPage() {
             </div>
           </div>
         </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/waermepumpe.jpg"
+            alt="Luft-Wasser-Wärmepumpe neben einem sanierten Wohnhaus"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       {/* Warum */}
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max max-w-4xl">
-          <p className="section-label text-center text-amber">Wofür wird sie benötigt</p>
+          <p className="section-label text-center text-ocker">Wofür wird sie benötigt</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-10">
             Anwendungsfälle
           </h2>
@@ -68,15 +77,15 @@ export default function HeizlastPage() {
       {/* Leistung & Preis */}
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Leistung & Preis</p>
+          <p className="section-label text-center text-ocker">Leistung & Preis</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Was Sie erhalten</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             {[
-              { value: "ab 250 €", label: "EFH (1 WE)", sub: "netto, zzgl. MwSt." },
+              { value: "ab 250 €", label: "EFH (1 WE)", sub: "Endpreis, keine USt. (§19 UStG)" },
               { value: "auf Anfrage", label: "MFH / Gewerbe", sub: "nach Aufwand" },
             ].map((s) => (
               <div key={s.label} className="card-base p-5 text-center">
-                <div className="text-xl font-bold font-mono text-amber mb-1">{s.value}</div>
+                <div className="text-xl font-bold font-mono text-ocker mb-1">{s.value}</div>
                 <div className="text-sm text-zinc-primary">{s.label}</div>
                 <div className="text-xs text-zinc-hint">{s.sub}</div>
               </div>
@@ -92,7 +101,7 @@ export default function HeizlastPage() {
               "Lieferzeit 3–5 Werktage (Express auf Anfrage)",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm text-zinc-muted">
-                <svg className="w-4 h-4 text-amber shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-ocker shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 {item}

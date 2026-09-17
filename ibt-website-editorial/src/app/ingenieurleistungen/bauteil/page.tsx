@@ -22,10 +22,10 @@ export default function BauteilPage() {
               <span>/</span>
               <span className="text-zinc-secondary">Bauteilberechnung</span>
             </nav>
-            <p className="section-label text-amber">Ingenieurleistungen</p>
+            <p className="section-label text-ocker">Ingenieurleistungen</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Bauteilberechnung<br />
-              <span className="text-amber">U-Wert nach DIN EN ISO 6946</span>
+              Bauteilberechnung
+              <span className="block font-medium text-zinc-secondary">U-Wert nach DIN EN ISO 6946</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der U-Wert ist der zentrale Kennwert für die Wärmedämmeigenschaft eines Bauteils.
@@ -41,7 +41,7 @@ export default function BauteilPage() {
 
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max max-w-4xl">
-          <p className="section-label text-center text-amber">Bauteile</p>
+          <p className="section-label text-center text-ocker">Bauteile</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-10">Für welche Bauteile?</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -62,7 +62,7 @@ export default function BauteilPage() {
 
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Wofür benötigt</p>
+          <p className="section-label text-center text-ocker">Wofür benötigt</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Einsatzbereiche</h2>
           <div className="space-y-3">
             {[
@@ -72,7 +72,7 @@ export default function BauteilPage() {
               { title: "Taupunktnachweis", desc: "Voraussetzung für den Glaser-Nachweis (DIN 4108-3). Ohne U-Wert kein Taupunktnachweis." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
-                <div className="w-2 h-2 rounded-full bg-amber shrink-0 mt-2" />
+                <div className="w-2 h-2 rounded-full bg-ocker shrink-0 mt-2" />
                 <div>
                   <h3 className="font-semibold text-zinc-primary mb-1">{item.title}</h3>
                   <p className="text-sm text-zinc-muted">{item.desc}</p>

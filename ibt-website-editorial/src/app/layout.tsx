@@ -23,6 +23,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ib-tonn.de"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   title: {
     default: "IBT Ingenieurbüro Tonn: Energieberatung und Ingenieurleistungen",
     template: "%s | IBT Ingenieurbüro Tonn",
@@ -56,11 +67,16 @@ export const metadata: Metadata = {
     siteName: "IBT Ingenieurbüro Tonn",
     title: "IBT Ingenieurbüro Tonn: Energieberatung und Ingenieurleistungen",
     description:
-      "Energieberatung und Ingenieurleistungen aus einer Hand. Förderung bis 80 %. Region Köln / Aachen / Düren.",
+      "Energieberatung und Ingenieurleistungen aus einer Hand. Heizungsförderung bis 80 %. Region Köln / Aachen / Düren.",
   },
   robots: {
     index: true,
     follow: true,
+  },
+  // "./" löst Next pro Seite auf deren eigenen Pfad auf: jede Seite bekommt
+  // ihre eigene Canonical-URL, ohne dass sie einzeln gepflegt werden muss.
+  alternates: {
+    canonical: "./",
   },
 };
 

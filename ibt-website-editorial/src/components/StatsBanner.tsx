@@ -22,7 +22,7 @@ export default function StatsBanner({ stats, note }: StatsBannerProps) {
         <Reveal className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 text-center">
           {stats.map((s) => (
             <div key={s.label}>
-              <div className="stat-num text-3xl sm:text-4xl font-bold text-amber mb-1">{s.value}</div>
+              <div className="stat-num text-3xl sm:text-4xl font-bold text-zinc-primary mb-1">{s.value}</div>
               <div className="text-xs sm:text-sm text-zinc-muted">{s.label}</div>
             </div>
           ))}

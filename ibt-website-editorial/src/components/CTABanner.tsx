@@ -19,7 +19,7 @@ interface CTABannerProps {
 export default function CTABanner({
   title = "Bereit für Ihre Sanierung?",
   description = "Kostenlose Erstberatung: Ich schaue mir Ihre Situation an und zeige Ihnen, welche Förderung realistisch ist. Ohne Verpflichtung.",
-  primaryLabel = "Jetzt Erstberatung anfragen",
+  primaryLabel = "Erstgespräch anfragen",
   primaryHref,
   secondaryLabel = "Förderrechner 2026",
   secondaryHref = "/foerderrechner",
@@ -34,7 +34,7 @@ export default function CTABanner({
         <Reveal variant="scale" className="relative overflow-hidden rounded-2xl bg-bg-accent border border-teal-dark/30 p-8 sm:p-12">
           {/* Background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-teal-dark/10 blur-[80px] pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-48 h-48 rounded-full bg-amber/5 blur-[60px] pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-48 h-48 rounded-full bg-accent/5 blur-[60px] pointer-events-none" />
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             {/* Text */}
@@ -48,22 +48,22 @@ export default function CTABanner({
               {/* Trust markers */}
               <div className="flex flex-wrap gap-3 mt-5 justify-center lg:justify-start">
                 <div className="flex items-center gap-1.5 text-xs text-zinc-muted">
-                  <svg className="w-4 h-4 text-teal-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-teal-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   Kostenlos & unverbindlich
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-zinc-muted">
-                  <svg className="w-4 h-4 text-teal-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-teal-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Antwort innerhalb 24h
+                  Antwort innerhalb eines Werktags
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-zinc-muted">
-                  <svg className="w-4 h-4 text-teal-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-teal-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  dena-zertifiziert
+                  dena-gelistet
                 </div>
               </div>
             </div>

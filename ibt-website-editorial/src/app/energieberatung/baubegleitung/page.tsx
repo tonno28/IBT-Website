@@ -25,10 +25,10 @@ export default function BaubegleitungPage() {
             <p className="section-label">Energieberatung</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
               Fachplanung &<br />
-              <span className="text-gradient-teal">Baubegleitung</span>
+              Baubegleitung
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
-              Energetische Fachplanung und Baubegleitung (iSFP/BEG) ist für viele
+              Energetische Fachplanung und Baubegleitung (BEG) ist für viele
               Fördermaßnahmen Pflicht. Und selbst zu 50 % gefördert, bis 5.000 € für EFH.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -36,6 +36,15 @@ export default function BaubegleitungPage() {
               <span className="badge-teal self-center">50 % BEG-gefördert</span>
             </div>
           </div>
+        </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/daemmung.jpg"
+            alt="Handwerker bringt Dämmplatten an einer Hausfassade an"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -77,11 +86,11 @@ export default function BaubegleitungPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             {[
               { value: "50 %", label: "Zuschuss auf Kosten der Baubegleitung" },
-              { value: "5.000 €", label: "Maximum für EFH (1 Wohneinheit)" },
-              { value: "+2.000 €", label: "je weitere Wohneinheit (MFH)" },
+              { value: "5.000 €", label: "Maximum bei 1–2 Wohneinheiten" },
+              { value: "2.000 €", label: "je Wohneinheit ab 3 WE, max. 20.000 €" },
             ].map((stat) => (
               <div key={stat.label} className="card-base p-5 text-center">
-                <div className="text-2xl font-bold font-mono text-teal-light mb-1">{stat.value}</div>
+                <div className="text-2xl font-bold font-mono text-teal-dark mb-1">{stat.value}</div>
                 <div className="text-xs text-zinc-muted">{stat.label}</div>
               </div>
             ))}

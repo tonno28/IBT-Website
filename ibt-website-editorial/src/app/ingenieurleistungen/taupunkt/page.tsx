@@ -22,10 +22,10 @@ export default function TaupunktPage() {
               <span>/</span>
               <span className="text-zinc-secondary">Taupunkt</span>
             </nav>
-            <p className="section-label text-amber">Ingenieurleistungen</p>
+            <p className="section-label text-ocker">Ingenieurleistungen</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Taupunktnachweis<br />
-              <span className="text-amber">Feuchteschutz DIN 4108-3</span>
+              Taupunktnachweis
+              <span className="block font-medium text-zinc-secondary">Feuchteschutz DIN 4108-3</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der Taupunktnachweis zeigt, ob in einem Bauteil Kondensatfeuchtigkeit entsteht,
@@ -41,7 +41,7 @@ export default function TaupunktPage() {
 
       <section className="section-padding bg-bg-card border-y border-zinc-border">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Hintergrund</p>
+          <p className="section-label text-center text-ocker">Hintergrund</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Was ist der Taupunktnachweis?</h2>
           <div className="space-y-4 text-zinc-muted text-sm leading-relaxed">
             <p>
@@ -75,7 +75,7 @@ export default function TaupunktPage() {
 
       <section className="section-padding bg-bg-primary">
         <div className="container-max max-w-3xl">
-          <p className="section-label text-center text-amber">Leistung</p>
+          <p className="section-label text-center text-ocker">Leistung</p>
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-8">Was enthalten ist</h2>
           <div className="space-y-3">
             {[
@@ -88,7 +88,7 @@ export default function TaupunktPage() {
               "Lieferzeit 3–5 Werktage",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm text-zinc-muted">
-                <svg className="w-4 h-4 text-amber shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-ocker shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 {item}

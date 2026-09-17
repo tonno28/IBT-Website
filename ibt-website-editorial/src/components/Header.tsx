@@ -36,7 +36,6 @@ const nav = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -47,7 +46,6 @@ export default function Header() {
 
   useEffect(() => {
     setOpen(false);
-    setActiveDropdown(null);
   }, [pathname]);
 
   return (
@@ -69,22 +67,16 @@ export default function Header() {
             <Logo size="sm" />
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav — Dropdowns öffnen per CSS (hover UND focus-within),
+              damit sie auch mit der Tastatur erreichbar sind. */}
           <nav className="hidden lg:flex items-center gap-1">
             {nav.map((item) =>
               item.sub ? (
-                <div
-                  key={item.href}
-                  className="relative"
-                  onMouseEnter={() => setActiveDropdown(item.href)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
+                <div key={item.href} className="relative group">
                   <Link
                     href={item.href}
                     className={`btn-ghost text-sm ${
-                      pathname.startsWith(item.href)
-                        ? "text-zinc-primary"
-                        : ""
+                      pathname.startsWith(item.href) ? "text-zinc-primary" : ""
                     }`}
                   >
                     {item.label}
@@ -93,6 +85,7 @@ export default function Header() {
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
+                      aria-hidden="true"
                     >
                       <path
                         strokeLinecap="round"
@@ -102,21 +95,19 @@ export default function Header() {
                       />
                     </svg>
                   </Link>
-                  {activeDropdown === item.href && (
-                    <div className="absolute top-full left-0 pt-2 w-56">
-                      <div className="bg-bg-card border border-zinc-border rounded-xl shadow-xl overflow-hidden">
-                        {item.sub.map((s) => (
-                          <Link
-                            key={s.href}
-                            href={s.href}
-                            className="block px-4 py-2.5 text-sm text-zinc-secondary hover:text-zinc-primary hover:bg-bg-hover transition-colors"
-                          >
-                            {s.label}
-                          </Link>
-                        ))}
-                      </div>
+                  <div className="absolute top-full left-0 pt-2 w-56 invisible opacity-0 translate-y-1 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0">
+                    <div className="bg-bg-card border border-zinc-border rounded-xl shadow-xl overflow-hidden">
+                      {item.sub.map((s) => (
+                        <Link
+                          key={s.href}
+                          href={s.href}
+                          className="block px-4 py-2.5 text-sm text-zinc-secondary hover:text-zinc-primary hover:bg-bg-hover transition-colors"
+                        >
+                          {s.label}
+                        </Link>
+                      ))}
                     </div>
-                  )}
+                  </div>
                 </div>
               ) : (
                 <Link
@@ -131,7 +122,7 @@ export default function Header() {
               )
             )}
             <Link href="/kontakt" className="btn-primary ml-2 text-sm py-2">
-              Beratung anfragen
+              Erstgespräch anfragen
             </Link>
           </nav>
 
@@ -139,7 +130,8 @@ export default function Header() {
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden p-2 rounded-lg text-zinc-secondary hover:text-zinc-primary hover:bg-bg-card transition-colors"
-            aria-label="Menü öffnen"
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={open}
           >
             {open ? (
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -164,7 +156,7 @@ export default function Header() {
                   href={item.href}
                   className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     pathname.startsWith(item.href)
-                      ? "text-amber bg-amber/10"
+                      ? "text-accent bg-accent/10"
                       : "text-zinc-secondary hover:text-zinc-primary hover:bg-bg-hover"
                   }`}
                 >
@@ -187,7 +179,7 @@ export default function Header() {
             ))}
             <div className="pt-3 border-t border-zinc-border">
               <Link href="/kontakt" className="btn-primary w-full justify-center">
-                Kostenlose Erstberatung
+                Erstgespräch anfragen
               </Link>
             </div>
           </div>

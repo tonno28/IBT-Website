@@ -9,8 +9,8 @@
   --color-teal-dark: #0b6b3a;
   --color-teal-mid: #16a34a;
   --color-teal-light: #22c55e;
-  --color-amber: #16a34a;
-  --color-amber-hover: #12833c;
+  --color-accent: #0b6b3a;
+  --color-accent-hover: #084d2a;
   --color-text-primary: #0f1d15;
   --color-text-secondary: #43554a;
   --color-text-muted: #5f7166;
@@ -82,20 +82,20 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--color-amber);
+  background: var(--color-accent);
   cursor: pointer;
   transition: background 0.15s;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: var(--color-amber-hover);
+  background: var(--color-accent-hover);
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--color-amber);
+  background: var(--color-accent);
   cursor: pointer;
   border: none;
 }
@@ -112,13 +112,13 @@ input[type="number"] {
 
 /* Focus ring */
 :focus-visible {
-  outline: 2px solid var(--color-amber);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 /* Selection */
 ::selection {
-  background: var(--color-amber);
+  background: var(--color-accent);
   color: #ffffff;
 }
 
@@ -145,14 +145,17 @@ input[type="number"] {
   .badge {
     @apply inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full;
   }
-  .badge-amber {
-    @apply badge bg-amber/10 text-amber border border-amber/20;
+  .badge-accent {
+    @apply badge bg-accent/10 text-accent border border-accent/20;
   }
   .badge-teal {
     @apply badge bg-teal-mid/10 text-teal-dark border border-teal-mid/25;
   }
+  .badge-ocker {
+    @apply badge bg-ocker/10 text-ocker border border-ocker/25;
+  }
   .section-label {
-    @apply text-xs font-semibold tracking-[0.2em] uppercase text-amber mb-3;
+    @apply text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3;
   }
   .card-base {
     @apply bg-bg-card border border-zinc-border rounded-2xl transition-all duration-200;
@@ -161,10 +164,10 @@ input[type="number"] {
     @apply card-base hover:border-zinc-borderHover hover:bg-bg-hover;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-amber text-onAccent font-semibold text-sm shadow-lg shadow-amber/25 transition-all duration-150 hover:bg-amber-hover hover:shadow-amber/35 focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-onAccent font-semibold text-sm shadow-lg shadow-accent/25 transition-all duration-150 hover:bg-accent-hover hover:shadow-accent/35 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-bg-primary border border-zinc-border text-zinc-primary font-semibold text-sm transition-all duration-150 hover:border-amber hover:text-amber;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-bg-primary border border-zinc-border text-zinc-primary font-semibold text-sm transition-all duration-150 hover:border-accent hover:text-accent;
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-zinc-secondary font-medium text-sm transition-all duration-150 hover:text-zinc-primary hover:bg-bg-card;
@@ -174,18 +177,6 @@ input[type="number"] {
   }
   .container-max {
     @apply max-w-6xl mx-auto;
-  }
-  .gradient-teal {
-    background: linear-gradient(135deg, #0b6b3a 0%, #16a34a 100%);
-  }
-  .gradient-amber {
-    background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
-  }
-  .text-gradient-teal {
-    background: linear-gradient(135deg, #0b6b3a 0%, #16a34a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
   .grid-dots {
     background-image: radial-gradient(circle, #cfdcd3 1px, transparent 1px);
@@ -198,17 +189,10 @@ input[type="number"] {
       linear-gradient(to bottom, rgba(22, 163, 74, 0.1) 1px, transparent 1px);
     background-size: 56px 56px;
   }
-  .text-gradient-amber {
-    background: linear-gradient(120deg, #12833c 0%, #16a34a 50%, #22c55e 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
   /* Animated hairline used under section labels */
   .rule-accent {
     height: 1px;
-    background: linear-gradient(90deg, var(--color-amber), transparent);
+    background: linear-gradient(90deg, var(--color-accent), transparent);
   }
   .stat-num {
     @apply font-display font-semibold tracking-tight;

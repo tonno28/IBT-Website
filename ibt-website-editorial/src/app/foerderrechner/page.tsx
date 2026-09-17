@@ -71,7 +71,7 @@ export default function FoerderrechnerPage() {
                   {KURZUEBERSICHT.map((row) => (
                     <div key={row.label} className="flex justify-between gap-3 text-sm">
                       <span className="text-zinc-muted">{row.label}</span>
-                      <span className="text-amber font-semibold text-right shrink-0">
+                      <span className="text-accent font-semibold text-right shrink-0">
                         {row.wert}
                       </span>
                     </div>

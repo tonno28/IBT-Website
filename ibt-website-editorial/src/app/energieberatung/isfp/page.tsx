@@ -33,7 +33,7 @@ export default function ISFPPage() {
             <p className="section-label">Energieberatung</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
               Individueller<br />
-              <span className="text-gradient-teal">Sanierungsfahrplan</span>
+              Sanierungsfahrplan
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Der iSFP ist Ihr persönlicher Masterplan: Welche Maßnahmen in welcher Reihenfolge,
@@ -45,6 +45,15 @@ export default function ISFPPage() {
               <span className="badge-teal self-center">bis 60.000 € förderfähig</span>
             </div>
           </div>
+        </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/isfp-dokumente.jpg"
+            alt="iSFP-Unterlagen mit Effizienzklassen-Diagramm, Grundriss und Hausmodell"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -83,19 +92,19 @@ export default function ISFPPage() {
             </div>
             <div className="space-y-4">
               <div className="card-base p-5">
-                <div className="text-2xl font-bold text-teal-light font-mono mb-1">+5 %</div>
+                <div className="text-2xl font-bold text-teal-dark font-mono mb-1">+5 %</div>
                 <div className="text-sm font-semibold text-zinc-primary mb-1">iSFP-Bonus</div>
                 <div className="text-xs text-zinc-muted">auf den Ausgabenanteil über 30.000 €, Stand 21.07.2026</div>
               </div>
               <div className="card-base p-5">
-                <div className="text-2xl font-bold text-amber font-mono mb-1">15 Jahre</div>
+                <div className="text-2xl font-bold text-accent font-mono mb-1">15 Jahre</div>
                 <div className="text-sm font-semibold text-zinc-primary mb-1">Gültigkeit</div>
                 <div className="text-xs text-zinc-muted">Maßnahmen können schrittweise umgesetzt werden</div>
               </div>
               <div className="card-base p-5">
-                <div className="text-2xl font-bold text-teal-light font-mono mb-1">ab 650 €</div>
+                <div className="text-2xl font-bold text-teal-dark font-mono mb-1">ab 650 €</div>
                 <div className="text-sm font-semibold text-zinc-primary mb-1">Kosten</div>
-                <div className="text-xs text-zinc-muted">netto für EFH · zzgl. MwSt.</div>
+                <div className="text-xs text-zinc-muted">für EFH · Endpreis, keine USt. (§19 UStG)</div>
               </div>
             </div>
           </div>
@@ -110,7 +119,7 @@ export default function ISFPPage() {
           <div className="max-w-2xl mx-auto space-y-4">
             {steps.map((s) => (
               <div key={s.step} className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-teal-dark/20 border border-teal-dark/30 flex items-center justify-center text-xs font-bold text-teal-light font-mono shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-full bg-teal-dark/20 border border-teal-dark/30 flex items-center justify-center text-xs font-bold text-teal-dark font-mono shrink-0 mt-0.5">
                   {s.step}
                 </div>
                 <div>

@@ -24,8 +24,8 @@ export default function EnergieausweisPage() {
             </nav>
             <p className="section-label">Energieberatung</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-zinc-primary leading-tight mb-6">
-              Energieausweis<br />
-              <span className="text-gradient-teal">rechtssicher & schnell</span>
+              Energieausweis
+              <span className="block font-medium text-zinc-secondary">rechtssicher & schnell</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflicht bei Verkauf, Vermietung
@@ -33,6 +33,15 @@ export default function EnergieausweisPage() {
             </p>
             <Link href="/kontakt?anliegen=energieausweis" className="btn-primary">Energieausweis beauftragen</Link>
           </div>
+        </div>
+
+        <div className="container-max relative mt-12">
+          <img
+            src="/images/energieausweis.jpg"
+            alt="Energieausweis mit farbiger Effizienzskala neben Laptop und Hausschlüsseln"
+            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -56,14 +65,14 @@ export default function EnergieausweisPage() {
                 title: "Bedarfsausweis",
                 price: "ab 250 € (EFH)",
                 desc: "Basiert auf der berechneten Energiebilanz des Gebäudes (DIN V 18599 / DIN V 4108-6). Objektiv, unabhängig vom Nutzerverhalten und erforderlich für viele Förderprogramme.",
-                when: ["Neubau / kernsanierte Gebäude", "EFH mit weniger als 4 WE (Pflicht)", "Förderantrag KfW / BAFA", "Genauere Aussage gewünscht"],
+                when: ["Neubau / kernsanierte Gebäude", "Gebäude bis 4 WE, Bauantrag vor 1977 (Pflicht)", "Förderantrag KfW / BAFA", "Genauere Aussage gewünscht"],
                 highlight: true,
               },
             ].map((item) => (
               <div key={item.title} className={`card-base p-6 flex flex-col gap-4 ${item.highlight ? "border-teal-dark/40" : ""}`}>
                 <div className="flex items-start justify-between">
                   <h3 className="text-lg font-semibold text-zinc-primary">{item.title}</h3>
-                  <span className="text-xl font-bold font-mono text-amber">{item.price}</span>
+                  <span className="text-xl font-bold font-mono text-accent">{item.price}</span>
                 </div>
                 <p className="text-sm text-zinc-muted leading-relaxed">{item.desc}</p>
                 <div>
@@ -97,13 +106,13 @@ export default function EnergieausweisPage() {
           </h2>
           <div className="space-y-4">
             {[
-              { title: "Verkauf", desc: "Bei jedem Verkauf eines Gebäudes oder einer Wohneinheit muss der Energieausweis spätestens bei der Besichtigung vorliegen. Verstöße werden mit bis zu 15.000 € Bußgeld geahndet." },
+              { title: "Verkauf", desc: "Bei jedem Verkauf eines Gebäudes oder einer Wohneinheit muss der Energieausweis spätestens bei der Besichtigung vorliegen. Verstöße können nach § 108 GEG mit bis zu 10.000 € Bußgeld geahndet werden." },
               { title: "Vermietung", desc: "Bei jeder Neuvermietung gilt dieselbe Pflicht. Auch Inserate (ImmobilienScout, ImmoWelt etc.) müssen Energiekennwerte ausweisen." },
               { title: "Neubau", desc: "Für jeden Neubau ist ein Bedarfsausweis Pflicht. Er muss der Baugenehmigungsbehörde vorgelegt werden." },
-              { title: "Größere Sanierung", desc: "Bei umfanggreichen energetischen Sanierungen (mehr als 25 % der Gebäudehülle) ist ein neuer Energieausweis zu erstellen." },
+              { title: "Größere Sanierung", desc: "Bei umfangreichen energetischen Sanierungen (mehr als 25 % der Gebäudehülle) ist ein neuer Energieausweis zu erstellen." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
-                <div className="w-2 h-2 rounded-full bg-amber shrink-0 mt-2" />
+                <div className="w-2 h-2 rounded-full bg-accent shrink-0 mt-2" />
                 <div>
                   <h3 className="font-semibold text-zinc-primary mb-1">{item.title}</h3>
                   <p className="text-sm text-zinc-muted">{item.desc}</p>

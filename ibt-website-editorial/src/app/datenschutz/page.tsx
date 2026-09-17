@@ -11,26 +11,17 @@ export const metadata: Metadata = {
  * Datenschutzerklärung.
  *
  * Beschreibt genau die Verarbeitungen, die diese Website tatsächlich
- * auslöst: Vercel als Hoster, Web3Forms für den Formularversand, Google Tag
+ * auslöst: IONOS als Hoster, Web3Forms für den Formularversand, Google Tag
  * nur nach Einwilligung. Kommt ein Dienst dazu oder fällt einer weg, gehört
  * das hier hinein, eine Erklärung, die etwas anderes behauptet als der Code
  * tut, ist der häufigste Mangel bei Abmahnungen.
  *
- * UMZUG NACH IONOS: Sobald der statische Export auf IONOS-Webspace liegt,
- * Abschnitt 3 ersetzen durch:
- *
- *   Diese Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410
- *   Montabaur, Deutschland gehostet. Die Server stehen in Deutschland. Mit
- *   IONOS besteht ein Vertrag über Auftragsverarbeitung nach Art. 28 DSGVO.
- *
- * Der Absatz zum Drittlandtransfer entfällt dann ersatzlos, und das Datum
- * in STAND wird hochgesetzt.
- *
- * Mit [...] markierte Stellen kann nur Jonas ausfüllen.
+ * Voraussetzung für die Angaben: AVV mit IONOS (im IONOS-Kundencenter
+ * abschließbar) und DPA mit Web3Forms (web3forms.com/dpa) liegen vor.
  */
 
-const STAND = "11. August 2026";
-const A = "text-amber hover:underline";
+const STAND = "17. August 2026";
+const A = "text-accent hover:underline";
 
 function Abschnitt({
   nr,
@@ -105,14 +96,10 @@ export default function DatenschutzPage() {
 
           <Abschnitt nr={3} titel="Hosting und Server-Logfiles">
             <p>
-              Diese Website wird bei der Vercel Inc., 340 S Lemon Ave #4133,
-              Walnut, CA 91789, USA gehostet. Mit Vercel besteht ein Vertrag über
-              Auftragsverarbeitung nach Art. 28 DSGVO. Da die Auslieferung über
-              ein weltweites Servernetz erfolgt, können dabei personenbezogene
-              Daten, insbesondere Ihre IP-Adresse, in die USA übermittelt
-              werden. Grundlage der Übermittlung sind die
-              Standardvertragsklauseln der EU-Kommission nach Art. 46 Abs. 2
-              lit. c DSGVO.
+              Diese Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410
+              Montabaur, Deutschland gehostet. Die Server stehen in Deutschland.
+              Mit IONOS besteht ein Vertrag über Auftragsverarbeitung nach
+              Art. 28 DSGVO.
             </p>
             <p>
               Beim Aufruf der Website erhebt der Hoster automatisch Informationen,
@@ -158,15 +145,13 @@ export default function DatenschutzPage() {
             <p>
               <strong className="text-zinc-secondary">Formularversand:</strong> Für
               die technische Zustellung der Formulare nutze ich den Dienst
-              Web3Forms. Ihre Eingaben werden dort ausschließlich verarbeitet, um
-              sie mir per E-Mail zuzustellen, und nicht dauerhaft gespeichert. Es
-              besteht ein Auftragsverarbeitungsverhältnis. Sofern dabei Daten
-              außerhalb der EU verarbeitet werden, geschieht dies auf Grundlage
-              der Standardvertragsklauseln der EU-Kommission.
-            </p>
-            <p className="text-xs text-zinc-hint">
-              [Vor Livegang prüfen: aktuelle Firmierung und Anschrift von
-              Web3Forms sowie den abgeschlossenen AVV hier konkret benennen.]
+              Web3Forms des Anbieters Web3Creative, Kerala, Indien. Ihre Eingaben
+              werden dort ausschließlich verarbeitet, um sie mir per E-Mail
+              zuzustellen, beim Anbieter verschlüsselt für bis zu 30 Tage
+              gespeichert und danach automatisch gelöscht. Es besteht ein
+              Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; die Übermittlung
+              in Drittländer erfolgt auf Grundlage der Standardvertragsklauseln
+              der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO).
             </p>
           </Abschnitt>
 
@@ -269,6 +254,10 @@ export default function DatenschutzPage() {
             <ul className="list-disc pl-5 space-y-1 pt-1">
               <li>
                 Server-Logfiles: spätestens nach 7 Tagen
+              </li>
+              <li>
+                Kopien von Formulareinsendungen beim Versanddienst Web3Forms:
+                automatische Löschung nach spätestens 30 Tagen
               </li>
               <li>
                 Anfragen ohne anschließenden Auftrag: gelöscht, sobald absehbar

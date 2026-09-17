@@ -81,7 +81,7 @@ export default function ProcessTimeline() {
                     }`}
                   >
                     <div className="flex items-center gap-3 mb-2 sm:hidden">
-                      <div className="w-8 h-8 rounded-full bg-amber flex items-center justify-center text-onAccent font-bold text-xs font-mono shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-onAccent font-bold text-xs font-mono shrink-0">
                         {step.number}
                       </div>
                       <span className="text-xs text-zinc-hint">{step.duration}</span>
@@ -94,8 +94,8 @@ export default function ProcessTimeline() {
 
                 {/* Center dot (desktop) */}
                 <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-bg-primary border-2 border-amber flex items-center justify-center z-10">
-                    <span className="text-xs font-bold text-amber font-mono">{step.number}</span>
+                  <div className="w-10 h-10 rounded-full bg-bg-primary border-2 border-accent flex items-center justify-center z-10">
+                    <span className="text-xs font-bold text-accent font-mono">{step.number}</span>
                   </div>
                 </div>
 

@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Foerderrechner from "@/components/Foerderrechner";
-// import Testimonials from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 
 /**
@@ -45,14 +45,14 @@ const leistungen: {
     title: "iSFP Sanierungsfahrplan",
     desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung. Er verdoppelt die förderfähigen Kosten Ihrer Einzelmaßnahmen.",
     highlight: "bis 60.000 € förderfähig",
-    price: "ab 650 € netto (EFH)",
+    price: "ab 650 € (EFH)",
   },
   {
     href: "/energieberatung/foerderberatung",
     icon: "euro",
     title: "Förderberatung BEG",
     desc: "Vollständige Antragsbearbeitung bei BAFA und KfW: Technische Projektbeschreibung, Energieeffizienz-Experten-Bestätigung, Verwendungsnachweis.",
-    highlight: "bis 80 % Förderung",
+    highlight: "bis 80 % (Heizungstausch)",
     price: "auf Anfrage",
   },
   {
@@ -60,7 +60,7 @@ const leistungen: {
     icon: "document",
     title: "Energieausweis",
     desc: "Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflichtdokument bei Verkauf, Vermietung und Neubau, schnell und rechtssicher.",
-    highlight: "ab 95 €",
+    highlight: "Pflicht bei Verkauf & Vermietung",
     price: "ab 95 € (Verbrauch) / ab 250 € (Bedarf EFH)",
   },
   {
@@ -89,14 +89,14 @@ export default function EnergieberatungPage() {
         <div className="absolute inset-0 grid-blueprint opacity-30 [mask-image:radial-gradient(ellipse_at_top_left,black_20%,transparent_70%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-teal-dark/10 blur-[100px] pointer-events-none animate-float-slow" />
         <div className="container-max relative">
-          <Reveal className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <Reveal>
             <div className="flex items-center gap-2 mb-4">
               <div className="h-px w-8 bg-teal-mid" />
               <p className="section-label mb-0">Energieberatung</p>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-primary leading-tight mb-6">
-              Energieberatung für{" "}
-              <span className="text-gradient-teal">Wohngebäude</span>
+              Energieberatung für Wohngebäude
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Von der Erstberatung bis zur ausgezahlten Förderung. Als dena-gelisteter
@@ -112,6 +112,16 @@ export default function EnergieberatungPage() {
               </Link>
             </div>
           </Reveal>
+          <Reveal variant="right">
+            <img
+              src="/images/effizienzhaus.jpg"
+              alt="Modernes Effizienzhaus mit Photovoltaik und großen Fensterflächen"
+              width={1600}
+              height={1073}
+              className="w-full rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
+            />
+          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -123,28 +133,32 @@ export default function EnergieberatungPage() {
               <Reveal key={l.href} delay={i * 70}>
                 <Link
                   href={l.href}
-                  className="card-hover hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 p-6 flex flex-col gap-4 group h-full"
+                  className="card-hover hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5 p-6 flex flex-col gap-4 group h-full"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-teal-dark/15 text-teal-light ring-1 ring-teal-dark/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                    <div className="w-12 h-12 rounded-xl bg-teal-dark/15 text-teal-dark ring-1 ring-teal-dark/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                       <Icon name={l.icon} className="w-6 h-6" />
                     </div>
                     <span className="badge-teal text-xs">{l.highlight}</span>
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-zinc-primary mb-2 group-hover:text-teal-light transition-colors">
+                    <h2 className="text-lg font-semibold text-zinc-primary mb-2 group-hover:text-teal-dark transition-colors">
                       {l.title}
                     </h2>
                     <p className="text-sm text-zinc-muted leading-relaxed">{l.desc}</p>
                   </div>
                   <div className="mt-auto pt-4 border-t border-zinc-border flex items-center justify-between">
-                    <span className="text-xs text-zinc-hint stat-num">{l.price}</span>
-                    <span className="text-xs font-medium text-teal-light">Details →</span>
+                    <span className="text-sm text-zinc-secondary stat-num">{l.price}</span>
+                    <span className="text-xs font-medium text-teal-dark">Details →</span>
                   </div>
                 </Link>
               </Reveal>
             ))}
           </div>
+          <p className="text-xs text-zinc-hint mt-6">
+            Alle Preise sind Endpreise. Als Kleinunternehmer nach §19 UStG berechne
+            ich keine Umsatzsteuer.
+          </p>
         </div>
       </section>
 
@@ -176,7 +190,7 @@ export default function EnergieberatungPage() {
               },
             ] as { icon: IconName; title: string; desc: string }[]).map((item, i) => (
               <Reveal key={item.title} variant="up" delay={i * 90} className="text-center p-6">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-dark/15 text-teal-light ring-1 ring-teal-dark/20">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-dark/15 text-teal-dark ring-1 ring-teal-dark/20">
                   <Icon name={item.icon} className="w-6 h-6" />
                 </div>
                 <h3 className="font-semibold text-zinc-primary mb-2">{item.title}</h3>
@@ -211,7 +225,7 @@ export default function EnergieberatungPage() {
                   { icon: "euro", text: "Honorarschätzung für meine Begleitung inklusive" },
                 ] as { icon: IconName; text: string }[]).map((item) => (
                   <div key={item.text} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber/10 text-amber ring-1 ring-amber/20">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent ring-1 ring-accent/20">
                       <Icon name={item.icon} className="w-4 h-4" />
                     </span>
                     <span className="text-sm text-zinc-secondary">{item.text}</span>
@@ -224,7 +238,7 @@ export default function EnergieberatungPage() {
               </Link>
 
               <p className="text-xs text-zinc-hint mt-4">
-                Unverbindliche Schätzung. Stand: BEG-Richtlinien vom 17.07.2026.
+                Unverbindliche Schätzung. Stand: BEG-Reform, gültig seit 21.07.2026.
               </p>
             </Reveal>
 
@@ -237,7 +251,8 @@ export default function EnergieberatungPage() {
 
       {/* Kundenstimmen: vorerst ausgeblendet, kommen später zurück.
           Wieder einblenden = die nächste Zeile entkommentieren. */}
-      {/* <Testimonials filter="energie" title="Was Eigentümer sagen" /> */}
+      {/* filter="all", solange es nur zwei Rezensionen gibt; ab zwei je Säule wieder filtern */}
+      <Testimonials filter="all" title="Was Kunden sagen" />
 
       {/* FAQ */}
       <FAQ />
