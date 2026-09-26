@@ -27,7 +27,6 @@ yarn-error.log*
 .idea/
 
 # Vercel
-.vercel
 
 # TypeScript
 *.tsbuildinfo

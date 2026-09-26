@@ -67,9 +67,7 @@ bis dahin die Coming-Soon-Seite.
       cal.com …) oder bleibt es bei Formular + Telefon?
 
 ### Offen — kleinere Punkte
-- [ ] **Kontaktformular einmal aus dem Browser absenden** und prüfen, dass die Mail bei
-      info@ib-tonn.de ankommt. Automatisch geht das nicht: Web3Forms sitzt hinter einem
-      Cloudflare-Bot-Check, der nur echte Browser durchlässt. 30 Sekunden auf localhost.
+- [x] **Kontaktformular** live getestet, Mail kommt bei info@ib-tonn.de an (26.09.).
 - [ ] Bilder verkleinern: `public/images/` liegt bei 230–580 KB pro Bild, zusammen 4,5 MB.
       Ziel ~150 KB pro Bild (WebP oder JPEG 80 %, max. 1600 px breit).
 - [ ] Stats-Streifen auf der Energieberatung-Seite einbauen, sobald belastbare Zahlen da sind
@@ -99,11 +97,11 @@ bis dahin die Coming-Soon-Seite.
    - Ursache für den Stillstand seit 07.08.: GitHub stuft `deploy-to-ionos.yaml` als
      „möglicherweise schädlich" ein und startet es nur nach Freigabe im Browser (Actions →
      Lauf → „Approve"). Unfreigegebene Läufe verfallen nach 30 Tagen.
-   - [ ] `toJson(secrets)` aus dem Render-Schritt entfernen, damit die Freigabe entfällt
-         (keine Vorlagen-Dateien im Projekt, die Secrets bräuchten).
-   - [ ] Eigene deutsche 404-Seite (`src/app/not-found.tsx`), heute Nexts englische.
-   - [ ] Kontaktformular live absenden und Eingang bei info@ib-tonn.de prüfen.
-   - [ ] `coming-soon-site/` und `vercel.json` löschen.
+   - [x] `toJson(secrets)` aus dem Render-Schritt entfernt (26.09.). Beim nächsten Deploy
+         prüfen, ob die Freigabe damit entfällt.
+   - [x] Eigene deutsche 404-Seite (`src/app/not-found.tsx`).
+   - [x] Kontaktformular live getestet, Mail kommt an (26.09.).
+   - [x] `coming-soon-site/` und `vercel.json` gelöscht.
 5. [ ] Nach dem Go-Live: Google Search Console anlegen, Sitemap einreichen, Google-
        Unternehmensprofil auf die Seite verlinken, OG-Vorschau in WhatsApp/LinkedIn testen.
 

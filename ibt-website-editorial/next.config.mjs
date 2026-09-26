@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export: the whole site is prerendered, so we ship plain HTML.
-  // This lets Vercel deploy from the repo root via vercel.json without
-  // needing the Root-Directory project setting.
+  // Statischer Export: die ganze Seite wird vorgerendert und als reines
+  // HTML nach out/ gelegt, das IONOS Deploy Now unverändert ausliefert.
   output: "export",
   trailingSlash: true,
   experimental: {
