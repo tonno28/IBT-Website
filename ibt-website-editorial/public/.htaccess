@@ -3,3 +3,7 @@
 <Files "opengraph-image">
   ForceType image/png
 </Files>
+
+# Eigene Fehlerseite statt der Apache-Standardseite. Next legt sie beim
+# statischen Export als 404.html ins Wurzelverzeichnis.
+ErrorDocument 404 /404.html

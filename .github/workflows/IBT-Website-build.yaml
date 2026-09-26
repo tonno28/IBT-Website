@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: coming-soon-site
+  DEPLOYMENT_FOLDER: ibt-website-editorial/out
 
 jobs:
 # Please do not rename this job
@@ -26,6 +26,26 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
+
+      # Die Seite ist ein statischer Next-Export (output: "export"). Der Build
+      # legt reines HTML/CSS/JS nach ibt-website-editorial/out, das IONOS
+      # unverändert ausliefert.
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ibt-website-editorial/package-lock.json
+
+      - name: install dependencies
+        run: npm ci
+        working-directory: ibt-website-editorial
+
+      - name: build site
+        run: npm run build
+        working-directory: ibt-website-editorial
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
 
 # Please do not touch the following action
       - name: Store deployment content
