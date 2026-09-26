@@ -22,7 +22,8 @@ export default function ISFPPage() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 grid-dots opacity-30" />
         <div className="container-max relative">
-          <div className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-center">
+          <div>
             <nav className="flex items-center gap-2 text-xs text-zinc-muted mb-6">
               <Link href="/" className="hover:text-zinc-secondary">Startseite</Link>
               <span>/</span>
@@ -45,15 +46,14 @@ export default function ISFPPage() {
               <span className="badge-teal self-center">bis 60.000 € förderfähig</span>
             </div>
           </div>
-        </div>
-
-        <div className="container-max relative mt-12">
           <img
             src="/images/isfp-dokumente.jpg"
             alt="iSFP-Unterlagen mit Effizienzklassen-Diagramm, Grundriss und Hausmodell"
-            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
-            loading="lazy"
+            className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
+            width={1600}
+            height={1200}
           />
+          </div>
         </div>
       </section>
 

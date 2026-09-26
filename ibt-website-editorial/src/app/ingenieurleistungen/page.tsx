@@ -43,9 +43,9 @@ const leistungen: {
     href: "/ingenieurleistungen/heizlast",
     icon: "thermometer",
     title: "Heizlastberechnung",
-    desc: "Normheizlast nach DIN EN 12831, Grundlage für die korrekte Auslegung von Wärmepumpen, Heizkörpern und den hydraulischen Abgleich.",
+    desc: "Normheizlast nach DIN EN 12831 für die Auslegung von Wärmepumpen und Heizkörpern. Datensatz für den hydraulischen Abgleich inklusive.",
     norm: "DIN EN 12831",
-    price: "ab 250 € (EFH)",
+    price: "ab 499 € (EFH), inkl. hydraulischem Abgleich",
   },
   {
     href: "/ingenieurleistungen/bauteil",

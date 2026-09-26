@@ -161,16 +161,16 @@ input[type="number"] {
     @apply bg-bg-card border border-zinc-border rounded-2xl transition-all duration-200;
   }
   .card-hover {
-    @apply card-base hover:border-zinc-borderHover hover:bg-bg-hover;
+    @apply card-base hover:border-zinc-borderHover hover:bg-bg-hover hover:shadow-md hover:shadow-teal-dark/5;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-onAccent font-semibold text-sm shadow-lg shadow-accent/25 transition-all duration-150 hover:bg-accent-hover hover:shadow-accent/35 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-onAccent font-semibold text-sm shadow-lg shadow-accent/25 transition-all duration-150 hover:bg-accent-hover hover:shadow-accent/35 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-bg-primary border border-zinc-border text-zinc-primary font-semibold text-sm transition-all duration-150 hover:border-accent hover:text-accent;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-bg-primary border border-zinc-border text-zinc-primary font-semibold text-sm transition-all duration-150 hover:border-accent hover:text-accent active:scale-[0.98];
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-zinc-secondary font-medium text-sm transition-all duration-150 hover:text-zinc-primary hover:bg-bg-card;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-zinc-secondary font-medium text-sm transition-all duration-150 hover:text-zinc-primary hover:bg-bg-card active:scale-[0.98];
   }
   .section-padding {
     @apply py-20 px-4 sm:px-6 lg:px-8;

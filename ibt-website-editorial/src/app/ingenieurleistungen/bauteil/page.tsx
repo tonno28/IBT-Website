@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
+import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Bauteilberechnung U-Wert nach DIN EN ISO 6946",
@@ -45,13 +46,13 @@ export default function BauteilPage() {
           <h2 className="text-2xl font-bold text-zinc-primary text-center mb-10">Für welche Bauteile?</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: "🧱", title: "Außenwand", norms: "BEG: U ≤ 0,20 W/m²K" },
-              { icon: "🏠", title: "Dach / OGD", norms: "BEG: U ≤ 0,14 W/m²K" },
-              { icon: "⬜", title: "Bodenplatte", norms: "BEG: U ≤ 0,25 W/m²K" },
-              { icon: "🪟", title: "Fenster / Türen", norms: "BEG: Uw ≤ 0,95 W/m²K" },
+              { icon: "brick", title: "Außenwand", norms: "BEG: U ≤ 0,20 W/m²K" },
+              { icon: "house", title: "Dach / OGD", norms: "BEG: U ≤ 0,14 W/m²K" },
+              { icon: "slab", title: "Bodenplatte", norms: "BEG: U ≤ 0,25 W/m²K" },
+              { icon: "window", title: "Fenster / Türen", norms: "BEG: Uw ≤ 0,95 W/m²K" },
             ].map((item) => (
               <div key={item.title} className="card-base p-5 text-center">
-                <div className="text-3xl mb-2">{item.icon}</div>
+                <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-ocker/10 text-ocker ring-1 ring-ocker/20"><Icon name={item.icon as IconName} className="h-6 w-6" /></div>
                 <div className="font-semibold text-zinc-primary text-sm mb-1">{item.title}</div>
                 <div className="text-xs text-zinc-hint">{item.norms}</div>
               </div>

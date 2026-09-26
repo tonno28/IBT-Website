@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
+import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Taupunktnachweis: Feuchteschutz nach DIN 4108-3",
@@ -59,12 +60,12 @@ export default function TaupunktPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
             {[
-              { icon: "🧱", title: "WDVS / Innendämmung", desc: "Kritische Bauteile bei Sanierung" },
-              { icon: "🏠", title: "Dach / Aufsparren", desc: "Feuchtigkeitsrisiko bei Umkehrdächern" },
-              { icon: "🪟", title: "Fensterlaibung", desc: "Wärmebrücken und Taupunkt" },
+              { icon: "brick", title: "WDVS / Innendämmung", desc: "Kritische Bauteile bei Sanierung" },
+              { icon: "house", title: "Dach / Aufsparren", desc: "Feuchtigkeitsrisiko bei Umkehrdächern" },
+              { icon: "window", title: "Fensterlaibung", desc: "Wärmebrücken und Taupunkt" },
             ].map((item) => (
               <div key={item.title} className="card-base p-4 text-center">
-                <div className="text-2xl mb-1">{item.icon}</div>
+                <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-ocker/10 text-ocker ring-1 ring-ocker/20"><Icon name={item.icon as IconName} className="h-6 w-6" /></div>
                 <div className="text-sm font-semibold text-zinc-primary mb-0.5">{item.title}</div>
                 <div className="text-xs text-zinc-muted">{item.desc}</div>
               </div>

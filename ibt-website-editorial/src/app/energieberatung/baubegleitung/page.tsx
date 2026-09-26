@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
+import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Fachplanung und Baubegleitung nach BEG",
@@ -14,7 +15,8 @@ export default function BaubegleitungPage() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 grid-dots opacity-30" />
         <div className="container-max relative">
-          <div className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-center">
+          <div>
             <nav className="flex items-center gap-2 text-xs text-zinc-muted mb-6">
               <Link href="/" className="hover:text-zinc-secondary">Startseite</Link>
               <span>/</span>
@@ -36,15 +38,14 @@ export default function BaubegleitungPage() {
               <span className="badge-teal self-center">50 % BEG-gefördert</span>
             </div>
           </div>
-        </div>
-
-        <div className="container-max relative mt-12">
           <img
             src="/images/daemmung.jpg"
             alt="Handwerker bringt Dämmplatten an einer Hausfassade an"
-            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
-            loading="lazy"
+            className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
+            width={1600}
+            height={1200}
           />
+          </div>
         </div>
       </section>
 
@@ -57,15 +58,15 @@ export default function BaubegleitungPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { icon: "📋", title: "Technische Projektbeschreibung", desc: "Normgerechte Dokumentation aller geplanten Maßnahmen für den Förderantrag." },
-              { icon: "🔍", title: "Ausführungskontrolle", desc: "Begehung der Baustelle zur Kontrolle der fachgerechten Ausführung laut Planung." },
-              { icon: "📸", title: "Baudokumentation", desc: "Fotodokumentation der Bauausführung als Nachweis für BAFA/KfW." },
-              { icon: "✅", title: "Verwendungsnachweis", desc: "Vollständiger Abschlussbericht und Verwendungsnachweis für die Förderauszahlung." },
-              { icon: "🔧", title: "Qualitätssicherung", desc: "Prüfung der Materialqualität und Ausführung auf Normkonformität (U-Werte, Anschlüsse)." },
-              { icon: "📞", title: "Kommunikation Handwerk", desc: "Direkter Austausch mit ausführenden Handwerksbetrieben: klar, schnell, technisch präzise." },
+              { icon: "document", title: "Technische Projektbeschreibung", desc: "Normgerechte Dokumentation aller geplanten Maßnahmen für den Förderantrag." },
+              { icon: "scan", title: "Ausführungskontrolle", desc: "Begehung der Baustelle zur Kontrolle der fachgerechten Ausführung laut Planung." },
+              { icon: "camera", title: "Baudokumentation", desc: "Fotodokumentation der Bauausführung als Nachweis für BAFA/KfW." },
+              { icon: "check", title: "Verwendungsnachweis", desc: "Vollständiger Abschlussbericht und Verwendungsnachweis für die Förderauszahlung." },
+              { icon: "wrench", title: "Qualitätssicherung", desc: "Prüfung der Materialqualität und Ausführung auf Normkonformität (U-Werte, Anschlüsse)." },
+              { icon: "handshake", title: "Kommunikation Handwerk", desc: "Direkter Austausch mit ausführenden Handwerksbetrieben: klar, schnell, technisch präzise." },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 card-base p-5">
-                <span className="text-xl shrink-0">{item.icon}</span>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-dark/10 text-teal-dark ring-1 ring-teal-dark/20"><Icon name={item.icon as IconName} className="h-5 w-5" /></span>
                 <div>
                   <h3 className="font-semibold text-zinc-primary text-sm mb-1">{item.title}</h3>
                   <p className="text-xs text-zinc-muted">{item.desc}</p>

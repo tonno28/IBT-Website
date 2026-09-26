@@ -43,6 +43,12 @@ bis dahin die Coming-Soon-Seite.
 - [x] `robots.txt`, `sitemap.xml` (18 URLs), Canonical-URL auf jeder Seite
 - [x] `.htaccess` für Apache: OG-Bild hat keine Dateiendung, sonst leere Vorschau bei IONOS
 
+- [x] **Optik-Feinschliff (26.09.):** Hero der 8 Unterseiten mit Bild jetzt zweispaltig
+      (Text links, Bild rechts statt Bild unter dem Text). Emojis auf 5 Seiten durch das
+      eigene Icon-Set ersetzt (neu: camera, monitor, slab). „Warum IBT" als Liste neben der
+      Überschrift statt drei zentrierter Spalten. Buttons mit Druck-Feedback, Karten mit
+      leichtem Schatten beim Hover.
+
 ### Entschieden am 17.09.
 - [x] **Fotos:** KI-Symbolbilder bleiben (bewusste Entscheidung, Hinweis steht im Impressum).
 - [x] **Logo:** Die Text-Wortmarke ist die Marke. `public/logo.jpg` gelöscht.
@@ -76,18 +82,20 @@ bis dahin die Coming-Soon-Seite.
        (61d656e), Checkliste (628bff2). Bilder, Favicons, Fonts und OG-Banner sind im Repo.
    - [ ] **Pushen** nach GitHub (`git push`). Löst den IONOS-Workflow aus, der aber weiterhin
          nur `coming-soon-site/` deployt — die Live-Seite ändert sich dadurch nicht.
-2. [ ] **Hosting festzurren.** Zwei Wege sind angelegt, keiner ist fertig:
-   - **IONOS Deploy Now** (`.github/workflows/`): deployt heute `coming-soon-site/` ohne
-     Build-Schritt. Für die Next.js-Seite müssen in `IBT-Website-build.yaml` rein:
-     `actions/setup-node`, `npm ci --prefix ibt-website-editorial`,
-     `npm run build --prefix ibt-website-editorial`, und `DEPLOYMENT_FOLDER` →
-     `ibt-website-editorial/out`. Domain und E-Mail bleiben bei IONOS, MX-Records nicht anfassen.
-   - **Vercel** (`vercel.json`): konfiguriert, aber der Hobby-Plan ist nur nicht-kommerziell.
-     Für ein Ingenieurbüro braucht es Pro (20 $/Monat) — oder eben IONOS.
-   - Datenschutz nennt IONOS als Hoster. Bei Vercel muss der Abschnitt umgeschrieben werden (USA).
+2. [x] **Hosting: IONOS Deploy Now** (entschieden 26.09.). Vorbereitet:
+   - `IBT-Website-build.yaml` baut jetzt die Next-Seite (Node 20, `npm ci`, `npm run build`)
+     und lädt `ibt-website-editorial/out` hoch statt `coming-soon-site/`.
+   - `deploy-to-ionos.yaml`: zwei Tippfehler aus der IONOS-Vorlage behoben (`require` →
+     `required`, `path` → `paths`). Daran ist **jeder Deploy seit dem 07.08. gescheitert**
+     (94 Läufe, kein Job gestartet, „workflow file issue"). Die Live-Seite stand seitdem still.
+   - `.htaccess`: eigene 404-Seite (`ErrorDocument 404 /404.html`).
+   - Probe-Build lokal mit Node 20 sauber: 24 Seiten, 7 MB, alle Pfade 200.
+   - Web3Forms-Schlüssel steht im Code (öffentlicher Schlüssel), braucht keine Variable.
+   - Vercel (`vercel.json`) ist damit vom Tisch; Datei kann nach dem Go-Live weg.
 3. [ ] Umgebungsvariablen beim Hoster setzen: `NEXT_PUBLIC_GOOGLE_TAG_ID` (sobald ein Tag
        existiert; ohne ID gibt es kein Tracking und keinen Cookie-Banner — bewusst so gebaut).
-4. [ ] Go-Live: Workflow umstellen, prüfen, `coming-soon-site/` danach löschen.
+4. [ ] Go-Live: `git push` → Actions-Tab beobachten → ib-tonn.de prüfen (Startseite,
+       Kontaktformular, /gibtsnicht für 404). Danach `coming-soon-site/` löschen.
 5. [ ] Nach dem Go-Live: Google Search Console anlegen, Sitemap einreichen, Google-
        Unternehmensprofil auf die Seite verlinken, OG-Vorschau in WhatsApp/LinkedIn testen.
 

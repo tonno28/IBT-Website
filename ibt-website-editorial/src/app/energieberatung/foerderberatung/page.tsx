@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
+import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Förderberatung BEG: BAFA und KfW",
@@ -14,7 +15,8 @@ export default function FoerderberatungPage() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 grid-dots opacity-30" />
         <div className="container-max relative">
-          <div className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-center">
+          <div>
             <nav className="flex items-center gap-2 text-xs text-zinc-muted mb-6">
               <Link href="/" className="hover:text-zinc-secondary">Startseite</Link>
               <span>/</span>
@@ -36,15 +38,14 @@ export default function FoerderberatungPage() {
               <Link href="/foerderrechner" className="btn-secondary">Förderrechner →</Link>
             </div>
           </div>
-        </div>
-
-        <div className="container-max relative mt-12">
           <img
             src="/images/foerderantrag.jpg"
             alt="Förderantrag mit Taschenrechner und Hausmodell auf dem Schreibtisch"
-            className="w-full max-w-3xl rounded-2xl border border-zinc-border"
-            loading="lazy"
+            className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
+            width={1600}
+            height={1200}
           />
+          </div>
         </div>
       </section>
 
@@ -59,7 +60,7 @@ export default function FoerderberatungPage() {
             {[
               {
                 title: "Heizungsförderung",
-                icon: "🔥",
+                icon: "flame",
                 basis: "30 %",
                 max: "80 %",
                 details: [
@@ -71,7 +72,7 @@ export default function FoerderberatungPage() {
               },
               {
                 title: "Gebäudehülle",
-                icon: "🏠",
+                icon: "house",
                 basis: "15 %",
                 max: "20 %",
                 details: [
@@ -83,7 +84,7 @@ export default function FoerderberatungPage() {
               },
               {
                 title: "Baubegleitung",
-                icon: "🏗️",
+                icon: "crane",
                 basis: "50 %",
                 max: "50 %",
                 details: [
@@ -95,7 +96,7 @@ export default function FoerderberatungPage() {
               },
               {
                 title: "Anlagentechnik",
-                icon: "⚡",
+                icon: "spark",
                 basis: "15 %",
                 max: "20 %",
                 details: [
@@ -109,7 +110,7 @@ export default function FoerderberatungPage() {
               <div key={item.title} className="card-base p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{item.icon}</span>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-dark/10 text-teal-dark ring-1 ring-teal-dark/20"><Icon name={item.icon as IconName} className="h-5 w-5" /></span>
                     <h3 className="font-semibold text-zinc-primary">{item.title}</h3>
                   </div>
                   <div className="text-right">
@@ -142,14 +143,14 @@ export default function FoerderberatungPage() {
           </h2>
           <div className="space-y-4">
             {[
-              { icon: "📝", title: "Technische Projektbeschreibung (TPB)", desc: "Pflichtdokument für alle BEG-Anträge. Ich erstelle sie normgerecht und vollständig." },
-              { icon: "✅", title: "Energieeffizienz-Experten-Bestätigung", desc: "Als dena-gelisteter EEE bestätige ich die technische Richtigkeit der Maßnahmen. Ohne EEE keine Förderung." },
-              { icon: "🖥️", title: "Antragstellung BAFA / KfW", desc: "Vollständige Online-Antragstellung in den Portalen von BAFA und KfW. Sie müssen sich um nichts kümmern." },
-              { icon: "📋", title: "Verwendungsnachweis", desc: "Nach Abschluss der Maßnahme erstelle ich den Verwendungsnachweis, die Voraussetzung für die Auszahlung." },
-              { icon: "💡", title: "Förder-Optimierung", desc: "Ich prüfe, welche Boni für Sie zutreffen und kombiniere sie optimal. Nicht alle Berater kennen alle Möglichkeiten." },
+              { icon: "document", title: "Technische Projektbeschreibung (TPB)", desc: "Pflichtdokument für alle BEG-Anträge. Ich erstelle sie normgerecht und vollständig." },
+              { icon: "check", title: "Energieeffizienz-Experten-Bestätigung", desc: "Als dena-gelisteter EEE bestätige ich die technische Richtigkeit der Maßnahmen. Ohne EEE keine Förderung." },
+              { icon: "monitor", title: "Antragstellung BAFA / KfW", desc: "Vollständige Online-Antragstellung in den Portalen von BAFA und KfW. Sie müssen sich um nichts kümmern." },
+              { icon: "document", title: "Verwendungsnachweis", desc: "Nach Abschluss der Maßnahme erstelle ich den Verwendungsnachweis, die Voraussetzung für die Auszahlung." },
+              { icon: "bulb", title: "Förder-Optimierung", desc: "Ich prüfe, welche Boni für Sie zutreffen und kombiniere sie optimal. Nicht alle Berater kennen alle Möglichkeiten." },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 card-base p-5">
-                <span className="text-xl mt-0.5">{item.icon}</span>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-dark/10 text-teal-dark ring-1 ring-teal-dark/20"><Icon name={item.icon as IconName} className="h-5 w-5" /></span>
                 <div>
                   <h3 className="font-semibold text-zinc-primary mb-1">{item.title}</h3>
                   <p className="text-sm text-zinc-muted">{item.desc}</p>

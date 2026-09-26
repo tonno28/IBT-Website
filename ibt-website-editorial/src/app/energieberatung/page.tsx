@@ -69,7 +69,7 @@ const leistungen: {
     title: "Fachplanung & Baubegleitung",
     desc: "Energetische Fachplanung und Baubegleitung nach BEG. Pflicht für Einzelmaßnahmen mit Förderantrag. Ich übernehme Planung, Kontrolle und Dokumentation.",
     highlight: "50 % BEG-Förderung auf Baubegleitung",
-    price: "ab 1.000 € (EFH)",
+    price: "ab 250 € (EFH)",
   },
   {
     href: "/energieberatung/effizienzhaus",
@@ -163,40 +163,48 @@ export default function EnergieberatungPage() {
       </section>
 
       {/* Why IBT */}
-      <section className="section-padding bg-bg-card border-y border-zinc-border">
+      <section className="section-padding bg-bg-primary border-t border-zinc-border">
         <div className="container-max">
-          <Reveal className="text-center mb-10">
-            <p className="section-label">Warum IBT</p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-primary">
-              Energieberatung mit technischer Tiefe
-            </h2>
-          </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {([
-              {
-                icon: "gear",
-                title: "Ingenieur-Know-how",
-                desc: "Ich berechne Heizlasten, U-Werte und Wärmebrücken selbst. Kein Outsourcing, keine Verzögerungen.",
-              },
-              {
-                icon: "target",
-                title: "Förder-Optimierung",
-                desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: Klimageschwindigkeitsbonus, Einkommensbonus mit Familienzuschlag, iSFP-Bonus, auf dem Stand der Reform vom 21.07.2026.",
-              },
-              {
-                icon: "handshake",
-                title: "Ein Ansprechpartner",
-                desc: "Von der ersten Beratung bis zum Verwendungsnachweis: Sie haben immer denselben Ansprechpartner.",
-              },
-            ] as { icon: IconName; title: string; desc: string }[]).map((item, i) => (
-              <Reveal key={item.title} variant="up" delay={i * 90} className="text-center p-6">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-dark/15 text-teal-dark ring-1 ring-teal-dark/20">
-                  <Icon name={item.icon} className="w-6 h-6" />
-                </div>
-                <h3 className="font-semibold text-zinc-primary mb-2">{item.title}</h3>
-                <p className="text-sm text-zinc-muted">{item.desc}</p>
-              </Reveal>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16">
+            <Reveal variant="left">
+              <p className="section-label">Warum IBT</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-zinc-primary leading-tight mb-4">
+                Energieberatung mit technischer Tiefe
+              </h2>
+              <p className="text-zinc-muted leading-relaxed max-w-md">
+                Berater und Ingenieur in einer Person. Was gerechnet werden muss, rechne
+                ich selbst.
+              </p>
+            </Reveal>
+            <div className="divide-y divide-zinc-border border-y border-zinc-border">
+              {([
+                {
+                  icon: "gear",
+                  title: "Ingenieur-Know-how",
+                  desc: "Ich berechne Heizlasten, U-Werte und Wärmebrücken selbst. Kein Outsourcing, keine Verzögerungen.",
+                },
+                {
+                  icon: "target",
+                  title: "Förder-Optimierung",
+                  desc: "Ich kenne alle Boni der BEG und nutze sie konsequent: Klimageschwindigkeitsbonus, Einkommensbonus mit Familienzuschlag, iSFP-Bonus, auf dem Stand der Reform vom 21.07.2026.",
+                },
+                {
+                  icon: "handshake",
+                  title: "Ein Ansprechpartner",
+                  desc: "Von der ersten Beratung bis zum Verwendungsnachweis: Sie haben immer denselben Ansprechpartner.",
+                },
+              ] as { icon: IconName; title: string; desc: string }[]).map((item, i) => (
+                <Reveal key={item.title} variant="up" delay={i * 90} className="flex gap-5 py-6">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-dark/10 text-teal-dark ring-1 ring-teal-dark/20">
+                    <Icon name={item.icon} className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-zinc-primary mb-1">{item.title}</h3>
+                    <p className="text-zinc-muted leading-relaxed max-w-prose">{item.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>

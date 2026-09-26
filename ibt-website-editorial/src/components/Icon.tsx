@@ -22,7 +22,10 @@ export type IconName =
   | "institution"
   | "building"
   | "window"
-  | "brick";
+  | "brick"
+  | "camera"
+  | "monitor"
+  | "slab";
 
 const paths: Record<IconName, JSX.Element> = {
   roadmap: (
@@ -149,6 +152,25 @@ const paths: Record<IconName, JSX.Element> = {
     <>
       <path d="M3 8h18M3 16h18M3 4h18v16H3z" />
       <path d="M9 4v4m6-4v4M6 8v8m12-8v8M9 16v4m6-4v4" />
+    </>
+  ),
+  camera: (
+    <>
+      <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+      <circle cx="12" cy="13.5" r="3.5" />
+    </>
+  ),
+  monitor: (
+    <>
+      <rect x="3" y="4" width="18" height="12" rx="1" />
+      <path d="M9 20h6M12 16v4" />
+    </>
+  ),
+  slab: (
+    <>
+      <path d="M3 13h18v4H3z" />
+      <path d="M3 9h18M6 13v4m4-4v4m4-4v4m4-4v4" />
+      <path d="M7 9V5m10 4V5" />
     </>
   ),
 };
