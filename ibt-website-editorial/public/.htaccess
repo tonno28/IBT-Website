@@ -9,4 +9,4 @@
 ErrorDocument 404 /404.html
 
 # Die Seite "Über mich" gibt es seit 26.09.2026 nicht mehr.
-Redirect 301 /ueber-mich /
+RedirectMatch 301 ^/ueber-mich/?$ /
