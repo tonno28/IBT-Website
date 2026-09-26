@@ -94,8 +94,16 @@ bis dahin die Coming-Soon-Seite.
    - Vercel (`vercel.json`) ist damit vom Tisch; Datei kann nach dem Go-Live weg.
 3. [ ] Umgebungsvariablen beim Hoster setzen: `NEXT_PUBLIC_GOOGLE_TAG_ID` (sobald ein Tag
        existiert; ohne ID gibt es kein Tracking und keinen Cookie-Banner — bewusst so gebaut).
-4. [ ] Go-Live: `git push` → Actions-Tab beobachten → ib-tonn.de prüfen (Startseite,
-       Kontaktformular, /gibtsnicht für 404). Danach `coming-soon-site/` löschen.
+4. [x] **Go-Live am 26.09.2026.** ib-tonn.de zeigt die Next-Seite (Commit 09a7804). Alle
+       Seiten, Sitemap, robots.txt und OG-Bild liefern 200, falsche Adressen 404.
+   - Ursache für den Stillstand seit 07.08.: GitHub stuft `deploy-to-ionos.yaml` als
+     „möglicherweise schädlich" ein und startet es nur nach Freigabe im Browser (Actions →
+     Lauf → „Approve"). Unfreigegebene Läufe verfallen nach 30 Tagen.
+   - [ ] `toJson(secrets)` aus dem Render-Schritt entfernen, damit die Freigabe entfällt
+         (keine Vorlagen-Dateien im Projekt, die Secrets bräuchten).
+   - [ ] Eigene deutsche 404-Seite (`src/app/not-found.tsx`), heute Nexts englische.
+   - [ ] Kontaktformular live absenden und Eingang bei info@ib-tonn.de prüfen.
+   - [ ] `coming-soon-site/` und `vercel.json` löschen.
 5. [ ] Nach dem Go-Live: Google Search Console anlegen, Sitemap einreichen, Google-
        Unternehmensprofil auf die Seite verlinken, OG-Vorschau in WhatsApp/LinkedIn testen.
 
