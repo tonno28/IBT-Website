@@ -13,8 +13,12 @@ export const metadata: Metadata = {
 };
 
 /**
- * Aus den Projektunterlagen ausgezählt (Stand 11.08.2026): 12 Objekte mit
- * 24 Heizlast- und Abgleichsdokumenten, Summe der Norm-Heizlasten 108,3 kW.
+ * Aus den Projektunterlagen ausgezählt (Stand 26.09.2026): 13 Objekte mit
+ * 26 Heizlast-, Abgleichs- und Heizflächenberichten, Summe der
+ * Norm-Heizlasten 113,9 kW. Objekte: Brunner 11,9 · Emons 10,6 · Fitzau 6,4 ·
+ * Heinrichs 9,3 · Steffens 8,5 · Kneier 11,2 · Mürkens 7,9 · Kroll 14,0 ·
+ * Kroll/Waagmühle 28 5,6 · Dolfen 5,5 · Wolf 12 7,0 · Wolf 12a 10,2 ·
+ * Klassen 5,8 kW.
  * Grundlage ist jeweils der Wert "Norm-Heizlast" für die
  * Wärmeerzeugerauslegung, nicht der Orientierungswert aus dem
  * Verbrauchsverfahren.
@@ -26,9 +30,9 @@ const technikStats: [
   { value: string; label: string },
   { value: string; label: string }
 ] = [
-  { value: "12", label: "Realisierte Projekte" },
-  { value: "108,3 kW", label: "Ermittelte Heizlast" },
-  { value: "24", label: "Erstellte Berechnungen" },
+  { value: "13", label: "Realisierte Projekte" },
+  { value: "113,9 kW", label: "Ermittelte Heizlast" },
+  { value: "26", label: "Erstellte Berechnungen" },
 ];
 
 const leistungen: {
@@ -111,7 +115,7 @@ export default function IngenieurleistungenPage() {
           </Reveal>
           <Reveal variant="right">
             <img
-              src="/images/uwert-zeichnung.jpg"
+              src="/images/uwert-zeichnung.webp"
               alt="Technische Schnittzeichnung eines Wandaufbaus mit U-Wert-Berechnungen und Messwerkzeug"
               width={1600}
               height={1073}
@@ -125,7 +129,7 @@ export default function IngenieurleistungenPage() {
       {/* Zahlen */}
       <StatsBanner
         stats={technikStats}
-        note="Stand: August 2026 · alle Berechnungen nach DIN/TS 12831-1, jedes Projekt raumweise und mit hydraulischem Abgleich"
+        note="Stand: September 2026 · alle Berechnungen nach DIN/TS 12831-1, jedes Projekt raumweise und mit hydraulischem Abgleich"
       />
 
       {/* Leistungen */}

@@ -34,14 +34,11 @@ export default function Home() {
                 Energieberater: keine Bindung an Hersteller oder Handwerksbetriebe,
                 keine Verkaufsziele, keine Provisionen.
               </p>
-              <p className="text-zinc-muted leading-relaxed mb-6">
+              <p className="text-zinc-muted leading-relaxed">
                 Ich kenne beide Seiten: die technischen Anforderungen an der
                 Schnittstelle zu Handwerk und Planung, und die bürokratischen
                 Anforderungen der Förderprogramme.
               </p>
-              <Link href="/ueber-mich" className="btn-secondary text-sm">
-                Mehr über mich →
-              </Link>
             </Reveal>
 
             <Reveal variant="right">

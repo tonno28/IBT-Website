@@ -35,7 +35,7 @@ export default function WaermebrueckenPage() {
             <Link href="/kontakt?anliegen=waermebruecken" className="btn-primary">Wärmebrücken anfragen</Link>
           </div>
           <img
-            src="/images/thermografie.jpg"
+            src="/images/thermografie.webp"
             alt="Wärmebildkamera zeigt Thermografie einer Hausfassade"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

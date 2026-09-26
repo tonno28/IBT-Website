@@ -114,7 +114,7 @@ export default function EnergieberatungPage() {
           </Reveal>
           <Reveal variant="right">
             <img
-              src="/images/effizienzhaus.jpg"
+              src="/images/effizienzhaus.webp"
               alt="Modernes Effizienzhaus mit Photovoltaik und großen Fensterflächen"
               width={1600}
               height={1073}

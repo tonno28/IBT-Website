@@ -47,7 +47,7 @@ export default function ISFPPage() {
             </div>
           </div>
           <img
-            src="/images/isfp-dokumente.jpg"
+            src="/images/isfp-dokumente.webp"
             alt="iSFP-Unterlagen mit Effizienzklassen-Diagramm, Grundriss und Hausmodell"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

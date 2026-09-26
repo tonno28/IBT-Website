@@ -61,15 +61,19 @@ bis dahin die Coming-Soon-Seite.
       belegt. Volle Namen wie auf Google — kürzen auf „Darius D." wäre ein Handgriff.
 
 ### Offen — Entscheidung noch nicht getroffen
-- [?] **Projektzahlen** im StatsBanner: 12 Projekte / 108,3 kW / 24 Berechnungen,
-      Stand August. Noch aktuell?
+- [x] **Projektzahlen** am 26.09. aus dem Drive-Ordner neu ausgezählt: 19 begleitete
+      Projekte (13 Heizlast-Objekte + 6 Förderfälle), 26 Berechnungen, 113,9 kW.
+      Aufschlüsselung als Kommentar in `Hero.tsx` und `ingenieurleistungen/page.tsx`.
 - [?] **Terminbuchung.** Ende August angefangen und wieder entfernt. Kommt sie (Calendly,
       cal.com …) oder bleibt es bei Formular + Telefon?
 
+- [x] **Seite „Über mich“ entfernt** (26.09.), samt Menüpunkt, Sitemap-Eintrag und Button
+      auf der Startseite. `/ueber-mich` leitet per `.htaccess` auf die Startseite.
+
 ### Offen — kleinere Punkte
 - [x] **Kontaktformular** live getestet, Mail kommt bei info@ib-tonn.de an (26.09.).
-- [ ] Bilder verkleinern: `public/images/` liegt bei 230–580 KB pro Bild, zusammen 4,5 MB.
-      Ziel ~150 KB pro Bild (WebP oder JPEG 80 %, max. 1600 px breit).
+- [x] Bilder verkleinert (26.09.): WebP, max. 1400 px, 25–148 KB pro Bild, zusammen
+      880 KB statt 4,5 MB. `arbeitsplatz.jpg` gelöscht (nur auf „Über mich“ genutzt).
 - [ ] Stats-Streifen auf der Energieberatung-Seite einbauen, sobald belastbare Zahlen da sind
 
 ---

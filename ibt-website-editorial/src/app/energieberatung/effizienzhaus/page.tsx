@@ -36,7 +36,7 @@ export default function EffizienzhausPage() {
             <Link href="/kontakt?anliegen=effizienzhaus" className="btn-primary">Bilanzierung anfragen</Link>
           </div>
           <img
-            src="/images/hero-sanierung.jpg"
+            src="/images/hero-sanierung.webp"
             alt="Saniertes Einfamilienhaus mit gedämmter Fassade, neuen Fenstern und Wärmepumpe"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

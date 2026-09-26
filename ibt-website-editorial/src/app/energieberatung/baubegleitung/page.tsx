@@ -39,7 +39,7 @@ export default function BaubegleitungPage() {
             </div>
           </div>
           <img
-            src="/images/daemmung.jpg"
+            src="/images/daemmung.webp"
             alt="Handwerker bringt Dämmplatten an einer Hausfassade an"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

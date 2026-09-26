@@ -21,7 +21,6 @@ const SEITEN: { pfad: string; prio: number }[] = [
   { pfad: "/ingenieurleistungen/lueftung/", prio: 0.7 },
   { pfad: "/ingenieurleistungen/waermebruecken/", prio: 0.7 },
   { pfad: "/foerderrechner/", prio: 0.9 },
-  { pfad: "/ueber-mich/", prio: 0.6 },
   { pfad: "/kontakt/", prio: 0.8 },
   { pfad: "/impressum/", prio: 0.2 },
   { pfad: "/datenschutz/", prio: 0.2 },

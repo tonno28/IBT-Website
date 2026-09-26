@@ -35,7 +35,7 @@ export default function EnergieausweisPage() {
             <Link href="/kontakt?anliegen=energieausweis" className="btn-primary">Energieausweis beauftragen</Link>
           </div>
           <img
-            src="/images/energieausweis.jpg"
+            src="/images/energieausweis.webp"
             alt="Energieausweis mit farbiger Effizienzskala neben Laptop und Hausschlüsseln"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

@@ -40,7 +40,7 @@ export default function HeizlastPage() {
             </div>
           </div>
           <img
-            src="/images/waermepumpe.jpg"
+            src="/images/waermepumpe.webp"
             alt="Luft-Wasser-Wärmepumpe neben einem sanierten Wohnhaus"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

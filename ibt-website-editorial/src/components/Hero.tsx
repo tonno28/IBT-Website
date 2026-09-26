@@ -2,15 +2,24 @@ import Link from "next/link";
 
 /**
  * Die vier Zahlen sind echte Werte, keine Deko: Förder-Maxima aus der BEG
- * (Stand 21.07.2026) und der Projektstand aus den eigenen Unterlagen
- * (siehe Kommentar auf der Ingenieurleistungen-Seite). Projektzahlen bei
- * jedem Abschluss fortschreiben.
+ * (Stand 21.07.2026) und der Projektstand aus den eigenen Unterlagen.
+ *
+ * Ausgezählt am 26.09.2026 im Drive-Ordner "Ingenieurbüro Tonn":
+ * - 19 begleitete Projekte = 13 Heizlast-Objekte (siehe Ingenieurleistungen-
+ *   Seite) + 6 Förderfälle mit Antrag/BzA: Marquardt-Hirte (BEG EM, BAFA,
+ *   beschieden), Burghardt (BEG EM, BAFA), Kosmann und Schmidt (KfW 458
+ *   Heizungsförderung), Werner (KfW 297/298 Neubau), Hetzler (iSFP).
+ *   Nicht gezählt: Boßler (Vollmacht, noch kein Antrag), reine Angebote.
+ * - 26 technische Berechnungen = Heizlast-, Abgleichs- und
+ *   Heizflächenberichte der 13 Objekte.
+ *
+ * Projektzahlen bei jedem Abschluss fortschreiben.
  */
 const stats = [
   { value: "80 %*", label: "max. Heizungsförderung" },
   { value: "60.000 €", label: "förderfähig mit iSFP" },
-  { value: "12", label: "begleitete Projekte" },
-  { value: "24", label: "technische Berechnungen" },
+  { value: "19", label: "begleitete Projekte" },
+  { value: "26", label: "technische Berechnungen" },
 ];
 
 export default function Hero() {
@@ -75,7 +84,7 @@ export default function Hero() {
 
           <div className="mt-12">
             <img
-              src="/images/hero-sanierung.jpg"
+              src="/images/hero-sanierung.webp"
               alt="Saniertes Einfamilienhaus mit gedämmter Fassade, neuen Fenstern und Wärmepumpe"
               width={1600}
               height={679}

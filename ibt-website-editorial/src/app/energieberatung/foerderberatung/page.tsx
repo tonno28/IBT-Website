@@ -39,7 +39,7 @@ export default function FoerderberatungPage() {
             </div>
           </div>
           <img
-            src="/images/foerderantrag.jpg"
+            src="/images/foerderantrag.webp"
             alt="Förderantrag mit Taschenrechner und Hausmodell auf dem Schreibtisch"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}

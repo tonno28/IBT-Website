@@ -38,7 +38,7 @@ export default function LueftungPage() {
             </div>
           </div>
           <img
-            src="/images/lueftung.jpg"
+            src="/images/lueftung.webp"
             alt="Dezentrales Lüftungsgerät an einer Innenwand neben dem Fenster"
             className="w-full aspect-[4/3] object-cover rounded-2xl border border-zinc-border shadow-lg shadow-black/5"
             width={1600}
