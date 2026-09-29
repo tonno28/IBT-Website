@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Energieausweis: Verbrauchs- und Bedarfsausweis",
+  title: "Energieausweis in Köln, Aachen und Düren",
   description:
     "Energieausweis für Wohngebäude: Verbrauchsausweis ab 95 €, Bedarfsausweis (DIN V 18599) ab 250 €. Pflicht bei Verkauf, Vermietung und Neubau. Schnell und rechtssicher. Region Köln / Aachen / Düren.",
 };

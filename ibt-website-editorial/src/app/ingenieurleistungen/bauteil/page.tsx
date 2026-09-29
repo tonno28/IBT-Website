@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "Bauteilberechnung U-Wert nach DIN EN ISO 6946",
+  title: "U-Wert-Berechnung Köln, Aachen, Düren",
   description:
     "U-Wert-Berechnung nach DIN EN ISO 6946 für Wand, Dach, Boden und Fenster. Nachweis für Förderanträge, BEG, Baugenehmigung. Ab 80 € pro Bauteil. Region Köln / Aachen / Düren.",
 };

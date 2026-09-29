@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Effizienzhaus-Bilanzierung 40 / 55 / 70 / 85",
+  title: "Effizienzhaus-Nachweis Köln, Aachen, Düren",
   description:
     "Effizienzhaus-Nachweis nach GEG: Bilanzierung Effizienzhaus 40/55/70/85 nach DIN V 18599, Voraussetzung für KfW-Wohngebäudekredit und Tilgungszuschüsse. Region Köln / Aachen / Düren.",
 };

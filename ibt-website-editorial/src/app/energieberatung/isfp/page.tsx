@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "iSFP: Individueller Sanierungsfahrplan",
+  title: "iSFP Sanierungsfahrplan Köln, Aachen, Düren",
   description:
     "Individueller Sanierungsfahrplan (iSFP) nach BEG: maßgeschneiderte Sanierungsreihenfolge, 5 % Extra-Förderbonus auf alle Folgemaßnahmen. Ab 650 € für EFH. Region Köln / Aachen / Düren.",
 };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Wärmebrückenberechnung Ψ-Werte DIN EN ISO 10211",
+  title: "Wärmebrückenberechnung Köln, Aachen, Düren",
   description:
     "Wärmebrückenberechnung nach DIN EN ISO 10211: Ψ-Werte (psi) für detaillierte Gebäudebilanzierung und Tauwassernachweis. Region Köln / Aachen / Düren.",
 };

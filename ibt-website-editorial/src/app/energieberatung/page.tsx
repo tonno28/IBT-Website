@@ -3,10 +3,13 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
+import { energieberatungLeistungen } from "@/lib/leistungskarten";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Foerderrechner from "@/components/Foerderrechner";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import JsonLd from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
 
 /**
  * Der Zahlen-Streifen ist hier bewusst noch nicht eingebaut.
@@ -26,60 +29,10 @@ import FAQ from "@/components/FAQ";
  */
 
 export const metadata: Metadata = {
-  title: "Energieberatung: iSFP, Förderung, Energieausweis",
+  title: "Energieberatung in Köln, Aachen und Düren",
   description:
     "Professionelle Energieberatung für Wohngebäude: iSFP Sanierungsfahrplan, Förderberatung BEG (BAFA/KfW), Energieausweis, Baubegleitung und Effizienzhaus-Nachweis. Region Köln / Aachen / Düren.",
 };
-
-const leistungen: {
-  href: string;
-  icon: IconName;
-  title: string;
-  desc: string;
-  highlight: string;
-  price: string;
-}[] = [
-  {
-    href: "/energieberatung/isfp",
-    icon: "roadmap",
-    title: "iSFP Sanierungsfahrplan",
-    desc: "Der individuelle Sanierungsfahrplan (iSFP) ist Ihr persönlicher Masterplan für die Gebäudesanierung. Er verdoppelt die förderfähigen Kosten Ihrer Einzelmaßnahmen.",
-    highlight: "bis 60.000 € förderfähig",
-    price: "ab 650 € (EFH)",
-  },
-  {
-    href: "/energieberatung/foerderberatung",
-    icon: "euro",
-    title: "Förderberatung BEG",
-    desc: "Vollständige Antragsbearbeitung bei BAFA und KfW: Technische Projektbeschreibung, Energieeffizienz-Experten-Bestätigung, Verwendungsnachweis.",
-    highlight: "bis 80 % (Heizungstausch)",
-    price: "auf Anfrage",
-  },
-  {
-    href: "/energieberatung/energieausweis",
-    icon: "document",
-    title: "Energieausweis",
-    desc: "Verbrauchs- und Bedarfsausweis für Wohngebäude. Pflichtdokument bei Verkauf, Vermietung und Neubau, schnell und rechtssicher.",
-    highlight: "Pflicht bei Verkauf & Vermietung",
-    price: "ab 95 € (Verbrauch) / ab 250 € (Bedarf EFH)",
-  },
-  {
-    href: "/energieberatung/baubegleitung",
-    icon: "crane",
-    title: "Fachplanung & Baubegleitung",
-    desc: "Energetische Fachplanung und Baubegleitung nach BEG. Pflicht für Einzelmaßnahmen mit Förderantrag. Ich übernehme Planung, Kontrolle und Dokumentation.",
-    highlight: "50 % BEG-Förderung auf Baubegleitung",
-    price: "ab 250 € (EFH)",
-  },
-  {
-    href: "/energieberatung/effizienzhaus",
-    icon: "house",
-    title: "Effizienzhaus-Bilanzierung",
-    desc: "Nachweis Effizienzhaus 40/55/70/85 nach GEG, Voraussetzung für KfW-Wohngebäudekredit und höhere Tilgungszuschüsse.",
-    highlight: "KfW-Voraussetzung",
-    price: "auf Anfrage",
-  },
-];
 
 export default function EnergieberatungPage() {
   return (
@@ -97,6 +50,7 @@ export default function EnergieberatungPage() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-primary leading-tight mb-6">
               Energieberatung für Wohngebäude
+              <span className="block font-medium text-zinc-secondary">in Köln, Aachen und Düren</span>
             </h1>
             <p className="text-xl text-zinc-muted leading-relaxed text-balance mb-8">
               Von der Erstberatung bis zur ausgezahlten Förderung. Als dena-gelisteter
@@ -129,7 +83,7 @@ export default function EnergieberatungPage() {
       <section className="section-padding bg-bg-primary">
         <div className="container-max">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {leistungen.map((l, i) => (
+            {energieberatungLeistungen.map((l, i) => (
               <Reveal key={l.href} delay={i * 70}>
                 <Link
                   href={l.href}
@@ -264,6 +218,7 @@ export default function EnergieberatungPage() {
 
       {/* FAQ */}
       <FAQ />
+      <JsonLd data={faqSchema} />
 
       <CTABanner anliegen="energieberatung" />
     </>

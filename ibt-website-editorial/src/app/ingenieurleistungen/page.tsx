@@ -3,11 +3,12 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
+import { ingenieurLeistungen } from "@/lib/leistungskarten";
 import Testimonials from "@/components/Testimonials";
 import StatsBanner from "@/components/StatsBanner";
 
 export const metadata: Metadata = {
-  title: "Ingenieurleistungen: Heizlast, U-Wert, Taupunkt, Lüftung",
+  title: "Ingenieurleistungen in Köln, Aachen und Düren",
   description:
     "Technische Ingenieurleistungen für Handwerk und Planer: Heizlastberechnung DIN 12831, Bauteilberechnung U-Wert, Taupunktnachweis, Lüftungskonzept DIN 1946-6. Region Köln / Aachen / Düren.",
 };
@@ -33,56 +34,6 @@ const technikStats: [
   { value: "13", label: "Realisierte Projekte" },
   { value: "113,9 kW", label: "Ermittelte Heizlast" },
   { value: "26", label: "Erstellte Berechnungen" },
-];
-
-const leistungen: {
-  href: string;
-  icon: IconName;
-  title: string;
-  desc: string;
-  norm: string;
-  price: string;
-}[] = [
-  {
-    href: "/ingenieurleistungen/heizlast",
-    icon: "thermometer",
-    title: "Heizlastberechnung",
-    desc: "Normheizlast nach DIN EN 12831 für die Auslegung von Wärmepumpen und Heizkörpern. Datensatz für den hydraulischen Abgleich inklusive.",
-    norm: "DIN EN 12831",
-    price: "ab 499 € (EFH), inkl. hydraulischem Abgleich",
-  },
-  {
-    href: "/ingenieurleistungen/bauteil",
-    icon: "ruler",
-    title: "Bauteilberechnung",
-    desc: "U-Wert-Berechnung für Wand, Dach, Boden und Fenster nach DIN EN ISO 6946, als Nachweis für Förderanträge und Baugenehmigungen.",
-    norm: "DIN EN ISO 6946",
-    price: "ab 80 € / Bauteil",
-  },
-  {
-    href: "/ingenieurleistungen/taupunkt",
-    icon: "droplet",
-    title: "Taupunktnachweis",
-    desc: "Feuchteschutznachweis nach Glaser-Verfahren (DIN 4108-3), verhindert Kondensatschäden und Schimmel in Bauteilen.",
-    norm: "DIN 4108-3",
-    price: "ab 120 € / Bauteil",
-  },
-  {
-    href: "/ingenieurleistungen/lueftung",
-    icon: "wind",
-    title: "Lüftungskonzept",
-    desc: "Lüftungskonzept nach DIN 1946-6, Pflicht bei luftdichter Gebäudehülle und vielen BEG-geförderten Sanierungen.",
-    norm: "DIN 1946-6",
-    price: "ab 180 € (EFH)",
-  },
-  {
-    href: "/ingenieurleistungen/waermebruecken",
-    icon: "scan",
-    title: "Wärmebrückenberechnung",
-    desc: "Ψ-Werte (psi) für Wärmebrücken nach DIN EN ISO 10211, für genaue Gebäudebilanzierung und Tauwassernachweis.",
-    norm: "DIN EN ISO 10211",
-    price: "auf Anfrage",
-  },
 ];
 
 export default function IngenieurleistungenPage() {
@@ -136,7 +87,7 @@ export default function IngenieurleistungenPage() {
       <section className="section-padding bg-bg-primary">
         <div className="container-max">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {leistungen.map((l, i) => (
+            {ingenieurLeistungen.map((l, i) => (
               <Reveal key={l.href} delay={i * 70}>
                 <Link
                   href={l.href}

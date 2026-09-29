@@ -4,6 +4,8 @@ import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import JsonLd from "@/components/JsonLd";
+import { unternehmenSchema } from "@/lib/schema";
 import { CONSENT_DEFAULT_SNIPPET, TRACKING_AKTIV } from "@/lib/consent";
 
 /**
@@ -92,6 +94,7 @@ export default function RootLayout({
         {TRACKING_AKTIV && (
           <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SNIPPET }} />
         )}
+        <JsonLd data={unternehmenSchema} />
       </head>
       <body className="bg-bg-primary text-zinc-primary antialiased">
         <Header />

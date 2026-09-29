@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "Förderberatung BEG: BAFA und KfW",
+  title: "Förderberatung BAFA/KfW Köln, Aachen, Düren",
   description:
     "Professionelle Förderberatung für BEG Einzelmaßnahmen und Effizienzhaus. Antragsstellung bei BAFA und KfW, Förderoptimierung bis 80 %, vollständige Begleitung. Region Köln / Aachen / Düren.",
 };

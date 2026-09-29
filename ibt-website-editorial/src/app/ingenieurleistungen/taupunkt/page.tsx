@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "Taupunktnachweis: Feuchteschutz nach DIN 4108-3",
+  title: "Taupunktnachweis Köln, Aachen, Düren",
   description:
     "Taupunktnachweis nach Glaser-Verfahren (DIN 4108-3): Feuchteschutznachweis für Außenbauteile, verhindert Kondensatschäden und Schimmel. Ab 120 € pro Bauteil. Region Köln / Aachen / Düren.",
 };

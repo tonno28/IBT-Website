@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import Icon, { type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "Heizlastberechnung nach DIN EN 12831",
+  title: "Heizlastberechnung Köln, Aachen, Düren",
   description:
     "Normheizlast nach DIN EN 12831 für Wärmepumpenauslegung und Heizkörperbemessung, Datensatz für den hydraulischen Abgleich inklusive. Ab 499 € für EFH. Schnelle Lieferzeit. Region Köln / Aachen / Düren.",
 };

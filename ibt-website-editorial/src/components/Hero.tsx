@@ -31,8 +31,8 @@ export default function Hero() {
       <div className="relative container-max w-full px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-3xl mx-auto text-center">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bg-card/80 backdrop-blur-sm border border-zinc-border text-xs font-medium text-zinc-secondary mb-8">
-            Unabhängige Energieberatung · Region Köln, Aachen &amp; Düren
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-balance bg-bg-card/80 backdrop-blur-sm border border-zinc-border text-xs font-medium text-zinc-secondary mb-8">
+            Unabhängiger Energieberater für Köln, Aachen und Düren
           </div>
 
           {/* Headline */}

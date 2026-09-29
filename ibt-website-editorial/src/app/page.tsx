@@ -6,7 +6,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "IBT Ingenieurbüro Tonn: Energieberatung und Ingenieurleistungen",
+  title: { absolute: "Energieberater für Köln, Aachen und Düren | IBT Ingenieurbüro Tonn" },
   description:
     "Professionelle Energieberatung (iSFP, BAFA/KfW, Förderberatung) und Ingenieurleistungen (Heizlast, U-Wert, Taupunkt) aus einer Hand. Jonas Tonn, qualifiziert nach §88 GEG, dena-gelistet. Region Köln / Aachen / Düren.",
 };
