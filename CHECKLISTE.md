@@ -106,8 +106,19 @@ bis dahin die Coming-Soon-Seite.
    - [x] Eigene deutsche 404-Seite (`src/app/not-found.tsx`).
    - [x] Kontaktformular live getestet, Mail kommt an (26.09.).
    - [x] `coming-soon-site/` und `vercel.json` gelöscht.
-5. [ ] Nach dem Go-Live: Google Search Console anlegen, Sitemap einreichen, Google-
-       Unternehmensprofil auf die Seite verlinken, OG-Vorschau in WhatsApp/LinkedIn testen.
+5. [x] **SEO und KI-Suche (29.09.):** strukturierte Daten (ProfessionalService, Person,
+       FAQPage), `/llms.txt`, Region in allen Seitentiteln. Leistungen und Preise liegen in
+       `src/lib/leistungskarten.ts`, FAQ in `src/lib/faq.ts`, beides speist Seiten, Schema
+       und llms.txt. **Kein versteckter Text** (Google-Spam-Richtlinie, UWG-Risiko).
+6. [ ] Nach dem Go-Live, macht Jonas (hängt an seinen Konten):
+   - [ ] Search Console: Property ib-tonn.de anlegen (DNS-Eintrag bei IONOS oder
+         HTML-Datei, die ich auf die Seite lege), dann `https://ib-tonn.de/sitemap.xml` einreichen.
+   - [ ] Google-Unternehmensprofil: Website ib-tonn.de, Kategorie Energieberater, Gebiet
+         Köln/Aachen/Düren, weitere Rezensionen sammeln. Profil-Link danach als `sameAs`
+         in `src/lib/schema.ts` eintragen.
+   - [ ] dena-Expertenprofil mit Link auf ib-tonn.de; Gelbe Seiten, Verbraucherzentrale NRW.
+         Überall exakt gleiche Angaben (Name, Adresse, Telefon).
+   - [ ] OG-Vorschau in WhatsApp/LinkedIn testen.
 
 ---
 
